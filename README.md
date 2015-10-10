@@ -1,9 +1,9 @@
 # PICTR
----
+-------
 Inspired by EverNote, PICTR is a personal pictures album collection app, where users can collect and organize pictures.
 
 ## MVP
----
+------
 PICTR is built using RoR and React.js.
 It allows users to:
 
@@ -15,4 +15,4 @@ It allows users to:
 -[ ] Apply complex styling to notes
 
 ## Design Docs
----
+--------------
