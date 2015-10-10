@@ -13,5 +13,8 @@ It allows users to:
 - [ ] Apply complex styling to notes
 
 ## Design Docs
-[Wireframes]: ./docs/views.md
-[DB Schema]: ./docs/db_schema.md
+* [View Wireframes][view]
+* [DB schema][schema]
+
+[view]: ./docs/views.md
+[schema]: ./docs/db_schema.md
