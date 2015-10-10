@@ -5,12 +5,12 @@ Inspired by EverNote, PICTR is a personal pictures album collection app, where u
 PICTR is built using RoR and React.js.
 It allows users to:
 
--[ ] Create account
--[ ] Log in / log out
--[ ] Create albums
--[ ] Create, view, and delete pictures
--[ ] Write, read, and edit notes about pictures
--[ ] Apply complex styling to notes
+- [ ] Create account
+- [ ] Log in / log out
+- [ ] Create albums
+- [ ] Create, view, and delete pictures
+- [ ] Write, read, and edit notes about pictures
+- [ ] Apply complex styling to notes
 
 ## Design Docs
 [Wireframes]: ./docs/views.md
