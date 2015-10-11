@@ -3,7 +3,9 @@
 ## Landing Page
 ![landing_page]
 ![sign_up]
-![picture_index]
+
+## Home Page
+![pic_index]
 
 ## Sign up / Sign in Page
 [landing_page]: ./wireframes/landing_page.png
