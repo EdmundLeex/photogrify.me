@@ -37,3 +37,6 @@
 * signUp
 * login
 * logout
+
+## Gems/Libraries
+* BCrypt
