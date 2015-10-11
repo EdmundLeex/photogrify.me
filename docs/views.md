@@ -2,6 +2,8 @@
 
 ## Landing Page
 ![landing_page]
+
+## Sign up / Sign in Page
 ![sign_up]
 
 ## Pictures Index Page
@@ -11,7 +13,6 @@ This page is shown immidiately after user login.
 ## Albums Index Page
 ![album_index]
 
-## Sign up / Sign in Page
 [landing_page]: ./wireframes/landing_page.png
 [sign_up]: ./wireframes/sign_up.png
 [pic_index]: ./wireframes/picture_index.png
