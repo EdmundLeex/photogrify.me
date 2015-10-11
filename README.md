@@ -30,10 +30,10 @@ blank page, which will be the main app page.
 * [Details][phase_1]
 [phase_1]: ./docs/impl_details/phase_1.md
 
-### Phase 2: MVP Frontend Flux 1, Pictures CRUD (2 days)
-In phase 2, an unstyled picture index page must be finished with basic 
+### Phase 2: MVP Frontend Flux 1, Albums CRUD (2 days)
+In phase 2, an unstyled albums index page must be finished with basic 
 layout structure. User should be able to navigate through a list of
-pictures, and perform basic CRUD actions (including complex text style).
+albums, add title, description, and perform basic CRUD actions.
 At this stage, new user will be provided a default album.
 
 * [Details][phase_2]
