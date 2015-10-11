@@ -29,3 +29,16 @@ blank page, which will be the main app page.
 
 * [Details][phase_1]
 [phase_1]: ./docs/impl_details/phase_1.md
+
+### Phase 2: MVP Frontend Flux 1, Pictures CRUD (2 days)
+In phase 2, an unstyled picture index page must be finished with basic 
+layout structure. User should be able to navigate through a list of
+pictures, and perform basic CRUD actions (including complex text style).
+At this stage, new user will be provided a default album.
+
+* [Details][phase_2]
+[phase_2]: ./docs/impl_details/phase_2.md
+
+### Phase 3: MVP Frontend Flux 2, Albums CRUD, and Styling (1.5 day)
+Phase 3 focuses on finishing basic MVP, and making alubms index page
+available with Flux. After that, first stage CSS styling will be applied.
