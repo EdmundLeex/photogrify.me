@@ -18,3 +18,14 @@ It allows users to:
 
 [view]: ./docs/views.md
 [schema]: ./docs/db_schema.md
+
+## Implementation
+
+### Phase 1: MVP Backend Models, User Auth, JSON API (1 days)
+In phase 1, backend models, user auth and JSON API needs to be done.
+There will also be a unstyled landing page with React rendered user 
+auth form. Successful sign up or sign in will redirect user to a new
+blank page, which will be the main app page.
+
+* [Details][phase_1]
+[phase_1]: ./docs/impl_details/phase_1.md

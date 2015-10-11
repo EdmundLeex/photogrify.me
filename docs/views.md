@@ -6,8 +6,9 @@
 ## Sign up / Sign in Page
 ![sign_up]
 
-## Pictures Index Page
+## Pictures Index / Album View Page
 This page is shown immidiately after user login.
+Album view is when user select a album, only shows pictures of the specific album.
 ![pic_index]
 
 ## Albums Index Page
