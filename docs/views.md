@@ -8,6 +8,23 @@
 
 ## Albums Index Page
 This page is shown immidiately after user login.
+### Component Tree
+<Home>
+	<Sidebar />
+	<Main>
+		<AlbumIndex>
+			<AlbumIndexItem />
+		</AlbumIndex>
+		<AlbumShow>
+			<AlbumTitleBar />
+			<PicturesIndex>
+				<PictureIndexItem />
+				<PictureSlideshow /> (Hidden until clicked)
+			</PicturesIndex>
+		</AlbumShow>
+	</Main>
+</Home>
+
 ![album_index]
 
 ## Albums New / Edit Page
