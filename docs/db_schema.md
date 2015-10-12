@@ -1,14 +1,12 @@
 # Schema Information
 ## MVP
-### pictures
-column name | data type | details
-------------|-----------|-----------------------
-id          | integer   | not null, primary key
-title       | string    | not null
-description | text      |
-picture     | binary    | not null 
-author_id   | integer   | not null, foreign key (references users), indexed
-notebook_id | integer   | not null, foreign key (references notebooks), indexed
+### users
+column name     | data type | details
+----------------|-----------|-----------------------
+id              | integer   | not null, primary key
+username        | string    | not null, indexed, unique
+password_digest | string    | not null
+session_token   | string    | not null, indexed, unique
 
 ### albums
 column name | data type | details
@@ -18,15 +16,24 @@ title       | string    | not null
 description | text      |
 author_id   | integer   | not null, foreign key (references users), indexed
 
-### users
-column name     | data type | details
-----------------|-----------|-----------------------
-id              | integer   | not null, primary key
-username        | string    | not null, indexed, unique
-password_digest | string    | not null
-session_token   | string    | not null, indexed, unique
+### pictures
+column name | data type | details
+------------|-----------|-----------------------
+id          | integer   | not null, primary key
+picture     | binary    | not null 
+author_id   | integer   | not null, foreign key (references users), indexed
+album_id    | integer   | not null, foreign key (references notebooks), indexed
 
 ## Bonus Phrase
+### pictures
+column name | data type | details
+------------|-----------|-----------------------
+id          | integer   | not null, primary key
+picture     | binary    | not null 
+author_id   | integer   | not null, foreign key (references users), indexed
+album_id    | integer   | not null, foreign key (references notebooks), indexed
+geolocation | string    |
+
 ### tags
 column name | data type | details
 ------------|-----------|-----------------------
@@ -38,5 +45,5 @@ column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
 name        | string    | not null
-note_id     | integer   | not null, foreign key (references notes), indexed, unique [tag_id]
+picture_id     | integer   | not null, foreign key (references notes), indexed, unique [tag_id]
 tag_id      | integer   | not null, foreign key (references tags), indexed
