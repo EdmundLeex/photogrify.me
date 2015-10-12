@@ -207,3 +207,15 @@ WHERE c.contype = 'f'
   AND t3.nspname = ANY (current_schemas(false))
 ORDER BY c.conname
 
+  [1m[36mUser Load (5.5ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.9ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT 1  [["session_token", "n5O0daW41LxoGTGETtLH3g=="]]
+  [1m[36mUser Exists (0.5ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'edd' LIMIT 1[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."session_token" = 'n5O0daW41LxoGTGETtLH3g==' LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.5ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."username" = 'edd' LIMIT 1
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = 'n5O0daW41LxoGTGETtLH3g==' LIMIT 1[0m
+  [1m[35mSQL (5.1ms)[0m  INSERT INTO "users" ("session_token", "username", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["session_token", "n5O0daW41LxoGTGETtLH3g=="], ["username", "edd"], ["password_digest", "fdasfa"], ["created_at", "2015-10-12 02:50:13.495618"], ["updated_at", "2015-10-12 02:50:13.495618"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mUser Load (0.5ms)[0m  SELECT "users".* FROM "users"
+  [1m[36m (0.4ms)[0m  [1mROLLBACK[0m

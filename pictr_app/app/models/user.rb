@@ -12,26 +12,29 @@
 
 class User < ActiveRecord::Base
 	after_initialize :ensure_session_token
-  after_initialize :set_activation_token
 
-  validates :activation_token, :email, :session_token, uniqueness: true
+  validates :username, :session_token, uniqueness: true
   validates(
-    :activation_token,
-    :email,
+    :username,
     :password_digest,
     :session_token,
     presence: true
   )
 
-  def self.find_by_credentials(email, password)
-    user = User.find_by_email(email)
+  def self.find_by_credentials(username, password)
+    user = User.find_by_username(username)
 
     user && user.is_password?(password) ? user : nil
   end
 
-  def set_activation_token
-    self.activation_token =
-      generate_unique_token_for_field(:activation_token)
+  def generate_unique_token_for_field(field)
+    token = SecureRandom.base64(16)
+    
+    while self.class.exists?(field => token)
+      token = SecureRandom.base64(16)
+    end
+    
+    token
   end
 
   def password=(password)
