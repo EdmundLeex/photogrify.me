@@ -72,8 +72,19 @@ browser, otherwise, picture won't show up on map.
 * Full page map, left side show picture thumbnails in a column.
 * Click picture will show large picture
 
-### Phase 2: Full Screen Slideshow
-User can show pictures in fullscreen slideshow mode
+### Phase 2: Drag and Drop
+* In this phrase, implement drag and drop. Users are allowed to drag and
+drop image files when create/edit album.
+* After that, implement drap and drop pictures from album to album
+  * https://github.com/appacademy/capstone-project-curriculum#jquery-ui
+* File upload:
+  * https://github.com/paramaggarwal/react-dropzone (React-dropzone)
+  * http://blueimp.github.io/jQuery-File-Upload/
+  * http://www.plupload.com
+  * http://www.thecssninja.com/javascript/drag-and-drop-upload
+  * http://www.dropzonejs.com
+
+### Phase 3: Full Screen Slideshow
 * Add fullscreen slideshow function
 
 ### Phase 3: Share
