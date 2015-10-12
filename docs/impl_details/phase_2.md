@@ -1,40 +1,44 @@
 # Phase 2: MVP Frontend Flux 1, Pictures CRUD (1.5 days)
 
-## Rails
-Possible adjustment on rich text handling and extracting image
-http://stackoverflow.com/questions/20925143/how-to-save-image-from-rich-text-editor
-
 ## Flux
 ### Views (React Components)
 * SideBar
-  * CreatePictureButton
-  * GotoPicturesButton
-  * GotoAlbumsButton (mockup only)
+  * CreateAlbumButton
+  * AllPicturesButton
+  * AllAlbumsButton
 
-* PicturesIndex
-  * PicturesIndexTitle
-  * PicturesIndexTitleSubBar
-  * PictureIndexItem
+* AlbumsIndex
+  * AlbumsIndexTitle
+  * AlbumIndexItem
+    * Title
+    * DeleteButton
 
-* PictureShow
-  * 
+* AlbumShow
+  * AlbumTitleBar
+    * AlbumTitle
+    * PicturesCount
+    * EditButton
+    * DeleteButton
+  * PicturesThumbnails
+    * PictureThumbnailItem
+      * DeleteButton
+  * PictureFrame (show after click)
 
 ### Actions
-* CreatePicture
-* DeletePicture
-* UpdatePicture
-* FetchAllPictures
-* FetchOnePicture
+* CreateAlbum
+* DeleteAlbum
+* UpdateAlbum
+* FetchAllAlbums
+* FetchPictures
+* ShowAlbum
+* ShowPicture
 
 ### Stores
-* PictureStore
+* AlbumStore
 
 ### ApiUtil
-* createPicture
-* deletePicture
-* updatePicture
-* FetchAllPictures
-* FetchOnePicture
-
-## Gems/Libraries
-* quilljs
+* createAlbum
+* deleteAlbum
+* updateAlbum
+* FetchAllAlbums
+* FetchOneAlbum
