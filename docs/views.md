@@ -9,6 +9,7 @@
 ## Albums Index Page
 This page is shown immidiately after user login.
 ### Component Tree
+```
 <Home>
 	<Sidebar />
 	<Main>
@@ -24,6 +25,7 @@ This page is shown immidiately after user login.
 		</AlbumShow>
 	</Main>
 </Home>
+```
 
 ![album_index]
 
