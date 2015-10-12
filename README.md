@@ -51,5 +51,25 @@ and touch up basic stying for MVP.
 
 ### Bonus:
 
-#### 
+#### Phase 1: Google Map Show Pictures' Locations
+In this phrase, I will integrate google map, and show pictures location.
+And create a new view to show google map and all the pictures.
+
+* Add geolocation column to pictures
+* Use exifr. If meta-data not available, get current geolocation from
+browser.
+* Full page map, left side show picture thumbnails.
+* Click picture will show large picture
+
+### Phase 2: Drag and Drop
+* In this phrase, implement drag and drop. Users are allowed to drag and
+drop image files when create/edit album.
+* After that, implement drap and drop pictures from album to album
+
+### Phase 3: Full Screen Slideshow
+* Add fullscreen slideshow function
+
+### Phase 4: Share
+Add share feature where users can share pictures/albums with other users.
+
 
