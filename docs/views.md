@@ -30,6 +30,21 @@ This page is shown immidiately after user login.
 ![album_index]
 
 ## Albums New / Edit Page
+### Component tree
+<Home>
+	<Sidebar />
+	<Main>
+		<AlbumIndex>
+			<AlbumIndexItem />
+		</AlbumIndex>
+		<AlbumForm>
+			<AlbumTitleBar /> (Buttons group go here)
+			<PictureThumbnails />
+			<DescriptionEditor>
+		</AlbumForm>
+	</Main>
+</Home>
+```
 ![album_new_edit]
 
 [landing_page]: ./wireframes/landing_page.png

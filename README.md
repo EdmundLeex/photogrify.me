@@ -38,6 +38,7 @@ blank page, which will be the main app page.
 In phase 2, an unstyled albums index page must be finished with basic 
 layout structure. User should be able to navigate through a list of
 albums, add title, description, and perform basic CRUD actions.
+Autosave feature (ajax post request every 30 secs).
 After signup, new user will be provided a default album.
 
 * [Details][phase_2]
