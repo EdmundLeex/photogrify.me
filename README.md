@@ -56,6 +56,10 @@ drop image files when create/edit album.
 * [Details][phase_3]
 [phase_3]: ./docs/impl_details/phase_3.md
 
+### Phase 5: CSS Touch Up and Add Author Profile Page
+Stage 2 CSS touch up and bootstrapping. Finish deliverable interface.
+Then add a simple profile page that includes link to my github, linkedin
+
 ### Bonus:
 
 #### Phase 1: Google Map Show Pictures' Locations
