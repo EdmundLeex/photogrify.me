@@ -1,3 +1,55 @@
 // Place all the styles related to the static_pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.header {
+	height: 95px;
+	width: 100%;
+	background-color: gray;
+}
+
+.overlay {
+	background-clip: border-box;
+	background-color: rgba(0, 0, 0, 0.85098);
+	box-sizing: border-box;
+	display: block;
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 12px;
+	height: 620px;
+	line-height: 15.6px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	margin-right: 0px;
+	margin-top: 0px;
+	/*max-width: 940px;*/
+	height: 620px;
+	left: 0px;
+	line-height: 15.6px;
+	position: absolute;
+	top: 0px;
+	width: 100%;
+	z-index: 30;
+}
+
+.auth-form {
+	box-sizing: border-box;
+	display: block;
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 12px;
+	height: 600px;
+	line-height: 15.6px;
+	margin-bottom: 0px;
+	margin-left: 16px;
+	margin-right: 16px;
+	margin-top: 0px;
+	max-width: 940px;
+	position: relative;
+}
+
+.hidden {
+	display: none;
+}
+
+.active {
+	display: block;
+}

@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
     )
 
     if user.nil?
-      render :new
+      flash[:errors] = ["Invalid username or password."]
     else
       login_user!(user)
       redirect_to root_url
@@ -18,9 +18,5 @@ class SessionsController < ApplicationController
     session[:session_token] = nil
 
     redirect_to new_session_url
-  end
-
-  def new
-    render :new
   end
 end
