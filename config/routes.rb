@@ -1,9 +1,6 @@
 Rails.application.routes.draw do
-  namespace :api do
-  get 'albums/index'
-  end
-
   root "static_pages#root"
+  get "home", to: "static_pages#home"
 
   post   "signup", to: "users#create"
   post   "signin", to: "sessions#create"
