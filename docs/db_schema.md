@@ -7,8 +7,7 @@ id          | integer   | not null, primary key
 title       | string    | not null
 description | text      |
 picture     | binary    | not null 
-author_id   | integer   | not null, foreign key (references users), indexed
-notebook_id | integer   | not null, foreign key (references notebooks), indexed
+album_id    | integer   | not null, foreign key (references notebooks), indexed
 
 ### albums
 column name | data type | details
@@ -16,7 +15,7 @@ column name | data type | details
 id          | integer   | not null, primary key
 title       | string    | not null
 description | text      |
-author_id   | integer   | not null, foreign key (references users), indexed
+user_id     | integer   | not null, foreign key (references users), indexed
 
 ### users
 column name     | data type | details
