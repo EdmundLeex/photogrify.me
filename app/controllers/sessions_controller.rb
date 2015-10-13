@@ -17,6 +17,6 @@ class SessionsController < ApplicationController
     current_user.reset_session_token!
     session[:session_token] = nil
 
-    redirect_to root_url
+    render json: { 'redirect' => '/' }
   end
 end

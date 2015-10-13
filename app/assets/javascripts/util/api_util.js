@@ -15,5 +15,17 @@ window.ApiUtil = {
 				ApiActions.receiveAllAlbums(respData);
 			}
 		});
+	},
+
+	logout: function () {
+		$.ajax({
+			url: '/logout',
+			type: 'delete',
+			dataType: 'json',
+
+			success: function (respData) {
+				window.location.href = respData.redirect;
+			}
+		});
 	}
 };
