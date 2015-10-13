@@ -17,9 +17,9 @@ ActiveRecord::Schema.define(version: 20151012065026) do
   enable_extension "plpgsql"
 
   create_table "albums", force: :cascade do |t|
-    t.string   "title"
+    t.string   "title",       null: false
     t.text     "description"
-    t.integer  "user_id"
+    t.integer  "user_id",     null: false
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 20151012065026) do
 
   create_table "pictures", force: :cascade do |t|
     t.binary   "picture"
-    t.integer  "album_id"
+    t.integer  "album_id",   null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
