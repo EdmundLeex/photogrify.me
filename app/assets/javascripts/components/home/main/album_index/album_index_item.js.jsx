@@ -1,7 +1,9 @@
 var AlbumIndexItem = React.createClass({
 	render: function () {
 		return (
-			<div className="album-index-item"></div>
+			<li className="album-index-item">
+				{this.props.album.title}
+			</li>
 		);
 	}
 });

@@ -11,6 +11,14 @@
 			return _albums.slice();
 		},
 
+		addAlbumsIndexChangeListener: function (callback) {
+			this.on(ALBUMS_INDEX_CHANGED_EVENT, callback);
+		},
+
+		removeAlbumsIndexChangeListener: function (callback) {
+			this.removeListener(ALBUMS_INDEX_CHANGED_EVENT, callback);
+		},
+
 		dispatchId: AppDispatcher.register(function (payload) {
 			switch (payload.actionType) {
 				case CONSTANTS.ALBUMS_RECEIVED:
