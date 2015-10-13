@@ -1,4 +1,8 @@
 var AlbumsIndex = React.createClass({
+	componentDidMount: function () {
+		// call ApiUtil.fetechAllAlbums
+	},
+
 	render: function () {
 		return (
 			<div className="albums-index">
