@@ -1,6 +1,6 @@
 var AlbumsIndex = React.createClass({
 	getInitialState: function () {
-		return { albums: AlbumStore.all(), current_album_id: null };
+		return { albums: AlbumStore.all(), currentAlbumId: null };
 	},
 
 	componentDidMount: function () {
@@ -23,15 +23,19 @@ var AlbumsIndex = React.createClass({
 		this.setState({ currentAlbumId: AlbumStore.currentAlbumId() });
 	},
 
-	handleClick: function (e) {
-		ApiActions.receivePicturesFromOneAlbum(e.target.dataset.albumId);
-	},
+	// handleClick: function (e) {
+	// 	ComponentActions.switchAlbum(e.target.dataset.albumId);
+	// 	// ApiActions.receivePicturesFromOneAlbum(e.target.dataset.albumId);
+	// },
 
 	render: function () {
+		var klass,
+				currentAlbumId = this.state.currentAlbumId;
 		return (
-			<ul className="albums-index" onClick={this.handleClick}>
+			<ul className="albums-index">
 				{this.state.albums.map(function (album) {
-					return <AlbumIndexItem key={album.id} album={album} />
+					klass = (album.id === currentAlbumId) ? "selected" : "";
+					return <AlbumIndexItem key={album.id} album={album} klass={klass} />
 				})}
 			</ul>
 		);
