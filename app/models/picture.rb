@@ -12,4 +12,6 @@
 class Picture < ActiveRecord::Base
   belongs_to :album
   delegate :user, to: :album
+
+  validates :album_id, presence: true
 end
