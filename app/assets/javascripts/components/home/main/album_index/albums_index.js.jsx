@@ -18,7 +18,7 @@ var AlbumsIndex = React.createClass({
 
 	render: function () {
 		return (
-			<ul className="albums-index-list">
+			<ul className="albums-index">
 				{this.state.albums.map(function (album) {
 					return <AlbumIndexItem key={album.id} album={album} />
 				})}
