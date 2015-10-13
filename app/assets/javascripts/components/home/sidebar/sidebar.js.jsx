@@ -11,12 +11,3 @@ var SideBar = React.createClass({
 		);
 	}
 });
-
-var UserMenuBtn = React.createClass({
-	render: function () {
-		return (
-			<div>
-			</div>
-		);
-	}
-});

@@ -3,6 +3,7 @@ var AlbumsIndex = React.createClass({
 		return (
 			<div className="albums-index">
 				<div className="albums-index-title"></div>
+				<AlbumIndexItem />
 			</div>
 		);
 	}
