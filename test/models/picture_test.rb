@@ -4,7 +4,7 @@
 #
 #  id         :integer          not null, primary key
 #  picture    :binary
-#  album_id   :integer
+#  album_id   :integer          not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #

@@ -3,9 +3,9 @@
 # Table name: albums
 #
 #  id          :integer          not null, primary key
-#  title       :string
+#  title       :string           not null
 #  description :text
-#  user_id     :integer
+#  user_id     :integer          not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
