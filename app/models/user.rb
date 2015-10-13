@@ -11,9 +11,9 @@
 #
 
 class User < ActiveRecord::Base
-  has_many :albums
-  has_many :pictures through: :albums
-  
+  has_many :albums, dependent: :destroy
+  has_many :pictures, through: :albums
+
 	after_initialize :ensure_session_token
 
   validates :username, :session_token, uniqueness: true

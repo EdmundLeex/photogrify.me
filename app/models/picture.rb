@@ -11,4 +11,5 @@
 
 class Picture < ActiveRecord::Base
   belongs_to :album
+  delegate :user, to: :album
 end
