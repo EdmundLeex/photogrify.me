@@ -4,7 +4,9 @@ var AlbumShowTitle = React.createClass({
 		// button group (edit, delete)
 		// title
 		return (
-			<div className="album-show-title"></div>
+			<div className="album-show-title">
+				<h1></h1>
+			</div>
 		);
 	}
 });
