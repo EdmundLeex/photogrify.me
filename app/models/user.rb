@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
 	after_initialize :ensure_session_token
 
   validates :username, :session_token, uniqueness: true
-  validates :password, length: { minimum: 6 }
+  validates :password, length: { minimum: 6, allow_nil: true }
   validates(
     :username,
     :password_digest,
@@ -35,11 +35,11 @@ class User < ActiveRecord::Base
 
   def generate_unique_token_for_field(field)
     token = SecureRandom.base64(16)
-    
+
     while self.class.exists?(field => token)
       token = SecureRandom.base64(16)
     end
-    
+
     token
   end
 

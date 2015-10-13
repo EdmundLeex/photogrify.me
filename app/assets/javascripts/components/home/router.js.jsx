@@ -5,9 +5,11 @@ $(function () {
 
   var root = document.getElementById('main');
 
-	React.render((
-		<Router>
-			<Router path="/" component={Home} />
-		</Router>
-	), root);
+  if (root) {
+		React.render((
+			<Router>
+				<Router path="/" component={Home} />
+			</Router>
+		), root);
+	}
 });

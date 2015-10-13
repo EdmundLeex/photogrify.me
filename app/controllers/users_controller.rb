@@ -7,6 +7,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
+      @user.albums.create(title: "First Album")
       redirect_to home_url
     else
       render :new
