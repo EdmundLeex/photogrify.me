@@ -24,7 +24,7 @@ var AlbumsIndex = React.createClass({
 	},
 
 	handleClick: function (e) {
-		ApiAction.receivePicturesFromOneAlbum(e.target.dataset.albumId);
+		ApiActions.receivePicturesFromOneAlbum(e.target.dataset.albumId);
 	},
 
 	render: function () {
@@ -37,3 +37,4 @@ var AlbumsIndex = React.createClass({
 		);
 	}
 });
+

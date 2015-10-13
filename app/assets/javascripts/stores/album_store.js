@@ -10,7 +10,7 @@
 
 	var switchAlbum = function (id) {
 		_currentAlbumId = id;
-	}
+	};
 
 	root.AlbumStore = $.extend({}, EventEmitter.prototype, {
 		all: function () {
@@ -35,7 +35,7 @@
 
 		removeAlbumSwitchedListener: function (callback) {
 			this.removeListener(ALBUM_SWITCED_EVENT, callback);
-		}
+		},
 
 		dispatchId: AppDispatcher.register(function (payload) {
 			switch (payload.actionType) {
@@ -46,6 +46,7 @@
 				case CONSTANTS.ALBUM_PICTURES_RECEIVED:
 					switchAlbum(payload.albumId);
 					AlbumStore.emit(ALBUM_SWITCED);
+					break;
 				default:
 					break;
 			}
