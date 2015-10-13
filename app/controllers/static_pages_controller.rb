@@ -3,5 +3,6 @@ class StaticPagesController < ApplicationController
 	end
 
 	def home
+		require_user!
 	end
 end
