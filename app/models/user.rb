@@ -61,8 +61,4 @@ class User < ActiveRecord::Base
   def ensure_session_token
     self.session_token ||= generate_unique_token_for_field(:session_token)
   end
-
-  def activate!
-    self.update_attribute(:activated, true)
-  end
 end
