@@ -28,14 +28,12 @@ ActiveRecord::Schema.define(version: 20151012065026) do
 
   create_table "pictures", force: :cascade do |t|
     t.binary   "picture"
-    t.integer  "user_id"
     t.integer  "album_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   add_index "pictures", ["album_id"], name: "index_pictures_on_album_id", using: :btree
-  add_index "pictures", ["user_id"], name: "index_pictures_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "username",        null: false
@@ -49,5 +47,4 @@ ActiveRecord::Schema.define(version: 20151012065026) do
 
   add_foreign_key "albums", "users"
   add_foreign_key "pictures", "albums"
-  add_foreign_key "pictures", "users"
 end
