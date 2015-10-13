@@ -10,6 +10,8 @@
 
 	var switchAlbum = function (id) {
 		_currentAlbumId = id;
+		// REMOVE
+		console.log(_currentAlbumId);
 	};
 
 	root.AlbumStore = $.extend({}, EventEmitter.prototype, {
@@ -19,6 +21,10 @@
 
 		count: function () {
 			return _albums.length;
+		},
+
+		currentAlbumId: function () {
+			return _currentAlbumId
 		},
 
 		addAlbumsIndexChangeListener: function (callback) {
@@ -45,7 +51,7 @@
 					break;
 				case CONSTANTS.ALBUM_PICTURES_RECEIVED:
 					switchAlbum(payload.albumId);
-					AlbumStore.emit(ALBUM_SWITCED);
+					AlbumStore.emit(ALBUM_SWITCED_EVENT);
 					break;
 				default:
 					break;
