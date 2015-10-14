@@ -21,7 +21,7 @@ var AlbumShow = React.createClass({
 				<AlbumShowTitle handleClickEdit={this._onToggleMode}/>
 				{(this.state.mode === 'view') ?
 					<PicturesCollection /> :
-					<AlbumForm />}
+					<AlbumForm album={this.props.album} mode="edit" />}
 			</div>
 		);
 	}

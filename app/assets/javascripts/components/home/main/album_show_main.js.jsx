@@ -1,6 +1,6 @@
 var AlbumShowMain = React.createClass({
 	getInitialState: function () {
-		return { albums: AlbumStore.all(), currentAlbumId: null };
+		return { albums: AlbumStore.all(), currentAlbum: null };
 	},
 
 	componentDidMount: function () {
@@ -19,15 +19,18 @@ var AlbumShowMain = React.createClass({
 	},
 
 	_onSwitch: function () {
-		this.setState({ currentAlbumId: AlbumStore.currentAlbumId() });
+		this.setState({ currentAlbum: AlbumStore.currentAlbum() });
 	},
 
 	render: function () {
+		var currentAlbumId = (this.state.currentAlbum) ? 
+													this.state.currentAlbum.id :
+													0;
 		return (
 			<div className="album-show-main">
-				<AlbumsIndexContainer currentAlbumId={this.state.currentAlbumId}
-															albums={this.state.albums}/>
-				<AlbumShow />
+				<AlbumsIndexContainer currentAlbumId={currentAlbumId}
+															albums={this.state.albums} />
+				<AlbumShow album={this.state.currentAlbum} />
 			</div>
 		);
 	}
