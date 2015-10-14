@@ -32,6 +32,10 @@ var AlbumShowTitle = React.createClass({
 		ApiUtil.deleteAlbum(this.state.id);
 	},
 
+	_onEdit: function () {
+		// body...
+	},
+
 	render: function () {
 		// pic counts
 		// button group (edit, delete)
@@ -41,7 +45,10 @@ var AlbumShowTitle = React.createClass({
 			<div className="album-show-title">
 				<h1>{this.state.title}</h1>
 				<span className="count">{this.state.picCount}</span>
-				<div className="title-bar-btn" onClick={this._onDelete}>D</div>
+				<div className="title-btn-group">
+					<div className="title-bar-btn" onClick={this._onEdit}>E</div>
+					<div className="title-bar-btn" onClick={this._onDelete}>D</div>
+				</div>
 			</div>
 		);
 	}

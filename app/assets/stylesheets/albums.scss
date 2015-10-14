@@ -65,16 +65,30 @@
 	background-color: cornflowerblue;
 }
 
+.title-btn-group {
+	float: right;
+	margin-right: 40px;
+	margin-bottom: 20px;
+}
+
+.title-bar-btn {
+	display: inline-block;
+	width: 24px;
+	height: 24px;
+	background-color: black;
+	margin: 5px;
+}
+
 .album-thumbnails {
 	position: relative;
 	height: 100px;
-	margin: 20px;
-	margin-top: 120px;
+	margin: 40px;
+	margin-top: 140px;
 	background-color: gray;
 }
 
 #editor {
-	margin: 20px;
+	margin: 40px;
 	background-color: white;
 	min-height: 350px;
 }
