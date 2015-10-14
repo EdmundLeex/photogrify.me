@@ -21,6 +21,14 @@
 	border-right: 1px solid black;
 }
 
+.sidebar-thumbs {
+	position: relative;
+	width: 36px;
+	height: 36px;
+	background-color: white;
+	border-radius: 5px;
+}
+
 .album-show-main {
 	position: relative;
 	width: calc(100% - 73px);
@@ -43,25 +51,6 @@
 	vertical-align: baseline;
 }
 
-.album-show {
-	position: absolute;
-	width: calc(100% - 350px);
-	height: 100vh;
-	margin-left: 350px;
-	margin-top: 0;
-	margin-bottom: 0;
-	background-color: #F3F5F6;
-	vertical-align: baseline;
-}
-
-.sidebar-thumbs {
-	position: relative;
-	width: 36px;
-	height: 36px;
-	background-color: white;
-	border-radius: 5px;
-}
-
 .albums-index-title {
 	position: relative;
 	width: 100%;
@@ -80,13 +69,19 @@
 
 .album-show {
 	position: relative;
-	width: 100%;
-	height: 100%;
-	background-color: white;
+	width: calc(100% - 350px);
+	height: 100vh;
+	margin-left: 350px;
+	margin-top: 0;
+	margin-bottom: 0;
+	background-color: #F3F5F6;
+	vertical-align: baseline;
+	float: left;
 }
 
 .album-show-title {
 	position: relative;
+	float: left;
 	width: 100%;
 	height: 100px;
 	background-color: cornflowerblue;
