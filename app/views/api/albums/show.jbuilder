@@ -1,4 +1,3 @@
-json.album do
 	json.id 				 @album.id
 	json.title 			 @album.id
 	json.description @album.description
@@ -8,4 +7,3 @@ json.album do
 			json.picture picture.id
 		end
 	end
-end

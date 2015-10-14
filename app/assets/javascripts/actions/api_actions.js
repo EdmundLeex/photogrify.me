@@ -10,10 +10,10 @@ window.ApiActions = {
 		});
 	},
 
-	receivePicturesFromOneAlbum: function (id) {
+	receivePicturesFromOneAlbum: function (payload) {
 		AppDispatcher.dispatch({
 			actionType: CONSTANTS.ALBUM_PICTURES_RECEIVED,
-			albumId: id
+			album: payload
 		});
 	}
 };

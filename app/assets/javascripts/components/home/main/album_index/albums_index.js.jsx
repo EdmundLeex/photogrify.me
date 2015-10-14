@@ -23,11 +23,6 @@ var AlbumsIndex = React.createClass({
 		this.setState({ currentAlbumId: AlbumStore.currentAlbumId() });
 	},
 
-	// handleClick: function (e) {
-	// 	ComponentActions.switchAlbum(e.target.dataset.albumId);
-	// 	// ApiActions.receivePicturesFromOneAlbum(e.target.dataset.albumId);
-	// },
-
 	render: function () {
 		var klass,
 				currentAlbumId = this.state.currentAlbumId;

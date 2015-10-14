@@ -3,6 +3,18 @@ window.ApiUtil = {
 		// body...
 	},
 
+	fetchPicturesFromAlbum: function (albumId) {
+		$.ajax({
+			url: '/api/albums/' + albumId,
+			type: 'get',
+			dataType: 'json',
+
+			success: function (respData) {
+				ApiActions.receivePicturesFromOneAlbum(respData);
+			}
+		});
+	},
+
 	fetchAllAlbums: function () {
 		// get request
 		// dispatch action
