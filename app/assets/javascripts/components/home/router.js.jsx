@@ -1,4 +1,5 @@
 $(function () {
+	var RouteHandler = ReactRouter.RouteHandler;
 	var Router = ReactRouter.Router;
   var Route = ReactRouter.Route;
   var IndexRoute = ReactRouter.IndexRoute;
@@ -7,6 +8,7 @@ $(function () {
 
 	// prevent sign up page rendering react components
   if (root) {
+  	window.NEW_ALBUM_PATH = "NEW_ALBUM_PATH";
   	var App = React.createClass({
 	    render: function(){
 	      return (
@@ -21,8 +23,7 @@ $(function () {
 			<Router>
 				<Route path="/" component={App}>
 					<IndexRoute component={Home} />
-					<Route path="new" components={{sidebar: Sidebar,
-																				 albumsIndexContainer: AlbumsIndexContainer}} />
+					<Route path="new" component={AlbumNew} />
 				</Route>
 			</Router>
 		), root);

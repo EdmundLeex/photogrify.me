@@ -1,7 +1,7 @@
 var Home = React.createClass({
 	render: function () {
 		return (
-			<div className="home">
+			<div className="main">
 				<Sidebar />
 				<AlbumShowMain />
 			</div>
