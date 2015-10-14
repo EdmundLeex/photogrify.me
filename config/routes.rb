@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   delete "logout", to: "sessions#destroy"
 
   namespace :api, default: { format: :json } do
-  	resources :albums
+  	resources :albums, only: [:index, :create, :update, :destroy, :show]
+  	resources :pictures, only: [:index]
   end
 end
