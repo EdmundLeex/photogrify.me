@@ -1,6 +1,7 @@
 var AlbumShowTitle = React.createClass({
 	getInitialState: function () {
     return {
+    	id: null,
     	title: null,
     	picCount: null
     };
@@ -14,7 +15,16 @@ var AlbumShowTitle = React.createClass({
 	_onSwitch: function () {
 		// change count, title
 		var album = AlbumStore.currentAlbum();
-		this.setState({title: album.title, picCount: PictureStore.count()});
+		this.setState({
+			id: 			album.id,
+			title: 	 	album.title,
+			picCount: PictureStore.count()
+		});
+	},
+
+	_onDelete: function () {
+		console.log(this.state.id);
+		ApiUtil.deleteAlbum(this.state.id);
 	},
 
 	render: function () {
@@ -26,6 +36,7 @@ var AlbumShowTitle = React.createClass({
 			<div className="album-show-title">
 				<h1>{this.state.title}</h1>
 				<span className="count">{this.state.picCount}</span>
+				<div className="title-bar-btn" onClick={this._onDelete}>D</div>
 			</div>
 		);
 	}

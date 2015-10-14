@@ -14,4 +14,16 @@ class Api::AlbumsController < ApplicationController
   		# TODO: page not found
   	end
   end
+
+  def destroy
+    album = Album.find(params[:id])
+
+    if album
+      album.destroy
+      @albums = current_user.albums.all
+      render :index
+    else
+      # TODO: page not found
+    end
+  end
 end

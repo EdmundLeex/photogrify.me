@@ -29,6 +29,18 @@ window.ApiUtil = {
 		});
 	},
 
+	deleteAlbum: function (id) {
+		$.ajax({
+			url: '/api/albums/' + id,
+			type: 'delete',
+			dataType: 'json',
+
+			success: function (respData) {
+				ApiActions.receiveAllAlbums(respData);
+			}
+		});
+	},
+
 	logout: function () {
 		$.ajax({
 			url: '/logout',

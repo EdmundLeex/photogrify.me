@@ -59,6 +59,9 @@
 					switchAlbum(payload.albumId);
 					AlbumStore.emit(ALBUM_SWITCHED_EVENT);
 					break;
+				case CONSTANTS.ALBUM_DELETED:
+					
+					break;
 				default:
 					break;
 			}
