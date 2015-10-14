@@ -12,6 +12,11 @@ var AlbumShowTitle = React.createClass({
 		PictureStore.addPicturesCollectionChangedListener(this._onSwitch);
 	},
 
+	componentWillUnmount: function () {
+		AlbumStore.removeAlbumSwitchedListener(this._onSwitch);
+		PictureStore.removePicturesCollectionChangedListener(this._onSwitch);
+	},
+
 	_onSwitch: function () {
 		// change count, title
 		var album = AlbumStore.currentAlbum();

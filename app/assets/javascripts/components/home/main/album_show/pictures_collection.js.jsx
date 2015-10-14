@@ -7,6 +7,10 @@ var PicturesCollection = React.createClass({
 		PictureStore.addPicturesCollectionChangedListener(this._onChange);
 	},
 
+	componentWillUnmount: function () {
+		PictureStore.removePicturesCollectionChangedListener(this._onChange);
+	},
+
 	_onChange: function () {
 		this.setState({pictures: PictureStore.all()});
 	},
