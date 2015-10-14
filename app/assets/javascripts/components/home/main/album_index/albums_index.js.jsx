@@ -6,7 +6,7 @@ var AlbumsIndex = React.createClass({
 	componentDidMount: function () {
 		AlbumStore.addAlbumsIndexChangeListener(this._onChange);
 		AlbumStore.addAlbumSwitchedListener(this._onSwitch);
-		ApiUtil.fetchAllAlbums();
+		ApiUtil.fetchAllAlbums(true);
 	},
 
 	componentWillUnmount: function () {

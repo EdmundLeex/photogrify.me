@@ -15,7 +15,7 @@ window.ApiUtil = {
 		});
 	},
 
-	fetchAllAlbums: function () {
+	fetchAllAlbums: function (init) {
 		// get request
 		// dispatch action
 		$.ajax({
@@ -24,7 +24,12 @@ window.ApiUtil = {
 			dataType: 'json',
 
 			success: function (respData) {
+				var albumId = respData[0].id;
 				ApiActions.receiveAllAlbums(respData);
+				if (init) {
+					ComponentActions.switchAlbum(albumId);
+					ApiUtil.fetchPicturesFromAlbum(albumId);
+				}
 			}
 		});
 	},
