@@ -13,13 +13,15 @@ var AlbumShowTitle = React.createClass({
 	componentDidMount: function () {
 		AlbumStore.addAlbumSwitchedListener(this._onSwitch);
 		AlbumStore.addToggleEditingListener(this._onEditingToggle);
+		AlbumStore.addAlbumTitleChangeListener(this._onTitleChanged);
 		PictureStore.addPicturesCollectionChangedListener(this._onSwitch);
 	},
 
 	componentWillUnmount: function () {
 		AlbumStore.removeAlbumSwitchedListener(this._onSwitch);
-		PictureStore.removePicturesCollectionChangedListener(this._onSwitch);
 		AlbumStore.removeToggleEditingListener(this._onEditingToggle);
+		AlbumStore.removeAlbumTitleChangeListener(this._onTitleChanged);
+		PictureStore.removePicturesCollectionChangedListener(this._onSwitch);
 	},
 
 	_onSwitch: function () {
@@ -45,8 +47,8 @@ var AlbumShowTitle = React.createClass({
 		this.setState({editing: AlbumStore.isEditing()});
 	},
 
-	onEditTitle: function (title) {
-		ComponentActions.editTitle(title);
+	_onTitleChanged: function () {
+		this.setState({title: AlbumStore.currentTitle()});
 	},
 
 	toggleToFocus: function () {
@@ -54,7 +56,9 @@ var AlbumShowTitle = React.createClass({
 	},
 
 	toggleToBlur: function () {
+		// TODO: persist change
 		ComponentActions.toggleEditing(false);
+		ApiUtil.changeAlbumTitle(this.state.id, this.state.title);
 	},
 
 	render: function () {
@@ -63,7 +67,7 @@ var AlbumShowTitle = React.createClass({
 		// title
 		var titleBar = this.renderTitle();
 
-		console.log(this.state.picCount);
+		console.log(this.state.title);
 		return (
 			<div className="album-show-title">
 				{titleBar}

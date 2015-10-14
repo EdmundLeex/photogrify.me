@@ -5,15 +5,22 @@ window.ApiActions = {
 
 	receiveAllAlbums: function (albums) {
 		AppDispatcher.dispatch({
-			actionType: CONSTANTS.ALBUMS_RECEIVED,
+			actionType: APP_CONSTANTS.ALBUMS_RECEIVED,
 			albums: albums
 		});
 	},
 
 	receivePicturesFromOneAlbum: function (payload) {
 		AppDispatcher.dispatch({
-			actionType: CONSTANTS.ALBUM_PICTURES_RECEIVED,
+			actionType: APP_CONSTANTS.ALBUM_PICTURES_RECEIVED,
 			album: payload
+		});
+	},
+
+	changedTitle: function (title) {
+		AppDispatcher.dispatch({
+			actionType: APP_CONSTANTS.ALBUM_TITLE_CHANGED,
+			title: title
 		});
 	}
 };

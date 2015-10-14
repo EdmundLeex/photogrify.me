@@ -15,6 +15,22 @@ class Api::AlbumsController < ApplicationController
   	end
   end
 
+  def update
+    @album = Album.find(params[:id])
+
+    if @album
+      @album.title = params[:title]
+
+      if @album.save
+        render json: @album.title
+      else
+        # TODO: oops.. something went wrong
+      end
+    else
+      # TODO: album dont' exist
+    end
+  end
+
   def destroy
     album = Album.find(params[:id])
 

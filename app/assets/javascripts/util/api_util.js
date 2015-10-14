@@ -34,6 +34,19 @@ window.ApiUtil = {
 		});
 	},
 
+	changeAlbumTitle: function (albumId, title) {
+		$.ajax({
+			url: '/api/albums/' + albumId,
+			type: 'patch',
+			dataType: 'json',
+			data: {"title": title},
+
+			success: function (respData) {
+				ApiActions.changedTitle(respData);
+			}
+		})
+	},
+
 	deleteAlbum: function (id) {
 		$.ajax({
 			url: '/api/albums/' + id,
