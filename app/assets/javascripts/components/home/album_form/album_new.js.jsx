@@ -5,6 +5,7 @@ var AlbumNew = React.createClass({
 				<Sidebar />
 				<div className="album-show-main">
 					<AlbumsIndexContainer />
+					<AlbumForm />
 				</div>
 			</div>
 		);
