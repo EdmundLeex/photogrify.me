@@ -1,6 +1,4 @@
 var CreateAlbumBtn = React.createClass({
-	mixins: [ReactRouter.History],
-
 	render: function () {
 		return (
 			<div className="sidebar-thumbs" onClick={this.onClickHandler}>
@@ -12,6 +10,6 @@ var CreateAlbumBtn = React.createClass({
 	onClickHandler: function () {
 		// go to albums/new route
 		console.log('clicked');
-		this.history.pushState(null, "new");
+		this.props.history.pushState(null, "new");
 	}
 });
