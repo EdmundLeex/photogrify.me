@@ -40,7 +40,7 @@ var AlbumShowTitle = React.createClass({
 	},
 
 	_onClickEdit: function () {
-		// pushState edit
+		this.props.handleClickEdit('edit');
 	},
 
 	_onEditingToggle: function () {

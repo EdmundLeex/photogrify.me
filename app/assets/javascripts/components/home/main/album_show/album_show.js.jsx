@@ -1,26 +1,27 @@
 var AlbumShow = React.createClass({
-	// getInitialState: function () {
- //    return { album: album };
-	// },
+	getInitialState: function () {
+    return {mode: "view"};
+	},
 
-	// componentDidMount: function () {
-	// 	AlbumStore.addAlbumsIndexChangeListener(this._onChange);
-	// 	ApiUtil.fetchPicturesFromOneAlbum();
-	// },
+	componentDidMount: function () {
+		AlbumStore.addToggleModeListener(this._onModeChange);
+	},
 
-	// componentWillUnmount: function () {
-	// 	AlbumStore.removeAlbumsIndexChangeListener(this._onChange);
-	// },
+	_onToggleMode: function (mode) {
+		ComponentActions.toggleMode(mode);
+	},
 
-	// _onChange: function () {
-	// 	this.setState({ album: AlbumStore.find(id) });
-	// },
+	_onModeChange: function () {
+		this.setState({mode: AlbumStore.currentMode()});
+	},
 
 	render: function () {
 		return (
 			<div className="album-show">
-				<AlbumShowTitle />
-				<PicturesCollection />
+				<AlbumShowTitle handleClickEdit={this._onToggleMode}/>
+				{(this.state.mode === 'view') ?
+					<PicturesCollection /> :
+					<AlbumForm />}
 			</div>
 		);
 	}

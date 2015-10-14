@@ -2,11 +2,14 @@
 	var ALBUMS_INDEX_CHANGED_EVENT = "ALBUMS_INDEX_CHANGED_EVENT";
 	var ALBUM_SWITCHED_EVENT = "ALBUM_SWITCHED_EVENT";
 	var TOGGLE_EDITING_EVENT = "TOGGLE_EDITING_EVENT";
-	var ALBUM_TITLE_CHANGED_EVENT = "ALBUM_TITLE_CHANGED_EVENT"
+	var ALBUM_TITLE_CHANGED_EVENT = "ALBUM_TITLE_CHANGED_EVENT";
+	var TOGGLE_MODE_EVENT = "TOGGLE_MODE_EVENT";
+
 	var _albums = [];
 	var _currentAlbumId = null;
 	var _currentTitle = null;
-	var _editing = false;
+	var _editingTitle = false;
+	var _mode = 'view';
 
 	var resetAlbums = function (albums) {
 		_albums = albums;
@@ -17,23 +20,20 @@
 			return alb.id === id;
 		})[0];
 
-		// _currentAlbumId = id;
 		_currentTitle = _currentAlbum.title;
-		// REMOVE
-		// console.log("Switch to: " + _currentAlbumId);
 	};
 
 	var toggleEditing = function (editing) {
-		_editing = editing;
+		_editingTitle = editing;
 	};
 
 	var resetTitle = function (title) {
 		_currentTitle = title;
 	};
 
-	// var changeAlbumTitle = function (title) {
-	// 	_currentTitle = title;
-	// };
+	var toggleMode = function (mode) {
+		_mode = mode;
+	};
 
 	root.AlbumStore = $.extend({}, EventEmitter.prototype, {
 		all: function () {
@@ -58,6 +58,10 @@
 
 		isEditing: function () {
 			return _editing;
+		},
+
+		currentMode: function () {
+			return _mode;
 		},
 
 		addAlbumsIndexChangeListener: function (callback) {
@@ -92,6 +96,14 @@
 			this.removeListener(ALBUM_TITLE_CHANGED_EVENT, callback);
 		},
 
+		addToggleModeListener: function (callback) {
+			this.on(TOGGLE_MODE_EVENT, callback);
+		},
+
+		removeToggleModeListener: function (callback) {
+			this.removeListener(TOGGLE_MODE_EVENT, callback);
+		},
+
 		dispatchId: AppDispatcher.register(function (payload) {
 			switch (payload.actionType) {
 				case APP_CONSTANTS.ALBUMS_RECEIVED:
@@ -110,6 +122,9 @@
 					resetTitle(payload.title);
 					AlbumStore.emit(ALBUM_TITLE_CHANGED_EVENT);
 					break;
+				case APP_CONSTANTS.TOGGLE_MODE:
+					toggleMode(payload.mode);
+					AlbumStore.emit(TOGGLE_MODE_EVENT);
 				default:
 					break;
 			}

@@ -1,3 +1,5 @@
+// no index
+
 var AlbumNew = React.createClass({
 	render: function () {
 		return (

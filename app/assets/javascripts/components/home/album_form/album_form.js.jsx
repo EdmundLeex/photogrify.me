@@ -5,8 +5,7 @@ var AlbumForm = React.createClass({
 		// show title editable
 		// add form
 		return (
-			<div className="album-show">
-				<AlbumShowTitle />
+			<div className="album-form">
 				<AlbumThumbNails />
 				<div id="editor">
 					<Editor />

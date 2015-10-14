@@ -11,5 +11,12 @@ window.ComponentActions = {
 			actionType: APP_CONSTANTS.TOGGLE_EDITING,
 			editing: editing
 		})
+	},
+
+	toggleMode: function (mode) {
+		AppDispatcher.dispatch({
+			actionType: APP_CONSTANTS.TOGGLE_MODE,
+			mode: mode
+		})
 	}
 };

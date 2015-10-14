@@ -2,6 +2,8 @@
 // var ReactQuill = require('react-quill');
 
 var Editor = React.createClass({
+	mixins: [React.addons.LinkedStateMixin],
+
 	getInitialState: function() {
 		return {
 			theme: 'snow',
@@ -53,12 +55,17 @@ var Editor = React.createClass({
 		this.setState({ readOnly: !this.state.readOnly });
 	},
 
+	onBlur: function () {
+		// patch request
+	},
+
 	render: function () {
 		return (
       <ReactQuill value={this.state.value}
       						theme={this.state.theme}
       						onChange={this.onEditorChange}
-      						onChangeSelection={this.onEditorChangeSelection} />
+      						onChangeSelection={this.onEditorChangeSelection}
+      						onBlur={this.onBlur} />
     );
 	}
 });
