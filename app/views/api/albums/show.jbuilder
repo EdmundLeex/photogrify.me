@@ -4,6 +4,6 @@
 
 	json.pictures do
 		json.array! @pictures do |picture|
-			json.picture picture.id
+			json.id picture.id
 		end
 	end
