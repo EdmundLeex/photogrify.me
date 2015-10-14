@@ -1,0 +1,66 @@
+// Place all the styles related to the api::albums controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.main {
+	position: relative;
+	margin: 0;
+	float: left;
+}
+
+.album-show-main {
+	position: relative;
+	width: calc(100% - 73px);
+	height: 100vh;
+	margin-top: 0;
+	margin-bottom: 0;
+	float: left;
+	background-color: white;
+}
+
+.albums-index-container, .albums-index {
+	position: absolute;
+	width: 350px;
+	height: 100vh;
+	margin-top: 0;
+	margin-bottom: 0;
+	border-right: 1px solid;
+	/*float: left;*/
+	background-color: #F3F5F6;
+	vertical-align: baseline;
+}
+
+.albums-index-title {
+	position: relative;
+	width: 100%;
+	height: 50px;
+	background-color: #161617;
+	font: white;
+}
+
+.album-index-item {
+	position: relative;
+	width: 100%;
+	height: 120px;
+	border: 0px;
+	background-color: wheat;
+}
+
+.album-show {
+	position: relative;
+	width: calc(100% - 350px);
+	height: 100vh;
+	margin-left: 350px;
+	margin-top: 0;
+	margin-bottom: 0;
+	background-color: #F3F5F6;
+	vertical-align: baseline;
+	float: left;
+}
+
+.album-show-title {
+	position: relative;
+	float: left;
+	width: 100%;
+	height: 100px;
+	background-color: cornflowerblue;
+}
