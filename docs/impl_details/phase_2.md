@@ -2,7 +2,7 @@
 
 ## Flux
 ### Views (React Components)
-* SideBar
+* Sidebar
   * CreateAlbumButton
   * AllPicturesButton
   * AllAlbumsButton

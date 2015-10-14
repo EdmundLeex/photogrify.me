@@ -5,10 +5,14 @@ $(function () {
 
   var root = document.getElementById('main');
 
+	// prevent sign up page rendering react components
   if (root) {
 		React.render((
 			<Router>
-				<Router path="/" component={Home} />
+				<Route path="/" component={Home}>
+					<Route path="new" components={{sidebar: Sidebar,
+																				 albumsIndexContainer: AlbumsIndexContainer}} />
+				</Route>
 			</Router>
 		), root);
 	}

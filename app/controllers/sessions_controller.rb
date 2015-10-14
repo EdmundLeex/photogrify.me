@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
       flash[:errors] = ["Invalid username or password."]
     else
       login_user!(user)
-      redirect_to home_url
+      redirect_to root_url
     end
   end
 
@@ -17,6 +17,6 @@ class SessionsController < ApplicationController
     current_user.reset_session_token!
     session[:session_token] = nil
 
-    render json: { 'redirect' => '/' }
+    render json: { 'redirect' => '/home' }
   end
 end

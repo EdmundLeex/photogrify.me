@@ -1,9 +1,9 @@
 class StaticPagesController < ApplicationController
 	def root
-		redirect_to home_url if current_user
+		require_user!
 	end
 
 	def home
-		require_user!
+		redirect_to root_url if current_user
 	end
 end

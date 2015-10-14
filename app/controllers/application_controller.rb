@@ -25,7 +25,7 @@ class ApplicationController < ActionController::Base
   def require_user!
     if current_user.nil?
       flash[:errors] = ["You need to login to perform this action."]
-      redirect_to root_url
+      redirect_to home_url
     end
   end
 end
