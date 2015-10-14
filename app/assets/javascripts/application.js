@@ -20,4 +20,5 @@
 //= require react_ujs
 //= require reactrouter.min.js
 //= require quill
+//= require react-quill
 //= require_tree .

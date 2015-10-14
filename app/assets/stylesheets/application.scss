@@ -12,6 +12,7 @@
  *= require zero_reset
  *= require_tree .
  *= require_self
+ *= require quill.snow
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";

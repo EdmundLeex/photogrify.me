@@ -30,6 +30,8 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'bootstrap-sass'
 
+gem "browserify-rails"
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
