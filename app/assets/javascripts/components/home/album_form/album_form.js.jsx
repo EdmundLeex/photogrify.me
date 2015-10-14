@@ -7,6 +7,9 @@ var AlbumForm = React.createClass({
 		return (
 			<div className="album-show">
 				<AlbumShowTitle />
+				<div id="editor">
+					<Editor />
+				</div>
 			</div>
 		);
 	}
