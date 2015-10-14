@@ -65,11 +65,3 @@ var Editor = React.createClass({
 
 
 
-
-
-
-
-
-
-
-
