@@ -27,6 +27,12 @@
 			return _currentAlbumId;
 		},
 
+		currentAlbum: function () {
+			return _albums.filter(function (alb) {
+				return alb.id === _currentAlbumId;
+			})[0];
+		},
+
 		addAlbumsIndexChangeListener: function (callback) {
 			this.on(ALBUMS_INDEX_CHANGED_EVENT, callback);
 		},

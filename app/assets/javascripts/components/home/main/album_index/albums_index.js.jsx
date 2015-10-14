@@ -19,7 +19,6 @@ var AlbumsIndex = React.createClass({
 	},
 
 	_onSwitch: function () {
-		console.log(AlbumStore.currentAlbumId());
 		this.setState({ currentAlbumId: AlbumStore.currentAlbumId() });
 	},
 

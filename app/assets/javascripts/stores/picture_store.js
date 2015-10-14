@@ -27,7 +27,7 @@
 			switch (payload.actionType) {
 				case CONSTANTS.ALBUM_PICTURES_RECEIVED:
 					resetPictures(payload.album.pictures);
-					AlbumStore.emit(PICTURES_COLLECTION_CHANGED_EVENT);
+					PictureStore.emit(PICTURES_COLLECTION_CHANGED_EVENT);
 					break;
 				default:
 					break;
