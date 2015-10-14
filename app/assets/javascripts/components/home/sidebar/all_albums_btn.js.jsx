@@ -9,6 +9,6 @@ var AllAlbumsBtn = React.createClass({
 		// fetech all albums
 		// call ApiUtil.fetchAllAlbums
 		// ApiUtil.fetchAllAlbums();
-
+		this.props.history.pushState(null, '/');
 	}
 });
