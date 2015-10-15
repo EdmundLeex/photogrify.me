@@ -63,7 +63,7 @@ var AlbumShowTitle = React.createClass({
 	},
 
 	_onTitleChanged: function () {
-		this.setState({title: AlbumStore.currentTitle()});
+		this.setState({title: AlbumStore.find(this.props.params.albumId).title});
 	},
 
 	_onAlbumCreated: function () {
@@ -76,12 +76,10 @@ var AlbumShowTitle = React.createClass({
 
 	toggleToBlur: function () {
 		ComponentActions.toggleEditing(false);
-		if (this.props.mode === 'edit' ||
-			this.props.mode === 'view' ||
-			AlbumStore.newAlbumId()) {
+		if (this.props.mode !== 'new') {
 			ApiUtil.updateAlbum(this.state.id, this.state.title, null);
 		} else {
-			ApiUtil.createAlbum({title: this.state.title});
+			// ApiUtil.createAlbum({title: this.state.title});
 		}
 	},
 

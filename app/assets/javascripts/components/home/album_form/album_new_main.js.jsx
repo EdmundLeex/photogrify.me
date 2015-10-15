@@ -35,8 +35,8 @@ var AlbumNewMain = React.createClass({
 		var albumId = (this.state.album) ? this.state.album.id : null;
 		return (
 			<div className="album-new-main">
-				<AlbumShowTitle handleClickEdit={this._onToggleMode} mode={this.props.mode}/>
-				<AlbumForm albumId={albumId} album={this.state.album} mode={this.props.mode} />
+				<AlbumShowTitle handleClickEdit={this._onToggleMode} mode={"new"}/>
+				<AlbumForm albumId={albumId} album={this.state.album} mode={"new"} />
 			</div>
 		);
 	}

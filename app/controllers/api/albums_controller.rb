@@ -2,7 +2,7 @@ class Api::AlbumsController < ApplicationController
 	before_action :require_user!
 
   def index
-  	@albums = current_user.albums.all.order('updated_at DESC')
+  	@albums = albums_in_desc
   end
 
   def create
@@ -36,7 +36,7 @@ class Api::AlbumsController < ApplicationController
       @album.description = params[:description] unless params[:description] == ""
 
       if @album.save
-        @albums = current_user.albums.all
+        @albums = albums_in_desc
         render :index
       else
         # TODO: oops.. something went wrong
@@ -51,10 +51,15 @@ class Api::AlbumsController < ApplicationController
 
     if album
       album.destroy
-      @albums = current_user.albums.all
+      @albums = albums_in_desc
       render :index
     else
       # TODO: page not found
     end
+  end
+
+  private
+  def albums_in_desc
+    current_user.albums.all.order('updated_at DESC')
   end
 end
