@@ -4,12 +4,13 @@ var AlbumForm = React.createClass({
 	render: function () {
 		// show title editable
 		// add form
-		var album = this.props.album;
+		var albumId = (this.props.album) ? this.props.album.id : null;
+
 		return (
 			<div className="album-form">
-				<AlbumThumbNails albumId={album.id} />
+				<AlbumThumbNails albumId={albumId} />
 				<div id="editor">
-					<Editor album={album} mode={this.props.mode}/>
+					<Editor album={this.props.album} mode={this.props.mode} />
 				</div>
 			</div>
 		);

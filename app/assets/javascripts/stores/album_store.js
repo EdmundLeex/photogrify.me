@@ -4,6 +4,7 @@
 	var TOGGLE_EDITING_EVENT = "TOGGLE_EDITING_EVENT";
 	var ALBUM_UPDATED_EVENT = "ALBUM_UPDATED_EVENT";
 	var TOGGLE_MODE_EVENT = "TOGGLE_MODE_EVENT";
+	var ALBUM_CREATED_EVENT = "ALBUM_CREATED_EVENT";
 
 	var _albums = [];
 	// var _currentAlbum = null;
@@ -31,6 +32,11 @@
 
 	var toggleMode = function (mode) {
 		_mode = mode;
+	};
+
+	var createAlbum = function (album) {
+		_albums.push(album);
+		_currentAlbumId = album.id;
 	};
 
 	root.AlbumStore = $.extend({}, EventEmitter.prototype, {
@@ -104,6 +110,14 @@
 			this.removeListener(TOGGLE_MODE_EVENT, callback);
 		},
 
+		addAlbumCreateListener: function (callback) {
+			this.on(ALBUM_CREATED_EVENT, callback);
+		},
+
+		removeAlbumCreateListener: function (callback) {
+			this.removeListener(ALBUM_CREATED_EVENT, callback);
+		},
+
 		dispatchId: AppDispatcher.register(function (payload) {
 			switch (payload.actionType) {
 				case APP_CONSTANTS.ALBUMS_RECEIVED:
@@ -125,6 +139,10 @@
 				case APP_CONSTANTS.TOGGLE_MODE:
 					toggleMode(payload.mode);
 					AlbumStore.emit(TOGGLE_MODE_EVENT);
+					break;
+				case APP_CONSTANTS.ALBUM_CREATED:
+					createAlbum(payload.album);
+					AlbumStore.emit(ALBUM_CREATED_EVENT);
 					break;
 				default:
 					break;

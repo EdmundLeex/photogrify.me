@@ -124,3 +124,13 @@
 .ql-editor {
 	min-height: 350px;
 }
+
+.album-new-main {
+	position: relative;
+	width: calc(100% - 73px);
+	height: 100vh;
+	margin-top: 0;
+	margin-bottom: 0;
+	float: left;
+	background-color: white;
+}

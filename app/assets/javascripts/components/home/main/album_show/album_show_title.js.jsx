@@ -84,6 +84,7 @@ var AlbumShowTitle = React.createClass({
 		var klass = (this.state.editing) ? "editing" : "";
 		return (
 			<input type="text"
+						 placeholder="No Title"
 						 onFocus={this.toggleToFocus}
 						 onBlur={this.toggleToBlur}
 						 className={klass}

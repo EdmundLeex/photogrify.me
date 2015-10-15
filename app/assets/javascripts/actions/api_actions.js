@@ -17,6 +17,13 @@ window.ApiActions = {
 		});
 	},
 
+	createAlbum: function (payload) {
+		AppDispatcher.dispatch({
+			actionType: APP_CONSTANTS.ALBUM_CREATED,
+			album: payload
+		});
+	},
+
 	updatedAlbum: function (albums) {
 		AppDispatcher.dispatch({
 			actionType: APP_CONSTANTS.ALBUM_UPDATED,

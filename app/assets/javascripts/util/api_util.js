@@ -34,6 +34,18 @@ window.ApiUtil = {
 		});
 	},
 
+	createAlbum: function () {
+		$.ajax({
+			url: '/api/albums/',
+			type: 'post',
+			dataType: 'json',
+
+			success: function (respData) {
+				ApiActions.createAlbum(respData);
+			}
+		});
+	},
+
 	updateAlbum: function (albumId, title, description) {
 		$.ajax({
 			url: '/api/albums/' + albumId,

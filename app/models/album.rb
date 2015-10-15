@@ -15,5 +15,4 @@ class Album < ActiveRecord::Base
   has_many :pictures, dependent: :destroy
 
   validates :title, :user_id, presence: true
-  validates :title, length: { minimum: 5 }
 end

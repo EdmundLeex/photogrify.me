@@ -5,6 +5,16 @@ class Api::AlbumsController < ApplicationController
   	@albums = current_user.albums.all
   end
 
+  def create
+    @album = current_user.albums.new(title: "No Title");
+
+    if @album.save
+      render json: @album
+    else
+      # TODO: oops.. something went wrong
+    end
+  end
+
   def show
   	@album = Album.find(params[:id])
 
