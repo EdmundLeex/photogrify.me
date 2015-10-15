@@ -20,11 +20,16 @@ window.ComponentActions = {
 		});
 	},
 
-	retrieveAlbumState: function (albumId) {
-		ApiUtil.fetchAllAlbums();
-		AppDispatcher.dispatch({
-			actionType: APP_CONSTANTS.RETRIEVE_ALBUM_STATE,
-			currentAlbumId: albumId
-		});
+	saveNewAlbum: function (album) {
+		ApiUtil.updateAlbum(album.id, album.title, album.description);
+		AlbumStore.clearNewAlbum();
 	}
+
+	// retrieveAlbumState: function (albumId) {
+	// 	ApiUtil.fetchAllAlbums();
+	// 	AppDispatcher.dispatch({
+	// 		actionType: APP_CONSTANTS.RETRIEVE_ALBUM_STATE,
+	// 		currentAlbumId: albumId
+	// 	});
+	// }
 };

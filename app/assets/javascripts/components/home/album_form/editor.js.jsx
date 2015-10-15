@@ -45,7 +45,12 @@ var Editor = React.createClass({
 	},
 
 	onDoneTyping: function () {
-		ApiUtil.updateAlbum(this.props.album.id, null, this.state.value);
+		if (this.props.mode === 'edit' || AlbumStore.newAlbumId()) {
+			ApiUtil.updateAlbum(this.props.album.id, this.props.album.title, this.state.value);
+		} else {
+			ApiUtil.createAlbum({description: this.state.value});
+		}
+		// ApiUtil.updateAlbum(this.props.album.id, null, this.state.value);
 	},
 
 	formatRange: function(range) {

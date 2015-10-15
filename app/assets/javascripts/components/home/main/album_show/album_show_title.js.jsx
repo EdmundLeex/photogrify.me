@@ -14,6 +14,7 @@ var AlbumShowTitle = React.createClass({
 		AlbumStore.addAlbumSwitchedListener(this._onSwitch);
 		AlbumStore.addToggleEditingListener(this._onEditingToggle);
 		AlbumStore.addAlbumUpdateListener(this._onTitleChanged);
+		AlbumStore.addAlbumCreateListener(this._onAlbumCreated);
 		PictureStore.addPicturesCollectionChangedListener(this._onSwitch);
 	},
 
@@ -21,6 +22,7 @@ var AlbumShowTitle = React.createClass({
 		AlbumStore.removeAlbumSwitchedListener(this._onSwitch);
 		AlbumStore.removeToggleEditingListener(this._onEditingToggle);
 		AlbumStore.removeAlbumUpdateListener(this._onTitleChanged);
+		AlbumStore.removeAlbumCreateListener(this._onAlbumCreated);
 		PictureStore.removePicturesCollectionChangedListener(this._onSwitch);
 	},
 
@@ -51,14 +53,21 @@ var AlbumShowTitle = React.createClass({
 		this.setState({title: AlbumStore.currentTitle()});
 	},
 
+	_onAlbumCreated: function () {
+		this.setState({id: AlbumStore.newAlbumId(), title: AlbumStore.newAlbumTitle()});
+	},
+
 	toggleToFocus: function () {
 		ComponentActions.toggleEditing(true);
 	},
 
 	toggleToBlur: function () {
-		// TODO: persist change
 		ComponentActions.toggleEditing(false);
-		ApiUtil.updateAlbum(this.state.id, this.state.title, null);
+		if (this.props.mode === 'edit' || AlbumStore.newAlbumId()) {
+			ApiUtil.updateAlbum(this.state.id, this.state.title, null);
+		} else {
+			ApiUtil.createAlbum({title: this.state.title});
+		}
 	},
 
 	render: function () {

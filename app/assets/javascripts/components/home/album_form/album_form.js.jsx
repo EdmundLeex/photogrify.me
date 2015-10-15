@@ -1,5 +1,5 @@
 var AlbumForm = React.createClass({
-	mixins: [React.addons.LinkedStateMixin],
+	// mixins: [React.addons.LinkedStateMixin],
 
 	render: function () {
 		// show title editable

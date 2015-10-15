@@ -4,27 +4,25 @@ var AlbumNewMain = React.createClass({
 	},
 
 	componentDidMount: function () {
-		var albumId = localStorage.getItem('createdAlbumId');
-		if (albumId) {
-			ComponentActions.retrieveAlbumState(albumId);
-			localStorage.removeItem('createdAlbumId');
-		}
 		AlbumStore.addAlbumCreateListener(this._onCreate);
-		AlbumStore.addCurrentAlbumIdRetrieveListener(this._onRetrieve);
+		// AlbumStore.addCurrentAlbumIdRetrieveListener(this._onRetrieve);
 	},
 
 	componentWillUnmount: function () {
 		AlbumStore.removeAlbumCreateListener(this._onCreate);
-		AlbumStore.removeCurrentAlbumIdRetrieveListener(this._onRetrieve);
+		if (this.state.album) {
+			ComponentActions.saveNewAlbum(this.state.album);
+		}
+		// AlbumStore.removeCurrentAlbumIdRetrieveListener(this._onRetrieve);
 	},
 
 	_onCreate: function () {
-		this.setState({ album: AlbumStore.currentAlbum() });
+		this.setState({ album: AlbumStore.newAlbum() });
 	},
 
-	_onRetrieve: function () {
-		debugger
-	},
+	// _onRetrieve: function () {
+	// 	debugger
+	// },
 
 	_onToggleMode: function (mode) {
 		ComponentActions.toggleMode(mode);

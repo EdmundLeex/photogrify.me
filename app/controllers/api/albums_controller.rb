@@ -2,11 +2,14 @@ class Api::AlbumsController < ApplicationController
 	before_action :require_user!
 
   def index
-  	@albums = current_user.albums.all
+  	@albums = current_user.albums.all.order('created_at DESC')
   end
 
   def create
-    @album = current_user.albums.new(title: "No Title");
+    title = params[:title].blank? ? "No Title" : params[:title]
+    description = params[:description] || ""
+
+    @album = current_user.albums.new(title: title);
 
     if @album.save
       render json: @album

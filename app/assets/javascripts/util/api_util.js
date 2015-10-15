@@ -35,11 +35,12 @@ window.ApiUtil = {
 		});
 	},
 
-	createAlbum: function () {
+	createAlbum: function (data) {
 		$.ajax({
 			url: '/api/albums/',
 			type: 'post',
 			dataType: 'json',
+			data: data,
 
 			success: function (respData) {
 				ApiActions.createAlbum(respData);
