@@ -1,12 +1,14 @@
 var AlbumsIndex = React.createClass({
 	render: function () {
-		var klass,
-				currentAlbumId = this.props.currentAlbumId;
+		var params = this.props.params;
+		var history = this.props.history;
 		return (
 			<ul className="albums-index">
 				{this.props.albums.map(function (album) {
-					klass = (album.id === currentAlbumId) ? "selected" : "";
-					return <AlbumIndexItem key={album.id} album={album} klass={klass} />
+					return <AlbumIndexItem key={album.id}
+																 album={album}
+																 params={params}
+																 history={history} />
 				})}
 			</ul>
 		);

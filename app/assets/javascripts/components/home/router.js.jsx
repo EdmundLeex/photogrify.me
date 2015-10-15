@@ -23,7 +23,19 @@ $(function () {
 		React.render((
 			<Router>
 				<Route path="/" component={App}>
-					<IndexRoute component={AlbumShowMain} />
+					<IndexRoute component={AlbumsMain} />
+					<Route path="albums" component={AlbumsMain}>
+						<Route path="/albums/:albumId" component={AlbumShow} />
+						<Route path="/albums/:albumId/edit" component={AlbumForm} />
+					</Route>
+
+					<Route>
+						<Route path="title" component={AlbumShowTitle} />
+						<Route path="pictures" component={PicturesCollection}>
+							<Route path="PictureItem" component={PictureItem} />
+						</Route>
+					</Route>
+
 					<Route path="new" component={AlbumNewMain} />
 				</Route>
 			</Router>

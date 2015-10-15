@@ -1,4 +1,6 @@
-var AlbumShowMain = React.createClass({
+var AlbumsMain = React.createClass({
+	mixins: [ReactRouter.History],
+
 	getInitialState: function () {
 		return { albums: AlbumStore.all() };
 	},
@@ -29,10 +31,10 @@ var AlbumShowMain = React.createClass({
 													this.state.currentAlbum.id : 0;
 		return (
 			<div className="album-show-main">
-				<AlbumsIndexContainer currentAlbumId={currentAlbumId}
-															albums={this.state.albums} />
-				<AlbumShow album={this.state.currentAlbum}
-									 mode={this.props.mode} />
+				<AlbumsIndexContainer albums={this.state.albums}
+															history={this.history}
+															params={this.props.params} />
+				{this.props.children}
 			</div>
 		);
 	}
