@@ -1,4 +1,4 @@
-var Album = React.createClass({
+var AlbumEdit = React.createClass({
 	mixins: [ReactRouter.History],
 
 	render: function () {
@@ -6,7 +6,7 @@ var Album = React.createClass({
 		return (
 			<div className="album-show">
 				<AlbumShowTitle history={this.history} album={album} params={this.props.params} />
-				{this.props.children}
+				<AlbumForm album={album} mode={'edit'} />
 			</div>
 		);
 	}

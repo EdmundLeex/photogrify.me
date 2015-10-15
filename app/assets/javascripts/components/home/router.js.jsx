@@ -25,10 +25,8 @@ $(function () {
 				<Route path="/" component={App}>
 					<IndexRoute component={AlbumsMain} />
 					<Route path="albums" component={AlbumsMain}>
-						<Route path="/albums/:albumId" component={Album}>
-							<Route path="/albums/:albumId/show" component={AlbumShow} />
-							<Route path="/albums/:albumId/edit" component={AlbumForm} />
-						</Route>
+						<Route path="/albums/:albumId/show" component={AlbumShow} />
+						<Route path="/albums/:albumId/edit" component={AlbumEdit} />
 					</Route>
 
 					<Route path="new" component={AlbumNewMain} />
