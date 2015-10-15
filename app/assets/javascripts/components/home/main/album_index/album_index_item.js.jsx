@@ -15,6 +15,6 @@ var AlbumIndexItem = React.createClass({
 		// var albumId = this.props.album.id;
 		// ComponentActions.switchAlbum(albumId);
 		// ComponentActions.toggleMode('view');
-		// ApiUtil.fetchPicturesFromAlbum(this.props.album.id);
+		ApiUtil.fetchPicturesFromAlbum(this.props.album.id);
 	}
 });
