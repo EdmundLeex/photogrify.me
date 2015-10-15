@@ -6,12 +6,14 @@ var AlbumShowMain = React.createClass({
 	componentDidMount: function () {
 		AlbumStore.addAlbumsIndexChangeListener(this._onChange);
 		AlbumStore.addAlbumSwitchedListener(this._onSwitch);
+		AlbumStore.addAlbumUpdateListener(this._onChange);
 		ApiUtil.fetchAllAlbums(true);
 	},
 
 	componentWillUnmount: function () {
 		AlbumStore.removeAlbumsIndexChangeListener(this._onChange);
 		AlbumStore.removeAlbumSwitchedListener(this._onSwitch);
+		AlbumStore.removeAlbumUpdateListener(this._onChange);
 	},
 
 	_onChange: function () {
