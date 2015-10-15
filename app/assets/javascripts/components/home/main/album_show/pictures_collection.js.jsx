@@ -5,6 +5,7 @@ var PicturesCollection = React.createClass({
 
 	componentDidMount: function () {
 		PictureStore.addPicturesCollectionChangedListener(this._onChange);
+		ApiUtil.fetchPicturesFromAlbum(this.props.params.albumId);
 	},
 
 	componentWillUnmount: function () {

@@ -7,14 +7,14 @@ var AlbumsMain = React.createClass({
 
 	componentDidMount: function () {
 		AlbumStore.addAlbumsIndexChangeListener(this._onChange);
-		AlbumStore.addAlbumSwitchedListener(this._onSwitch);
+		// AlbumStore.addAlbumSwitchedListener(this._onSwitch);
 		AlbumStore.addAlbumUpdateListener(this._onChange);
 		ApiUtil.fetchAllAlbums(true);
 	},
 
 	componentWillUnmount: function () {
 		AlbumStore.removeAlbumsIndexChangeListener(this._onChange);
-		AlbumStore.removeAlbumSwitchedListener(this._onSwitch);
+		// AlbumStore.removeAlbumSwitchedListener(this._onSwitch);
 		AlbumStore.removeAlbumUpdateListener(this._onChange);
 	},
 
@@ -22,9 +22,9 @@ var AlbumsMain = React.createClass({
 		this.setState({ albums: AlbumStore.all() });
 	},
 
-	_onSwitch: function () {
-		this.setState({ currentAlbum: AlbumStore.currentAlbum() });
-	},
+	// _onSwitch: function () {
+	// 	this.setState({ currentAlbum: AlbumStore.currentAlbum() });
+	// },
 
 	render: function () {
 		var currentAlbumId = (this.state.currentAlbum) ?

@@ -10,17 +10,28 @@ var AlbumShowTitle = React.createClass({
     };
 	},
 
+	componentWillReceiveProps: function (nextProps) {
+		var album = nextProps.album;
+		this.setState({
+			id: album.id,
+			title: album.title,
+			picCount: PictureStore.count()
+		});
+	},
+
 	componentDidMount: function () {
-		AlbumStore.addAlbumSwitchedListener(this._onSwitch);
-		AlbumStore.addToggleEditingListener(this._onEditingToggle);
+		// AlbumStore.addAlbumSwitchedListener(this._onSwitch);
+		// AlbumStore.addToggleEditingListener(this._onEditingToggle);
+		AlbumStore.addAlbumsIndexChangeListener(this._onSwitch);
 		AlbumStore.addAlbumUpdateListener(this._onTitleChanged);
 		AlbumStore.addAlbumCreateListener(this._onAlbumCreated);
 		PictureStore.addPicturesCollectionChangedListener(this._onSwitch);
 	},
 
 	componentWillUnmount: function () {
-		AlbumStore.removeAlbumSwitchedListener(this._onSwitch);
-		AlbumStore.removeToggleEditingListener(this._onEditingToggle);
+		// AlbumStore.removeAlbumSwitchedListener(this._onSwitch);
+		// AlbumStore.removeToggleEditingListener(this._onEditingToggle);
+		AlbumStore.removeAlbumsIndexChangeListener(this._onSwitch);
 		AlbumStore.removeAlbumUpdateListener(this._onTitleChanged);
 		AlbumStore.removeAlbumCreateListener(this._onAlbumCreated);
 		PictureStore.removePicturesCollectionChangedListener(this._onSwitch);
@@ -28,7 +39,7 @@ var AlbumShowTitle = React.createClass({
 
 	_onSwitch: function () {
 		// change count, title
-		var album = AlbumStore.currentAlbum();
+		var album = AlbumStore.find(this.props.params.albumId);
 		this.setState({
 			id: 			album.id,
 			title: 	 	album.title,
@@ -39,10 +50,12 @@ var AlbumShowTitle = React.createClass({
 	_onDelete: function () {
 		console.log(this.state.id);
 		ApiUtil.deleteAlbum(this.state.id);
+		// push state to first album
 	},
 
 	_onClickEdit: function () {
-		ComponentActions.toggleMode('edit');
+		// ComponentActions.toggleMode('edit');
+		this.props.pushState(null, '/albums/' + this.props.album.id + '/edit');
 	},
 
 	_onEditingToggle: function () {

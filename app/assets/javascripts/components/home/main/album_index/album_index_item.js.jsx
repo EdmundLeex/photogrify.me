@@ -1,4 +1,5 @@
 var AlbumIndexItem = React.createClass({
+	// add selected class
 	render: function () {
 		var klass = this.props.klass;
 		return (
@@ -14,6 +15,6 @@ var AlbumIndexItem = React.createClass({
 		// var albumId = this.props.album.id;
 		// ComponentActions.switchAlbum(albumId);
 		// ComponentActions.toggleMode('view');
-		// ApiUtil.fetchPicturesFromAlbum(albumId);
+		// ApiUtil.fetchPicturesFromAlbum(this.props.album.id);
 	}
 });

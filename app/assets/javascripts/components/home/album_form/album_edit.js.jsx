@@ -2,7 +2,7 @@ var AlbumEdit = React.createClass({
 	render: function () {
 		return (
 			<div className="album-show">
-				<AlbumShowTitle />
+				<AlbumShowTitle history={this.history} />
 				<AlbumForm />
 			</div>
 		);

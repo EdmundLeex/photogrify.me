@@ -9,20 +9,20 @@
 
 	var _albums = [];
 	// var _currentAlbum = null;
-	var _currentAlbumId = null,
-			_newAlbumId = null;
+	// var _currentAlbumId = null,
+	// 		_newAlbumId = null;
 	// var _currentTitle = null;
 	var _editingTitle = false;
-	var _mode = 'view';
+	// var _mode = 'view';
 
 	var resetAlbums = function (albums) {
 		_albums = albums;
 	};
 
-	var switchAlbum = function (id) {
-		_currentAlbumId = id;
-		// _currentTitle = _currentAlbum.title;
-	};
+	// var switchAlbum = function (id) {
+	// 	_currentAlbumId = id;
+	// 	// _currentTitle = _currentAlbum.title;
+	// };
 
 	var toggleEditing = function (editing) {
 		_editingTitle = editing;
@@ -50,45 +50,51 @@
 			return _albums.length;
 		},
 
-		currentAlbumId: function () {
-			return _currentAlbumId;
-		},
-
-		currentAlbum: function () {
+		find: function (albumId) {
 			return _albums.filter(function (alb) {
-				return alb.id === _currentAlbumId;
+				return alb.id === parseInt(albumId);
 			})[0];
 		},
 
-		currentTitle: function () {
-			return this.currentAlbum().title;
-		},
+		// currentAlbumId: function () {
+		// 	return _currentAlbumId;
+		// },
 
-		newAlbumId: function () {
-			return _newAlbumId;
-		},
+		// currentAlbum: function () {
+		// 	return _albums.filter(function (alb) {
+		// 		return alb.id === _currentAlbumId;
+		// 	})[0];
+		// },
 
-		newAlbum: function () {
-			return _albums.filter(function (alb) {
-				return alb.id === _newAlbumId;
-			})[0];
-		},
+		// currentTitle: function () {
+		// 	return this.currentAlbum().title;
+		// },
 
-		newAlbumTitle: function () {
-			return this.newAlbum().title;
-		},
+		// newAlbumId: function () {
+		// 	return _newAlbumId;
+		// },
 
-		clearNewAlbum: function () {
-			_newAlbumId = null;
-		},
+		// newAlbum: function () {
+		// 	return _albums.filter(function (alb) {
+		// 		return alb.id === _newAlbumId;
+		// 	})[0];
+		// },
+
+		// newAlbumTitle: function () {
+		// 	return this.newAlbum().title;
+		// },
+
+		// clearNewAlbum: function () {
+		// 	_newAlbumId = null;
+		// },
 
 		isEditing: function () {
 			return _editingTitle;
 		},
 
-		currentMode: function () {
-			return _mode;
-		},
+		// currentMode: function () {
+		// 	return _mode;
+		// },
 
 		addAlbumsIndexChangeListener: function (callback) {
 			this.on(ALBUMS_INDEX_CHANGED_EVENT, callback);
@@ -152,10 +158,10 @@
 					resetAlbums(payload.albums);
 					AlbumStore.emit(ALBUMS_INDEX_CHANGED_EVENT);
 					break;
-				case APP_CONSTANTS.ALBUM_SWITCHED:
-					switchAlbum(payload.albumId);
-					AlbumStore.emit(ALBUM_SWITCHED_EVENT);
-					break;
+				// case APP_CONSTANTS.ALBUM_SWITCHED:
+				// 	switchAlbum(payload.albumId);
+				// 	AlbumStore.emit(ALBUM_SWITCHED_EVENT);
+				// 	break;
 				case APP_CONSTANTS.TOGGLE_EDITING:
 					toggleEditing(payload.editing);
 					AlbumStore.emit(TOGGLE_EDITING_EVENT);
