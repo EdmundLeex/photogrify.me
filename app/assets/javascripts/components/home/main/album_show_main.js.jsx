@@ -1,6 +1,6 @@
 var AlbumShowMain = React.createClass({
 	getInitialState: function () {
-		return { albums: AlbumStore.all(), currentAlbum: null };
+		return { albums: AlbumStore.all() };
 	},
 
 	componentDidMount: function () {

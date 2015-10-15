@@ -23,7 +23,8 @@ $(function () {
 		React.render((
 			<Router>
 				<Route path="/" component={App}>
-					<IndexRoute component={Home} />
+					<IndexRoute component={AlbumShowMain} />
+					<Route path="new" component={AlbumNewMain} />
 				</Route>
 			</Router>
 		), root);
