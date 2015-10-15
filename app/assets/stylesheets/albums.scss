@@ -7,28 +7,6 @@
 	float: left;
 }
 
-.sidebar {
-	position: relative;
-	width: 73px;
-	height: 100vh;
-	margin-left: 0;
-	margin-top: 0;
-	margin-bottom: 0;
-	border-right: 1px solid;
-	float: left;
-	background-color: #161617;
-	vertical-align: baseline;
-	border-right: 1px solid black;
-}
-
-.sidebar-thumbs {
-	position: relative;
-	width: 36px;
-	height: 36px;
-	background-color: white;
-	border-radius: 5px;
-}
-
 .album-show-main {
 	position: relative;
 	width: calc(100% - 73px);
