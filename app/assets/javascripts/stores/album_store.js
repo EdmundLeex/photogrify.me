@@ -37,7 +37,7 @@
 	};
 
 	var createAlbum = function (album) {
-		_albums.push(album);
+		_albums.unshift(album);
 		_currentAlbumId = _newAlbumId = album.id;
 	};
 

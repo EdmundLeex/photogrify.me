@@ -4,7 +4,7 @@
 var Editor = React.createClass({
 	mixins: [React.addons.LinkedStateMixin],
 
-	typingTimer: null,
+	typingTimer: {},
 
 	getInitialState: function() {
 		var description = (this.props.mode === 'edit') ? this.props.album.description : "";
@@ -34,14 +34,13 @@ var Editor = React.createClass({
 	},
 
 	onKeyDown: function () {
-		var typingTimer = this.typingTimer;
-		clearTimeout(typingTimer);
+		if (this.typingTimer.typing) {clearTimeout(this.typingTimer.typing)};
+		delete(this.typingTimer.typing);
 	},
 
 	onKeyUp: function () {
 		var onDoneTyping = this.onDoneTyping;
-		var typingTimer = this.typingTimer;
-		typingTimer = setTimeout(onDoneTyping, 10000);
+		this.typingTimer.typing = setTimeout(onDoneTyping, 5000);
 	},
 
 	onDoneTyping: function () {
@@ -95,7 +94,15 @@ var Editor = React.createClass({
 	},
 
 	onBlur: function () {
-		// patch request
+		debugger
+		ComponentActions.toggleEditing(false);
+		if (this.props.mode === 'edit' ||
+			this.props.mode === 'view' ||
+			AlbumStore.newAlbumId()) {
+			ApiUtil.updateAlbum(this.props.album.id, null, this.state.value);
+		} else {
+			ApiUtil.createAlbum({description: this.state.value});
+		}
 	},
 
 	render: function () {

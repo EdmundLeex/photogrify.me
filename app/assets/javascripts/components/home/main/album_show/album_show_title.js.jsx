@@ -63,7 +63,9 @@ var AlbumShowTitle = React.createClass({
 
 	toggleToBlur: function () {
 		ComponentActions.toggleEditing(false);
-		if (this.props.mode === 'edit' || AlbumStore.newAlbumId()) {
+		if (this.props.mode === 'edit' ||
+			this.props.mode === 'view' ||
+			AlbumStore.newAlbumId()) {
 			ApiUtil.updateAlbum(this.state.id, this.state.title, null);
 		} else {
 			ApiUtil.createAlbum({title: this.state.title});
@@ -76,7 +78,6 @@ var AlbumShowTitle = React.createClass({
 		// title
 		var titleBar = this.renderTitle();
 
-		console.log(this.state.title);
 		return (
 			<div className="album-show-title">
 				{titleBar}

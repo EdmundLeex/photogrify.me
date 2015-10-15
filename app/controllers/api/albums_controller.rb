@@ -2,7 +2,7 @@ class Api::AlbumsController < ApplicationController
 	before_action :require_user!
 
   def index
-  	@albums = current_user.albums.all.order('created_at DESC')
+  	@albums = current_user.albums.all.order('updated_at DESC')
   end
 
   def create

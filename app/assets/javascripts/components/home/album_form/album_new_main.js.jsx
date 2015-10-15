@@ -13,6 +13,7 @@ var AlbumNewMain = React.createClass({
 		if (this.state.album) {
 			ComponentActions.saveNewAlbum(this.state.album);
 		}
+		AlbumStore.removeAlbumCreateListener(this._onCreate);
 		// AlbumStore.removeCurrentAlbumIdRetrieveListener(this._onRetrieve);
 	},
 
@@ -34,8 +35,8 @@ var AlbumNewMain = React.createClass({
 		var albumId = (this.state.album) ? this.state.album.id : null;
 		return (
 			<div className="album-new-main">
-				<AlbumShowTitle handleClickEdit={this._onToggleMode}/>
-				<AlbumForm albumId={albumId} album={this.state.album} mode="new" />
+				<AlbumShowTitle handleClickEdit={this._onToggleMode} mode={this.props.mode}/>
+				<AlbumForm albumId={albumId} album={this.state.album} mode={this.props.mode} />
 			</div>
 		);
 	}
