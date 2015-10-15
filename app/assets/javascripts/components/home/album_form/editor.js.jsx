@@ -7,11 +7,13 @@ var Editor = React.createClass({
 	typingTimer: null,
 
 	getInitialState: function() {
+		var description = (this.props.mode === 'edit') ? this.props.album.description : "";
+
 		return {
 			theme: 'snow',
 			enabled: true,
 			readOnly: false,
-			value: this.props.album.description,
+			value: description,
 			events: []
 		};
 	},
