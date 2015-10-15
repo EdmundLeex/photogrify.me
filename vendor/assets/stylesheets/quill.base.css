@@ -141,7 +141,6 @@
 }
 .ql-editor {
   box-sizing: border-box;
-  min-height: 100%;
   outline: none;
   tab-size: 4;
   white-space: pre-wrap;

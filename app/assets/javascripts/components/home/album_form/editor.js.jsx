@@ -4,6 +4,8 @@
 var Editor = React.createClass({
 	mixins: [React.addons.LinkedStateMixin],
 
+	typingTimer: null,
+
 	getInitialState: function() {
 		return {
 			theme: 'snow',
@@ -27,13 +29,14 @@ var Editor = React.createClass({
 	},
 
 	onKeyDown: function () {
-		var onDoneTyping = this.onDoneTyping;
-		if (typeof typingTimer !== 'undefined') { clearTimeout(typingTimer) };
-		typingTimer = setTimeout(onDoneTyping, 500);
+		var typingTimer = this.typingTimer;
+		clearTimeout(typingTimer);
 	},
 
 	onKeyUp: function () {
-		clearTimeout(typingTimer);
+		var onDoneTyping = this.onDoneTyping;
+		var typingTimer = this.typingTimer;
+		typingTimer = setTimeout(onDoneTyping, 10000);
 	},
 
 	onDoneTyping: function () {
