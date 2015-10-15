@@ -40,7 +40,7 @@ var AlbumShowTitle = React.createClass({
 	},
 
 	_onClickEdit: function () {
-		this.props.handleClickEdit('edit');
+		ComponentActions.toggleMode('edit');
 	},
 
 	_onEditingToggle: function () {

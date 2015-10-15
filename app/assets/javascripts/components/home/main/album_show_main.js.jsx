@@ -31,7 +31,8 @@ var AlbumShowMain = React.createClass({
 			<div className="album-show-main">
 				<AlbumsIndexContainer currentAlbumId={currentAlbumId}
 															albums={this.state.albums} />
-				<AlbumShow album={this.state.currentAlbum} />
+				<AlbumShow album={this.state.currentAlbum}
+									 mode={this.props.mode} />
 			</div>
 		);
 	}

@@ -23,7 +23,6 @@ $(function () {
 			<Router>
 				<Route path="/" component={App}>
 					<IndexRoute component={Home} />
-					<Route path="new" component={AlbumNew} />
 				</Route>
 			</Router>
 		), root);

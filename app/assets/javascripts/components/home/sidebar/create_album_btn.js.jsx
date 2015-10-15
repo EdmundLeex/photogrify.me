@@ -8,9 +8,6 @@ var CreateAlbumBtn = React.createClass({
 	},
 
 	onClickHandler: function () {
-		// go to albums/new route
-		console.log('clicked');
-		ApiUtil.createAlbum();
-		this.props.history.pushState(null, "new");
+		ComponentActions.toggleMode('new');
 	}
 });

@@ -9,13 +9,13 @@ var AlbumNewMain = React.createClass({
 			ComponentActions.retrieveAlbumState(albumId);
 			localStorage.removeItem('createdAlbumId');
 		}
-
 		AlbumStore.addAlbumCreateListener(this._onCreate);
 		AlbumStore.addCurrentAlbumIdRetrieveListener(this._onRetrieve);
 	},
 
 	componentWillUnmount: function () {
 		AlbumStore.removeAlbumCreateListener(this._onCreate);
+		AlbumStore.removeCurrentAlbumIdRetrieveListener(this._onRetrieve);
 	},
 
 	_onCreate: function () {
