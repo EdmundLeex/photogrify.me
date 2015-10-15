@@ -2,8 +2,16 @@ var AlbumNewMain = React.createClass({
 	getInitialState: function () {
     return { album: null };
 	},
+
 	componentDidMount: function () {
+		var albumId = localStorage.getItem('createdAlbumId');
+		if (albumId) {
+			ComponentActions.retrieveAlbumState(albumId);
+			localStorage.removeItem('createdAlbumId');
+		}
+
 		AlbumStore.addAlbumCreateListener(this._onCreate);
+		AlbumStore.addCurrentAlbumIdRetrieveListener(this._onRetrieve);
 	},
 
 	componentWillUnmount: function () {
@@ -12,6 +20,10 @@ var AlbumNewMain = React.createClass({
 
 	_onCreate: function () {
 		this.setState({ album: AlbumStore.currentAlbum() });
+	},
+
+	_onRetrieve: function () {
+		debugger
 	},
 
 	_onToggleMode: function (mode) {

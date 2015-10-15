@@ -26,6 +26,7 @@ window.ApiUtil = {
 			success: function (respData) {
 				var albumId = respData[0].id;
 				ApiActions.receiveAllAlbums(respData);
+
 				if (init) {
 					ComponentActions.switchAlbum(albumId);
 					ApiUtil.fetchPicturesFromAlbum(albumId);

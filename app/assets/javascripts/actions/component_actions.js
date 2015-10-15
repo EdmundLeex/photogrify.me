@@ -18,5 +18,13 @@ window.ComponentActions = {
 			actionType: APP_CONSTANTS.TOGGLE_MODE,
 			mode: mode
 		});
+	},
+
+	retrieveAlbumState: function (albumId) {
+		ApiUtil.fetchAllAlbums();
+		AppDispatcher.dispatch({
+			actionType: APP_CONSTANTS.RETRIEVE_ALBUM_STATE,
+			currentAlbumId: albumId
+		});
 	}
 };

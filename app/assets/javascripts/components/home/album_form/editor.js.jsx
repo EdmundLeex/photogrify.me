@@ -24,7 +24,9 @@ var Editor = React.createClass({
 
 	componentWillUnmount: function () {
 		AlbumStore.removeAlbumUpdateListener(this._onSaved);
-		ApiUtil.updateAlbum(this.props.album.id, null, this.state.value);
+		if (this.props.album) {
+			ApiUtil.updateAlbum(this.props.album.id, null, this.state.value);
+		}
 	},
 
 	_onSaved: function () {

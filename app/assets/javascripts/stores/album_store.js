@@ -5,6 +5,7 @@
 	var ALBUM_UPDATED_EVENT = "ALBUM_UPDATED_EVENT";
 	var TOGGLE_MODE_EVENT = "TOGGLE_MODE_EVENT";
 	var ALBUM_CREATED_EVENT = "ALBUM_CREATED_EVENT";
+	var CURRENT_ALBUM_ID_RETRIEVED_EVENT = "CURRENT_ALBUM_ID_RETRIEVED_EVENT";
 
 	var _albums = [];
 	// var _currentAlbum = null;
@@ -19,6 +20,7 @@
 
 	var switchAlbum = function (id) {
 		_currentAlbumId = id;
+		localStorage.setItem('currentAlbumId', id);
 		// _currentTitle = _currentAlbum.title;
 	};
 
@@ -37,6 +39,7 @@
 	var createAlbum = function (album) {
 		_albums.push(album);
 		_currentAlbumId = album.id;
+		localStorage.setItem('createdAlbumId', album.id);
 	};
 
 	root.AlbumStore = $.extend({}, EventEmitter.prototype, {
@@ -118,6 +121,15 @@
 			this.removeListener(ALBUM_CREATED_EVENT, callback);
 		},
 
+		addCurrentAlbumIdRetrieveListener: function (callback) {
+			debugger
+			this.on(CURRENT_ALBUM_ID_RETRIEVED_EVENT, callback);
+		},
+
+		removeCurrentAlbumIdRetrieveListener: function (callback) {
+			this.removeListener(CURRENT_ALBUM_ID_RETRIEVED_EVENT, callback);
+		},
+
 		dispatchId: AppDispatcher.register(function (payload) {
 			switch (payload.actionType) {
 				case APP_CONSTANTS.ALBUMS_RECEIVED:
@@ -143,6 +155,11 @@
 				case APP_CONSTANTS.ALBUM_CREATED:
 					createAlbum(payload.album);
 					AlbumStore.emit(ALBUM_CREATED_EVENT);
+					break;
+				case APP_CONSTANTS.RETRIEVE_ALBUM_STATE:
+					_currentAlbumId = parseInt(payload.currentAlbumId);
+					debugger
+					AlbumStore.emit(CURRENT_ALBUM_ID_RETRIEVED_EVENT);
 					break;
 				default:
 					break;
