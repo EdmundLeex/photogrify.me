@@ -34,17 +34,30 @@ window.ApiUtil = {
 		});
 	},
 
-	changeAlbumTitle: function (albumId, title) {
+	updateAlbum: function (albumId, title, description) {
 		$.ajax({
 			url: '/api/albums/' + albumId,
 			type: 'patch',
 			dataType: 'json',
-			data: {"title": title},
+			data: {"title": title, "description": description},
 
 			success: function (respData) {
-				ApiActions.changedTitle(respData);
+				ApiActions.updatedAlbum(respData);
 			}
-		})
+		});
+	},
+
+	updateDescription: function (id, description) {
+		$.ajax({
+			url: '/api/albums/' + id,
+			type: 'patch',
+			dataType: 'json',
+			data: {"description": description},
+
+			success: function (respData) {
+				ApiActions.savedDescription(respData.description);
+			}
+		});
 	},
 
 	deleteAlbum: function (id) {

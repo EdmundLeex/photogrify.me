@@ -17,10 +17,17 @@ window.ApiActions = {
 		});
 	},
 
-	changedTitle: function (title) {
+	updatedAlbum: function (albums) {
 		AppDispatcher.dispatch({
-			actionType: APP_CONSTANTS.ALBUM_TITLE_CHANGED,
-			title: title
+			actionType: APP_CONSTANTS.ALBUM_UPDATED,
+			albums: albums
+		});
+	},
+
+	savedDescription: function (description) {
+		AppDispatcher.dispatch({
+			actionType: APP_CONSTANTS.ALBUM_DESCRIPTION_SAVED,
+			description: description
 		});
 	}
 };

@@ -2,12 +2,13 @@
 	var ALBUMS_INDEX_CHANGED_EVENT = "ALBUMS_INDEX_CHANGED_EVENT";
 	var ALBUM_SWITCHED_EVENT = "ALBUM_SWITCHED_EVENT";
 	var TOGGLE_EDITING_EVENT = "TOGGLE_EDITING_EVENT";
-	var ALBUM_TITLE_CHANGED_EVENT = "ALBUM_TITLE_CHANGED_EVENT";
+	var ALBUM_UPDATED_EVENT = "ALBUM_UPDATED_EVENT";
 	var TOGGLE_MODE_EVENT = "TOGGLE_MODE_EVENT";
 
 	var _albums = [];
+	// var _currentAlbum = null;
 	var _currentAlbumId = null;
-	var _currentTitle = null;
+	// var _currentTitle = null;
 	var _editingTitle = false;
 	var _mode = 'view';
 
@@ -16,11 +17,8 @@
 	};
 
 	var switchAlbum = function (id) {
-		_currentAlbum = _albums.filter(function (alb) {
-			return alb.id === id;
-		})[0];
-
-		_currentTitle = _currentAlbum.title;
+		_currentAlbumId = id;
+		// _currentTitle = _currentAlbum.title;
 	};
 
 	var toggleEditing = function (editing) {
@@ -45,19 +43,21 @@
 		},
 
 		currentAlbumId: function () {
-			return _currentAlbum.id;
+			return _currentAlbumId;
 		},
 
 		currentAlbum: function () {
-			return _currentAlbum;
+			return _albums.filter(function (alb) {
+				return alb.id === _currentAlbumId;
+			})[0];
 		},
 
 		currentTitle: function () {
-			return _currentTitle
+			return this.currentAlbum().title;
 		},
 
 		isEditing: function () {
-			return _editing;
+			return _editingTitle;
 		},
 
 		currentMode: function () {
@@ -88,12 +88,12 @@
 			this.removeListener(TOGGLE_EDITING_EVENT, callback);
 		},
 
-		addAlbumTitleChangeListener: function (callback) {
-			this.on(ALBUM_TITLE_CHANGED_EVENT, callback);
+		addAlbumUpdateListener: function (callback) {
+			this.on(ALBUM_UPDATED_EVENT, callback);
 		},
 
-		removeAlbumTitleChangeListener: function (callback) {
-			this.removeListener(ALBUM_TITLE_CHANGED_EVENT, callback);
+		removeAlbumUpdateListener: function (callback) {
+			this.removeListener(ALBUM_UPDATED_EVENT, callback);
 		},
 
 		addToggleModeListener: function (callback) {
@@ -118,13 +118,14 @@
 					toggleEditing(payload.editing);
 					AlbumStore.emit(TOGGLE_EDITING_EVENT);
 					break;
-				case APP_CONSTANTS.ALBUM_TITLE_CHANGED:
-					resetTitle(payload.title);
-					AlbumStore.emit(ALBUM_TITLE_CHANGED_EVENT);
+				case APP_CONSTANTS.ALBUM_UPDATED:
+					resetAlbums(payload.albums);
+					AlbumStore.emit(ALBUM_UPDATED_EVENT);
 					break;
 				case APP_CONSTANTS.TOGGLE_MODE:
 					toggleMode(payload.mode);
 					AlbumStore.emit(TOGGLE_MODE_EVENT);
+					break;
 				default:
 					break;
 			}

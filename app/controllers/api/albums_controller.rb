@@ -19,10 +19,12 @@ class Api::AlbumsController < ApplicationController
     @album = Album.find(params[:id])
 
     if @album
-      @album.title = params[:title]
+      @album.title = params[:title] unless params[:title] == ""
+      @album.description = params[:description] unless params[:description] == ""
 
       if @album.save
-        render json: @album.title
+        @albums = current_user.albums.all
+        render :index
       else
         # TODO: oops.. something went wrong
       end

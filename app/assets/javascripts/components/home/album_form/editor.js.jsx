@@ -14,6 +14,32 @@ var Editor = React.createClass({
 		};
 	},
 
+	componentDidMount: function () {
+		AlbumStore.addAlbumUpdateListener(this._onSaved);
+	},
+
+	componentWillUnmount: function () {
+		AlbumStore.removeAlbumUpdateListener(this._onSaved);
+	},
+
+	_onSaved: function () {
+		// render some effects
+	},
+
+	onKeyDown: function () {
+		var onDoneTyping = this.onDoneTyping;
+		if (typeof typingTimer !== 'undefined') { clearTimeout(typingTimer) };
+		typingTimer = setTimeout(onDoneTyping, 500);
+	},
+
+	onKeyUp: function () {
+		clearTimeout(typingTimer);
+	},
+
+	onDoneTyping: function () {
+		ApiUtil.updateAlbum(this.props.album.id, null, this.state.value);
+	},
+
 	formatRange: function(range) {
 		return range
 			? [range.start, range.end].join(',')
@@ -65,7 +91,9 @@ var Editor = React.createClass({
       						theme={this.state.theme}
       						onChange={this.onEditorChange}
       						onChangeSelection={this.onEditorChangeSelection}
-      						onBlur={this.onBlur} />
+      						onBlur={this.onBlur}
+      						onKeyDown={this.onKeyDown}
+      						onKeyUp={this.onKeyUp} />
     );
 	}
 });

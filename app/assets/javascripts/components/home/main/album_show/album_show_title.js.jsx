@@ -13,14 +13,14 @@ var AlbumShowTitle = React.createClass({
 	componentDidMount: function () {
 		AlbumStore.addAlbumSwitchedListener(this._onSwitch);
 		AlbumStore.addToggleEditingListener(this._onEditingToggle);
-		AlbumStore.addAlbumTitleChangeListener(this._onTitleChanged);
+		AlbumStore.addAlbumUpdateListener(this._onTitleChanged);
 		PictureStore.addPicturesCollectionChangedListener(this._onSwitch);
 	},
 
 	componentWillUnmount: function () {
 		AlbumStore.removeAlbumSwitchedListener(this._onSwitch);
 		AlbumStore.removeToggleEditingListener(this._onEditingToggle);
-		AlbumStore.removeAlbumTitleChangeListener(this._onTitleChanged);
+		AlbumStore.removeAlbumUpdateListener(this._onTitleChanged);
 		PictureStore.removePicturesCollectionChangedListener(this._onSwitch);
 	},
 
@@ -58,7 +58,7 @@ var AlbumShowTitle = React.createClass({
 	toggleToBlur: function () {
 		// TODO: persist change
 		ComponentActions.toggleEditing(false);
-		ApiUtil.changeAlbumTitle(this.state.id, this.state.title);
+		ApiUtil.updateAlbum(this.state.id, this.state.title, null);
 	},
 
 	render: function () {

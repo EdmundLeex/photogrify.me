@@ -23,9 +23,8 @@ var AlbumShowMain = React.createClass({
 	},
 
 	render: function () {
-		var currentAlbumId = (this.state.currentAlbum) ? 
-													this.state.currentAlbum.id :
-													0;
+		var currentAlbumId = (this.state.currentAlbum) ?
+													this.state.currentAlbum.id : 0;
 		return (
 			<div className="album-show-main">
 				<AlbumsIndexContainer currentAlbumId={currentAlbumId}
