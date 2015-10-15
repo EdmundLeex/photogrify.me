@@ -55,7 +55,7 @@ var AlbumShowTitle = React.createClass({
 
 	_onClickEdit: function () {
 		// ComponentActions.toggleMode('edit');
-		this.props.pushState(null, '/albums/' + this.props.album.id + '/edit');
+		this.props.history.pushState(null, '/albums/' + this.props.album.id + '/edit');
 	},
 
 	_onEditingToggle: function () {

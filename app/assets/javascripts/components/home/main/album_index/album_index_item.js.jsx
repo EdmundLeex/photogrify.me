@@ -11,7 +11,7 @@ var AlbumIndexItem = React.createClass({
 	},
 
 	handleClick: function (e) {
-		this.props.history.pushState(null, '/albums/' + this.props.album.id);
+		this.props.history.pushState(null, '/albums/' + this.props.album.id + '/show');
 		// var albumId = this.props.album.id;
 		// ComponentActions.switchAlbum(albumId);
 		// ComponentActions.toggleMode('view');
