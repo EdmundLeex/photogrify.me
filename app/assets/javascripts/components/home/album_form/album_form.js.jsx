@@ -9,7 +9,7 @@ var AlbumForm = React.createClass({
 	},
 
 	_onAlbumCreated: function () {
-		this.setState({id: AlbumStore.newAlbumId(), title: AlbumStore.newAlbumTitle()});
+		this.setState({id: AlbumStore.latestAlbum().id, title: AlbumStore.latestAlbum().title});
 	},
 
 	render: function () {

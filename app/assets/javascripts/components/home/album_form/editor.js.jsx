@@ -11,14 +11,17 @@ var Editor = React.createClass({
 	},
 
 	getInitialState: function() {
-		var description;
+		var description,
+				albumId;
 		if (this.validEdit()) {
 			description = this.props.album.description;
+			albumId = this.props.album.id;
 		} else {
 			description = "";
 		}
 
 		return {
+			albumId: albumId,
 			theme: 'snow',
 			enabled: true,
 			readOnly: false,
@@ -30,17 +33,25 @@ var Editor = React.createClass({
 
 	componentDidMount: function () {
 		AlbumStore.addAlbumUpdateListener(this._onSaved);
+		AlbumStore.addAlbumCreateListener(this._onAlbumCreated);
 	},
 
 	componentWillUnmount: function () {
 		AlbumStore.removeAlbumUpdateListener(this._onSaved);
-		if (this.props.album) {
-			ApiUtil.updateAlbum(this.props.album.id, null, this.state.value);
+		AlbumStore.removeAlbumCreateListener(this._onAlbumCreated);
+		if (this.state.albumId) {
+			ApiUtil.updateAlbum(this.state.albumId, null, this.state.value);
+			if (this.typingTimer.typing) {clearTimeout(this.typingTimer.typing)};
+			delete(this.typingTimer.typing);
 		}
 	},
 
 	_onSaved: function () {
 		// render some effects
+	},
+
+	_onAlbumCreated: function () {
+		this.setState({mode: 'edit', albumId: AlbumStore.latestAlbum().id});
 	},
 
 	onKeyDown: function () {
@@ -54,10 +65,10 @@ var Editor = React.createClass({
 	},
 
 	onDoneTyping: function () {
-		if (this.props.mode === 'edit') {
-			ApiUtil.updateAlbum(this.props.album.id, this.props.album.title, this.state.value);
+		if (this.state.mode === 'edit') {
+			ApiUtil.updateAlbum(this.state.albumId, null, this.state.value);
 		} else {
-			// ApiUtil.createAlbum({description: this.state.value});
+			ApiUtil.createAlbum({description: this.state.value});
 		}
 	},
 

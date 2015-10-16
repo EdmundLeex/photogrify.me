@@ -6,7 +6,8 @@ var AlbumMainTitle = React.createClass({
     	id: null,
     	title: null,
     	picCount: null,
-    	editing: false
+    	editing: false,
+    	mode: this.props.mode
     };
 	},
 
@@ -52,11 +53,17 @@ var AlbumMainTitle = React.createClass({
 	},
 
 	_onTitleChanged: function () {
-		this.setState({title: AlbumStore.find(this.props.params.albumId).title});
+		if (this.props.mode === 'new') {
+			this.setState({title: AlbumStore.latestAlbum().title});
+		} else {
+			this.setState({title: AlbumStore.find(this.props.params.albumId).title});
+		}
 	},
 
 	_onAlbumCreated: function () {
-		this.setState({id: AlbumStore.currentAlbum().id, title: AlbumStore.currentAlbum().title});
+		this.setState({id: AlbumStore.latestAlbum().id,
+									 title: AlbumStore.latestAlbum().title,
+									 mode: 'edit'});
 	},
 
 	toggleToFocus: function () {
@@ -65,10 +72,11 @@ var AlbumMainTitle = React.createClass({
 
 	toggleToBlur: function () {
 		ComponentActions.toggleEditing(false);
-		if (this.props.mode !== 'new') {
+		if (this.state.mode !== 'new') {
 			ApiUtil.updateAlbum(this.state.id, this.state.title, null);
 		} else {
-			// ApiUtil.createAlbum({title: this.state.title});
+			// debugger
+			ApiUtil.createAlbum({title: this.state.title});
 		}
 	},
 
