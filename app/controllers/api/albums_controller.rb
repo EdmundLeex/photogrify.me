@@ -8,10 +8,17 @@ class Api::AlbumsController < ApplicationController
   def create
     title = params[:title].blank? ? "No Title" : params[:title]
     description = params[:description] || ""
+    img_urls = params[:urls] || []
 
     @album = current_user.albums.new(title: title, description: description);
 
     if @album.save
+      ActiveRecord::Base.transaction do
+        img_urls.each do |url|
+          @album.pictures.create(picture_url: url)
+        end
+      end
+
       render json: @album
     else
       # TODO: oops.. something went wrong

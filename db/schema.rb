@@ -27,10 +27,10 @@ ActiveRecord::Schema.define(version: 20151012065026) do
   add_index "albums", ["user_id"], name: "index_albums_on_user_id", using: :btree
 
   create_table "pictures", force: :cascade do |t|
-    t.binary   "picture"
-    t.integer  "album_id",   null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "picture_url"
+    t.integer  "album_id",    null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   add_index "pictures", ["album_id"], name: "index_pictures_on_album_id", using: :btree

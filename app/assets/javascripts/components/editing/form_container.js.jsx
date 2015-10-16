@@ -20,6 +20,7 @@ var FormContainer = React.createClass({
     	albumId: albumId,
     	title: title,
     	description: description,
+    	pictures: [],
     	picCount: null,
     	mode: this.props.mode,
     	created: false
@@ -73,12 +74,19 @@ var FormContainer = React.createClass({
 	},
 
 	onUploadClick: function () {
+		var self = this;
 		cloudinary.openUploadWidget({
 			cloud_name: 'edmundleex',
-			upload_preset: 'k24aopiw'
+			upload_preset: 'k24aopiw',
+			theme: 'minimal'
 		}, function (error, result) {
 			console.log(error, result);
-			debugger
+			if (typeof result !== 'undefined') {
+				var urls = result.map(function (img) {
+					return img.url;
+				});
+				self.onDoneEditing({imgUrls: urls});
+			}
 		});
 	},
 
@@ -94,12 +102,25 @@ var FormContainer = React.createClass({
 	// 	}
 	// },
 
-	onDoneEditing: function (value) {
+	onDoneEditing: function (values) {
+		var description,
+				imgUrls;
+
+		if (values) {
+			description = values.description;
+			imgUrls = values.imgUrls;
+		}
+
 		if (this.state.mode === 'edit') {
-			ApiUtil.updateAlbum(this.state.albumId, this.state.title, value);
+			ApiUtil.updateAlbum(this.state.albumId, this.state.title, description);
 		} else {
-			if ((this.state.title !== "" || value !== "") && !this.state.created) {
-				ApiUtil.createAlbum({title: this.state.title, description: value});
+			// or image not empty
+			if ((this.state.title !== "" || description !== "") && !this.state.created) {
+				ApiUtil.createAlbum({
+					title: this.state.title,
+					description: description,
+					urls: imgUrls
+				});
 			}
 		}
 	},
