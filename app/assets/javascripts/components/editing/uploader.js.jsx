@@ -167,33 +167,36 @@ var ReactCloudinaryUploader = React.createClass({
 			width: uploadedImage.width
 		});
 	},
+
 	handleClick: function(ev){
 		self = this;
-		try{
-			var options = this.getUploadOptions();
-			cloudinary.openUploadWidget(
-				options, 
-	      		function(error, result) { 
-	      			if (error){
-	      				self.setError(true, error)
-						return false;
-	      			}
+		try
+			{
+				var options = this.getUploadOptions();
+				cloudinary.openUploadWidget(
+					options,
+      		function(error, result) {
+      			if (error) {
+      				self.setError(true, error)
+							return false;
+      			}
 
-	      			if (!result || result.length === 0){
-	      				self.setError(true, 'No result from Cloudinary');
-	      				return false;
-	      			}
-	      			var uploadedImage = result[0];
-	      			self.setUploadResult(uploadedImage);
-	      			return true;
-	      		}
-	      	);
-      	}catch(e){
-      		self.setError(true, e);
-			return false;
-      	}
-		
+      			if (!result || result.length === 0) {
+      				self.setError(true, 'No result from Cloudinary');
+      				return false;
+      			}
+      			var uploadedImage = result[0];
+      			self.setUploadResult(uploadedImage);
+      			return true;
+      		}
+      	);
+    	}
+		catch(e){
+			console.log(e);
+      self.setError(true, e);
+		}
 	},
+
 	render: function(){
 		var uploader_id = "uploader_" + this.state.uuid;
 		var image = this.state.thumbnailUrl ? this.state.thumbnailUrl: '#';
@@ -209,3 +212,12 @@ var ReactCloudinaryUploader = React.createClass({
 		);
 	}
 });
+
+var Upload = React.createClass({
+	render: function () {
+		return (
+			<div><ReactCloudinaryUploader cloudName={CLOUDINARY_OPTIONS.CLOUD_NAME}
+																		uploadPreset={CLOUDINARY_OPTIONS.UPLOAD_PRESET} /></div>
+		);
+	}
+})

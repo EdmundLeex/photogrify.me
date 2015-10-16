@@ -73,7 +73,13 @@ var FormContainer = React.createClass({
 	},
 
 	onUploadClick: function () {
-
+		cloudinary.openUploadWidget({
+			cloud_name: 'edmundleex',
+			upload_preset: 'k24aopiw'
+		}, function (error, result) {
+			console.log(error, result);
+			debugger
+		});
 	},
 
 	onCancelClick: function () {
