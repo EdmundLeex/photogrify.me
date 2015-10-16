@@ -21,7 +21,8 @@ var FormContainer = React.createClass({
     	title: title,
     	description: description,
     	picCount: null,
-    	mode: this.props.mode
+    	mode: this.props.mode,
+    	created: false
     };
 	},
 
@@ -50,7 +51,8 @@ var FormContainer = React.createClass({
 	_onAlbumCreated: function () {
 		this.setState({albumId: AlbumStore.latestAlbum().id,
 									 title: AlbumStore.latestAlbum().title,
-									 mode: 'edit'});
+									 mode: 'edit',
+									 created: true});
 	},
 
 	_onSaved: function () {
@@ -67,11 +69,11 @@ var FormContainer = React.createClass({
 	},
 
 	onSaveClick: function () {
-		
+
 	},
 
 	onUploadClick: function () {
-		
+
 	},
 
 	onCancelClick: function () {
@@ -90,22 +92,11 @@ var FormContainer = React.createClass({
 		if (this.state.mode === 'edit') {
 			ApiUtil.updateAlbum(this.state.albumId, this.state.title, value);
 		} else {
-			if (this.state.title !== "" || value !== "") {
+			if ((this.state.title !== "" || value !== "") && !this.state.created) {
 				ApiUtil.createAlbum({title: this.state.title, description: value});
 			}
 		}
 	},
-
-	// onEditorBlur: function () {
-	// 	debugger
-	// 	ComponentActions.toggleEditing(false);
-	// 	if (this.state.mode === 'edit' ||
-	// 		this.state.mode === 'view') {
-	// 		ApiUtil.updateAlbum(this.state.albumId, null, this.state.description);
-	// 	} else {
-	// 		ApiUtil.createAlbum({description: this.state.description});
-	// 	}
-	// },
 
 	render: function () {
 		// var album = AlbumStore.find(this.props.params.albumId);
