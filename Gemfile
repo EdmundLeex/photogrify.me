@@ -34,6 +34,8 @@ gem "browserify-rails"
 
 gem "cloudinary"
 
+gem 'figaro'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 

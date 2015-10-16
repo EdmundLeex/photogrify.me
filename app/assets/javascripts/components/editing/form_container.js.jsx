@@ -112,6 +112,7 @@ var FormContainer = React.createClass({
 								  onCancelClick={this.onCancelClick}
 								  onEditTitleFinish={this.onDoneEditing}
 								  linkState={this.linkState} />
+				<ThumbNails />
 				<div id="editor">
 					<QEditor albumId={this.state.albumId}
 									 description={this.state.description}
