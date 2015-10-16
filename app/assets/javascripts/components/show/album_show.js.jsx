@@ -42,18 +42,15 @@ var AlbumShow = React.createClass({
 
 	onUploadClick: function () {
 		var that = this;
-		cloudinary.openUploadWidget({
-			cloud_name: 'edmundleex',
-			upload_preset: 'k24aopiw',
-			theme: 'minimal'
-		}, function (error, result) {
-			console.log(error, result);
-			if (typeof result !== 'undefined') {
-				var urls = result.map(function (img) {
-					return img.url;
-				});
-				that.onDoneEditing({imgUrls: urls});
-			}
+		cloudinary.openUploadWidget(APP_CONFIG.CLOUDINARY_CONFIG,
+			function (error, result) {
+				console.log(error, result);
+				if (typeof result !== 'undefined') {
+					var urls = result.map(function (img) {
+						return img.url;
+					});
+					that.onDoneEditing(urls);
+				}
 		});
 	},
 
@@ -62,8 +59,8 @@ var AlbumShow = React.createClass({
 		this.history.pushState(null, '/');
 	},
 
-	onDoneEditing: function () {
-		ApiUtil.updateAlbum(this.state.albumId, this.state.title);
+	onDoneEditing: function (imgUrls) {
+		ApiUtil.updateAlbum(this.state.albumId, this.state.title, null, imgUrls);
 	},
 
 	render: function () {
