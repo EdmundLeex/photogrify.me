@@ -35,6 +35,7 @@ var TitleBtnGroupNew = React.createClass({
 			btnGrp = (
 				<div className="title-btn-group">
 					<div className="title-bar-btn" onClick={this._onEditClick}>E</div>
+					<div className="title-bar-btn" onClick={this._onUploadClick}>U</div>
 					<div className="title-bar-btn" onClick={this._onDeleteClick}>D</div>
 				</div>
 			)
