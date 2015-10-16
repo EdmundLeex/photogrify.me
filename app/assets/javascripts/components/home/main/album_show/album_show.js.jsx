@@ -12,13 +12,14 @@ var AlbumShow = React.createClass({
 	componentDidMount: function () {
 		AlbumStore.addAlbumsIndexChangeListener(this._onSwitch);
 		AlbumStore.addAlbumUpdateListener(this._onTitleChanged);
-		// PictureStore.addPicturesCollectionChangedListener(this._onSwitch);
+		PictureStore.addPicturesCollectionChangedListener(this._onSwitch);
+		ApiUtil.fetchAllAlbums();
 	},
 
 	componentWillUnmount: function () {
 		AlbumStore.removeAlbumsIndexChangeListener(this._onSwitch);
 		AlbumStore.removeAlbumUpdateListener(this._onTitleChanged);
-		// PictureStore.removePicturesCollectionChangedListener(this._onSwitch);
+		PictureStore.removePicturesCollectionChangedListener(this._onSwitch);
 	},
 
 	_onTitleChanged: function () {
@@ -45,7 +46,7 @@ var AlbumShow = React.createClass({
 	},
 
 	onDoneEditing: function () {
-		ApiUtil.updateAlbum(this.state.album.id, this.state.album.title);
+		ApiUtil.updateAlbum(this.state.albumId, this.state.title);
 	},
 
 	render: function () {
