@@ -84,10 +84,11 @@ var FormContainer = React.createClass({
 								  onCancelClick={this.onCancelClick}
 								  onEditFinish={this.onEditFinish}
 								  linkState={this.linkState} />
-
+				<div id="editor">
+					<QEditor albumId={this.state.albumId}
+									 description={this.state.description} />
+				</div>
 			</div>
 		);
 	}
 });
-				// <QEditor albumId={this.state.albumId}
-				// 				 description={this.state.description} />
