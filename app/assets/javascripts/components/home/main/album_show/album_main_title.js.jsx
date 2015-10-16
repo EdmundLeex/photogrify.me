@@ -47,17 +47,6 @@ var AlbumMainTitle = React.createClass({
 		});
 	},
 
-	_onDelete: function () {
-		console.log(this.state.id);
-		ApiUtil.deleteAlbum(this.state.id);
-		// push state to first album
-	},
-
-	_onClickEdit: function () {
-		// ComponentActions.toggleMode('edit');
-		this.props.history.pushState(null, '/albums/' + this.props.album.id + '/edit');
-	},
-
 	_onEditingToggle: function () {
 		this.setState({editing: AlbumStore.isEditing()});
 	},
@@ -93,10 +82,11 @@ var AlbumMainTitle = React.createClass({
 			<div className="album-show-title">
 				{titleBar}
 				<span className="count">{this.state.picCount}</span>
-				<div className="title-btn-group">
-					<div className="title-bar-btn" onClick={this._onClickEdit}>E</div>
-					<div className="title-bar-btn" onClick={this._onDelete}>D</div>
-				</div>
+				<TitleBtnGroup mode={this.props.mode}
+											 history={this.props.history}
+											 album={this.props.album}
+											 onEditClick={this._onClickEdit}
+											 onDeleteClick={this._onDelete} />
 			</div>
 		);
 	},

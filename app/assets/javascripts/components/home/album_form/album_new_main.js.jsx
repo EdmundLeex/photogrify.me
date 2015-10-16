@@ -1,4 +1,6 @@
 var AlbumNewMain = React.createClass({
+	mixins: [ReactRouter.History],
+
 	getInitialState: function () {
     return { album: null };
 	},
@@ -25,17 +27,13 @@ var AlbumNewMain = React.createClass({
 	// 	debugger
 	// },
 
-	_onToggleMode: function (mode) {
-		ComponentActions.toggleMode(mode);
-	},
-
 	render: function () {
 		// show title editable
 		// add form
 		var albumId = (this.state.album) ? this.state.album.id : null;
 		return (
 			<div className="album-new-main">
-				<AlbumMainTitle handleClickEdit={this._onToggleMode} mode={"new"}/>
+				<AlbumMainTitle mode={"new"} history={this.history} />
 				<AlbumForm albumId={albumId} album={this.state.album} mode={"new"} />
 			</div>
 		);
