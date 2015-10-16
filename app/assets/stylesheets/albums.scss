@@ -97,13 +97,13 @@
 	background-color: gray;
 }
 
-#editor {
+/*#editor {
 	margin: 40px;
 	background-color: white;
 	min-height: 350px;
 }
-
-.ql-editor {
+*/
+#ql-editor-1 {
 	min-height: 350px;
 }
 
@@ -115,4 +115,8 @@
 	margin-bottom: 0;
 	float: left;
 	background-color: white;
+}
+
+.form-container {
+	position: relative;
 }

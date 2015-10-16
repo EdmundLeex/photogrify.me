@@ -57,7 +57,7 @@ var QEditor = React.createClass({
 	},
 
 	onDoneTyping: function () {
-		console.log(this.state.value);
+		console.log('done');
 		this.props.onDoneTyping(this.state.value);
 	},
 

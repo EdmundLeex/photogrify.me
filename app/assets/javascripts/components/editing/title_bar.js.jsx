@@ -1,6 +1,9 @@
 var TitleBar = React.createClass({
 	getInitialState: function () {
-    return {editing: false};
+    return {
+    	editing: false,
+    	title: ""
+    };
 	},
 
 	_onEditingToggle: function () {

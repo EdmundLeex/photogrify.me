@@ -7,8 +7,8 @@ var FormContainer = React.createClass({
 				album;
 		if (this.props.mode === 'new') {
 			albumId = null;
-			title = null;
-			description = null;
+			title = "";
+			description = "";
 		} else {
 			albumId = this.props.params.albumId;
 			album = AlbumStore.find(albumId);
@@ -78,21 +78,21 @@ var FormContainer = React.createClass({
 		this.props.history.pushState(null, '/');
 	},
 
-	onEditTitleFinish: function () {
-		if (this.state.mode !== 'new') {
-			ApiUtil.updateAlbum(this.state.albumId, this.state.title, null);
-		} else {
-			ApiUtil.createAlbum({title: this.state.title});
-		}
-	},
+	// onEditTitleFinish: function () {
+	// 	if (this.state.mode !== 'new') {
+	// 		ApiUtil.updateAlbum(this.state.albumId, this.state.title, null);
+	// 	} else {
+	// 		ApiUtil.createAlbum({title: this.state.title});
+	// 	}
+	// },
 
-	onEditorDoneTyping: function (value) {
-		console.log('done');
+	onDoneEditing: function (value) {
 		if (this.state.mode === 'edit') {
-			ApiUtil.updateAlbum(this.state.albumId, null, value);
+			ApiUtil.updateAlbum(this.state.albumId, this.state.title, value);
 		} else {
-			console.log(value);
-			ApiUtil.createAlbum({description: value});
+			if (this.state.title !== "" || value !== "") {
+				ApiUtil.createAlbum({title: this.state.title, description: value});
+			}
 		}
 	},
 
@@ -110,7 +110,7 @@ var FormContainer = React.createClass({
 	render: function () {
 		// var album = AlbumStore.find(this.props.params.albumId);
 		return (
-			<div>
+			<div className="form-container">
 				<TitleBar mode={this.state.mode}
 									title={this.state.title}
 									albumId={this.state.albumId}
@@ -119,14 +119,13 @@ var FormContainer = React.createClass({
 								  onSaveClick={this.onSaveClick}
 								  onUploadClick={this.onUploadClick}
 								  onCancelClick={this.onCancelClick}
-								  onEditTitleFinish={this.onEditTitleFinish}
+								  onEditTitleFinish={this.onDoneEditing}
 								  linkState={this.linkState} />
 				<div id="editor">
 					<QEditor albumId={this.state.albumId}
 									 description={this.state.description}
 									 linkState={this.linkState}
-									 onDoneTyping={this.onEditorDoneTyping}
-									 onEditorBlur={this.onEditorBlur} />
+									 onDoneTyping={this.onDoneEditing} />
 				</div>
 			</div>
 		);
