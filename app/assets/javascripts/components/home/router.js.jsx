@@ -28,7 +28,6 @@ $(function () {
 						<Route path="/albums/:albumId/show" component={AlbumShow} />
 						<Route path="/albums/:albumId/edit" component={Edit} />
 					</Route>
-					<Route path="uploader" component={Upload} />
 					<Route path="new" component={New} />
 				</Route>
 			</Router>
