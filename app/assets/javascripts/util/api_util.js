@@ -27,10 +27,12 @@ window.ApiUtil = {
 				var albumId = respData[0].id;
 				ApiActions.receiveAllAlbums(respData);
 
-				if (init) {
-					ComponentActions.switchAlbum(albumId);
-					ApiUtil.fetchPicturesFromAlbum(albumId);
-				}
+				// if (init) {
+				// 	ComponentActions.switchAlbum(albumId);
+				// 	ApiUtil.fetchPicturesFromAlbum(albumId);
+				// }
+
+				// show welcome page, setTimeout disappear
 			}
 		});
 	},

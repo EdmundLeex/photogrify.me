@@ -1,10 +1,10 @@
 window.ComponentActions = {
-	switchAlbum: function (albumId) {
-		AppDispatcher.dispatch({
-			actionType: APP_CONSTANTS.ALBUM_SWITCHED,
-			albumId: albumId
-		});
-	},
+	// switchAlbum: function (albumId) {
+	// 	AppDispatcher.dispatch({
+	// 		actionType: APP_CONSTANTS.ALBUM_SWITCHED,
+	// 		albumId: albumId
+	// 	});
+	// },
 
 	toggleEditing: function (editing) {
 		AppDispatcher.dispatch({
@@ -13,12 +13,12 @@ window.ComponentActions = {
 		});
 	},
 
-	toggleMode: function (mode) {
-		AppDispatcher.dispatch({
-			actionType: APP_CONSTANTS.TOGGLE_MODE,
-			mode: mode
-		});
-	},
+	// toggleMode: function (mode) {
+	// 	AppDispatcher.dispatch({
+	// 		actionType: APP_CONSTANTS.TOGGLE_MODE,
+	// 		mode: mode
+	// 	});
+	// },
 
 	saveNewAlbum: function (album) {
 		ApiUtil.updateAlbum(album.id, album.title, album.description);

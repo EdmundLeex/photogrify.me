@@ -12,7 +12,7 @@ var Editor = React.createClass({
 
 	getInitialState: function() {
 		var description;
-		if (this.validEdit) {
+		if (this.validEdit()) {
 			description = this.props.album.description;
 		} else {
 			description = "";

@@ -1,4 +1,4 @@
-var AlbumShowTitle = React.createClass({
+var AlbumMainTitle = React.createClass({
 	mixins: [React.addons.LinkedStateMixin],
 
 	getInitialState: function () {
@@ -12,12 +12,14 @@ var AlbumShowTitle = React.createClass({
 
 	componentDidMount: function () {
 		// AlbumStore.addAlbumSwitchedListener(this._onSwitch);
-		var album = this.props.album;
-		this.setState({
-			id: album.id,
-			title: album.title,
-			picCount: PictureStore.count()
-		});
+		if (this.props.mode === 'edit') {
+			var album = this.props.album;
+			this.setState({
+				id: album.id,
+				title: album.title,
+				picCount: PictureStore.count()
+			});
+		}
 
 		AlbumStore.addToggleEditingListener(this._onEditingToggle);
 		AlbumStore.addAlbumsIndexChangeListener(this._onSwitch);
@@ -65,7 +67,7 @@ var AlbumShowTitle = React.createClass({
 	},
 
 	_onAlbumCreated: function () {
-		this.setState({id: AlbumStore.newAlbumId(), title: AlbumStore.newAlbumTitle()});
+		this.setState({id: AlbumStore.currentAlbum().id, title: AlbumStore.currentAlbum().title});
 	},
 
 	toggleToFocus: function () {

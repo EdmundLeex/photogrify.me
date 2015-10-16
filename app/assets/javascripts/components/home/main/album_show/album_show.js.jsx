@@ -5,7 +5,7 @@ var AlbumShow = React.createClass({
 		var album = AlbumStore.find(this.props.params.albumId);
 		return (
 			<div className="album-show">
-				<AlbumShowTitle history={this.history} album={album} params={this.props.params} />
+				<AlbumMainTitle history={this.history} album={album} params={this.props.params} />
 				<PicturesCollection history={this.history} album={album} params={this.props.params} />
 			</div>
 		);

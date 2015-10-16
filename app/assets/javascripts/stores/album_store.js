@@ -38,7 +38,7 @@
 
 	var createAlbum = function (album) {
 		_albums.unshift(album);
-		_currentAlbumId = _newAlbumId = album.id;
+		// _currentAlbumId = album.id;
 	};
 
 	root.AlbumStore = $.extend({}, EventEmitter.prototype, {
@@ -54,6 +54,10 @@
 			return _albums.filter(function (alb) {
 				return alb.id === parseInt(albumId);
 			})[0];
+		},
+
+		latestAlbum: function () {
+			return _albums[0];
 		},
 
 		// currentAlbumId: function () {
