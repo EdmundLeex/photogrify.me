@@ -6,15 +6,25 @@ var Editor = React.createClass({
 
 	typingTimer: {},
 
+	validEdit: function () {
+		return (this.props.mode === 'edit' && typeof this.props.album !== 'undefined');
+	},
+
 	getInitialState: function() {
-		var description = (this.props.mode === 'edit') ? this.props.album.description : "";
+		var description;
+		if (this.validEdit) {
+			description = this.props.album.description;
+		} else {
+			description = "";
+		}
 
 		return {
 			theme: 'snow',
 			enabled: true,
 			readOnly: false,
 			value: description,
-			events: []
+			events: [],
+			mode: this.props.mode
 		};
 	},
 
@@ -44,12 +54,11 @@ var Editor = React.createClass({
 	},
 
 	onDoneTyping: function () {
-		if (this.props.mode === 'edit' || AlbumStore.newAlbumId()) {
+		if (this.props.mode === 'edit') {
 			ApiUtil.updateAlbum(this.props.album.id, this.props.album.title, this.state.value);
 		} else {
-			ApiUtil.createAlbum({description: this.state.value});
+			// ApiUtil.createAlbum({description: this.state.value});
 		}
-		// ApiUtil.updateAlbum(this.props.album.id, null, this.state.value);
 	},
 
 	formatRange: function(range) {

@@ -6,7 +6,7 @@ var AlbumEdit = React.createClass({
 		return (
 			<div className="album-show">
 				<AlbumShowTitle history={this.history} album={album} params={this.props.params} />
-				<AlbumForm album={album} mode={'edit'} />
+				<AlbumForm album={album} mode={'edit'} history={this.history} />
 			</div>
 		);
 	}

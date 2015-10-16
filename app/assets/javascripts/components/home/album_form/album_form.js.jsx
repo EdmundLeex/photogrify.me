@@ -20,7 +20,7 @@ var AlbumForm = React.createClass({
 			<div className="album-form">
 				<AlbumThumbNails albumId={albumId} />
 				<div id="editor">
-					<Editor album={this.props.album} mode={this.props.mode} />
+					<Editor album={this.props.album} mode={this.props.mode} history={this.props.history} />
 				</div>
 			</div>
 		);

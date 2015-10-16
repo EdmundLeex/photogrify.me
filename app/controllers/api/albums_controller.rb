@@ -42,7 +42,7 @@ class Api::AlbumsController < ApplicationController
         # TODO: oops.. something went wrong
       end
     else
-      # TODO: album dont' exist
+      redirect_to home_url
     end
   end
 
