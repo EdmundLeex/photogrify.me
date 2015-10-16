@@ -37,7 +37,6 @@ class Api::AlbumsController < ApplicationController
 
   def update
     @album = Album.find(params[:id])
-    debugger
 
     if @album
       @album.title = params[:title] unless params[:title].blank?
