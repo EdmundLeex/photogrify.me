@@ -13,6 +13,13 @@ window.ComponentActions = {
 		});
 	},
 
+	toggleCreating: function (creating) {
+		AppDispatcher.dispatch({
+			actionType: APP_CONSTANTS.TOGGLE_CREATING,
+			creating: creating
+		});
+	},
+
 	// toggleMode: function (mode) {
 	// 	AppDispatcher.dispatch({
 	// 		actionType: APP_CONSTANTS.TOGGLE_MODE,

@@ -23,7 +23,7 @@ var FormContainer = React.createClass({
     	pictures: [],
     	picCount: null,
     	mode: this.props.mode,
-    	created: false
+    	creatingState: null
     };
 	},
 
@@ -31,6 +31,7 @@ var FormContainer = React.createClass({
 		// AlbumStore.addAlbumsIndexChangeListener(this._onSwitch);
 		AlbumStore.addAlbumUpdateListener(this._onTitleChanged);
 		AlbumStore.addAlbumCreateListener(this._onAlbumCreated);
+		AlbumStore.addToggleCreatingListener(this._onToggleCreating);
 		// PictureStore.addPicturesCollectionChangedListener(this._onSwitch);
 	},
 
@@ -38,6 +39,7 @@ var FormContainer = React.createClass({
 		// AlbumStore.removeAlbumsIndexChangeListener(this._onSwitch);
 		AlbumStore.removeAlbumUpdateListener(this._onTitleChanged);
 		AlbumStore.removeAlbumCreateListener(this._onAlbumCreated);
+		AlbumStore.removeToggleCreatingListener(this._onToggleCreating);
 		// PictureStore.removePicturesCollectionChangedListener(this._onSwitch);
 	},
 
@@ -53,11 +55,15 @@ var FormContainer = React.createClass({
 		this.setState({albumId: AlbumStore.latestAlbum().id,
 									 title: AlbumStore.latestAlbum().title,
 									 mode: 'edit',
-									 created: true});
+									 creatingState: 'created'});
 	},
 
 	_onSaved: function () {
 		// render some effects
+	},
+
+	_onToggleCreating: function () {
+		this.setState({creatingState: 'creating'});
 	},
 
 	onEditClick: function () {
@@ -114,13 +120,18 @@ var FormContainer = React.createClass({
 		if (this.state.mode === 'edit') {
 			ApiUtil.updateAlbum(this.state.albumId, this.state.title, description, imgUrls);
 		} else {
-			// or image not empty
-			if ((this.state.title !== "" || description !== "" || imgUrls.length) && !this.state.created) {
-				ApiUtil.createAlbum({
-					title: this.state.title,
-					description: description,
-					urls: imgUrls
-				});
+			console.log(this.state.creatingState);
+			if (this.state.creatingState !== 'created' && this.state.creatingState !== 'creating') {
+			console.log("about to create");
+				if (this.state.title !== "" || description !== "" || imgUrls.length) {
+					ComponentActions.toggleCreating('creating');
+
+					ApiUtil.createAlbum({
+						title: this.state.title,
+						description: description,
+						urls: imgUrls
+					});
+				}
 			}
 		}
 	},

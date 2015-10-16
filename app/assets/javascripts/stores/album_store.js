@@ -6,6 +6,7 @@
 	var TOGGLE_MODE_EVENT = "TOGGLE_MODE_EVENT";
 	var ALBUM_CREATED_EVENT = "ALBUM_CREATED_EVENT";
 	var CURRENT_ALBUM_ID_RETRIEVED_EVENT = "CURRENT_ALBUM_ID_RETRIEVED_EVENT";
+	var TOGGLE_CREATING_EVENT = "TOGGLE_CREATING_EVENT";
 
 	var _albums = [];
 	// var _currentAlbum = null;
@@ -13,6 +14,7 @@
 	// 		_newAlbumId = null;
 	// var _currentTitle = null;
 	var _editingTitle = false;
+	var _creating = 'new';
 	// var _mode = 'view';
 
 	var resetAlbums = function (albums) {
@@ -26,6 +28,10 @@
 
 	var toggleEditing = function (editing) {
 		_editingTitle = editing;
+	};
+
+	var toggleCreating = function (creating) {
+		_creating = creating;
 	};
 
 	var resetTitle = function (title) {
@@ -148,6 +154,14 @@
 			this.removeListener(ALBUM_CREATED_EVENT, callback);
 		},
 
+		addToggleCreatingListener: function (callback) {
+			this.on(TOGGLE_CREATING_EVENT, callback);
+		},
+
+		removeToggleCreatingListener: function (callback) {
+			this.removeListener(TOGGLE_CREATING_EVENT, callback);
+		},
+
 		// addCurrentAlbumIdRetrieveListener: function (callback) {
 		// 	this.on(CURRENT_ALBUM_ID_RETRIEVED_EVENT, callback);
 		// },
@@ -181,6 +195,10 @@
 				case APP_CONSTANTS.ALBUM_CREATED:
 					createAlbum(payload.album);
 					AlbumStore.emit(ALBUM_CREATED_EVENT);
+					break;
+				case APP_CONSTANTS.TOGGLE_CREATING:
+					toggleCreating(payload.creating);
+					AlbumStore.emit(TOGGLE_CREATING_EVENT);
 					break;
 				// case APP_CONSTANTS.RETRIEVE_ALBUM_STATE:
 				// 	_currentAlbumId = parseInt(payload.currentAlbumId);
