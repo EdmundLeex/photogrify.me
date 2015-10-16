@@ -10,8 +10,8 @@ var FormContainer = React.createClass({
 			title = null;
 			description = null;
 		} else {
-			album = AlbumStore.find(albumId).title;
 			albumId = this.props.params.albumId;
+			album = AlbumStore.find(albumId);
 			title = album.title;
 			description = album.description;
 		}
@@ -58,12 +58,12 @@ var FormContainer = React.createClass({
 	},
 
 	onEditClick: function () {
-		this.props.history.pushState(null, '/albums/' + this.props.params.albumId + '/edit');
+		this.history.pushState(null, '/albums/' + this.props.params.albumId + '/edit');
 	},
 
 	onDeleteClick: function () {
 		ApiUtil.deleteAlbum(this.state.albumId);
-		this.props.history.pushState(null, '/');
+		this.history.pushState(null, '/');
 	},
 
 	onSaveClick: function () {
@@ -78,7 +78,7 @@ var FormContainer = React.createClass({
 		this.props.history.pushState(null, '/');
 	},
 
-	onEditFinish: function () {
+	onEditTitleFinish: function () {
 		if (this.state.mode !== 'new') {
 			ApiUtil.updateAlbum(this.state.albumId, this.state.title, null);
 		} else {
@@ -117,7 +117,7 @@ var FormContainer = React.createClass({
 								  onSaveClick={this.onSaveClick}
 								  onUploadClick={this.onUploadClick}
 								  onCancelClick={this.onCancelClick}
-								  onEditFinish={this.onEditFinish}
+								  onEditTitleFinish={this.onEditTitleFinish}
 								  linkState={this.linkState} />
 				<div id="editor">
 					<QEditor albumId={this.state.albumId}
