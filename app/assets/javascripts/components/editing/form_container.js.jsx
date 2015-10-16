@@ -2,27 +2,29 @@ var FormContainer = React.createClass({
 	mixins: [ReactRouter.History, React.addons.LinkedStateMixin],
 
 	getInitialState: function () {
+		var albumId = this.props.params.albumId;
+		var album = AlbumStore.find(albumId);
     return {
-    	albumId: null,
-    	title: null,
-    	description: null,
+    	albumId: albumId,
+    	title: album.title,
+    	description: album.description,
     	picCount: null,
     	mode: null
     };
 	},
 
 	componentDidMount: function () {
-		AlbumStore.addAlbumsIndexChangeListener(this._onSwitch);
+		// AlbumStore.addAlbumsIndexChangeListener(this._onSwitch);
 		AlbumStore.addAlbumUpdateListener(this._onTitleChanged);
 		AlbumStore.addAlbumCreateListener(this._onAlbumCreated);
-		PictureStore.addPicturesCollectionChangedListener(this._onSwitch);
+		// PictureStore.addPicturesCollectionChangedListener(this._onSwitch);
 	},
 
 	componentWillUnmount: function () {
-		AlbumStore.removeAlbumsIndexChangeListener(this._onSwitch);
+		// AlbumStore.removeAlbumsIndexChangeListener(this._onSwitch);
 		AlbumStore.removeAlbumUpdateListener(this._onTitleChanged);
 		AlbumStore.removeAlbumCreateListener(this._onAlbumCreated);
-		PictureStore.removePicturesCollectionChangedListener(this._onSwitch);
+		// PictureStore.removePicturesCollectionChangedListener(this._onSwitch);
 	},
 
 	_onTitleChanged: function () {
@@ -40,7 +42,7 @@ var FormContainer = React.createClass({
 	},
 
 	onEditClick: function () {
-		this.props.history.pushState(null, '/albums/' + this.props.album.id + '/edit');
+		this.props.history.pushState(null, '/albums/' + this.props.params.albumId + '/edit');
 	},
 
 	onDeleteClick: function () {
@@ -62,15 +64,16 @@ var FormContainer = React.createClass({
 
 	onEditFinish: function () {
 		if (this.state.mode !== 'new') {
-			ApiUtil.updateAlbum(this.state.id, this.state.title, null);
+			ApiUtil.updateAlbum(this.state.albumId, this.state.title, null);
 		} else {
 			ApiUtil.createAlbum({title: this.state.title});
 		}
 	},
 
 	render: function () {
+		// var album = AlbumStore.find(this.props.params.albumId);
 		return (
-			<div>
+			<div className="album-show">
 				<TitleBar mode={this.state.mode}
 									title={this.state.title}
 									albumId={this.state.albumId}
