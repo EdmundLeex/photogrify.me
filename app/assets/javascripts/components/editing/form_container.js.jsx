@@ -2,14 +2,26 @@ var FormContainer = React.createClass({
 	mixins: [ReactRouter.History, React.addons.LinkedStateMixin],
 
 	getInitialState: function () {
-		var albumId = this.props.params.albumId;
-		var album = AlbumStore.find(albumId);
+		var albumId,
+				title,
+				album;
+		if (this.props.mode === 'new') {
+			albumId = null;
+			title = null;
+			description = null;
+		} else {
+			album = AlbumStore.find(albumId).title;
+			albumId = this.props.params.albumId;
+			title = album.title;
+			description = album.description;
+		}
+
     return {
     	albumId: albumId,
-    	title: album.title,
-    	description: album.description,
+    	title: title,
+    	description: description,
     	picCount: null,
-    	mode: null
+    	mode: this.props.mode
     };
 	},
 
@@ -41,6 +53,10 @@ var FormContainer = React.createClass({
 									 mode: 'edit'});
 	},
 
+	_onSaved: function () {
+		// render some effects
+	},
+
 	onEditClick: function () {
 		this.props.history.pushState(null, '/albums/' + this.props.params.albumId + '/edit');
 	},
@@ -70,10 +86,29 @@ var FormContainer = React.createClass({
 		}
 	},
 
+	onEditorDoneTyping: function (value) {
+		if (this.state.mode === 'edit') {
+			ApiUtil.updateAlbum(this.state.albumId, null, value);
+		} else {
+			ApiUtil.createAlbum({description: value});
+		}
+	},
+
+	// onEditorBlur: function () {
+	// 	debugger
+	// 	ComponentActions.toggleEditing(false);
+	// 	if (this.state.mode === 'edit' ||
+	// 		this.state.mode === 'view') {
+	// 		ApiUtil.updateAlbum(this.state.albumId, null, this.state.description);
+	// 	} else {
+	// 		ApiUtil.createAlbum({description: this.state.description});
+	// 	}
+	// },
+
 	render: function () {
 		// var album = AlbumStore.find(this.props.params.albumId);
 		return (
-			<div className="album-show">
+			<div>
 				<TitleBar mode={this.state.mode}
 									title={this.state.title}
 									albumId={this.state.albumId}
@@ -86,7 +121,10 @@ var FormContainer = React.createClass({
 								  linkState={this.linkState} />
 				<div id="editor">
 					<QEditor albumId={this.state.albumId}
-									 description={this.state.description} />
+									 description={this.state.description}
+									 linkState={this.linkState}
+									 onDoneTyping={this.onEditorDoneTyping}
+									 onEditorBlur={this.onEditorBlur} />
 				</div>
 			</div>
 		);

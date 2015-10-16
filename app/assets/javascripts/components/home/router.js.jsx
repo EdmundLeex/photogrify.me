@@ -26,10 +26,10 @@ $(function () {
 					<IndexRoute component={AlbumsMain} />
 					<Route path="albums" component={AlbumsMain}>
 						<Route path="/albums/:albumId/show" component={AlbumShow} />
-						<Route path="/albums/:albumId/edit" component={FormContainer} />
+						<Route path="/albums/:albumId/edit" component={Edit} />
 					</Route>
 
-					<Route path="new" component={AlbumNewMain} />
+					<Route path="new" component={New} />
 				</Route>
 			</Router>
 		), root);
