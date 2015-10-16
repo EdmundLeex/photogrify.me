@@ -28,6 +28,12 @@ var QEditor = React.createClass({
 		};
 	},
 
+	componentWillUnmount: function () {
+		if (this.typingTimer.typing) {clearTimeout(this.typingTimer.typing)};
+		delete(this.typingTimer.typing);
+		this.onDoneTyping();
+	},
+
 	// componentWillUnmount: function () {
 	// 	AlbumStore.removeAlbumUpdateListener(this._onSaved);
 	// 	AlbumStore.removeAlbumCreateListener(this._onAlbumCreated);
@@ -45,10 +51,13 @@ var QEditor = React.createClass({
 
 	onKeyUp: function () {
 		var onDoneTyping = this.onDoneTyping;
-		this.typingTimer.typing = setTimeout(onDoneTyping, 5000);
+		if (typeof this.typingTimer.typing == 'undefined') {
+			this.typingTimer.typing = setTimeout(onDoneTyping, 5000)
+		};
 	},
 
 	onDoneTyping: function () {
+		console.log(this.state.value);
 		this.props.onDoneTyping(this.state.value);
 	},
 
@@ -98,12 +107,12 @@ var QEditor = React.createClass({
 	},
 
 	render: function () {
+		console.log('rendered');
 		return (
       <ReactQuill value={this.state.value}
       						theme={this.state.theme}
       						onChange={this.onEditorChange}
       						onChangeSelection={this.onEditorChangeSelection}
-      						onBlur={this.onDoneTyping}
       						onKeyDown={this.onKeyDown}
       						onKeyUp={this.onKeyUp} />
     );

@@ -87,9 +87,11 @@ var FormContainer = React.createClass({
 	},
 
 	onEditorDoneTyping: function (value) {
+		console.log('done');
 		if (this.state.mode === 'edit') {
 			ApiUtil.updateAlbum(this.state.albumId, null, value);
 		} else {
+			console.log(value);
 			ApiUtil.createAlbum({description: value});
 		}
 	},
