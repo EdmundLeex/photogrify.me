@@ -9,7 +9,7 @@ class Api::AlbumsController < ApplicationController
     title = params[:title].blank? ? "No Title" : params[:title]
     description = params[:description] || ""
 
-    @album = current_user.albums.new(title: title);
+    @album = current_user.albums.new(title: title, description: description);
 
     if @album.save
       render json: @album
