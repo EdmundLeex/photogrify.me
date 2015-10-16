@@ -112,10 +112,10 @@ var FormContainer = React.createClass({
 		}
 
 		if (this.state.mode === 'edit') {
-			ApiUtil.updateAlbum(this.state.albumId, this.state.title, description);
+			ApiUtil.updateAlbum(this.state.albumId, this.state.title, description, imgUrls);
 		} else {
 			// or image not empty
-			if ((this.state.title !== "" || description !== "") && !this.state.created) {
+			if ((this.state.title !== "" || description !== "" || imgUrls.length) && !this.state.created) {
 				ApiUtil.createAlbum({
 					title: this.state.title,
 					description: description,

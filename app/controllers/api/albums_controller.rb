@@ -37,13 +37,23 @@ class Api::AlbumsController < ApplicationController
 
   def update
     @album = Album.find(params[:id])
+    debugger
 
     if @album
-      @album.title = params[:title] unless params[:title] == ""
-      @album.description = params[:description] unless params[:description] == ""
+      @album.title = params[:title] unless params[:title].blank?
+      @album.description = params[:description] unless params[:description].blank?
+      picture_urls = params[:urls] unless params[:urls].blank?
 
       if @album.save
         @albums = albums_in_desc
+        if picture_urls
+          ActiveRecord::Base.transaction do
+            picture_urls.each do |url|
+              @album.pictures.create(picture_url: url)
+            end
+          end
+        end
+
         render :index
       else
         # TODO: oops.. something went wrong

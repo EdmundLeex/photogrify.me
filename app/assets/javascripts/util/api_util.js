@@ -50,31 +50,34 @@ window.ApiUtil = {
 		});
 	},
 
-	updateAlbum: function (albumId, title, description) {
+	updateAlbum: function (albumId, title, description, urls) {
 		$.ajax({
 			url: '/api/albums/' + albumId,
 			type: 'patch',
 			dataType: 'json',
-			data: {"title": title, "description": description},
+			data: {"title": title, "description": description, "urls": urls},
 
 			success: function (respData) {
 				ApiActions.updatedAlbum(respData);
+			},
+			error: function (respData) {
+				console.log(respData);
 			}
 		});
 	},
 
-	updateDescription: function (id, description) {
-		$.ajax({
-			url: '/api/albums/' + id,
-			type: 'patch',
-			dataType: 'json',
-			data: {"description": description},
+	// updateDescription: function (id, description) {
+	// 	$.ajax({
+	// 		url: '/api/albums/' + id,
+	// 		type: 'patch',
+	// 		dataType: 'json',
+	// 		data: {"description": description},
 
-			success: function (respData) {
-				ApiActions.savedDescription(respData.description);
-			}
-		});
-	},
+	// 		success: function (respData) {
+	// 			ApiActions.savedDescription(respData.description);
+	// 		}
+	// 	});
+	// },
 
 	deleteAlbum: function (id) {
 		$.ajax({

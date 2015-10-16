@@ -40,6 +40,23 @@ var AlbumShow = React.createClass({
 		this.history.pushState(null, '/albums/' + this.props.params.albumId + '/edit');
 	},
 
+	onUploadClick: function () {
+		var that = this;
+		cloudinary.openUploadWidget({
+			cloud_name: 'edmundleex',
+			upload_preset: 'k24aopiw',
+			theme: 'minimal'
+		}, function (error, result) {
+			console.log(error, result);
+			if (typeof result !== 'undefined') {
+				var urls = result.map(function (img) {
+					return img.url;
+				});
+				that.onDoneEditing({imgUrls: urls});
+			}
+		});
+	},
+
 	onDeleteClick: function () {
 		ApiUtil.deleteAlbum(this.state.albumId);
 		this.history.pushState(null, '/');
@@ -56,6 +73,7 @@ var AlbumShow = React.createClass({
 									title={this.state.title}
 									albumId={this.state.albumId}
 									onEditClick={this.onEditClick}
+									onUploadClick={this.onUploadClick}
 								  onDeleteClick={this.onDeleteClick}
 								  onEditTitleFinish={this.onDoneEditing}
 								  linkState={this.linkState} />
