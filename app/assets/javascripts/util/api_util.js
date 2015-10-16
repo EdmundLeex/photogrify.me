@@ -51,7 +51,6 @@ window.ApiUtil = {
 	},
 
 	updateAlbum: function (albumId, title, description, urls) {
-		debugger
 		$.ajax({
 			url: '/api/albums/' + albumId,
 			type: 'patch',
