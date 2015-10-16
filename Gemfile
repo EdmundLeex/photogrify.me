@@ -32,6 +32,8 @@ gem 'bootstrap-sass'
 
 gem "browserify-rails"
 
+gem "cloudinary"
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
