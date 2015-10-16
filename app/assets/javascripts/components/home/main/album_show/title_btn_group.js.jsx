@@ -10,7 +10,7 @@ var TitleBtnGroup = React.createClass({
 	},
 
 	_onClickSave: function () {
-		
+		$('#ql-editor-1').children();
 	},
 
 	_onClickUpload: function () {

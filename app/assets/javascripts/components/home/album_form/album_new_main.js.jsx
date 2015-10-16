@@ -6,22 +6,22 @@ var AlbumNewMain = React.createClass({
 	},
 
 	componentDidMount: function () {
-		AlbumStore.addAlbumCreateListener(this._onCreate);
+		// AlbumStore.addAlbumCreateListener(this._onCreate);
 		// AlbumStore.addCurrentAlbumIdRetrieveListener(this._onRetrieve);
 	},
 
 	componentWillUnmount: function () {
-		AlbumStore.removeAlbumCreateListener(this._onCreate);
-		if (this.state.album) {
-			ComponentActions.saveNewAlbum(this.state.album);
-		}
-		AlbumStore.removeAlbumCreateListener(this._onCreate);
+		// AlbumStore.removeAlbumCreateListener(this._onCreate);
+		// if (this.state.album) {
+		// 	ComponentActions.saveNewAlbum(this.state.album);
+		// }
+		// AlbumStore.removeAlbumCreateListener(this._onCreate);
 		// AlbumStore.removeCurrentAlbumIdRetrieveListener(this._onRetrieve);
 	},
 
-	_onCreate: function () {
-		this.setState({ album: AlbumStore.newAlbum() });
-	},
+	// _onCreate: function () {
+	// 	this.setState({ album: AlbumStore.newAlbum() });
+	// },
 
 	// _onRetrieve: function () {
 	// 	debugger
