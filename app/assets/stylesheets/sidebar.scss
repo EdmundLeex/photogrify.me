@@ -10,22 +10,26 @@
 	background-color: #161617;
 	vertical-align: baseline;
 	border-right: 1px solid black;
-	padding-left: 12px;
-	padding-right: 12px;
+	/*padding-left: 12px;*/
+	/*padding-right: 12px;*/
 	padding-top: 12px;
 }
 
 .sidebar-thumbs {
 	position: relative;
+	display: block;
 	width: 36px;
 	height: 36px;
+	margin: auto;
+	margin-bottom: 10px;
+	text-align: center;
 	/*background-color: white;*/
 	border-radius: 5px;
+	.logo {
+		height: 66px;
+	}
 }
 
-.logo {
-	height: 66px;
-}
 
 .btn-group {
 

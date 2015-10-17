@@ -1,6 +1,7 @@
 .glyphicon {
 	font-size: 22px;
-	margin: 10px;
+	margin: auto;
+	text-align: center;
 }
 
 .glyphicon:hover {
@@ -13,6 +14,11 @@
 }
 
 .glyphicon-plus {
+	font-size: 26px;
+	color: #BBBBBC;
+}
+
+.glyphicon-book {
 	font-size: 26px;
 	color: #BBBBBC;
 }
