@@ -12,4 +12,4 @@ Album.create(title: 'Demo Album3', description: 'description', user: User.first)
 
 Picture.destroy_all
 
-Picture.create(album: Album.first)
+# Picture.create(album: Album.first)

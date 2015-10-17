@@ -2,8 +2,9 @@ var PictureItem = React.createClass({
 	render: function () {
 		return (
 			<div>
-				<img src="" alt="and_this" className="img-thumb"/>
-				<span>{this.props.picture.id}</span>
+				<img src={this.props.picture.picture_url}
+						 className="img-thumb"/>
+				<span></span>
 			</div>
 		);
 	}
