@@ -103,6 +103,10 @@
 	    outline: 0;
 		}
 
+		input:hover {
+			color: #128fdc;
+		}
+
 		.editing {
 			border: 2px solid #e0e0e0;
 			border-style: dashed;
@@ -117,13 +121,13 @@
 	margin-top: -15px;
 }
 
-.title-bar-btn {
+/*.title-bar-btn {
 	display: inline-block;
 	width: 24px;
 	height: 24px;
 	background-color: black;
 	margin: 5px;
-}
+}*/
 
 .album-thumbnails {
 	position: relative;
@@ -159,6 +163,16 @@
 	width: inherit;
 }
 
-#upload {
-	content:url('upload.png');
+.glyphicon {
+	font-size: 22px;
+	margin: 10px;
+}
+
+.glyphicon:hover {
+	color: #128fdc;
+	cursor: pointer;
+}
+
+.glyphicon-edit {
+
 }

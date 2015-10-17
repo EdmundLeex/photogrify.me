@@ -26,17 +26,17 @@ var TitleBtnGroupNew = React.createClass({
 		if (this.props.mode === 'new') {
 			btnGrp = (
 				<div className="title-btn-group">
-					<div className="title-bar-btn" onClick={this._onSaveClick}>S</div>
-					<div className="title-bar-btn" id="upload" onClick={this._onUploadClick}>U</div>
-					<div className="title-bar-btn" onClick={this._onCancelClick}>C</div>
+					<span className="glyphicon glyphicon-upload" id="upload" onClick={this._onUploadClick}></span>
+					<span className="title-bar-btn" onClick={this._onSaveClick}>S</span>
+					<span className="title-bar-btn" onClick={this._onCancelClick}>C</span>
 				</div>
 			)
 		} else {
 			btnGrp = (
 				<div className="title-btn-group">
-					<div className="title-bar-btn" onClick={this._onEditClick}>E</div>
-					<div className="title-bar-btn" onClick={this._onUploadClick}>U</div>
-					<div className="title-bar-btn" onClick={this._onDeleteClick}>D</div>
+					<span className="glyphicon glyphicon-edit" onClick={this._onEditClick}></span>
+					<span className="glyphicon glyphicon-upload" onClick={this._onUploadClick}></span>
+					<span className="glyphicon glyphicon-trash" onClick={this._onDeleteClick}></span>
 				</div>
 			)
 		}
