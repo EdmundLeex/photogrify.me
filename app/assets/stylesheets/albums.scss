@@ -24,7 +24,7 @@
 	margin-top: 0;
 	margin-bottom: 0;
 	float: left;
-	background-color: white;
+	/*background-color: white;*/
 }
 
 .albums-index-container, .albums-index {
@@ -89,18 +89,19 @@
 		input {
 			display: block;
 			height: 50px;
-			text-overflow: ellipsis;
 			min-width: 200px;
 			background: rgba(154, 206, 235, 0);
 			text-align: center;
 			border: 0;
+	    outline: 0;
 			margin: auto;
 			margin-top: 25px;
-			font-size: 20px;
-			font-weight: 500;
 			box-sizing: border-box;
 	    -moz-box-sizing: border-box;
-	    outline: 0;
+			text-overflow: ellipsis;
+			font-size: 30px;
+			font-weight: 500;
+	    font-family: 'Ubuntu', sans-serif;
 		}
 
 		input:hover {
@@ -154,7 +155,7 @@
 	margin-top: 0;
 	margin-bottom: 0;
 	float: left;
-	background-color: white;
+	/*background-color: white;*/
 }
 
 .form-container {
