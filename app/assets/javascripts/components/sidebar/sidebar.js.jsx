@@ -5,9 +5,11 @@ var Sidebar = React.createClass({
 		return (
 			<div className="sidebar">
 				<div className="logo sidebar-thumbs"></div>
-				<CreateAlbumBtn history={this.history} />
-				<AllAlbumsBtn history={this.history} />
-				<AllPicturesBtn history={this.history} />
+				<div className="sidebar-btn-group">
+					<CreateAlbumBtn history={this.history} />
+					<AllAlbumsBtn history={this.history} />
+					<AllPicturesBtn history={this.history} />
+				</div>
 				<UserMenuBtn />
 			</div>
 		);

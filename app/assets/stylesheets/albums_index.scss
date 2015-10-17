@@ -1,0 +1,40 @@
+.albums-index-container, .albums-index {
+	position: absolute;
+	width: 350px;
+	height: 100vh;
+	margin-top: 0;
+	margin-bottom: 0;
+	border-right: 1px solid;
+	/*float: left;*/
+	background-color: #F3F5F6;
+	vertical-align: baseline;
+}
+
+.albums-index {
+	overflow-y: scroll;
+}
+
+.albums-index-title {
+	position: relative;
+	width: 100%;
+	height: 50px;
+	background-color: #161617;
+	font: white;
+}
+
+.album-index-item {
+	position: relative;
+	width: 100%;
+	height: 120px;
+	border: 0px;
+	background-color: #F3F5F6;
+	border-bottom: 1px solid #bbbbbc;
+}
+
+.album-index-item:hover {
+	background-color: #bbbbbc;
+}
+
+.selected {
+	
+}

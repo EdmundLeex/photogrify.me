@@ -2,7 +2,7 @@ var CreateAlbumBtn = React.createClass({
 	render: function () {
 		return (
 			<div className="sidebar-thumbs" onClick={this.onClickHandler}>
-				Create
+				<span className="glyphicon glyphicon-plus"></span>
 			</div>
 		);
 	},

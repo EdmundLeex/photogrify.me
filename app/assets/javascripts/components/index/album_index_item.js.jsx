@@ -3,10 +3,10 @@ var AlbumIndexItem = React.createClass({
 	render: function () {
 		var klass = this.props.klass;
 		return (
-			<li className={"album-index-item " + klass}
+			<div className={"album-index-item " + klass}
 					onClick={this.handleClick}>
 				{this.props.album.title}
-			</li>
+			</div>
 		);
 	},
 

@@ -19,7 +19,7 @@
 	position: relative;
 	width: 36px;
 	height: 36px;
-	background-color: white;
+	/*background-color: white;*/
 	border-radius: 5px;
 }
 
@@ -32,10 +32,13 @@
 }
 
 .user-menu {
-	border-top: 1px solid #e1e1e1;
 	position: absolute;
-	bottom: 0;
+	margin: auto;
+	bottom: 15px;
 	left: 0;
 	right: 0;
 	padding: 17px;
+}
+
+.sidebar-btn-group {
 }
