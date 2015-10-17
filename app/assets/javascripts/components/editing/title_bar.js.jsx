@@ -47,12 +47,14 @@ var TitleBar = React.createClass({
 	renderTitle: function () {
 		var klass = (this.state.editing) ? "editing" : "";
 		return (
-			<input type="text"
-						 placeholder="No Title"
-						 onFocus={this.toggleToFocus}
-						 onBlur={this.toggleToBlur}
-						 className={klass}
-						 valueLink={this.props.linkState("title")} />
+			<div className="title">
+				<input type="text"
+							 placeholder="No Title"
+							 onFocus={this.toggleToFocus}
+							 onBlur={this.toggleToBlur}
+							 className={klass}
+							 valueLink={this.props.linkState("title")} />
+			</div>
 		);
 	}
 });
