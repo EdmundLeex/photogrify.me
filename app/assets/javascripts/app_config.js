@@ -4,4 +4,4 @@ window.APP_CONFIG = {
 		upload_preset: 'k24aopiw',
 		theme: 'minimal'
 	}
-}
+};
