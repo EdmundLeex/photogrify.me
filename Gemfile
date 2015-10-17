@@ -36,6 +36,8 @@ gem "cloudinary"
 
 gem 'figaro'
 
+gem 'font-awesome-sass'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
