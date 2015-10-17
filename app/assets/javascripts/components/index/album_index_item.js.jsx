@@ -1,11 +1,13 @@
 var AlbumIndexItem = React.createClass({
 	// add selected class
 	render: function () {
-		var klass = this.props.klass;
+		var props = this.props;
+		var klass = (parseInt(props.params.albumId) === props.album.id) ?
+			"selected" : "";
 		return (
 			<div className={"album-index-item " + klass}
 					onClick={this.handleClick}>
-				{this.props.album.title}
+				{props.album.title}
 			</div>
 		);
 	},

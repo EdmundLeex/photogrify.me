@@ -24,6 +24,9 @@
 
 .album-index-item {
 	position: relative;
+	overflow: hidden;
+	cursor: pointer;
+	transition: opacity 0.2s ease-in-out, height 0.2s ease-in-out, width 0.2s ease-in-out;
 	width: 100%;
 	height: 120px;
 	border: 0px;
@@ -36,5 +39,5 @@
 }
 
 .selected {
-	border: 2px solid grey;
+	border: 3px solid #cccccc;
 }

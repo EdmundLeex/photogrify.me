@@ -3,7 +3,7 @@ var UserMenuBtn = React.createClass({
 		// temporary as logout btn
 		return (
 			<div className="sidebar-thumbs user-menu" onClick={this.handleClick}>
-				logout
+				<span className="glyphicon glyphicon-user"></span>
 			</div>
 		);
 	},
