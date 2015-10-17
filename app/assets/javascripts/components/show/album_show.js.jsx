@@ -46,10 +46,10 @@ var AlbumShow = React.createClass({
 			function (error, result) {
 				console.log(error, result);
 				if (typeof result !== 'undefined') {
-					var urls = result.map(function (img) {
-						return img.url;
-					});
-					that.onDoneEditing(urls);
+					// var urls = result.map(function (img) {
+					// 	return img.url;
+					// });
+					that.onDoneEditing(JSON.stringify(result));
 				}
 		});
 	},

@@ -80,7 +80,7 @@ var FormContainer = React.createClass({
 	},
 
 	onUploadClick: function () {
-		var self = this;
+		var that = this;
 		cloudinary.openUploadWidget({
 			cloud_name: 'edmundleex',
 			upload_preset: 'k24aopiw',
@@ -88,10 +88,7 @@ var FormContainer = React.createClass({
 		}, function (error, result) {
 			console.log(error, result);
 			if (typeof result !== 'undefined') {
-				var urls = result.map(function (img) {
-					return img.url;
-				});
-				self.onDoneEditing({imgUrls: urls});
+				that.onDoneEditing(JSON.stringify(result));
 			}
 		});
 	},

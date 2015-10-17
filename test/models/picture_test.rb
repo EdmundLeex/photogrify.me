@@ -7,6 +7,7 @@
 #  album_id    :integer          not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  public_id   :string
 #
 
 require 'test_helper'

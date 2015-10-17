@@ -8,14 +8,15 @@ class Api::AlbumsController < ApplicationController
   def create
     title = params[:title].blank? ? "No Title" : params[:title]
     description = params[:description] || ""
-    img_urls = params[:urls] || []
+    picture_urls = params[:urls] || []
+    picture_urls = JSON.parse(picture_urls)
 
     @album = current_user.albums.new(title: title, description: description);
 
     if @album.save
       ActiveRecord::Base.transaction do
-        img_urls.each do |url|
-          @album.pictures.create(picture_url: url)
+        picture_urls.each do |url|
+          @album.pictures.create(picture_url: url['url'], public_id: url['public_id'])
         end
       end
 
@@ -41,14 +42,17 @@ class Api::AlbumsController < ApplicationController
     if @album
       @album.title = params[:title] unless params[:title].blank?
       @album.description = params[:description] unless params[:description].blank?
-      picture_urls = params[:urls] unless params[:urls].blank?
+      unless params[:urls].blank?
+        picture_urls = params[:urls]
+        picture_urls = JSON.parse(picture_urls)
+      end
 
       if @album.save
         @albums = albums_in_desc
         if picture_urls
           ActiveRecord::Base.transaction do
             picture_urls.each do |url|
-              @album.pictures.create(picture_url: url)
+              @album.pictures.create(picture_url: url['url'], public_id: url['public_id'])
             end
           end
         end
@@ -66,6 +70,15 @@ class Api::AlbumsController < ApplicationController
     album = Album.find(params[:id])
 
     if album
+      album.pictures.each do |pic|
+        Cloudinary::Uploader.destroy(
+          pic.public_id,
+          api_key: ENV['api_key'],
+          api_secret: ENV['api_secret'],
+          cloud_name: ENV['cloud_name']
+        )
+      end
+
       album.destroy
       @albums = albums_in_desc
       render :index
