@@ -120,7 +120,7 @@ var FormContainer = React.createClass({
 			console.log(this.state.creatingState);
 			if (this.state.creatingState !== 'created' && this.state.creatingState !== 'creating') {
 			console.log("about to create");
-				if (this.state.title !== "" || description !== "" || imgUrls.length) {
+				if (this.state.title !== "" || description !== "" || imgUrls) {
 					ComponentActions.toggleCreating('creating');
 
 					ApiUtil.createAlbum({
