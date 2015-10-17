@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
 	def create
     user = User.find_by_credentials(
-      params[:user][:email],
+      params[:user][:username],
       params[:user][:password]
     )
 
@@ -17,6 +17,6 @@ class SessionsController < ApplicationController
     current_user.reset_session_token!
     session[:session_token] = nil
 
-    redirect_to new_session_url
+    render json: { 'redirect' => '/home' }
   end
 end

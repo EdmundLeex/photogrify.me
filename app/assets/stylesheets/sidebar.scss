@@ -1,0 +1,49 @@
+.sidebar {
+	position: relative;
+	width: 73px;
+	height: 100vh;
+	margin-left: 0;
+	margin-top: 0;
+	margin-bottom: 0;
+	border-right: 1px solid;
+	float: left;
+	background-color: #161617;
+	vertical-align: baseline;
+	border-right: 1px solid black;
+	/*padding-left: 12px;*/
+	/*padding-right: 12px;*/
+	padding-top: 12px;
+}
+
+.sidebar-thumbs {
+	position: relative;
+	display: block;
+	width: 36px;
+	height: 36px;
+	margin: auto;
+	margin-bottom: 15px;
+	text-align: center;
+	/*background-color: white;*/
+	border-radius: 5px;
+	.logo {
+		height: 66px;
+	}
+}
+
+
+.btn-group {
+
+}
+
+.user-menu {
+	position: absolute;
+	margin: auto;
+	bottom: 15px;
+	left: 0;
+	right: 0;
+	padding: 17px;
+}
+
+.sidebar-btn-group {
+	margin-top: 20px;
+}

@@ -11,15 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151012065026) do
+ActiveRecord::Schema.define(version: 20151017000954) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "albums", force: :cascade do |t|
-    t.string   "title"
+    t.string   "title",       null: false
     t.text     "description"
-    t.integer  "user_id"
+    t.integer  "user_id",     null: false
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
@@ -27,15 +27,14 @@ ActiveRecord::Schema.define(version: 20151012065026) do
   add_index "albums", ["user_id"], name: "index_albums_on_user_id", using: :btree
 
   create_table "pictures", force: :cascade do |t|
-    t.binary   "picture"
-    t.integer  "user_id"
-    t.integer  "album_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "picture_url"
+    t.integer  "album_id",    null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "public_id"
   end
 
   add_index "pictures", ["album_id"], name: "index_pictures_on_album_id", using: :btree
-  add_index "pictures", ["user_id"], name: "index_pictures_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "username",        null: false
@@ -49,5 +48,4 @@ ActiveRecord::Schema.define(version: 20151012065026) do
 
   add_foreign_key "albums", "users"
   add_foreign_key "pictures", "albums"
-  add_foreign_key "pictures", "users"
 end

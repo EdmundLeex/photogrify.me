@@ -1,0 +1,137 @@
+// Place all the styles related to the api::albums controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.clearfix:after
+{
+	visibility: hidden;
+	display: block;
+	font-size: 0;
+	content: " ";
+	clear: both;
+	height: 0;
+}
+
+.main {
+	position: relative;
+	margin: 0;
+	float: left;
+}
+
+.album-show-main {
+	position: relative;
+	width: calc(100% - 73px);
+	height: 100vh;
+	margin-top: 0;
+	margin-bottom: 0;
+	float: left;
+	/*background-color: white;*/
+}
+
+.album-show {
+	position: relative;
+	width: calc(100% - 350px);
+	height: 100vh;
+	margin-left: 350px;
+	margin-top: 0;
+	margin-bottom: 0;
+	background-color: #F3F5F6;
+	vertical-align: baseline;
+	float: left;
+}
+
+.album-show-container {
+	padding-left: 40px;
+	padding-right: 40px;
+}
+
+.album-show-title {
+	position: relative;
+	float: left;
+	width: 100%;
+	height: 100px;
+	background-color: inherit;
+	border-bottom: 1px solid #ececec;
+
+	.title {
+		min-width: 300px;
+		input {
+			display: block;
+			height: 50px;
+			min-width: 200px;
+			background: rgba(154, 206, 235, 0);
+			text-align: center;
+			border: 0;
+	    outline: 0;
+			margin: auto;
+			margin-top: 25px;
+			box-sizing: border-box;
+	    -moz-box-sizing: border-box;
+			text-overflow: ellipsis;
+			font-size: 30px;
+			font-weight: 500;
+	    font-family: 'Ubuntu', sans-serif;
+		}
+
+		input:hover {
+			color: #128fdc;
+		}
+
+		.editing {
+			border: 2px solid #e0e0e0;
+			border-style: dashed;
+			border-radius: 10px;
+		}
+	}
+}
+
+.title-btn-group {
+	float: right;
+	margin-right: 40px;
+	margin-top: -15px;
+
+	span {
+		margin-left: 15px;
+	}
+}
+
+/*.title-bar-btn {
+	display: inline-block;
+	width: 24px;
+	height: 24px;
+	background-color: black;
+	margin: 5px;
+}*/
+
+.album-thumbnails {
+	position: relative;
+	height: 100px;
+	margin: 40px;
+	margin-top: 140px;
+	background-color: gray;
+}
+
+/*#editor {
+	margin: 40px;
+	background-color: white;
+	min-height: 350px;
+}
+*/
+#ql-editor-1 {
+	min-height: 350px;
+}
+
+.album-new-main {
+	position: relative;
+	width: calc(100% - 73px);
+	height: 100vh;
+	margin-top: 0;
+	margin-bottom: 0;
+	float: left;
+	/*background-color: white;*/
+}
+
+.form-container {
+	position: relative;
+	float: left;
+	width: inherit;
+}
