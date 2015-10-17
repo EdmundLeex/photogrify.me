@@ -66,15 +66,17 @@ var AlbumShow = React.createClass({
 	render: function () {
 		return (
 			<div className="album-show">
-				<TitleBar mode={'edit'}
-									title={this.state.title}
-									albumId={this.state.albumId}
-									onEditClick={this.onEditClick}
-									onUploadClick={this.onUploadClick}
-								  onDeleteClick={this.onDeleteClick}
-								  onEditTitleFinish={this.onDoneEditing}
-								  linkState={this.linkState} />
-				<PicturesCollection history={this.history} params={this.props.params} />
+				<div className="album-show-container">
+					<TitleBar mode={'edit'}
+										title={this.state.title}
+										albumId={this.state.albumId}
+										onEditClick={this.onEditClick}
+										onUploadClick={this.onUploadClick}
+									  onDeleteClick={this.onDeleteClick}
+									  onEditTitleFinish={this.onDoneEditing}
+									  linkState={this.linkState} />
+					<PicturesCollection history={this.history} params={this.props.params} />
+				</div>
 			</div>
 		);
 	}
