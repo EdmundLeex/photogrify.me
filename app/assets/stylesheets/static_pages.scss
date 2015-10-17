@@ -53,3 +53,53 @@
 .close-btn {
 	font: white;
 }
+
+.navbar-custom {
+	background-color: rgba(0,0,0,0);
+	height: 95px;
+}
+
+.nav-div {
+	background-color: rgba(0,0,0,0);
+	/*background-color: #161617;*/
+	margin: auto;
+	max-width: 940px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+
+	.root-logo {
+		position: relative;
+		img {
+			height: 42;
+		}
+	}
+}
+
+.root-main {
+	position: relative;
+	margin-left: 0;
+	margin-right: 0;
+	max-width: 1920px;
+	height: 600px;
+	background: url(root-main.jpg) no-repeat center center fixed;
+	-webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.root-container {
+	position: relative;
+	max-width: 940px;
+	margin: auto;
+}
+
+.achievement {
+	position: absolute;
+	width: 300px;
+	display: block;
+	font-family: 'Ubuntu', sans-serif;
+	font-size: 12px;
+	right: 0;
+	top: 300px;
+}
