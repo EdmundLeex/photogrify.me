@@ -1,6 +1,30 @@
 .img-thumb {
 	display: inline-block;
-	padding: 5px;
+	margin: 5px;
+  cursor: pointer;
+  overflow: hidden;
+  height: 180px;
+  width: 180px;
+
+	img {
+		height: 250px;
+	  width: 250px;
+
+	  -webkit-transition: all 1s ease;
+	     -moz-transition: all 1s ease;
+	       -o-transition: all 1s ease;
+	      -ms-transition: all 1s ease;
+	          transition: all 1s ease;
+	}
+}
+
+.img-thumb:hover {
+	outline: 1px;
+	outline-style: solid;
+	img {
+		width: 180px;
+	  height: 180px;
+	}
 }
 
 .pictures-collection {

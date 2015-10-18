@@ -4,12 +4,20 @@ var AlbumIndexItem = React.createClass({
 		var props = this.props;
 		var klass = (parseInt(props.params.albumId) === props.album.id) ?
 			"selected" : "";
-		return (
-			<div className={"album-index-item " + klass}
-					onClick={this.handleClick}>
-				{props.album.title}
-			</div>
-		);
+		var divStyle = {backgroundImage: 'url(' + props.album.cover_picture_url + ')'}
+		try{
+			return (
+				<div className="album-index-item-container"
+						 style={divStyle} >
+					<div className={"album-index-item " + klass}
+							onClick={this.handleClick}>
+						{props.album.title}
+					</div>
+				</div>
+			);
+		}catch(e){
+			console.log(e);
+		}
 	},
 
 	handleClick: function (e) {

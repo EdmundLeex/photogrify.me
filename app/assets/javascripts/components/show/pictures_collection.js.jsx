@@ -18,7 +18,7 @@ var PicturesCollection = React.createClass({
 
 	render: function () {
 		return (
-			<div className="pictures-collection">
+			<div className="pictures-collection clearfix">
 				{this.state.pictures.map(function (pic) {
 					return <PictureItem key={pic.id} picture={pic} />
 				})}
