@@ -6,7 +6,7 @@ var PictureItem = React.createClass({
 		url = url.join('/');
 
 		return (
-			<div className="thumbnail">
+			<div className="img-thumb">
 				<img src={url}/>
 				<span></span>
 			</div>
