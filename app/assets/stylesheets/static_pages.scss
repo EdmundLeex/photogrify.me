@@ -2,10 +2,22 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.header {
+/*.header {
 	height: 95px;
 	width: 100%;
 	background-color: gray;
+}*/
+
+.introduction {
+  font-family: 'Ubuntu' sans-serif;
+  font-size: 3.5rem;
+  position: absolute;
+  color: white;
+  margin-top: 120px;
+  text-align: center;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
 }
 
 .overlay {
@@ -78,7 +90,7 @@
 				display: block;
 				border-radius: 5px;
 				border: 1px solid rgba(0,0,0,0.85);
-				padding: 0.625rem 1.25rem;
+				padding: 0.625rem 1.85rem;
 				font-size: 1.5rem;
 				letter-spacing: 0.2rem;
 				font-family: 'Ubuntu' sans-serif;
