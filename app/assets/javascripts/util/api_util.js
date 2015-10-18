@@ -11,6 +11,9 @@ window.ApiUtil = {
 
 			success: function (respData) {
 				ApiActions.receivePicturesFromOneAlbum(respData);
+			},
+			error: function (respData) {
+				console.log(respData);
 			}
 		});
 	},
@@ -33,6 +36,9 @@ window.ApiUtil = {
 				// }
 
 				// show welcome page, setTimeout disappear
+			},
+			error: function (respData) {
+				console.log(respData);
 			}
 		});
 	},
@@ -90,6 +96,9 @@ window.ApiUtil = {
 
 			success: function (respData) {
 				ApiActions.receiveAllAlbums(respData);
+			},
+			error: function (respData) {
+				console.log(respData);
 			}
 		});
 	},
@@ -102,6 +111,9 @@ window.ApiUtil = {
 
 			success: function (respData) {
 				window.location.href = respData.redirect;
+			},
+			error: function (respData) {
+				console.log(respData);
 			}
 		});
 	}
