@@ -91,6 +91,10 @@ class Api::AlbumsController < ApplicationController
       picture_urls.each do |url|
         album.pictures.create(picture_url: url['url'], public_id: url['public_id'])
       end
+
+      unless album.cover_picture_url
+        album.update(cover_picture_url: picture_urls.first['url'])
+      end
     end
   end
 end
