@@ -31,19 +31,45 @@
 	z-index: 30;
 }
 
+.auth-form-container {
+	margin: 0 auto;
+	max-width: 940px;
+	position: relative;
+}
+
 .auth-form {
 	box-sizing: border-box;
-	display: block;
-	font-family: Helvetica, Arial, sans-serif;
+	font-family: 'Ubuntu', sans-serif;
 	font-size: 12px;
 	height: 600px;
 	line-height: 15.6px;
-	margin-bottom: 0px;
-	margin-left: 16px;
-	margin-right: 16px;
-	margin-top: 0px;
-	max-width: 940px;
+	margin: 0 auto;
+	max-width: 400px;
 	position: relative;
+
+	.auth-form-logo {
+		position: relative;
+		margin: 0 auto;
+		width: 63px;
+		margin-top: 80px;
+		margin-bottom: 40px;
+	}
+
+	.auth-form-field {
+		position: relative;
+		input {
+			margin-bottom: 40px;
+			width: 400px;
+			height: 41px;
+			display: block;
+			border-radius: 5px;
+			border: 1px solid rgba(0,0,0,0.85);
+			padding: 0.625rem 1.25rem;
+			font-size: 1.5rem;
+			letter-spacing: 0.2rem;
+			font-family: 'Ubuntu' sans-serif;
+		}
+	}
 }
 
 .hidden {

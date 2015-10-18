@@ -16,15 +16,18 @@
 	</div>
 </div>
 
-<div class="overlay hidden">
-	<a href="" id="close-btn">XXXXXXXXXX</a>
-	<div class="auth-form">
-		<form action="" method="post">
-			<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-			<input type="text" placeholder="Username" name="user[username]">
-			<input type="password" placeholder="Password" name="user[password]">
-			<input type="submit" class="btn" value="">
-		</form>
+<div class="overlay clearfix hidden">
+	<div class="auth-form-container">
+		<a href="" id="close-btn">close</a>
+		<div class="auth-form">
+			<div class="auth-form-logo"><%= image_tag('logo-icon-white') %></div>
+			<form class="auth-form-field clearfix" action="" method="post">
+				<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+				<input type="text" placeholder="Username" name="user[username]">
+				<input type="password" placeholder="Password" name="user[password]">
+				<input type="submit" class="btn" value="">
+			</form>
+		</div>
 	</div>
 </div>
 
