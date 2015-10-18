@@ -9,6 +9,7 @@ var Sidebar = React.createClass({
 				</div>
 				<div className="sidebar-btn-group">
 					<CreateAlbumBtn history={this.history} />
+					<SearchBtn />
 					<AllAlbumsBtn history={this.history} />
 					<AllPicturesBtn history={this.history} />
 				</div>

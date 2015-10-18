@@ -7,6 +7,7 @@
 	var ALBUM_CREATED_EVENT = "ALBUM_CREATED_EVENT";
 	var CURRENT_ALBUM_ID_RETRIEVED_EVENT = "CURRENT_ALBUM_ID_RETRIEVED_EVENT";
 	var TOGGLE_CREATING_EVENT = "TOGGLE_CREATING_EVENT";
+	var SEARCH_ALBUM_EVENT = "SEARCH_ALBUM_EVENT";
 
 	var _albums = [];
 	// var _currentAlbum = null;
@@ -16,6 +17,8 @@
 	var _editingTitle = false;
 	var _creating = 'new';
 	// var _mode = 'view';
+	var _matches = [];
+	var _queryStr = "";
 
 	var resetAlbums = function (albums) {
 		_albums = albums;
@@ -47,6 +50,13 @@
 		// _currentAlbumId = album.id;
 	};
 
+	var searchAlbum = function (queryStr) {
+		queryStr = queryStr.toLowerCase();
+		_matches = _albums.map(function (alb) {
+			return alb.title.match(queryStr);
+		})
+	};
+
 	root.AlbumStore = $.extend({}, EventEmitter.prototype, {
 		all: function () {
 			return _albums.slice();
@@ -64,6 +74,18 @@
 
 		latestAlbum: function () {
 			return _albums[0];
+		},
+
+		matchedAlbums: function () {
+			return _matches.slice();
+		},
+
+		queryStr: function () {
+			return _queryStr;
+		},
+
+		isEditing: function () {
+			return _editingTitle;
 		},
 
 		// currentAlbumId: function () {
@@ -97,10 +119,6 @@
 		// clearNewAlbum: function () {
 		// 	_newAlbumId = null;
 		// },
-
-		isEditing: function () {
-			return _editingTitle;
-		},
 
 		// currentMode: function () {
 		// 	return _mode;
@@ -162,6 +180,14 @@
 			this.removeListener(TOGGLE_CREATING_EVENT, callback);
 		},
 
+		addSearchAlbumListener: function (callback) {
+			this.on(SEARCH_ALBUM_EVENT, callback);
+		},
+
+		removeSearchAlbumListener: function (callback) {
+			this.removeListener(SEARCH_ALBUM_EVENT, callback);
+		},
+
 		// addCurrentAlbumIdRetrieveListener: function (callback) {
 		// 	this.on(CURRENT_ALBUM_ID_RETRIEVED_EVENT, callback);
 		// },
@@ -200,6 +226,10 @@
 					toggleCreating(payload.creating);
 					AlbumStore.emit(TOGGLE_CREATING_EVENT);
 					break;
+				case APP_CONSTANTS.SEARCH_ALBUM:
+					searchAlbum(payload.queryStr);
+					_queryStr = payload.queryStr;
+					AlbumStore.emit(SEARCH_ALBUM_EVENT);
 				// case APP_CONSTANTS.RETRIEVE_ALBUM_STATE:
 				// 	_currentAlbumId = parseInt(payload.currentAlbumId);
 				// 	AlbumStore.emit(CURRENT_ALBUM_ID_RETRIEVED_EVENT);
