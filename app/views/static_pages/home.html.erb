@@ -18,14 +18,14 @@
 
 <div class="overlay clearfix hidden">
 	<div class="auth-form-container">
-		<a href="" id="close-btn">close</a>
+		<a href="" id="close-btn">CLOSE</a>
 		<div class="auth-form">
 			<div class="auth-form-logo"><%= image_tag('logo-icon-white') %></div>
 			<form class="auth-form-field clearfix" action="" method="post">
 				<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 				<input type="text" placeholder="Username" name="user[username]">
 				<input type="password" placeholder="Password" name="user[password]">
-				<input type="submit" class="btn" value="">
+				<input type="submit" class="submit-btn" value="SIGN UP">
 			</form>
 		</div>
 	</div>
