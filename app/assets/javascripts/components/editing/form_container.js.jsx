@@ -88,7 +88,7 @@ var FormContainer = React.createClass({
 		}, function (error, result) {
 			console.log(error, result);
 			if (typeof result !== 'undefined') {
-				that.onDoneEditing(JSON.stringify(result));
+				that.onDoneEditing({imgUrls: JSON.stringify(result)});
 			}
 		});
 	},
@@ -108,7 +108,6 @@ var FormContainer = React.createClass({
 	onDoneEditing: function (values) {
 		var description,
 				imgUrls;
-
 		if (values) {
 			description = values.description;
 			imgUrls = values.imgUrls;

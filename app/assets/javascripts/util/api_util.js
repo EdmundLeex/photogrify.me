@@ -46,6 +46,9 @@ window.ApiUtil = {
 
 			success: function (respData) {
 				ApiActions.createAlbum(respData);
+			},
+			error: function (respData) {
+				console.log(respData);
 			}
 		});
 	},

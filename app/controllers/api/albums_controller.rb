@@ -6,17 +6,20 @@ class Api::AlbumsController < ApplicationController
   end
 
   def create
+    debugger
     title = params[:title].blank? ? "No Title" : params[:title]
     description = params[:description] || ""
-    picture_urls = params[:urls] || []
-    picture_urls = JSON.parse(picture_urls)
+    picture_urls = params[:urls]
+    picture_urls = JSON.parse(picture_urls) if picture_urls
 
     @album = current_user.albums.new(title: title, description: description);
 
     if @album.save
-      ActiveRecord::Base.transaction do
-        picture_urls.each do |url|
-          @album.pictures.create(picture_url: url['url'], public_id: url['public_id'])
+      if picture_urls
+        ActiveRecord::Base.transaction do
+          picture_urls.each do |url|
+            @album.pictures.create(picture_url: url['url'], public_id: url['public_id'])
+          end
         end
       end
 
