@@ -15,11 +15,7 @@ class Api::AlbumsController < ApplicationController
 
     if @album.save
       if picture_urls
-        ActiveRecord::Base.transaction do
-          picture_urls.each do |url|
-            @album.pictures.create(picture_url: url['url'], public_id: url['public_id'])
-          end
-        end
+        save_pictures_to_album(@album, picture_urls)
       end
 
       render json: @album
@@ -52,11 +48,7 @@ class Api::AlbumsController < ApplicationController
       if @album.save
         @albums = albums_in_desc
         if picture_urls
-          ActiveRecord::Base.transaction do
-            picture_urls.each do |url|
-              @album.pictures.create(picture_url: url['url'], public_id: url['public_id'])
-            end
-          end
+          save_pictures_to_album(@album, picture_urls)
         end
 
         render :index
@@ -92,5 +84,13 @@ class Api::AlbumsController < ApplicationController
   private
   def albums_in_desc
     current_user.albums.all.order('updated_at DESC')
+  end
+
+  def save_pictures_to_album(album, picture_urls)
+    ActiveRecord::Base.transaction do
+      picture_urls.each do |url|
+        album.pictures.create(picture_url: url['url'], public_id: url['public_id'])
+      end
+    end
   end
 end
