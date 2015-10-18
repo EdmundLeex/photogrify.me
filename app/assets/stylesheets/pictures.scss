@@ -7,8 +7,8 @@
   width: 180px;
 
 	img {
-		height: 250px;
-	  width: 250px;
+		height: 220px;
+	  width: 220px;
 
 	  -webkit-transition: all 1s ease;
 	     -moz-transition: all 1s ease;
@@ -19,8 +19,9 @@
 }
 
 .img-thumb:hover {
-	outline: 1px;
+	outline: 1.5px;
 	outline-style: solid;
+	outline-color: rgba(187,187,188,0.5);
 	img {
 		width: 180px;
 	  height: 180px;
