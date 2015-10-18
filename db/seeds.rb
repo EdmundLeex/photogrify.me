@@ -33,7 +33,9 @@ seed_imgs.each do |img|
 	Album.first.pictures.create(picture_url: img['url'], public_id: img['public_id'])
 end
 
-puts "=" * 30
+puts "=" * 40
+puts "#{failed_imgs.size} failed to be uploaded."
+puts "-" * 40
 puts "Upload failed images:"
-failed_imgs.each { |img| puts img }
-puts "=" * 30
+failed_imgs.each { |img| puts "- " + img }
+puts "=" * 40
