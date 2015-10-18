@@ -22,7 +22,9 @@ var SearchBox = React.createClass({
 	render: function () {
 		return (
 			<div className="search-box">
+				<span className="glyphicon glyphicon-search"></span>
 				<input type="text"
+							 placeholder="search"
 							 onChange={this.handleInput}
 							 value={this.state.searchTxt} />
 			</div>

@@ -17,7 +17,7 @@
 .albums-index-title {
 	position: relative;
 	width: 100%;
-	height: 50px;
+	height: 100px;
 	background-color: #161617;
 	font: white;
 }
@@ -40,4 +40,26 @@
 
 .selected {
 	border: 3px solid #cccccc;
+}
+
+.search-box {
+	position: relative;
+  margin: 0 auto;
+  width: 100%;
+  background: white;
+  border-style: solid;
+  border-color: #a8acbc #babdcc #c0c3d2;
+  border-radius: 13px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box;
+	height: 26px;
+
+  input {
+	  padding: 0 0 0 25px;
+	  /*width: 100%;*/
+	  border: none;
+  }
 }
