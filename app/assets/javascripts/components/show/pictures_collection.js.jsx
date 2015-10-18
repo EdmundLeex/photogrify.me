@@ -1,11 +1,11 @@
 var PicturesCollection = React.createClass({
 	getInitialState: function () {
-    return { pictures: PictureStore.all() };
+    return { pictures: [] };
 	},
 
 	componentDidMount: function () {
 		PictureStore.addPicturesCollectionChangedListener(this._onChange);
-		// ApiUtil.fetchPicturesFromAlbum(this.props.params.albumId);
+		ApiUtil.fetchPicturesFromAlbum(this.props.params.albumId);
 	},
 
 	componentWillUnmount: function () {
