@@ -13,7 +13,7 @@ Album.create(title: 'Demo Album3', description: 'description', user: User.first)
 
 Picture.destroy_all
 Rake::Task['cloudinary:destroy_all'].invoke
-# Picture.create(album: Album.first)
+
 seed_imgs = []
 failed_imgs = []
 
@@ -32,6 +32,8 @@ end
 seed_imgs.each do |img|
 	Album.first.pictures.create(picture_url: img['url'], public_id: img['public_id'])
 end
+
+Album.first.update(cover_picture_url: seed_imgs[0]['url'])
 
 puts "=" * 40
 puts "#{failed_imgs.size} failed to be uploaded."
