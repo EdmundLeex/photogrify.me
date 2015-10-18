@@ -16,9 +16,11 @@ namespace :cloudinary do
 		end
 		puts "=" * 40
 		puts "Cloudinary is cleaned up."
-		puts "-" * 40
-		puts "Deleted resources:"
-		public_ids.each { |id| puts id }
+		unless public_ids.empty?
+			puts "-" * 40
+			puts "Deleted resources:"
+			public_ids.each { |id| puts id }
+		end
 		puts "=" * 40
 	end
 
