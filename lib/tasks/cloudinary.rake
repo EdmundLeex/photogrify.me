@@ -14,7 +14,12 @@ namespace :cloudinary do
 			puts result
 			puts "true"
 		end
+		puts "=" * 40
 		puts "Cloudinary is cleaned up."
+		puts "-" * 40
+		puts "Deleted resources:"
+		public_ids.each { |id| puts id }
+		puts "=" * 40
 	end
 
 	task :count => :environment do
