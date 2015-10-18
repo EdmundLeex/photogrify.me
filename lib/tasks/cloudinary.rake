@@ -5,18 +5,19 @@ namespace :cloudinary do
 		public_ids = get_ids
 
 		until public_ids.size <= 1
+			public_ids = get_ids
 			result = Cloudinary::Api.delete_resources(
 				public_ids,
 				cloud_name: ENV['cloud_name'],
 				api_key: ENV['api_key'],
 				api_secret: ENV['api_secret']
 			)
-			puts result
-			puts "true"
+			# puts result
+			# puts "true"
 		end
 		puts "=" * 40
 		puts "Cloudinary is cleaned up."
-		unless public_ids.empty?
+		unless public_ids.size <= 1
 			puts "-" * 40
 			puts "Deleted resources:"
 			public_ids.each { |id| puts id }
