@@ -2,14 +2,9 @@
 
 namespace :cloudinary do
 	task :destroy_all => :environment do
-		public_ids = Cloudinary::Api.resources(
-			type: :upload,
-			cloud_name: ENV['cloud_name'],
-			api_key: ENV['api_key'],
-			api_secret: ENV['api_secret']
-		)['resources'].map { |h| h['public_id']}
+		public_ids = get_ids
 
-		unless public_ids.empty?
+		until public_ids.size <= 1
 			result = Cloudinary::Api.delete_resources(
 				public_ids,
 				cloud_name: ENV['cloud_name'],
@@ -18,8 +13,20 @@ namespace :cloudinary do
 			)
 			puts result
 			puts "true"
-		else
-			puts "Already empty"
 		end
+		puts "Cloudinary is cleaned up."
+	end
+
+	task :count => :environment do
+		puts "Cloudinary image count: #{get_ids.size - 1}"
+	end
+
+	def get_ids
+		public_ids = Cloudinary::Api.resources(
+			type: :upload,
+			cloud_name: ENV['cloud_name'],
+			api_key: ENV['api_key'],
+			api_secret: ENV['api_secret']
+		)['resources'].map { |h| h['public_id']}
 	end
 end
