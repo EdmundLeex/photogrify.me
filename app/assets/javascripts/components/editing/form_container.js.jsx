@@ -112,7 +112,7 @@ var FormContainer = React.createClass({
 			description = values.description;
 			imgUrls = values.imgUrls;
 		}
-
+		debugger
 		if (this.state.mode === 'edit') {
 			ApiUtil.updateAlbum(this.state.albumId, this.state.title, description, imgUrls);
 		} else {

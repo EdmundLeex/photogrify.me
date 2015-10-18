@@ -6,7 +6,6 @@ class Api::AlbumsController < ApplicationController
   end
 
   def create
-    debugger
     title = params[:title].blank? ? "No Title" : params[:title]
     description = params[:description] || ""
     picture_urls = params[:urls]
