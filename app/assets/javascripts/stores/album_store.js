@@ -52,8 +52,11 @@
 
 	var searchAlbum = function (queryStr) {
 		queryStr = queryStr.toLowerCase();
-		_matches = _albums.map(function (alb) {
-			return alb.title.match(queryStr);
+		_matches = [];
+		_albums.forEach(function (alb) {
+			if (alb.title.toLowerCase().match(queryStr)) {
+				_matches.push(alb);
+			}
 		})
 	};
 

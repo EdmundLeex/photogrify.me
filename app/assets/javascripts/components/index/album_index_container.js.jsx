@@ -3,6 +3,7 @@ var AlbumsIndexContainer = React.createClass({
 		return (
 			<div className="albums-index-container">
 				<div className="albums-index-title">Albums</div>
+				<SearchBox />
 				<AlbumsIndex albums={this.props.albums}
 										 history={this.props.history}
 										 params={this.props.params} />
