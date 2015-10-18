@@ -5,7 +5,7 @@ var Sidebar = React.createClass({
 		return (
 			<div className="sidebar">
 				<div className="logo sidebar-thumbs">
-					<img src="%image_path(logo-sidebar.png)%" alt=""/>
+					<img src="assets/logo-sidebar.png" alt=""/>
 				</div>
 				<div className="sidebar-btn-group">
 					<CreateAlbumBtn history={this.history} />

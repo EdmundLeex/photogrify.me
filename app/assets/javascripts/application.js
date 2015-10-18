@@ -19,6 +19,7 @@
 //= require react
 //= require react_ujs
 //= require reactrouter.min.js
+//= require react_rails_img
 //= require cloudinary
 //= require quill
 //= require react-quill
