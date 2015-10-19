@@ -1,4 +1,3 @@
-require_relative './images/images'
 User.destroy_all
 
 User.create(username: 'demo', password: 'secret')
@@ -12,12 +11,16 @@ Album.create(title: 'Demo Album3', description: 'description', user: User.first)
 
 
 Picture.destroy_all
-Rake::Task['cloudinary:destroy_all'].invoke
+begin
+	Rake::Task['cloudinary:destroy_all'].invoke
+rescue
+	retry
+end
 
 seed_imgs = []
 failed_imgs = []
-
-Seed_Img::IMG_URLS.each do |url|
+img_file = File.readlines('./db/images/images.txt')
+img_file.each do |url|
 	begin
 		seed_imgs << Cloudinary::Uploader.upload(url, cloud_name: ENV['cloud_name'],
 																									public_id: ENV['public_id'],
