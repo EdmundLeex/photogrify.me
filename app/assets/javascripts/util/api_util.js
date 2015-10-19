@@ -55,6 +55,7 @@ window.ApiUtil = {
 	},
 
 	createAlbum: function (data) {
+		ComponentActions.toggleCreating('creating');
 		$.ajax({
 			url: '/api/albums/',
 			type: 'post',

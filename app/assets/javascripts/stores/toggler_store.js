@@ -5,6 +5,7 @@
 	// var TOGGLE_MODE_EVENT = "TOGGLE_MODE_EVENT";
 	var _showSearchBox = false;
 	var _editingTitle = false;
+	var _creating = 'new';
 	// var _mode = 'view';
 
 	// var toggleMode = function (mode) {
@@ -22,6 +23,14 @@
 	root.TogglerStore = $.extend({}, EventEmitter.prototype, {
 		showSearchBox: function () {
 			return _showSearchBox;
+		},
+
+		isEditing: function () {
+			return _editingTitle;
+		},
+
+		creatingState: function () {
+			return _creating;
 		},
 
 		addToggleSearchListener: function (callback) {

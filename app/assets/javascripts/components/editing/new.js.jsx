@@ -17,7 +17,7 @@ var New = React.createClass({
 		// AlbumStore.addAlbumsIndexChangeListener(this._onSwitch);
 		AlbumStore.addAlbumUpdateListener(this._onTitleChanged);
 		AlbumStore.addAlbumCreateListener(this._onAlbumCreated);
-		AlbumStore.addToggleCreatingListener(this._onToggleCreating);
+		TogglerStore.addToggleCreatingListener(this._onToggleCreating);
 		// PictureStore.addPicturesCollectionChangedListener(this._onSwitch);
 	},
 
@@ -25,24 +25,25 @@ var New = React.createClass({
 		// AlbumStore.removeAlbumsIndexChangeListener(this._onSwitch);
 		AlbumStore.removeAlbumUpdateListener(this._onTitleChanged);
 		AlbumStore.removeAlbumCreateListener(this._onAlbumCreated);
-		AlbumStore.removeToggleCreatingListener(this._onToggleCreating);
+		TogglerStore.removeToggleCreatingListener(this._onToggleCreating);
 		// PictureStore.removePicturesCollectionChangedListener(this._onSwitch);
 	},
 
 	_onTitleChanged: function () {
-
 		if (this.props.mode === 'new') {
-			this.setState({title: AlbumStore.latestAlbum().title});
+			this.setState({title: ""});
 		} else {
-			this.setState({title: AlbumStore.find(this.props.params.albumId).title});
+			this.setState({title: AlbumStore.latestAlbum().title});
 		}
 	},
 
 	_onAlbumCreated: function () {
-		this.setState({albumId: AlbumStore.latestAlbum().id,
-									 title: AlbumStore.latestAlbum().title,
-									 mode: 'edit',
-									 creatingState: 'created'});
+		this.setState({
+			albumId: AlbumStore.latestAlbum().id,
+			title: AlbumStore.latestAlbum().title,
+			mode: 'edit',
+			creatingState: 'created'
+		});
 	},
 
 	_onSaved: function () {
@@ -50,7 +51,7 @@ var New = React.createClass({
 	},
 
 	_onToggleCreating: function () {
-		this.setState({creatingState: 'creating'});
+		this.setState({creatingState: TogglerStore.creatingState()});
 	},
 
 	onDeleteClick: function () {
@@ -84,12 +85,12 @@ var New = React.createClass({
 		}
 
 		if (this.state.mode === 'edit') {
-			ApiUtil.updateAlbum(this.props.params.albumId, this.state.title, description, imgUrls);
+			ApiUtil.updateAlbum(this.state.albumId, this.state.title, description, imgUrls);
 		} else {
 			console.log(this.state.creatingState);
+			// debugger
 			if (this.state.creatingState !== 'created' && this.state.creatingState !== 'creating') {
-			console.log("about to create");
-				if (this.state.title !== "" || description !== "" || imgUrls) {
+				if (this.state.title || description || imgUrls) {
 					ComponentActions.toggleCreating('creating');
 
 					ApiUtil.createAlbum({
@@ -104,6 +105,7 @@ var New = React.createClass({
 
 	render: function () {
 		console.log('new rendered');
+		// pass in options to show buttons
 		return (
 			<div className="album-new-main">
 				<TitleBar mode={this.state.mode}

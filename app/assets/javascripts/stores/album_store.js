@@ -14,7 +14,7 @@
 	// 		_newAlbumId = null;
 	// var _currentTitle = null;
 	// var _editingTitle = false;
-	var _creating = 'new';
+	// var _creating = 'new';
 	var _matches = [];
 	var _queryStr = "";
 
@@ -85,9 +85,9 @@
 			return _queryStr;
 		},
 
-		isEditing: function () {
-			return _editingTitle;
-		},
+		// isEditing: function () {
+		// 	return _editingTitle;
+		// },
 
 		// currentAlbumId: function () {
 		// 	return _currentAlbumId;
