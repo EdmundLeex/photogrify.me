@@ -3,7 +3,7 @@ var Edit = React.createClass({
 
 	getInitialState: function () {
 		var albumId = this.props.params.albumId;
-		var album = AlbumStore.find(albumId);
+		var album = AlbumStore.find(albumId) || {};
 		var title = album.title;
 		var description = album.description;
 
@@ -18,13 +18,13 @@ var Edit = React.createClass({
 	},
 
 	componentDidMount: function () {
-		// AlbumStore.addAlbumsIndexChangeListener(this._onSwitch);
+		AlbumStore.addAlbumsIndexChangeListener(this._onTitleChanged);
 		AlbumStore.addAlbumUpdateListener(this._onTitleChanged);
 		// PictureStore.addPicturesCollectionChangedListener(this._onSwitch);
 	},
 
 	componentWillUnmount: function () {
-		// AlbumStore.removeAlbumsIndexChangeListener(this._onSwitch);
+		AlbumStore.removeAlbumsIndexChangeListener(this._onTitleChanged);
 		AlbumStore.removeAlbumUpdateListener(this._onTitleChanged);
 		// PictureStore.removePicturesCollectionChangedListener(this._onSwitch);
 	},
