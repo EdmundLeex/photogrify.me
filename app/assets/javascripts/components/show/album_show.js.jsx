@@ -102,7 +102,7 @@ var AlbumShow = React.createClass({
 			<div className="album-show">
 				<div className="album-show-container">
 					{imgFrame}
-					<TitleBar mode={'edit'}
+					<TitleBar mode={'show'}
 										title={this.state.title}
 										onEditClick={this.onEditClick}
 										onUploadClick={this.onUploadClick}

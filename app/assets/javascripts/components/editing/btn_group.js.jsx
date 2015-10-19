@@ -34,7 +34,8 @@ var TitleBtnGroup = React.createClass({
 			btnGrp = (
 				<div className="title-btn-group">
 					<span className="glyphicon glyphicon-upload" id="upload" onClick={this._onUploadClick}></span>
-					<span className="glyphicon glyphicon-remove" onClick={this._onCancelClick}></span>
+					<span className="glyphicon glyphicon-trash" onClick={this._onDeleteClick}></span>
+					<span className="glyphicon glyphicon-ok" onClick={this._onSaveClick}></span>
 				</div>
 			)
 		} else {
