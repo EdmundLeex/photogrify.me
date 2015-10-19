@@ -30,7 +30,11 @@ var Edit = React.createClass({
 	},
 
 	_onTitleChanged: function () {
-		this.setState({title: AlbumStore.find(this.props.params.albumId).title});
+		var album = AlbumStore.find(this.props.params.albumId);
+		this.setState({
+			title: album.title,
+			description: album.description
+		});
 	},
 
 	_onAlbumCreated: function () {

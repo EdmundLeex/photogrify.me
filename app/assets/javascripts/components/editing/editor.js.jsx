@@ -34,6 +34,10 @@ var QEditor = React.createClass({
 		this.onDoneTyping();
 	},
 
+	componentWillReceiveProps: function (nextProps) {
+		this.setState({value: nextProps.description});
+	},
+
 	// componentWillUnmount: function () {
 	// 	AlbumStore.removeAlbumUpdateListener(this._onSaved);
 	// 	AlbumStore.removeAlbumCreateListener(this._onAlbumCreated);
