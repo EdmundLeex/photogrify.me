@@ -1,4 +1,5 @@
 .img-thumb {
+	position: relative;
 	display: inline-block;
 	margin: 5px;
   cursor: pointer;
@@ -19,7 +20,12 @@
 
 	.thumb-delete {
 		position: absolute;
-		display: block;
+    display: block;
+    font-size: 15px;
+    margin-bottom: 0;
+    height: 20px;
+    bottom: 0;
+    right: 0;
 	}
 }
 
