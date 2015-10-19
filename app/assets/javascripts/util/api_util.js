@@ -29,6 +29,21 @@ window.ApiUtil = {
 		});
 	},
 
+	deletePicture: function (imgId) {
+		$.ajax({
+			url: '/api/pictures/' + imgId,
+			type: 'delete',
+			dataType: 'json',
+
+			success: function (respData) {
+				ApiActions.receivePicturesFromOneAlbum(respData);
+			},
+			error: function (respData) {
+				console.log(respData);
+			}
+		});
+	},
+
 	fetchAllAlbums: function (init) {
 		// get request
 		// dispatch action

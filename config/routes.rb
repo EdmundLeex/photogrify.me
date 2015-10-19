@@ -8,6 +8,6 @@ Rails.application.routes.draw do
 
   namespace :api, default: { format: :json } do
   	resources :albums, only: [:index, :create, :update, :destroy, :show]
-  	resources :pictures, only: [:index]
+  	resources :pictures, only: [:index, :destroy]
   end
 end

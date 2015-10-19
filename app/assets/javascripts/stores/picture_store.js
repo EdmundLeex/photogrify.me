@@ -66,7 +66,7 @@
 		dispatchId: AppDispatcher.register(function (payload) {
 			switch (payload.actionType) {
 				case APP_CONSTANTS.ALBUM_PICTURES_RECEIVED:
-					resetPictures(payload.album.pictures);
+					resetPictures(payload.pictures);
 					PictureStore.emit(PICTURES_COLLECTION_CHANGED_EVENT);
 					break;
 				case APP_CONSTANTS.ALL_PICTURES_RECEIVED:

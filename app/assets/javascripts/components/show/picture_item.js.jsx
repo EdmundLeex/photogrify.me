@@ -3,6 +3,10 @@ var PictureItem = React.createClass({
 		this.props.handleClick(this.props.picture);
 	},
 
+	handleClickDelete: function (e) {
+		ApiUtil.deletePicture(this.props.picture.id)
+	},
+
 	render: function () {
 		var url = APP_CONFIG.ImageUrlBySize(
 			this.props.picture.picture_url,
@@ -12,7 +16,8 @@ var PictureItem = React.createClass({
 		return (
 			<div className="img-thumb" onClick={this.handleClick}>
 				<img src={url}/>
-				<span></span>
+				<span className="thumb-delete glyphicon glyphicon-trash"
+							onClick={this.handleClickDelete}></span>
 			</div>
 		);
 	}

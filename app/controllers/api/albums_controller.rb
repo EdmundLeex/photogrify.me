@@ -65,12 +65,7 @@ class Api::AlbumsController < ApplicationController
 
     if album
       album.pictures.each do |pic|
-        Cloudinary::Uploader.destroy(
-          pic.public_id,
-          api_key: ENV['api_key'],
-          api_secret: ENV['api_secret'],
-          cloud_name: ENV['cloud_name']
-        )
+        delete_from_cloudinary(pic.public_id)
       end
 
       album.destroy

@@ -16,7 +16,8 @@ window.ApiActions = {
 	receivePicturesFromOneAlbum: function (payload) {
 		AppDispatcher.dispatch({
 			actionType: APP_CONSTANTS.ALBUM_PICTURES_RECEIVED,
-			album: payload
+			album: payload.album,
+			pictures: payload.pictures
 		});
 	},
 
