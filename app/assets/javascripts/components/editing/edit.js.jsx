@@ -62,6 +62,10 @@ var Edit = React.createClass({
 		this.props.history.pushState(null, '/');
 	},
 
+	onSaveClick: function () {
+		this.props.history.pushState(null, '/');
+	},
+
 	onDoneEditing: function (values) {
 		var description,
 				imgUrls;
@@ -78,7 +82,7 @@ var Edit = React.createClass({
 		return (
 			<div className="album-show">
 				<div className="form-container">
-					<TitleBar mode={this.state.mode}
+					<TitleBar mode={'edit'}
 										title={this.state.title}
 										albumId={this.props.params.albumId}
 										onEditClick={this.onEditClick}

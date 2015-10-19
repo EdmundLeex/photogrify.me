@@ -27,7 +27,6 @@ var TitleBar = React.createClass({
 	},
 
 	toggleToBlur: function () {
-		debugger
 		ComponentActions.toggleEditing(false);
 		this.props.onEditTitleFinish(this.state.title);
 	},

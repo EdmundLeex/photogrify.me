@@ -24,6 +24,7 @@ var TitleBtnGroup = React.createClass({
 		var btnGrp;
 
 		if (this.props.mode === 'new') {
+			console.log('new btnGrp');
 			btnGrp = (
 				<div className="title-btn-group">
 					<span className="glyphicon glyphicon-upload" id="upload" onClick={this._onUploadClick}></span>
@@ -31,6 +32,7 @@ var TitleBtnGroup = React.createClass({
 				</div>
 			)
 		} else if (this.props.mode === 'edit') {
+			console.log('edit btnGrp');
 			btnGrp = (
 				<div className="title-btn-group">
 					<span className="glyphicon glyphicon-upload" id="upload" onClick={this._onUploadClick}></span>
@@ -39,6 +41,7 @@ var TitleBtnGroup = React.createClass({
 				</div>
 			)
 		} else {
+			console.log('view btnGrp');
 			btnGrp = (
 				<div className="title-btn-group">
 					<span className="glyphicon glyphicon-edit" onClick={this._onEditClick}></span>
