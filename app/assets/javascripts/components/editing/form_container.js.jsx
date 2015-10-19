@@ -2,11 +2,10 @@ var FormContainer = React.createClass({
 	mixins: [ReactRouter.History, React.addons.LinkedStateMixin],
 
 	getInitialState: function () {
-		var albumId,
-				title,
+		var title,
 				album;
 		if (this.props.mode === 'new') {
-			albumId = null;
+			// albumId = null;
 			title = "";
 			description = "";
 		} else {
@@ -17,7 +16,7 @@ var FormContainer = React.createClass({
 		}
 
     return {
-    	albumId: albumId,
+    	// albumId: albumId,
     	title: title,
     	description: description,
     	pictures: [],
@@ -41,6 +40,10 @@ var FormContainer = React.createClass({
 		AlbumStore.removeAlbumCreateListener(this._onAlbumCreated);
 		AlbumStore.removeToggleCreatingListener(this._onToggleCreating);
 		// PictureStore.removePicturesCollectionChangedListener(this._onSwitch);
+	},
+
+	componentWillReceiveProps: function (nextProps) {
+
 	},
 
 	_onTitleChanged: function () {
@@ -71,7 +74,8 @@ var FormContainer = React.createClass({
 	},
 
 	onDeleteClick: function () {
-		ApiUtil.deleteAlbum(this.state.albumId);
+		// prompt confirmation
+		ApiUtil.deleteAlbum(this.props.params.albumId);
 		this.history.pushState(null, '/');
 	},
 
@@ -114,7 +118,7 @@ var FormContainer = React.createClass({
 		}
 
 		if (this.state.mode === 'edit') {
-			ApiUtil.updateAlbum(this.state.albumId, this.state.title, description, imgUrls);
+			ApiUtil.updateAlbum(this.props.params.albumId, this.state.title, description, imgUrls);
 		} else {
 			console.log(this.state.creatingState);
 			if (this.state.creatingState !== 'created' && this.state.creatingState !== 'creating') {
@@ -138,7 +142,7 @@ var FormContainer = React.createClass({
 			<div className="form-container">
 				<TitleBar mode={this.state.mode}
 									title={this.state.title}
-									albumId={this.state.albumId}
+									albumId={this.props.params.albumId}
 									onEditClick={this.onEditClick}
 								  onDeleteClick={this.onDeleteClick}
 								  onSaveClick={this.onSaveClick}
@@ -148,7 +152,7 @@ var FormContainer = React.createClass({
 								  linkState={this.linkState} />
 				<ThumbNails />
 				<div id="editor">
-					<QEditor albumId={this.state.albumId}
+					<QEditor albumId={this.props.params.albumId}
 									 description={this.state.description}
 									 linkState={this.linkState}
 									 onDoneTyping={this.onDoneEditing} />

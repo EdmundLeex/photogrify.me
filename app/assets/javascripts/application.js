@@ -16,6 +16,7 @@
 //= require bootstrap
 //= require flux
 //= require eventemitter
+//= require retry
 //= require react
 //= require react_ujs
 //= require reactrouter.min.js
