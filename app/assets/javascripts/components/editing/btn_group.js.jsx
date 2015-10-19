@@ -27,8 +27,14 @@ var TitleBtnGroup = React.createClass({
 			btnGrp = (
 				<div className="title-btn-group">
 					<span className="glyphicon glyphicon-upload" id="upload" onClick={this._onUploadClick}></span>
-					<span className="title-bar-btn" onClick={this._onSaveClick}>S</span>
-					<span className="title-bar-btn" onClick={this._onCancelClick}>C</span>
+					<span className="glyphicon glyphicon-remove" onClick={this._onCancelClick}></span>
+				</div>
+			)
+		} else if (this.props.mode === 'edit') {
+			btnGrp = (
+				<div className="title-btn-group">
+					<span className="glyphicon glyphicon-upload" id="upload" onClick={this._onUploadClick}></span>
+					<span className="glyphicon glyphicon-remove" onClick={this._onCancelClick}></span>
 				</div>
 			)
 		} else {
