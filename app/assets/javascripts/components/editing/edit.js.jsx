@@ -83,6 +83,7 @@ var Edit = React.createClass({
 
 
 	render: function () {
+		var pictures = PictureStore.all();
 		return (
 			<div className="album-show">
 				<div className="form-container">
@@ -96,7 +97,8 @@ var Edit = React.createClass({
 									  onCancelClick={this.onCancelClick}
 									  onEditTitleFinish={this.onDoneEditing}
 									  linkState={this.linkState} />
-					<ThumbNails />
+					<ThumbNails history={this.state.history}
+											pictures={pictures} />
 					<div id="editor">
 						<QEditor albumId={this.props.params.albumId}
 										 description={this.state.description}

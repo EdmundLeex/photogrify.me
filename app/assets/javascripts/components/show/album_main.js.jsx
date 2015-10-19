@@ -35,12 +35,19 @@ var AlbumsMain = React.createClass({
 	render: function () {
 		var currentAlbumId = (this.state.currentAlbum) ?
 													this.state.currentAlbum.id : 0;
+
+		if (this.state.albums.length !== 0) {
+			this.history.pushState( '/albums/' + this.state.albums[0].id + '/show');
+		}
+		
 		return (
 			<div className="album-show-main">
-				<AlbumsIndexContainer albums={this.state.albums}
-															history={this.history}
-															params={this.props.params} />
-				{this.props.children}
+				<div className="index">
+						<AlbumsIndexContainer albums={this.state.albums}
+																	history={this.history}
+																	params={this.props.params} />
+						{this.props.children}
+				</div>
 			</div>
 		);
 	}

@@ -118,7 +118,6 @@ var New = React.createClass({
 								  onCancelClick={this.onCancelClick}
 								  onEditTitleFinish={this.onDoneEditing}
 								  linkState={this.linkState} />
-				<ThumbNails />
 				<div id="editor">
 					<QEditor albumId={this.props.params.albumId}
 									 description={this.state.description}
@@ -129,3 +128,4 @@ var New = React.createClass({
 		);
 	}
 });
+				// <ThumbNails />
