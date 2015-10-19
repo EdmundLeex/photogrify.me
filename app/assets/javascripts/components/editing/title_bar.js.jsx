@@ -2,7 +2,7 @@ var TitleBar = React.createClass({
 	getInitialState: function () {
     return {
     	editing: false,
-    	title: ""
+    	title: this.props.title
     };
 	},
 
@@ -18,13 +18,17 @@ var TitleBar = React.createClass({
 		AlbumStore.removeToggleEditingListener(this._onEditingToggle);
 	},
 
+	componentWillReceiveProps: function (nextProps) {
+		this.setState({title: nextProps.title})
+	},
+
 	toggleToFocus: function () {
 		ComponentActions.toggleEditing(true);
 	},
 
 	toggleToBlur: function () {
 		ComponentActions.toggleEditing(false);
-		this.props.onEditTitleFinish();
+		this.props.onEditTitleFinish(this.state.title);
 	},
 
 	render: function () {
@@ -34,7 +38,7 @@ var TitleBar = React.createClass({
 			<div className="album-show-title">
 				{titleBar}
 				<span className="count">{this.state.picCount}</span>
-				<TitleBtnGroupNew mode={this.props.mode}
+				<TitleBtnGroup mode={this.props.mode}
 											 onEditClick={this.props.onEditClick}
 											 onDeleteClick={this.props.onDeleteClick}
 											 onSaveClick={this.props.onSaveClick}

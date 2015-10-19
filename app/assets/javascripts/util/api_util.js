@@ -1,6 +1,17 @@
 window.ApiUtil = {
 	fetchAllPictures: function () {
-		// body...
+		$.ajax({
+			url: '/api/pictues',
+			type: 'get',
+			dataType: 'json',
+
+			success: function (respData) {
+				ApiActions.receiveAllPictures(respData);
+			},
+			error: function (respData) {
+				console.log(respData);
+			}
+		})
 	},
 
 	fetchPicturesFromAlbum: function (albumId) {

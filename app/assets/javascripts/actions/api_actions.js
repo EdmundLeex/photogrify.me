@@ -1,6 +1,9 @@
 window.ApiActions = {
 	receiveAllPictures: function (pictures) {
-		// body...
+		AppDispatcher.dispatch({
+			actionType: APP_CONSTANTS.ALL_PICTURES_RECEIVED,
+			pictures: pictures
+		})
 	},
 
 	receiveAllAlbums: function (albums) {

@@ -2,10 +2,11 @@ var AlbumShow = React.createClass({
 	mixins: [ReactRouter.History, React.addons.LinkedStateMixin],
 
 	getInitialState: function () {
-  	var album = AlbumStore.find(this.props.params.albumId);
+  	// var album = AlbumStore.find(this.props.params.albumId);
     return {
-    	albumId: album.id,
-    	title: album.title
+    	// albumId: null,
+    	title: null,
+    	pictures: []
     };
 	},
 
@@ -13,7 +14,8 @@ var AlbumShow = React.createClass({
 		AlbumStore.addAlbumsIndexChangeListener(this._onSwitch);
 		AlbumStore.addAlbumUpdateListener(this._onTitleChanged);
 		PictureStore.addPicturesCollectionChangedListener(this._onSwitch);
-		ApiUtil.fetchAllAlbums();
+		ApiUtil.fetchPicturesFromAlbum(this.props.params.albumId);
+		// ApiUtil.fetchAllAlbums();
 	},
 
 	componentWillUnmount: function () {
@@ -22,17 +24,22 @@ var AlbumShow = React.createClass({
 		PictureStore.removePicturesCollectionChangedListener(this._onSwitch);
 	},
 
+	componentWillReceiveProps: function (nextProps) {
+		ApiUtil.fetchPicturesFromAlbum(nextProps.params.albumId);
+	},
+
 	_onTitleChanged: function () {
-		this.setState({title: AlbumStore.find(this.state.albumId).title});
+		this.setState({title: AlbumStore.find(this.props.params.albumId).title});
 	},
 
 	_onSwitch: function () {
 		// change count, title
 		var album = AlbumStore.find(this.props.params.albumId);
 		this.setState({
-			id: 			album.id,
+			// id: 			album.id,
 			title: 	 	album.title,
-			picCount: PictureStore.count()
+			// picCount: PictureStore.count(),
+			pictures: PictureStore.all()
 		});
 	},
 
@@ -49,18 +56,19 @@ var AlbumShow = React.createClass({
 					// var urls = result.map(function (img) {
 					// 	return img.url;
 					// });
-					that.onDoneEditing(JSON.stringify(result));
+					that.onDoneEditing(null, JSON.stringify(result));
 				}
 		});
 	},
 
 	onDeleteClick: function () {
-		ApiUtil.deleteAlbum(this.state.albumId);
+		ApiUtil.deleteAlbum(this.props.params.albumId);
 		this.history.pushState(null, '/');
 	},
 
-	onDoneEditing: function (imgUrls) {
-		ApiUtil.updateAlbum(this.state.albumId, this.state.title, null, imgUrls);
+	onDoneEditing: function (title, imgUrls) {
+		// var title = AlbumStore.find(this.props.params.albumId);
+		ApiUtil.updateAlbum(this.props.params.albumId, title, null, imgUrls);
 	},
 
 	render: function () {
@@ -69,13 +77,12 @@ var AlbumShow = React.createClass({
 				<div className="album-show-container">
 					<TitleBar mode={'edit'}
 										title={this.state.title}
-										albumId={this.state.albumId}
 										onEditClick={this.onEditClick}
 										onUploadClick={this.onUploadClick}
 									  onDeleteClick={this.onDeleteClick}
 									  onEditTitleFinish={this.onDoneEditing}
 									  linkState={this.linkState} />
-					<PicturesCollection history={this.history} params={this.props.params} />
+					<PicturesCollection history={this.history} pictures={this.state.pictures} />
 				</div>
 			</div>
 		);

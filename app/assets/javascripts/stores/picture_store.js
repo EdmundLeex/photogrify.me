@@ -1,5 +1,6 @@
 (function(root){
 	var PICTURES_COLLECTION_CHANGED_EVENT = "PICTURES_COLLECTION_CHANGED_EVENT";
+	// var ALL_PICTURES_RECEIVED_EVENT = "ALL_PICTURES_RECEIVED_EVENT";
 	var _pictures = [];
 
 	var resetPictures = function (pictures) {
@@ -23,12 +24,23 @@
 			this.removeListener(PICTURES_COLLECTION_CHANGED_EVENT, callback);
 		},
 
+		// addAllPicturesChangedListener: function (callback) {
+		// 	this.on(ALL_PICTURES_RECEIVED_EVENT, callback)
+		// },
+
+		// removeAllPicturesChangedListener: function (callback) {
+		// 	this.removeListener(ALL_PICTURES_RECEIVED_EVENT, callback)
+		// },
+
 		dispatchId: AppDispatcher.register(function (payload) {
 			switch (payload.actionType) {
 				case APP_CONSTANTS.ALBUM_PICTURES_RECEIVED:
 					resetPictures(payload.album.pictures);
 					PictureStore.emit(PICTURES_COLLECTION_CHANGED_EVENT);
 					break;
+				case APP_CONSTANTS.ALL_PICTURES_RECEIVED:
+					resetPictures(payload.pictures)
+					PictureStore.emit(PICTURES_COLLECTION_CHANGED_EVENT);
 				default:
 					break;
 			}

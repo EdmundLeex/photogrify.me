@@ -1,4 +1,4 @@
-var TitleBtnGroupNew = React.createClass({
+var TitleBtnGroup = React.createClass({
 	_onDeleteClick: function () {
 		this.props.onDeleteClick();
 	},
