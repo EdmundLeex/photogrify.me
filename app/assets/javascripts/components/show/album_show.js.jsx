@@ -5,7 +5,7 @@ var AlbumShow = React.createClass({
     return {
     	title: null,
     	pictures: [],
-    	enlargedImgUrl: null
+    	enlargedImg: null
     };
 	},
 
@@ -47,7 +47,7 @@ var AlbumShow = React.createClass({
 	},
 
 	_onEnlarge: function () {
-		this.setState({enlargedImgUrl: TogglerStore.enlargeImgUrl()});
+		this.setState({enlargedImg: TogglerStore.enlargeImg()});
 	},
 
 	onEditClick: function () {
@@ -78,13 +78,13 @@ var AlbumShow = React.createClass({
 		ApiUtil.updateAlbum(this.props.params.albumId, title, null, imgUrls);
 	},
 
-	onImgClick: function (pictureUrl) {
-		ComponentActions.toggleImg(pictureUrl);
+	onImgClick: function (picture) {
+		ComponentActions.toggleImg(picture);
 	},
 
 	render: function () {
-		var imgFrame = (this.state.enlargedImgUrl) ?
-			<PictureFrame pictureUrl={this.state.enlargedImgUrl} handleClick={this.onImgClick} /> : "";
+		var imgFrame = (this.state.enlargedImg) ?
+			<PictureFrame picture={this.state.enlargedImg} handleClick={this.onImgClick} /> : "";
 		return (
 			<div className="album-show">
 				<div className="album-show-container">

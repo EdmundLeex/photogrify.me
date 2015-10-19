@@ -7,7 +7,7 @@
 	var _showSearchBox = false;
 	var _editingTitle = false;
 	var _creating = 'new';
-	var _enlargedImgUrl = null;
+	var _enlargedImg = null;
 	// var _mode = 'view';
 
 	// var toggleMode = function (mode) {
@@ -22,8 +22,8 @@
 		_creating = creating;
 	};
 
-	var setEnlargeImg = function (imgUrl) {
-		_enlargedImgUrl = imgUrl;
+	var setEnlargeImg = function (img) {
+		_enlargedImg = img;
 	};
 
 	root.TogglerStore = $.extend({}, EventEmitter.prototype, {
@@ -39,8 +39,8 @@
 			return _creating;
 		},
 
-		enlargeImgUrl: function () {
-			return _enlargedImgUrl;
+		enlargeImg: function () {
+			return _enlargedImg;
 		},
 
 		addToggleSearchListener: function (callback) {
@@ -98,7 +98,7 @@
 					TogglerStore.emit(TOGGLE_CREATING_EVENT);
 					break;
 				case APP_CONSTANTS.PICTURE_ENLARGED:
-					setEnlargeImg(payload.pictureUrl);
+					setEnlargeImg(payload.picture);
 					TogglerStore.emit(PICTURE_TOGGLE_EVENT);
 				// case APP_CONSTANTS.TOGGLE_MODE:
 				// 	toggleMode(payload.mode);

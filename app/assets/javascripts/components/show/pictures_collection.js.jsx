@@ -1,6 +1,6 @@
 var PicturesCollection = React.createClass({
-	onImgClick: function (pictureUrl) {
-		this.props.handleClick(pictureUrl);
+	onImgClick: function (picture) {
+		this.props.handleClick(picture);
 	},
 
 	render: function () {

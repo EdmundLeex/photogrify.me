@@ -46,10 +46,10 @@ window.ComponentActions = {
 		});
 	},
 
-	toggleImg: function (pictureUrl) {
+	toggleImg: function (picture) {
 		AppDispatcher.dispatch({
 			actionType: APP_CONSTANTS.PICTURE_ENLARGED,
-			pictureUrl: pictureUrl
+			picture: picture
 		})
 	}
 

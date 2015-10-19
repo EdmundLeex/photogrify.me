@@ -1,6 +1,6 @@
 var PictureItem = React.createClass({
 	handleClick: function (e) {
-		this.props.handleClick(this.props.picture.picture_url);
+		this.props.handleClick(this.props.picture);
 	},
 
 	render: function () {
