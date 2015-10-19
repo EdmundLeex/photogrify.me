@@ -1,6 +1,14 @@
 var PictureFrame = React.createClass({
+	handleClickLeft: function () {
+		this.props.handleClickLeft();
+	},
+
+	handleClickRight: function () {
+		this.props.handleClickRight();
+	},
+
 	handleClick: function () {
-		this.props.handleClick(null);
+		// this.props.handleClick(null);
 	},
 
 	render: function () {
@@ -12,8 +20,12 @@ var PictureFrame = React.createClass({
 		return (
 			<div className="img-frame-overlay">
 				<div className="img-frame" onClick={this.handleClick}>
+					<span className="glyphicon glyphicon-menu-left"
+								onClick={this.handleClickLeft}></span>
 					<img src={url}/>
 					<span></span>
+					<span className="glyphicon glyphicon-menu-right"
+								onClick={this.handleClickRight}></span>
 				</div>
 			</div>
 		);

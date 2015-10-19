@@ -14,7 +14,7 @@ var AlbumShow = React.createClass({
 		AlbumStore.addAlbumsIndexChangeListener(this._onSwitch);
 		AlbumStore.addAlbumUpdateListener(this._onTitleChanged);
 		PictureStore.addPicturesCollectionChangedListener(this._onSwitch);
-		TogglerStore.addTogglePictureListener(this._onEnlarge);
+		PictureStore.addTogglePictureListener(this._onEnlarge);
 		// ApiUtil.fetchAllAlbums();
 	},
 
@@ -22,7 +22,7 @@ var AlbumShow = React.createClass({
 		AlbumStore.removeAlbumsIndexChangeListener(this._onSwitch);
 		AlbumStore.removeAlbumUpdateListener(this._onTitleChanged);
 		PictureStore.removePicturesCollectionChangedListener(this._onSwitch);
-		TogglerStore.removeTogglePictureListener(this._onEnlarge);
+		PictureStore.removeTogglePictureListener(this._onEnlarge);
 	},
 
 	componentWillReceiveProps: function (nextProps) {
@@ -47,7 +47,7 @@ var AlbumShow = React.createClass({
 	},
 
 	_onEnlarge: function () {
-		this.setState({enlargedImg: TogglerStore.enlargeImg()});
+		this.setState({enlargedImg: PictureStore.enlargedImg()});
 	},
 
 	onEditClick: function () {
@@ -82,9 +82,22 @@ var AlbumShow = React.createClass({
 		ComponentActions.toggleImg(picture);
 	},
 
+	onLeftClick: function () {
+		var nextImg = PictureStore.nextImg(-1);
+		ComponentActions.toggleImg(nextImg);
+	},
+
+	onRightClick: function () {
+		var nextImg = PictureStore.nextImg(1);
+		ComponentActions.toggleImg(nextImg);
+	},
+
 	render: function () {
 		var imgFrame = (this.state.enlargedImg) ?
-			<PictureFrame picture={this.state.enlargedImg} handleClick={this.onImgClick} /> : "";
+			<PictureFrame picture={this.state.enlargedImg}
+										handleClick={this.onImgClick}
+										handleClickLeft={this.onLeftClick}
+										handleClickRight={this.onRightClick} /> : "";
 		return (
 			<div className="album-show">
 				<div className="album-show-container">
