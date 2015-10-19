@@ -27,13 +27,13 @@
 	// 	// _currentTitle = _currentAlbum.title;
 	// };
 
-	var toggleEditing = function (editing) {
-		_editingTitle = editing;
-	};
+	// var toggleEditing = function (editing) {
+	// 	_editingTitle = editing;
+	// };
 
-	var toggleCreating = function (creating) {
-		_creating = creating;
-	};
+	// var toggleCreating = function (creating) {
+	// 	_creating = creating;
+	// };
 
 	var resetTitle = function (title) {
 		_currentTitle = title;

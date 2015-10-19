@@ -7,15 +7,15 @@ var TitleBar = React.createClass({
 	},
 
 	_onEditingToggle: function () {
-		this.setState({editing: AlbumStore.isEditing()});
+		this.setState({editing: TogglerStore.isEditing()});
 	},
 
 	componentDidMount: function () {
-		AlbumStore.addToggleEditingListener(this._onEditingToggle);
+		TogglerStore.addToggleEditingListener(this._onEditingToggle);
 	},
 
 	componentWillUnmount: function () {
-		AlbumStore.removeToggleEditingListener(this._onEditingToggle);
+		TogglerStore.removeToggleEditingListener(this._onEditingToggle);
 	},
 
 	componentWillReceiveProps: function (nextProps) {

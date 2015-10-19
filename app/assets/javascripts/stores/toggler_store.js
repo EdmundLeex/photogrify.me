@@ -7,8 +7,16 @@
 	var _editingTitle = false;
 	// var _mode = 'view';
 
-	var toggleMode = function (mode) {
-		_mode = mode;
+	// var toggleMode = function (mode) {
+	// 	_mode = mode;
+	// };
+
+	var toggleEditing = function (editing) {
+		_editingTitle = editing;
+	};
+
+	var toggleCreating = function (creating) {
+		_creating = creating;
 	};
 
 	root.TogglerStore = $.extend({}, EventEmitter.prototype, {
