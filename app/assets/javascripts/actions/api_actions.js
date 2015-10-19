@@ -3,7 +3,7 @@ window.ApiActions = {
 		AppDispatcher.dispatch({
 			actionType: APP_CONSTANTS.ALL_PICTURES_RECEIVED,
 			pictures: pictures
-		})
+		});
 	},
 
 	receiveAllAlbums: function (albums) {

@@ -36,7 +36,8 @@ window.ApiUtil = {
 			dataType: 'json',
 
 			success: function (respData) {
-				ApiActions.receivePicturesFromOneAlbum(respData);
+				console.log(respData);
+				ApiActions.receivePicturesFromOneAlbum({pictures: respData});
 			},
 			error: function (respData) {
 				console.log(respData);

@@ -14,7 +14,7 @@ window.APP_CONFIG = {
 	ImageUrlBySize: function (url, optionsStr) {
 		url = url.split('/');
 		var insert_index = url.indexOf('upload') + 1;
-		url.splice(insert_index, 0, optionsStr)
+		url.splice(insert_index, 0, optionsStr);
 		return url.join('/');
 	}
 	// INDEX_COVER_SIZE: 'w_350,c_fill,g_center' for moving pic when hover

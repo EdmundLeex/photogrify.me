@@ -50,7 +50,7 @@ window.ComponentActions = {
 		AppDispatcher.dispatch({
 			actionType: APP_CONSTANTS.PICTURE_ENLARGED,
 			picture: picture
-		})
+		});
 	}
 
 	// retrieveAlbumState: function (albumId) {
