@@ -4,7 +4,8 @@ var AlbumShow = React.createClass({
 	getInitialState: function () {
     return {
     	title: null,
-    	pictures: []
+    	pictures: [],
+    	enlargedImgUrl: null
     };
 	},
 
@@ -13,6 +14,7 @@ var AlbumShow = React.createClass({
 		AlbumStore.addAlbumsIndexChangeListener(this._onSwitch);
 		AlbumStore.addAlbumUpdateListener(this._onTitleChanged);
 		PictureStore.addPicturesCollectionChangedListener(this._onSwitch);
+		TogglerStore.addTogglePictureListener(this._onEnlarge);
 		// ApiUtil.fetchAllAlbums();
 	},
 
@@ -20,6 +22,7 @@ var AlbumShow = React.createClass({
 		AlbumStore.removeAlbumsIndexChangeListener(this._onSwitch);
 		AlbumStore.removeAlbumUpdateListener(this._onTitleChanged);
 		PictureStore.removePicturesCollectionChangedListener(this._onSwitch);
+		TogglerStore.removeTogglePictureListener(this._onEnlarge);
 	},
 
 	componentWillReceiveProps: function (nextProps) {
@@ -41,6 +44,10 @@ var AlbumShow = React.createClass({
 		}catch(e){
 			console.log(e);
 		}
+	},
+
+	_onEnlarge: function () {
+		this.setState({enlargedImgUrl: TogglerStore.enlargeImgUrl()});
 	},
 
 	onEditClick: function () {
@@ -71,10 +78,17 @@ var AlbumShow = React.createClass({
 		ApiUtil.updateAlbum(this.props.params.albumId, title, null, imgUrls);
 	},
 
+	onImgClick: function (pictureUrl) {
+		ComponentActions.toggleImg(pictureUrl);
+	},
+
 	render: function () {
+		var imgFrame = (this.state.enlargedImgUrl) ?
+			<PictureFrame pictureUrl={this.state.enlargedImgUrl} handleClick={this.onImgClick} /> : "";
 		return (
 			<div className="album-show">
 				<div className="album-show-container">
+					{imgFrame}
 					<TitleBar mode={'edit'}
 										title={this.state.title}
 										onEditClick={this.onEditClick}
@@ -82,7 +96,9 @@ var AlbumShow = React.createClass({
 									  onDeleteClick={this.onDeleteClick}
 									  onEditTitleFinish={this.onDoneEditing}
 									  linkState={this.linkState} />
-					<PicturesCollection history={this.history} pictures={this.state.pictures} />
+					<PicturesCollection history={this.history}
+															pictures={this.state.pictures}
+															handleClick={this.onImgClick}  />
 				</div>
 			</div>
 		);

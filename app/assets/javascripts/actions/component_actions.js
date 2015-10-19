@@ -46,6 +46,13 @@ window.ComponentActions = {
 		});
 	},
 
+	toggleImg: function (pictureUrl) {
+		AppDispatcher.dispatch({
+			actionType: APP_CONSTANTS.PICTURE_ENLARGED,
+			pictureUrl: pictureUrl
+		})
+	}
+
 	// retrieveAlbumState: function (albumId) {
 	// 	ApiUtil.fetchAllAlbums();
 	// 	AppDispatcher.dispatch({

@@ -9,6 +9,8 @@ window.APP_CONFIG = {
 
 	INDEX_COVER_SIZE: 'w_350,h_120,c_fill',
 
+	FRAME_SIZE: 'h_600',
+
 	ImageUrlBySize: function (url, optionsStr) {
 		url = url.split('/');
 		var insert_index = url.indexOf('upload') + 1;

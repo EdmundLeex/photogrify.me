@@ -25,11 +25,11 @@
 		},
 
 		addAllPicturesChangedListener: function (callback) {
-			this.on(ALL_PICTURES_RECEIVED_EVENT, callback)
+			this.on(ALL_PICTURES_RECEIVED_EVENT, callback);
 		},
 
 		removeAllPicturesChangedListener: function (callback) {
-			this.removeListener(ALL_PICTURES_RECEIVED_EVENT, callback)
+			this.removeListener(ALL_PICTURES_RECEIVED_EVENT, callback);
 		},
 
 		dispatchId: AppDispatcher.register(function (payload) {
@@ -39,8 +39,9 @@
 					PictureStore.emit(PICTURES_COLLECTION_CHANGED_EVENT);
 					break;
 				case APP_CONSTANTS.ALL_PICTURES_RECEIVED:
-					resetPictures(payload.pictures)
+					resetPictures(payload.pictures);
 					PictureStore.emit(ALL_PICTURES_RECEIVED_EVENT);
+					break;
 				default:
 					break;
 			}

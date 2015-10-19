@@ -2,10 +2,12 @@
 	var TOGGLE_SEARCH_EVENT = "TOGGLE_SEARCH_EVENT";
 	var TOGGLE_EDITING_EVENT = "TOGGLE_EDITING_EVENT";
 	var TOGGLE_CREATING_EVENT = "TOGGLE_CREATING_EVENT";
+	var PICTURE_TOGGLE_EVENT = "PICTURE_TOGGLE_EVENT";
 	// var TOGGLE_MODE_EVENT = "TOGGLE_MODE_EVENT";
 	var _showSearchBox = false;
 	var _editingTitle = false;
 	var _creating = 'new';
+	var _enlargedImgUrl = null;
 	// var _mode = 'view';
 
 	// var toggleMode = function (mode) {
@@ -20,6 +22,10 @@
 		_creating = creating;
 	};
 
+	var setEnlargeImg = function (imgUrl) {
+		_enlargedImgUrl = imgUrl;
+	};
+
 	root.TogglerStore = $.extend({}, EventEmitter.prototype, {
 		showSearchBox: function () {
 			return _showSearchBox;
@@ -31,6 +37,10 @@
 
 		creatingState: function () {
 			return _creating;
+		},
+
+		enlargeImgUrl: function () {
+			return _enlargedImgUrl;
 		},
 
 		addToggleSearchListener: function (callback) {
@@ -57,6 +67,14 @@
 			this.removeListener(TOGGLE_CREATING_EVENT, callback);
 		},
 
+		addTogglePictureListener: function (callback) {
+			this.on(PICTURE_TOGGLE_EVENT, callback);
+		},
+
+		removeTogglePictureListener: function (callback) {
+			this.removeListener(PICTURE_TOGGLE_EVENT, callback);
+		},
+
 		// addToggleModeListener: function (callback) {
 		// 	this.on(TOGGLE_MODE_EVENT, callback);
 		// },
@@ -73,12 +91,15 @@
 					break;
 				case APP_CONSTANTS.TOGGLE_EDITING:
 					toggleEditing(payload.editing);
-					AlbumStore.emit(TOGGLE_EDITING_EVENT);
+					TogglerStore.emit(TOGGLE_EDITING_EVENT);
 					break;
 				case APP_CONSTANTS.TOGGLE_CREATING:
 					toggleCreating(payload.creating);
-					AlbumStore.emit(TOGGLE_CREATING_EVENT);
+					TogglerStore.emit(TOGGLE_CREATING_EVENT);
 					break;
+				case APP_CONSTANTS.PICTURE_ENLARGED:
+					setEnlargeImg(payload.pictureUrl);
+					TogglerStore.emit(PICTURE_TOGGLE_EVENT);
 				// case APP_CONSTANTS.TOGGLE_MODE:
 				// 	toggleMode(payload.mode);
 				// 	AlbumStore.emit(TOGGLE_MODE_EVENT);

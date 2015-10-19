@@ -42,3 +42,13 @@
 	height: 100vh;
 	width: calc(100% - 73px);
 }
+
+.img-frame-overlay {
+	position: absolute;
+	z-index: 5;
+	transfrom: translateX(-100px);
+
+	.img-frame {
+		cursor: pointer;
+	}
+}
