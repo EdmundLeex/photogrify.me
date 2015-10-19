@@ -29,7 +29,7 @@ $(function () {
 						<Route path="/albums/:albumId/edit" component={Edit} />
 					</Route>
 					<Route path="new" component={New} />
-					<Route path="search" component={SearchBox} />
+					<Route path="pictures" component={PicturesWall} />
 				</Route>
 			</Router>
 		), root);

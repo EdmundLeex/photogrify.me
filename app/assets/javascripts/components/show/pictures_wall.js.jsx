@@ -1,6 +1,6 @@
 var PicturesWall = React.createClass({
 	getInitialState: function () {
-    return {pictures: null};
+    return {pictures: []};
 	},
 
 	componentDidMount: function () {
@@ -8,7 +8,7 @@ var PicturesWall = React.createClass({
 		PictureStore.addAllPicturesChangedListener(this.onChange);
 	},
 
-	componentWillMount: function () {
+	componentWillUnmount: function () {
 		PictureStore.removeAllPicturesChangedListener(this.onChange);
 	},
 
@@ -18,7 +18,9 @@ var PicturesWall = React.createClass({
 
 	render: function () {
 		return (
-			<PicturesCollection />
+			<div className="pictures-wall">
+				<PicturesCollection pictures={this.state.pictures} />
+			</div>
 		);
 	}
 });

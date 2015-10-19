@@ -35,3 +35,10 @@
   overflow-y: scroll;
   height: calc(100% - 120px);
 }
+
+.pictures-wall {
+	position: relative;
+	float: left;
+	height: 100vh;
+	width: calc(100% - 73px);
+}

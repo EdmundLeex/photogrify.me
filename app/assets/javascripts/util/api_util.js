@@ -1,7 +1,7 @@
 window.ApiUtil = {
 	fetchAllPictures: function () {
 		$.ajax({
-			url: '/api/pictues',
+			url: '/api/pictures',
 			type: 'get',
 			dataType: 'json',
 
