@@ -14,10 +14,10 @@ var PictureItem = React.createClass({
 		);
 
 		return (
-			<div className="img-thumb" onClick={this.handleClick}>
-				<img src={url}/>
-				<div className="thumb-delete">
-					<span className="glyphicon glyphicon-trash"
+			<div className="img-thumb">
+				<img src={url} onClick={this.handleClick} />
+				<div className="thumb-tools">
+					<span className="thumb-delete glyphicon glyphicon-trash"
 								onClick={this.handleClickDelete}></span>
 				</div>
 			</div>
