@@ -233,6 +233,7 @@
 					searchAlbum(payload.queryStr);
 					_queryStr = payload.queryStr;
 					AlbumStore.emit(SEARCH_ALBUM_EVENT);
+					break;
 				// case APP_CONSTANTS.RETRIEVE_ALBUM_STATE:
 				// 	_currentAlbumId = parseInt(payload.currentAlbumId);
 				// 	AlbumStore.emit(CURRENT_ALBUM_ID_RETRIEVED_EVENT);

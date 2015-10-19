@@ -2,19 +2,17 @@ var AlbumShow = React.createClass({
 	mixins: [ReactRouter.History, React.addons.LinkedStateMixin],
 
 	getInitialState: function () {
-  	// var album = AlbumStore.find(this.props.params.albumId);
     return {
-    	// albumId: null,
     	title: null,
     	pictures: []
     };
 	},
 
 	componentDidMount: function () {
+		ApiUtil.fetchPicturesFromAlbum(this.props.params.albumId);
 		AlbumStore.addAlbumsIndexChangeListener(this._onSwitch);
 		AlbumStore.addAlbumUpdateListener(this._onTitleChanged);
 		PictureStore.addPicturesCollectionChangedListener(this._onSwitch);
-		ApiUtil.fetchPicturesFromAlbum(this.props.params.albumId);
 		// ApiUtil.fetchAllAlbums();
 	},
 
@@ -35,12 +33,14 @@ var AlbumShow = React.createClass({
 	_onSwitch: function () {
 		// change count, title
 		var album = AlbumStore.find(this.props.params.albumId);
-		this.setState({
-			// id: 			album.id,
-			title: 	 	album.title,
-			// picCount: PictureStore.count(),
-			pictures: PictureStore.all()
-		});
+		try{
+			this.setState({
+				title: 	 	album.title,
+				pictures: PictureStore.all()
+			});
+		}catch(e){
+			console.log(e);
+		}
 	},
 
 	onEditClick: function () {
