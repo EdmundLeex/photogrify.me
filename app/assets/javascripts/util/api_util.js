@@ -11,7 +11,7 @@ window.ApiUtil = {
 			error: function (respData) {
 				console.log(respData);
 			}
-		})
+		});
 	},
 
 	fetchPicturesFromAlbum: function (albumId) {

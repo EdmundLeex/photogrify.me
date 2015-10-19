@@ -79,10 +79,6 @@
 					toggleCreating(payload.creating);
 					TogglerStore.emit(TOGGLE_CREATING_EVENT);
 					break;
-				// case APP_CONSTANTS.TOGGLE_MODE:
-				// 	toggleMode(payload.mode);
-				// 	AlbumStore.emit(TOGGLE_MODE_EVENT);
-					break;
 				default:
 					break;
 			}

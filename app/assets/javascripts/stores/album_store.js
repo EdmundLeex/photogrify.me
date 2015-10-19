@@ -55,7 +55,7 @@
 			if (alb.title.toLowerCase().match(queryStr)) {
 				_matches.push(alb);
 			}
-		})
+		});
 	};
 
 	root.AlbumStore = $.extend({}, EventEmitter.prototype, {
