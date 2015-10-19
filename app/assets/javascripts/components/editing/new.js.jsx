@@ -30,7 +30,7 @@ var New = React.createClass({
 	},
 
 	_onTitleChanged: function () {
-		if (this.props.mode === 'new') {
+		if (this.state.mode === 'new') {
 			this.setState({title: ""});
 		} else {
 			this.setState({title: AlbumStore.latestAlbum().title});
