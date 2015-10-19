@@ -20,12 +20,17 @@
 
 	.thumb-delete {
 		position: absolute;
-    display: block;
+    display: none;
     font-size: 15px;
     margin-bottom: 0;
     height: 20px;
     bottom: 0;
     right: 0;
+    margin-right: 5px;
+	}
+
+	:hover ~ .thumb-delete{
+		display: block;
 	}
 }
 
