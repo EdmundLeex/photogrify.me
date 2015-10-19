@@ -16,6 +16,11 @@
 	      -ms-transition: all 1s ease;
 	          transition: all 1s ease;
 	}
+
+	.thumb-delete {
+		position: absolute;
+		display: block;
+	}
 }
 
 .img-thumb:hover {
