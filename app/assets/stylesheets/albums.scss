@@ -27,11 +27,20 @@
 	/*background-color: white;*/
 }
 
+.album-show-main-overlay {
+	height: 100vh;
+	width: 100%;
+	background: rgba(255,255,255,0.7);
+	position: absolute;
+	z-index: 5;
+}
+
 .album-show {
 	position: relative;
-	width: calc(100% - 350px);
+	/*width: calc(100% - 350px);*/
+	width: 100%;
 	height: 100vh;
-	margin-left: 350px;
+	/*margin-left: 350px;*/
 	margin-top: 0;
 	margin-bottom: 0;
 	background-color: #F3F5F6;

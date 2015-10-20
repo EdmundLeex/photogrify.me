@@ -1,7 +1,7 @@
 var AlbumsIndexContainer = React.createClass({
 	render: function () {
 		return (
-			<div className="albums-index-container">
+			<div className={"albums-index-container " + this.props.klass}>
 				<div className="albums-index-title">
 					<span className="album-index-title-text">Albums</span>
 					<SearchBox />

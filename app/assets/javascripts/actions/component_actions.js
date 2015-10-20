@@ -51,6 +51,12 @@ window.ComponentActions = {
 			actionType: APP_CONSTANTS.PICTURE_ENLARGED,
 			picture: picture
 		});
+	},
+
+	slideOut: function () {
+		AppDispatcher.dispatch({
+			actionType: APP_CONSTANTS.SLIDE_PANEL
+		});
 	}
 
 	// retrieveAlbumState: function (albumId) {

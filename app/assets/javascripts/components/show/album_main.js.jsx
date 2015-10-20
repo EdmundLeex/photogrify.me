@@ -2,7 +2,10 @@ var AlbumsMain = React.createClass({
 	mixins: [ReactRouter.History],
 
 	getInitialState: function () {
-		return { albums: AlbumStore.all() };
+		return {
+			albums: AlbumStore.all(),
+			isPanelShown: TogglerStore.isPanelShown()
+		};
 	},
 
 	componentDidMount: function () {
@@ -10,6 +13,7 @@ var AlbumsMain = React.createClass({
 		AlbumStore.addSearchAlbumListener(this._onSearch);
 		// AlbumStore.addAlbumSwitchedListener(this._onSwitch);
 		AlbumStore.addAlbumUpdateListener(this._onChange);
+		TogglerStore.addToggleIndexPanelListener(this._onSlide);
 		ApiUtil.fetchAllAlbums(true);
 	},
 
@@ -18,6 +22,7 @@ var AlbumsMain = React.createClass({
 		AlbumStore.removeSearchAlbumListener(this._onSearch);
 		// AlbumStore.removeAlbumSwitchedListener(this._onSwitch);
 		AlbumStore.removeAlbumUpdateListener(this._onChange);
+		TogglerStore.removeToggleIndexPanelListener(this._onSlide);
 	},
 
 	_onChange: function () {
@@ -26,6 +31,10 @@ var AlbumsMain = React.createClass({
 
 	_onSearch: function () {
 		this.setState({ albums: AlbumStore.matchedAlbums() });
+	},
+
+	_onSlide: function () {
+		this.setState({ isPanelShown: TogglerStore.isPanelShown() })
 	},
 
 	// _onSwitch: function () {
@@ -37,20 +46,28 @@ var AlbumsMain = React.createClass({
 		// 											this.state.currentAlbum.id : 0;
 
 		var albumShow,
-				album;
+				album,
+				indexKlass = ""
+				overlayKlass = "";
 		if (this.state.albums.length && !this.props.params.albumId) {
 			album = this.state.albums[0];
 			albumShow = <AlbumShow params={{albumId: album.id}} />
 		} else {
 			albumShow = <div></div>
 		}
+
+		if (!this.state.isPanelShown) { indexKlass = "hidden"; }
+		if (!this.state.isPanelShown) { overlayKlass = "hidden"; }
+
 		return (
 			<div className="album-show-main">
 				<AlbumsIndexContainer albums={this.state.albums}
 															history={this.history}
+															klass={indexKlass}
 															params={this.props.params} />
 				{albumShow}
 				{this.props.children}
+				<div className={"album-show-main-overlay " + overlayKlass}></div>
 			</div>
 		);
 	}
