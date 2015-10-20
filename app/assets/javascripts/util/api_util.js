@@ -54,7 +54,8 @@ window.ApiUtil = {
 
 			success: function (respData) {
 				console.log(respData);
-				ApiActions.receivePicturesFromOneAlbum({pictures: respData});
+				ApiActions.receivePicturesFromOneAlbum(respData);
+				ApiActions.receiveAllAlbums(respData.albums);
 			},
 			error: function (respData) {
 				console.log(respData);

@@ -40,4 +40,8 @@ class ApplicationController < ActionController::Base
     )
     rescue CloudinaryException
   end
+
+  def albums_in_desc
+    current_user.albums.all.order('updated_at DESC')
+  end
 end

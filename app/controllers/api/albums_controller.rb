@@ -80,9 +80,6 @@ class Api::AlbumsController < ApplicationController
   end
 
   private
-  def albums_in_desc
-    current_user.albums.all.order('updated_at DESC')
-  end
 
   def save_pictures_to_album(album, picture_urls)
     ActiveRecord::Base.transaction do
