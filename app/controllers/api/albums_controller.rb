@@ -51,8 +51,9 @@ class Api::AlbumsController < ApplicationController
         if picture_urls
           save_pictures_to_album(@album, picture_urls)
         end
+        @pictures = @album.pictures
 
-        render :index
+        render :update
       else
         # TODO: oops.. something went wrong
       end

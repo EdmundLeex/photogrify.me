@@ -28,10 +28,11 @@ window.ApiActions = {
 		});
 	},
 
-	updatedAlbum: function (albums) {
+	updatedAlbum: function (payload) {
 		AppDispatcher.dispatch({
 			actionType: APP_CONSTANTS.ALBUM_UPDATED,
-			albums: albums
+			albums: payload.albums,
+			pictures: payload.pictures
 		});
 	},
 

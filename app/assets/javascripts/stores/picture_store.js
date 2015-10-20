@@ -77,6 +77,11 @@
 					setEnlargeImg(payload.picture);
 					PictureStore.emit(PICTURE_TOGGLE_EVENT);
 					break;
+				case APP_CONSTANTS.ALBUM_UPDATED:
+					// AppDispatcher.waitFor(AlbumStore.dispatchId);
+					resetPictures(payload.pictures);
+					PictureStore.emit(PICTURES_COLLECTION_CHANGED_EVENT);
+					break;
 				default:
 					break;
 			}
