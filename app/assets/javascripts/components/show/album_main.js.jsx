@@ -56,7 +56,7 @@ var AlbumsMain = React.createClass({
 			albumShow = <div></div>
 		}
 
-		if (!this.state.isPanelShown) { indexKlass = "hidden"; }
+		if (!this.state.isPanelShown) { indexKlass = "slide-out"; }
 		if (!this.state.isPanelShown) { overlayKlass = "hidden"; }
 
 		return (
