@@ -49,15 +49,15 @@ var AlbumsMain = React.createClass({
 				album,
 				indexKlass = ""
 				overlayKlass = "";
+		if (this.state.isPanelShown) { overlayKlass = "covered"; }
 		if (this.state.albums.length && !this.props.params.albumId) {
 			album = this.state.albums[0];
-			albumShow = <AlbumShow params={{albumId: album.id}} />
+			albumShow = <AlbumShow params={{albumId: album.id}} klass={overlayKlass}/>
 		} else {
 			albumShow = <div></div>
 		}
 
 		if (!this.state.isPanelShown) { indexKlass = "slide-out"; }
-		if (!this.state.isPanelShown) { overlayKlass = "hidden"; }
 
 		return (
 			<div className="album-show-main">
@@ -67,7 +67,6 @@ var AlbumsMain = React.createClass({
 															params={this.props.params} />
 				{albumShow}
 				{this.props.children}
-				<div className={"album-show-main-overlay " + overlayKlass}></div>
 			</div>
 		);
 	}

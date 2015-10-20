@@ -99,7 +99,7 @@ var AlbumShow = React.createClass({
 										handleClickLeft={this.onLeftClick}
 										handleClickRight={this.onRightClick} /> : "";
 		return (
-			<div className="album-show">
+			<div className={"album-show " + this.props.klass}>
 				<div className="album-show-container">
 					{imgFrame}
 					<TitleBar mode={'show'}
