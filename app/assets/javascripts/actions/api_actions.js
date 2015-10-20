@@ -1,6 +1,9 @@
 window.ApiActions = {
 	receiveAllPictures: function (pictures) {
-		// body...
+		AppDispatcher.dispatch({
+			actionType: APP_CONSTANTS.ALL_PICTURES_RECEIVED,
+			pictures: pictures
+		});
 	},
 
 	receiveAllAlbums: function (albums) {
@@ -13,7 +16,8 @@ window.ApiActions = {
 	receivePicturesFromOneAlbum: function (payload) {
 		AppDispatcher.dispatch({
 			actionType: APP_CONSTANTS.ALBUM_PICTURES_RECEIVED,
-			album: payload
+			album: payload.album,
+			pictures: payload.pictures
 		});
 	},
 
@@ -24,10 +28,11 @@ window.ApiActions = {
 		});
 	},
 
-	updatedAlbum: function (albums) {
+	updatedAlbum: function (payload) {
 		AppDispatcher.dispatch({
 			actionType: APP_CONSTANTS.ALBUM_UPDATED,
-			albums: albums
+			albums: payload.albums,
+			pictures: payload.pictures
 		});
 	},
 

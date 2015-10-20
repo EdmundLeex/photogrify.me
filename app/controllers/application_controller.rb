@@ -28,4 +28,16 @@ class ApplicationController < ActionController::Base
       redirect_to home_url
     end
   end
+
+  protected
+
+  def delete_from_cloudinary(public_id)
+    Cloudinary::Uploader.destroy(
+      public_id,
+      api_key: ENV['api_key'],
+      api_secret: ENV['api_secret'],
+      cloud_name: ENV['cloud_name']
+    )
+    rescue CloudinaryException
+  end
 end

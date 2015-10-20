@@ -30,6 +30,33 @@ window.ComponentActions = {
 	saveNewAlbum: function (album) {
 		ApiUtil.updateAlbum(album.id, album.title, album.description);
 		AlbumStore.clearNewAlbum();
+	},
+
+	searchAlbum: function (queryStr) {
+		AppDispatcher.dispatch({
+			actionType: APP_CONSTANTS.SEARCH_ALBUM,
+			queryStr: queryStr
+		});
+	},
+
+	toggleSearchBar: function (showSearchBox) {
+		AppDispatcher.dispatch({
+			actionType: APP_CONSTANTS.TOGGLE_SEARCH,
+			showSearchBox: showSearchBox
+		});
+	},
+
+	toggleImg: function (picture) {
+		AppDispatcher.dispatch({
+			actionType: APP_CONSTANTS.PICTURE_ENLARGED,
+			picture: picture
+		});
+	},
+
+	slideOut: function () {
+		AppDispatcher.dispatch({
+			actionType: APP_CONSTANTS.SLIDE_PANEL
+		});
 	}
 
 	// retrieveAlbumState: function (albumId) {

@@ -1,6 +1,17 @@
 window.ApiUtil = {
 	fetchAllPictures: function () {
-		// body...
+		$.ajax({
+			url: '/api/pictures',
+			type: 'get',
+			dataType: 'json',
+
+			success: function (respData) {
+				ApiActions.receiveAllPictures(respData);
+			},
+			error: function (respData) {
+				console.log(respData);
+			}
+		});
 	},
 
 	fetchPicturesFromAlbum: function (albumId) {
@@ -11,6 +22,42 @@ window.ApiUtil = {
 
 			success: function (respData) {
 				ApiActions.receivePicturesFromOneAlbum(respData);
+			},
+			error: function (respData) {
+				console.log(respData);
+			}
+		});
+	},
+
+	deletePicture: function (imgId) {
+		$.ajax({
+			url: '/api/pictures/' + imgId,
+			type: 'delete',
+			dataType: 'json',
+
+			success: function (respData) {
+				console.log(respData);
+				ApiActions.receivePicturesFromOneAlbum({pictures: respData});
+			},
+			error: function (respData) {
+				console.log(respData);
+			}
+		});
+	},
+
+	transferImg: function (imgId, albumId) {
+		$.ajax({
+			url: '/api/transfer',
+			type: 'patch',
+			dataType: 'json',
+			data: {imgId: imgId, albumId: albumId},
+
+			success: function (respData) {
+				console.log(respData);
+				ApiActions.receivePicturesFromOneAlbum({pictures: respData});
+			},
+			error: function (respData) {
+				console.log(respData);
 			}
 		});
 	},
@@ -33,11 +80,15 @@ window.ApiUtil = {
 				// }
 
 				// show welcome page, setTimeout disappear
+			},
+			error: function (respData) {
+				console.log(respData);
 			}
 		});
 	},
 
 	createAlbum: function (data) {
+		ComponentActions.toggleCreating('creating');
 		$.ajax({
 			url: '/api/albums/',
 			type: 'post',
@@ -46,6 +97,9 @@ window.ApiUtil = {
 
 			success: function (respData) {
 				ApiActions.createAlbum(respData);
+			},
+			error: function (respData) {
+				console.log(respData);
 			}
 		});
 	},
@@ -87,6 +141,9 @@ window.ApiUtil = {
 
 			success: function (respData) {
 				ApiActions.receiveAllAlbums(respData);
+			},
+			error: function (respData) {
+				console.log(respData);
 			}
 		});
 	},
@@ -99,6 +156,9 @@ window.ApiUtil = {
 
 			success: function (respData) {
 				window.location.href = respData.redirect;
+			},
+			error: function (respData) {
+				console.log(respData);
 			}
 		});
 	}

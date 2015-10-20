@@ -8,7 +8,6 @@ var AllPicturesBtn = React.createClass({
 	},
 
 	onClickHandler: function () {
-		// fetech all pictures
-		// call ApiUtil.fetchAllPictures
+		this.props.history.pushState(null, '/pictures');
 	}
 });

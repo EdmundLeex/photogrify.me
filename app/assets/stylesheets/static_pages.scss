@@ -2,10 +2,22 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.header {
+/*.header {
 	height: 95px;
 	width: 100%;
 	background-color: gray;
+}*/
+
+.introduction {
+  font-family: 'Ubuntu' sans-serif;
+  font-size: 3.5rem;
+  position: absolute;
+  color: white;
+  margin-top: 120px;
+  text-align: center;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
 }
 
 .overlay {
@@ -17,10 +29,6 @@
 	font-size: 12px;
 	height: 620px;
 	line-height: 15.6px;
-	margin-bottom: 0px;
-	margin-left: 0px;
-	margin-right: 0px;
-	margin-top: 0px;
 	/*max-width: 940px;*/
 	height: 620px;
 	left: 0px;
@@ -29,27 +37,233 @@
 	top: 0px;
 	width: 100%;
 	z-index: 30;
+	opacity: 1;
+  transition: all 0.2s linear;
 }
 
-.auth-form {
-	box-sizing: border-box;
-	display: block;
-	font-family: Helvetica, Arial, sans-serif;
-	font-size: 12px;
-	height: 600px;
-	line-height: 15.6px;
-	margin-bottom: 0px;
-	margin-left: 16px;
-	margin-right: 16px;
-	margin-top: 0px;
+.auth-form-container {
+	margin: 0 auto;
 	max-width: 940px;
-	position: relative;
+	width: 100%;
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+
+	#close-btn {
+		float: right;
+    position: relative;
+    right: 10rem;
+    color: #e3e3e3;
+    display: block;
+    top: 30px;
+    font-weight: 500;
+    font-size: 1.2rem;
+	}
+
+	.auth-form {
+    box-sizing: border-box;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 12px;
+    height: 600px;
+    line-height: 15.6px;
+    max-width: 400px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+
+		.auth-form-logo {
+			position: relative;
+			margin: 0 auto;
+			width: 63px;
+			margin-top: 80px;
+			margin-bottom: 40px;
+		}
+
+		.auth-form-field {
+			position: relative;
+			input {
+				margin-bottom: 40px;
+				width: 400px;
+				height: 41px;
+				display: block;
+				border-radius: 5px;
+				border: 1px solid rgba(0,0,0,0.85);
+				padding: 0.625rem 1.85rem;
+				font-size: 1.5rem;
+				letter-spacing: 0.2rem;
+				font-family: 'Ubuntu' sans-serif;
+			}
+
+			.submit-btn {
+				margin: auto;
+				b-webkit-locale: "en";
+				background-attachment: scroll;
+				background-clip: border-box;
+				background-color: #128fdc;
+				background-image: none;
+				background-origin: padding-box;
+				background-size: auto;
+				border-bottom-color: #128fdc;
+				border-bottom-left-radius: 40px;
+				border-bottom-right-radius: 40px;
+				border-bottom-style: solid;
+				border-bottom-width: 1px;
+				border-image-outset: 0px;
+				border-image-repeat: stretch;
+				border-image-slice: 100%;
+				border-image-source: none;
+				border-image-width: 1;
+				border-left-color: #128fdc;
+				border-left-style: solid;
+				border-left-width: 1px;
+				border-right-color: #128fdc;
+				border-right-style: solid;
+				border-right-width: 1px;
+				border-top-color: #128fdc;
+				border-top-left-radius: 40px;
+				border-top-right-radius: 40px;
+				border-top-style: solid;
+				border-top-width: 1px;
+				box-sizing: border-box;
+				color: rgb(255, 255, 255);
+				cursor: auto;
+				display: block;
+				letter-spacing: 1px;
+				line-height: 22.1px;
+				min-width: 230px;
+				padding-bottom: 9px;
+				padding-left: 9px;
+				padding-right: 9px;
+				padding-top: 11px;
+				text-align: center;
+				text-decoration: none;
+				font-size: 17px;
+				width: 230px;
+			}
+		}
+	}
 }
 
-.hidden {
-	display: none;
+.behind {
+	display: block;
+	opacity:0;
+  transition:all 0.2s linear;
+  z-index: -10;
 }
 
 .close-btn {
 	font: white;
+}
+
+.navbar-custom {
+	background-color: rgba(0,0,0,0);
+	height: 95px;
+}
+
+.nav-div {
+	background-color: rgba(0,0,0,0);
+	/*background-color: #161617;*/
+	margin: auto;
+	max-width: 940px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+
+	.root-logo {
+		position: relative;
+		img {
+			height: 42;
+		}
+	}
+}
+
+.root-main {
+	position: relative;
+	margin-left: 0;
+	margin-right: 0;
+	max-width: 1920px;
+	height: 620px;
+	background: url(root-main.jpg) no-repeat center center fixed;
+	-webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.root-container {
+	position: relative;
+	max-width: 940px;
+	margin: auto;
+}
+
+.achievement {
+	position: absolute;
+	width: 300px;
+	display: block;
+	font-family: 'Ubuntu', sans-serif;
+	font-size: 12px;
+	right: 0;
+	top: 300px;
+}
+
+#signup-btn {
+	b-webkit-locale: "en";
+	background-attachment: scroll;
+	background-clip: border-box;
+	background-color: #128fdc;
+	background-image: none;
+	background-origin: padding-box;
+	background-size: auto;
+	border-bottom-color: #128fdc;
+	border-bottom-left-radius: 40px;
+	border-bottom-right-radius: 40px;
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+	border-image-outset: 0px;
+	border-image-repeat: stretch;
+	border-image-slice: 100%;
+	border-image-source: none;
+	border-image-width: 1;
+	border-left-color: #128fdc;
+	border-left-style: solid;
+	border-left-width: 1px;
+	border-right-color: #128fdc;
+	border-right-style: solid;
+	border-right-width: 1px;
+	border-top-color: #128fdc;
+	border-top-left-radius: 40px;
+	border-top-right-radius: 40px;
+	border-top-style: solid;
+	border-top-width: 1px;
+	box-sizing: border-box;
+	color: rgb(255, 255, 255);
+	cursor: auto;
+	display: block;
+	letter-spacing: 1px;
+	line-height: 22.1px;
+	min-width: 230px;
+	padding-bottom: 9px;
+	padding-left: 9px;
+	padding-right: 9px;
+	padding-top: 11px;
+	text-align: center;
+	text-decoration: none;
+	font-size: 17px;
+	width: 230px;
+}
+
+#signin-btn {
+	-webkit-locale: "en";
+	box-sizing: border-box;
+	color: rgb(96, 96, 96);
+	display: block;
+	font-size: 14px;
+	height: 18px;
+	line-height: 18.2px;
+	margin-top: 10px;
+	max-width: 240px;
+	text-align: center;
+	letter-spacing: 1px;
+	a {
+		color: rgb(96, 96, 96);
+	}
 }

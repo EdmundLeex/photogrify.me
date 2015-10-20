@@ -1,10 +1,91 @@
 .img-thumb {
+	position: relative;
 	display: inline-block;
-	padding: 10px;
+	margin: 5px;
+  cursor: pointer;
+  overflow: hidden;
+  height: 180px;
+  width: 180px;
+
+	img {
+		height: 220px;
+	  width: 220px;
+
+	  -webkit-transition: all 1s ease;
+	     -moz-transition: all 1s ease;
+	       -o-transition: all 1s ease;
+	      -ms-transition: all 1s ease;
+	          transition: all 1s ease;
+	}
+
+	.thumb-delete {
+		position: absolute;
+    font-size: 15px;
+    margin-bottom: 0;
+    height: 20px;
+    bottom: 0;
+    right: 0;
+    margin-right: 5px;
+    color: #c9c9c9;
+	}
+
+	.thumb-tools {
+		display: none;
+		background: rgba(255,255,255,0);
+		background: -moz-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(0,0,0,0.61) 100%);
+		background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(255,255,255,0)), color-stop(100%, rgba(0,0,0,0.61)));
+		background: -webkit-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(0,0,0,0.61) 100%);
+		background: -o-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(0,0,0,0.61) 100%);
+		background: -ms-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(0,0,0,0.61) 100%);
+		background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(0,0,0,0.61) 100%);
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#000000', GradientType=0 );
+		width: 100%;
+		height: 60px;
+		bottom: 0;
+		margin-bottom: 0;
+		position: absolute;
+	}
+}
+
+.img-thumb:hover {
+	outline: 1.5px;
+	outline-style: solid;
+	outline-color: rgba(187,187,188,0.5);
+	img {
+		width: 180px;
+	  height: 180px;
+	}
+}
+
+.img-thumb:hover .thumb-tools, .thumb-delete {
+	display: block;
+}
+
+.thumb-delete:hover {
+	color: #F3F5F6;
 }
 
 .pictures-collection {
+  position: relative;
+  float: left;
+  margin: 10px;
+  overflow-y: scroll;
+  height: calc(100% - 120px);
+}
+
+.pictures-wall {
 	position: relative;
 	float: left;
-	margin: 10px;
+	height: 100vh;
+	width: calc(100% - 73px);
+}
+
+.img-frame-overlay {
+	position: absolute;
+	z-index: 5;
+	transfrom: translateX(-100px);
+
+	.img-frame {
+		cursor: pointer;
+	}
 }

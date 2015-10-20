@@ -4,10 +4,30 @@
 	height: 100vh;
 	margin-top: 0;
 	margin-bottom: 0;
-	border-right: 1px solid;
+	border-right: 1px solid #ececec;
 	/*float: left;*/
 	background-color: #F3F5F6;
 	vertical-align: baseline;
+	z-index: 10;
+
+	-webkit-transition: -webkit-transform 0.4s ease-in-out;
+	transition-timing-function: ease-in-out;
+	transition-duration: 0.4s;
+
+	/*transform: matrix(1, 0, 0, 1, 0, 0);
+	transform: translate3d(0, 0, 0);
+	transition-delay: 0s;
+	transition-duration: 0.4s;
+	transition-property: transform;
+	transition-timing-function: ease-in-out;
+	-webkit-transform: translate3d(-459px, 0, 0);
+	transform: translate3d(-459px, 0, 0);
+	-webkit-transition: -webkit-transform 0.4s ease-in-out;*/
+}
+
+.slide-out {
+	transform: translateX(-100%);
+	-webkit-transform: translateX(-100%);
 }
 
 .albums-index {
@@ -17,18 +37,33 @@
 .albums-index-title {
 	position: relative;
 	width: 100%;
-	height: 50px;
-	background-color: #161617;
+	height: 100px;
+	background-color: #FFFFFF;
+	/*background-color: #F3F5F6;*/
+	/*margin-left: 20px;*/
+	color: #A9A9A9;
 	font: white;
+	font-family: 'Ubuntu' sans-serif;
+
+	.album-index-title-text {
+		padding-top: 20px;
+    display: block;
+    padding-left: 20px;
+    font-size: 20px;
+  }
 }
 
 .album-index-item {
 	position: relative;
+	overflow: hidden;
+	cursor: pointer;
+	padding: 3px;
+	/*transition: opacity 0.2s ease-in-out, height 0.2s ease-in-out, width 0.2s ease-in-out;*/
 	width: 100%;
 	height: 120px;
 	border: 0px;
-	background-color: #F3F5F6;
-	border-bottom: 1px solid #bbbbbc;
+	/*background-color: #F3F5F6;*/
+	border-bottom: 1px solid #ececec;
 }
 
 .album-index-item:hover {
@@ -36,5 +71,33 @@
 }
 
 .selected {
-	border: 2px solid grey;
+	border: 3px solid #cccccc;
+}
+
+.search-box {
+	position: relative;
+  margin: 0 auto;
+  margin-top: 20px;
+  width: 90%;
+	height: 30px;
+	padding-left: 10px;
+  background: white;
+  border-color: #BBBBBC;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 5px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box;
+
+  input {
+	  padding: 0 0 0 10px;
+	  /*width: 100%;*/
+	  border: none;
+	  outline: none;
+	  font-size: 16px;
+	  width: calc(100% - 35px);
+  }
 }

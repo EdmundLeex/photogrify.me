@@ -8,16 +8,14 @@ class Api::AlbumsController < ApplicationController
   def create
     title = params[:title].blank? ? "No Title" : params[:title]
     description = params[:description] || ""
-    picture_urls = params[:urls] || []
-    picture_urls = JSON.parse(picture_urls)
+    picture_urls = params[:urls]
+    picture_urls = JSON.parse(picture_urls) if picture_urls
 
     @album = current_user.albums.new(title: title, description: description);
 
     if @album.save
-      ActiveRecord::Base.transaction do
-        picture_urls.each do |url|
-          @album.pictures.create(picture_url: url['url'], public_id: url['public_id'])
-        end
+      if picture_urls
+        save_pictures_to_album(@album, picture_urls)
       end
 
       render json: @album
@@ -31,6 +29,7 @@ class Api::AlbumsController < ApplicationController
 
   	if @album
   		@pictures = @album.pictures
+      render :show
   	else
   		# TODO: page not found
   	end
@@ -42,6 +41,7 @@ class Api::AlbumsController < ApplicationController
     if @album
       @album.title = params[:title] unless params[:title].blank?
       @album.description = params[:description] unless params[:description].blank?
+
       unless params[:urls].blank?
         picture_urls = params[:urls]
         picture_urls = JSON.parse(picture_urls)
@@ -50,14 +50,11 @@ class Api::AlbumsController < ApplicationController
       if @album.save
         @albums = albums_in_desc
         if picture_urls
-          ActiveRecord::Base.transaction do
-            picture_urls.each do |url|
-              @album.pictures.create(picture_url: url['url'], public_id: url['public_id'])
-            end
-          end
+          save_pictures_to_album(@album, picture_urls)
         end
+        @pictures = @album.pictures
 
-        render :index
+        render :update
       else
         # TODO: oops.. something went wrong
       end
@@ -71,12 +68,7 @@ class Api::AlbumsController < ApplicationController
 
     if album
       album.pictures.each do |pic|
-        Cloudinary::Uploader.destroy(
-          pic.public_id,
-          api_key: ENV['api_key'],
-          api_secret: ENV['api_secret'],
-          cloud_name: ENV['cloud_name']
-        )
+        delete_from_cloudinary(pic.public_id)
       end
 
       album.destroy
@@ -90,5 +82,17 @@ class Api::AlbumsController < ApplicationController
   private
   def albums_in_desc
     current_user.albums.all.order('updated_at DESC')
+  end
+
+  def save_pictures_to_album(album, picture_urls)
+    ActiveRecord::Base.transaction do
+      picture_urls.each do |url|
+        album.pictures.create(picture_url: url['url'], public_id: url['public_id'])
+      end
+
+      unless album.cover_picture_url
+        album.update(cover_picture_url: picture_urls.first['url'])
+      end
+    end
   end
 end

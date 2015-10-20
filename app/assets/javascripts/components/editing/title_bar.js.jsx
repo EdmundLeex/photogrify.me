@@ -2,20 +2,24 @@ var TitleBar = React.createClass({
 	getInitialState: function () {
     return {
     	editing: false,
-    	title: ""
+    	title: this.props.title
     };
 	},
 
 	_onEditingToggle: function () {
-		this.setState({editing: AlbumStore.isEditing()});
+		this.setState({editing: TogglerStore.isEditing()});
 	},
 
 	componentDidMount: function () {
-		AlbumStore.addToggleEditingListener(this._onEditingToggle);
+		TogglerStore.addToggleEditingListener(this._onEditingToggle);
 	},
 
 	componentWillUnmount: function () {
-		AlbumStore.removeToggleEditingListener(this._onEditingToggle);
+		TogglerStore.removeToggleEditingListener(this._onEditingToggle);
+	},
+
+	componentWillReceiveProps: function (nextProps) {
+		this.setState({title: nextProps.title})
 	},
 
 	toggleToFocus: function () {
@@ -24,7 +28,7 @@ var TitleBar = React.createClass({
 
 	toggleToBlur: function () {
 		ComponentActions.toggleEditing(false);
-		this.props.onEditTitleFinish();
+		this.props.onEditTitleFinish(this.state.title);
 	},
 
 	render: function () {
@@ -34,7 +38,7 @@ var TitleBar = React.createClass({
 			<div className="album-show-title">
 				{titleBar}
 				<span className="count">{this.state.picCount}</span>
-				<TitleBtnGroupNew mode={this.props.mode}
+				<TitleBtnGroup mode={this.props.mode}
 											 onEditClick={this.props.onEditClick}
 											 onDeleteClick={this.props.onDeleteClick}
 											 onSaveClick={this.props.onSaveClick}
@@ -45,11 +49,20 @@ var TitleBar = React.createClass({
 	},
 
 	renderTitle: function () {
-		var klass = (this.state.editing) ? "editing" : "";
+		var klass, placeholder;
+
+		if (this.state.editing) {
+			klass = "editing";
+			placeholder = "";
+		} else {
+			klass = "";
+			placeholder = "No Title";
+		}
+
 		return (
 			<div className="title">
 				<input type="text"
-							 placeholder="No Title"
+							 placeholder={placeholder}
 							 onFocus={this.toggleToFocus}
 							 onBlur={this.toggleToBlur}
 							 className={klass}

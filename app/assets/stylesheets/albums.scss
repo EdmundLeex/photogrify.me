@@ -27,11 +27,44 @@
 	/*background-color: white;*/
 }
 
+/*.album-show-main-overlay {
+	opacity: 1;
+	height: 100vh;
+	width: 100%;
+	background-color: rgba(255,255,255,0.7);
+	position: absolute;
+	z-index: 5;
+	transition: opacity 1.5s linear;
+/*  transition: background-color 1s;
+  -webkit-transition: background-color 1500ms;
+  -moz-transition: background-color 1500ms;
+  -o-transition: background-color 1500ms;
+*/
+/*.album-show-main-overlay.hidden{
+	opacity: 0;
+	display: block !important;
+	height: 100vh;
+	width: 100%;
+	background-color: rgba(255,255,255,0.7);
+	position: absolute;
+	z-index: 5;
+  transition: background-color 1s;
+  -webkit-transition: background-color 1500ms;
+  -moz-transition: background-color 1500ms;
+  -o-transition: background-color 1500ms;
+}
+*/
 .album-show {
 	position: relative;
-	width: calc(100% - 350px);
+	opacity: 1;
+	/*transition: opacity 1.5s linear;*/
+	-webkit-transition: all 0.4s ease-in-out;
+	transition-timing-function: all ease-in-out;
+	transition-duration: 0.4s;
+	/*width: calc(100% - 350px);*/
+	width: 100%;
 	height: 100vh;
-	margin-left: 350px;
+	/*margin-left: 350px;*/
 	margin-top: 0;
 	margin-bottom: 0;
 	background-color: #F3F5F6;
@@ -39,9 +72,20 @@
 	float: left;
 }
 
+.album-show.shrank {
+	/*opacity: 0.3;*/
+	/*transition: opacity 1.5s linear;*/
+	width: calc(100% - 350px);
+	margin-left: 350px;
+	-webkit-transition: all 0.4s ease-in-out;
+	transition-timing-function: all ease-in-out;
+	transition-duration: 0.4s;
+}
+
 .album-show-container {
-	padding-left: 40px;
-	padding-right: 40px;
+	/*padding-left: 40px;*/
+	/*padding-right: 40px;*/
+	height: 100%;
 }
 
 .album-show-title {
@@ -50,10 +94,12 @@
 	width: 100%;
 	height: 100px;
 	background-color: inherit;
+	background-color: #FFFFFF;
 	border-bottom: 1px solid #ececec;
 
 	.title {
 		min-width: 300px;
+		/*color: #A9A9A9;*/
 		input {
 			display: block;
 			height: 50px;
@@ -133,5 +179,5 @@
 .form-container {
 	position: relative;
 	float: left;
-	width: inherit;
+	width: 100%;
 }

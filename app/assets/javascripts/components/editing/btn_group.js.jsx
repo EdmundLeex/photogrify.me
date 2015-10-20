@@ -1,4 +1,4 @@
-var TitleBtnGroupNew = React.createClass({
+var TitleBtnGroup = React.createClass({
 	_onDeleteClick: function () {
 		this.props.onDeleteClick();
 	},
@@ -24,14 +24,24 @@ var TitleBtnGroupNew = React.createClass({
 		var btnGrp;
 
 		if (this.props.mode === 'new') {
+			console.log('new btnGrp');
 			btnGrp = (
 				<div className="title-btn-group">
 					<span className="glyphicon glyphicon-upload" id="upload" onClick={this._onUploadClick}></span>
-					<span className="title-bar-btn" onClick={this._onSaveClick}>S</span>
-					<span className="title-bar-btn" onClick={this._onCancelClick}>C</span>
+					<span className="glyphicon glyphicon-remove" onClick={this._onCancelClick}></span>
+				</div>
+			)
+		} else if (this.props.mode === 'edit') {
+			console.log('edit btnGrp');
+			btnGrp = (
+				<div className="title-btn-group">
+					<span className="glyphicon glyphicon-upload" id="upload" onClick={this._onUploadClick}></span>
+					<span className="glyphicon glyphicon-trash" onClick={this._onDeleteClick}></span>
+					<span className="glyphicon glyphicon-ok" onClick={this._onSaveClick}></span>
 				</div>
 			)
 		} else {
+			console.log('view btnGrp');
 			btnGrp = (
 				<div className="title-btn-group">
 					<span className="glyphicon glyphicon-edit" onClick={this._onEditClick}></span>

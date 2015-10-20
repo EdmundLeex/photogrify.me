@@ -9,21 +9,37 @@
 	cursor: pointer;
 }
 
+.sidebar-thumbs .glyphicon:hover {
+	color: #BBBBBC;
+}
+
 .glyphicon-edit {
 
 }
 
+.glyphicon-remove {
+
+}
+
 .glyphicon-plus {
-	font-size: 26px;
-	color: #BBBBBC;
+	font-size: 28px;
 }
 
 .glyphicon-book {
-	font-size: 26px;
-	color: #BBBBBC;
+	font-size: 28px;
 }
 
 .glyphicon-th {
-	font-size: 26px;
+	font-size: 28px;
+}
+
+.glyphicon-user {
+	font-size: 28px;
+}
+
+.glyphicon-search {
+	font-size: 16px;
 	color: #BBBBBC;
+	margin-top: 3px;
+	transform: translateY(2px);
 }
