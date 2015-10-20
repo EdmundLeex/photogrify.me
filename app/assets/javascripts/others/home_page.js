@@ -2,7 +2,7 @@ $(function () {
 	$("#signup-btn").click(function (e) {
 		e.preventDefault();
 		var form = $(".overlay");
-		form.removeClass("hidden");
+		form.removeClass("behind");
 		form.find("form").attr("action", "signup");
 		form.find(".submit-btn").attr("value", "Sign up");
 	});
@@ -10,7 +10,7 @@ $(function () {
 	$("#signin-btn").click(function (e) {
 		e.preventDefault();
 		var form = $(".overlay");
-		form.removeClass("hidden");
+		form.removeClass("behind");
 		form.find("form").attr("action", "signin");
 		form.find(".submit-btn").attr("value", "Sign in");
 	});
@@ -18,6 +18,6 @@ $(function () {
 	$("#close-btn").click(function (e) {
 		e.preventDefault();
 		var form = $(".overlay");
-		form.addClass("hidden");
+		form.addClass("behind");
 	});
 });

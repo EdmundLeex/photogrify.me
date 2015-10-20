@@ -5,7 +5,8 @@ var AlbumShow = React.createClass({
     return {
     	title: null,
     	pictures: [],
-    	enlargedImg: null
+    	enlargedImg: null,
+    	isExpanded: !TogglerStore.isPanelShown(),
     };
 	},
 
@@ -15,6 +16,7 @@ var AlbumShow = React.createClass({
 		AlbumStore.addAlbumUpdateListener(this._onTitleChanged);
 		PictureStore.addPicturesCollectionChangedListener(this._onChange);
 		PictureStore.addTogglePictureListener(this._onEnlarge);
+		TogglerStore.addToggleIndexPanelListener(this._onSlide);
 		// ApiUtil.fetchAllAlbums();
 	},
 
@@ -23,6 +25,7 @@ var AlbumShow = React.createClass({
 		AlbumStore.removeAlbumUpdateListener(this._onTitleChanged);
 		PictureStore.removePicturesCollectionChangedListener(this._onChange);
 		PictureStore.removeTogglePictureListener(this._onEnlarge);
+		TogglerStore.removeToggleIndexPanelListener(this._onSlide);
 	},
 
 	componentWillReceiveProps: function (nextProps) {
@@ -48,6 +51,10 @@ var AlbumShow = React.createClass({
 
 	_onEnlarge: function () {
 		this.setState({enlargedImg: PictureStore.enlargedImg()});
+	},
+
+	_onSlide: function () {
+		this.setState({ isExpanded: !TogglerStore.isPanelShown() })
 	},
 
 	onEditClick: function () {
@@ -98,8 +105,10 @@ var AlbumShow = React.createClass({
 										handleClick={this.onImgClick}
 										handleClickLeft={this.onLeftClick}
 										handleClickRight={this.onRightClick} /> : "";
+		var expandKlass;
+		if (!this.state.isExpanded) { expandKlass = " shrank"; }
 		return (
-			<div className={"album-show " + this.props.klass}>
+			<div className={"album-show " + this.props.klass + expandKlass}>
 				<div className="album-show-container">
 					{imgFrame}
 					<TitleBar mode={'show'}

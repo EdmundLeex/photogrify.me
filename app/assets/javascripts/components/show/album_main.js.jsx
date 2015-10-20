@@ -48,11 +48,12 @@ var AlbumsMain = React.createClass({
 		var albumShow,
 				album,
 				indexKlass = ""
-				overlayKlass = "";
-		if (this.state.isPanelShown) { overlayKlass = "covered"; }
+				klass = "";
+
+		// if (this.state.isPanelShown) { klass = "shrank"; }
 		if (this.state.albums.length && !this.props.params.albumId) {
 			album = this.state.albums[0];
-			albumShow = <AlbumShow params={{albumId: album.id}} klass={overlayKlass}/>
+			albumShow = <AlbumShow params={{albumId: album.id}} />
 		} else {
 			albumShow = <div></div>
 		}

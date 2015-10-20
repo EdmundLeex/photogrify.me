@@ -29,10 +29,6 @@
 	font-size: 12px;
 	height: 620px;
 	line-height: 15.6px;
-	margin-bottom: 0px;
-	margin-left: 0px;
-	margin-right: 0px;
-	margin-top: 0px;
 	/*max-width: 940px;*/
 	height: 620px;
 	left: 0px;
@@ -41,6 +37,8 @@
 	top: 0px;
 	width: 100%;
 	z-index: 30;
+	opacity: 1;
+  transition: all 0.2s linear;
 }
 
 .auth-form-container {
@@ -146,8 +144,11 @@
 	}
 }
 
-.hidden {
-	display: none;
+.behind {
+	display: block;
+	opacity:0;
+  transition:all 0.2s linear;
+  z-index: -10;
 }
 
 .close-btn {
