@@ -3,7 +3,7 @@ var AlbumsIndexContainer = React.createClass({
 		return (
 			<div className="albums-index-container">
 				<div className="albums-index-title">
-					Albums
+					<span className="album-index-title-text">Albums</span>
 					<SearchBox />
 				</div>
 				<AlbumsIndex albums={this.props.albums}
