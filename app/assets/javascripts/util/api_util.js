@@ -45,6 +45,23 @@ window.ApiUtil = {
 		});
 	},
 
+	transferImg: function (imgId, albumId) {
+		$.ajax({
+			url: '/api/transfer',
+			type: 'patch',
+			dataType: 'json',
+			data: {imgId: imgId, albumId: albumId},
+
+			success: function (respData) {
+				console.log(respData);
+				ApiActions.receivePicturesFromOneAlbum({pictures: respData});
+			},
+			error: function (respData) {
+				console.log(respData);
+			}
+		});
+	},
+
 	fetchAllAlbums: function (init) {
 		// get request
 		// dispatch action

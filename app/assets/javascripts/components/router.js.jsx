@@ -30,6 +30,7 @@ $(function () {
 					</Route>
 					<Route path="new" component={New} />
 					<Route path="pictures" component={PicturesWall} />
+					<Route path="drag" component={Drag} />
 				</Route>
 			</Router>
 		), root);

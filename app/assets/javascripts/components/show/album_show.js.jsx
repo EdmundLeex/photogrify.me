@@ -11,17 +11,17 @@ var AlbumShow = React.createClass({
 
 	componentDidMount: function () {
 		ApiUtil.fetchPicturesFromAlbum(this.props.params.albumId);
-		AlbumStore.addAlbumsIndexChangeListener(this._onSwitch);
+		AlbumStore.addAlbumsIndexChangeListener(this._onChange);
 		AlbumStore.addAlbumUpdateListener(this._onTitleChanged);
-		PictureStore.addPicturesCollectionChangedListener(this._onSwitch);
+		PictureStore.addPicturesCollectionChangedListener(this._onChange);
 		PictureStore.addTogglePictureListener(this._onEnlarge);
 		// ApiUtil.fetchAllAlbums();
 	},
 
 	componentWillUnmount: function () {
-		AlbumStore.removeAlbumsIndexChangeListener(this._onSwitch);
+		AlbumStore.removeAlbumsIndexChangeListener(this._onChange);
 		AlbumStore.removeAlbumUpdateListener(this._onTitleChanged);
-		PictureStore.removePicturesCollectionChangedListener(this._onSwitch);
+		PictureStore.removePicturesCollectionChangedListener(this._onChange);
 		PictureStore.removeTogglePictureListener(this._onEnlarge);
 	},
 
@@ -33,7 +33,7 @@ var AlbumShow = React.createClass({
 		this.setState({title: AlbumStore.find(this.props.params.albumId).title});
 	},
 
-	_onSwitch: function () {
+	_onChange: function () {
 		// change count, title
 		var album = AlbumStore.find(this.props.params.albumId);
 		try{
