@@ -72,6 +72,10 @@ var New = React.createClass({
 		});
 	},
 
+	onSaveClick: function () {
+		this.props.history.pushState(null, '/');
+	},
+
 	onCancelClick: function () {
 		this.props.history.pushState(null, '/');
 	},
