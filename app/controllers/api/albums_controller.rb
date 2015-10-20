@@ -29,6 +29,7 @@ class Api::AlbumsController < ApplicationController
 
   	if @album
   		@pictures = @album.pictures
+      render :show
   	else
   		# TODO: page not found
   	end
