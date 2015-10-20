@@ -41,6 +41,7 @@ class Api::AlbumsController < ApplicationController
     if @album
       @album.title = params[:title] unless params[:title].blank?
       @album.description = params[:description] unless params[:description].blank?
+
       unless params[:urls].blank?
         picture_urls = params[:urls]
         picture_urls = JSON.parse(picture_urls)

@@ -20,16 +20,25 @@ class Api::PicturesController < ApplicationController
 
 	def transfer
 		img_id, album_id = params[:imgId], params[:albumId]
-		album = Picture.find(img_id).album
+		moved_img				 = Picture.find(img_id)
+		move_from_album  = moved_img.album
+		move_to_album 	 = Album.find(album_id)
 
-		begin
-			Picture.update(img_id.to_i, album_id: album_id.to_i)
-		rescue ActiveRecord::InvalidForeignKey => e
-			# render errors
-			return
+		if moved_img
+			moved_img.update(album_id: album_id.to_i)
+		else
+			# TODO: error msg
 		end
 
-		@pictures = album.pictures
+		@pictures = move_from_album.pictures
+
+		unless move_to_album.cover_picture_url
+			move_to_album.update(cover_picture_url: moved_img.picture_url)
+		end
+
+		if move_from_album.cover_picture_url == moved_img
+			move_from_album.update(cover_picture_url: @pictures[0].picture_url)
+		end
 
 		render :index
 	end
