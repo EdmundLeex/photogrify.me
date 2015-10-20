@@ -20,6 +20,8 @@ class Api::PicturesController < ApplicationController
 
 	def transfer
 		img_id, album_id = params[:imgId], params[:albumId]
+		album = Picture.find(img_id).album
+
 		begin
 			Picture.update(img_id.to_i, album_id: album_id.to_i)
 		rescue ActiveRecord::InvalidForeignKey => e
@@ -27,8 +29,7 @@ class Api::PicturesController < ApplicationController
 			return
 		end
 
-		@album = Album.find(album_id)
-		@pictures = @album.pictures
+		@pictures = album.pictures
 
 		render :index
 	end

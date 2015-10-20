@@ -12,7 +12,6 @@ var AlbumIndexItem = React.createClass({
 	},
 
 	handleDrop: function (e) {
-		debugger
 		e.preventDefault();
 		if (parseInt(this.props.params.albumId) !== this.props.album.id) {
 			var imgId = e.dataTransfer.getData(APP_CONSTANTS.DRAGGING_IMG);
