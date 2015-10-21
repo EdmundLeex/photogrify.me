@@ -38,6 +38,7 @@ var AlbumShow = React.createClass({
 
 	_onChange: function () {
 		// change count, title
+
 		var album = AlbumStore.find(this.props.params.albumId);
 		try{
 			this.setState({
@@ -105,7 +106,7 @@ var AlbumShow = React.createClass({
 										handleClick={this.onImgClick}
 										handleClickLeft={this.onLeftClick}
 										handleClickRight={this.onRightClick} /> : "";
-		var expandKlass;
+		var expandKlass = "";
 		if (!this.state.isExpanded) { expandKlass = " shrank"; }
 		var album = AlbumStore.find(this.props.params.albumId);
 		var cover_picture_url = album.cover_picture_url;
