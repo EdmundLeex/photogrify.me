@@ -101,15 +101,17 @@ var AlbumShow = React.createClass({
 	},
 
 	render: function () {
+		var album;
+		var expandKlass = "";
+		var cover_picture_url;
 		var imgFrame = (this.state.enlargedImg) ?
 			<PictureFrame picture={this.state.enlargedImg}
 										handleClick={this.onImgClick}
 										handleClickLeft={this.onLeftClick}
 										handleClickRight={this.onRightClick} /> : "";
-		var expandKlass = "";
 		if (!this.state.isExpanded) { expandKlass = " shrank"; }
-		var album = AlbumStore.find(this.props.params.albumId);
-		var cover_picture_url = album.cover_picture_url;
+		album = AlbumStore.find(this.props.params.albumId);
+		if (album) { cover_picture_url = album.cover_picture_url; }
 
 		return (
 			<div className={"album-show " + this.props.klass + expandKlass}>
