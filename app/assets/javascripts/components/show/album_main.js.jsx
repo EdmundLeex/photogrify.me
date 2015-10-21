@@ -66,7 +66,6 @@ var AlbumsMain = React.createClass({
 															history={this.history}
 															klass={indexKlass}
 															params={this.props.params} />
-				<div className="album-main-overlay"></div>
 				{albumShow}
 				{this.props.children}
 			</div>

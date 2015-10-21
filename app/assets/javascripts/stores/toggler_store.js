@@ -3,11 +3,13 @@
 	var TOGGLE_EDITING_EVENT = "TOGGLE_EDITING_EVENT";
 	var TOGGLE_CREATING_EVENT = "TOGGLE_CREATING_EVENT";
 	var SLIDE_PANEL_EVENT = "SLIDE_PANEL_EVENT";
+	var TOGGLE_OVERLAY_EVENT = "TOGGLE_OVERLAY_EVENT";
 	// var TOGGLE_MODE_EVENT = "TOGGLE_MODE_EVENT";
 	// var _showSearchBox = false;
 	var _editingTitle = false;
 	var _creating = 'new';
 	var _isPanelShown = false;
+	var _isOverlayShown = false;
 	// var _mode = 'view';
 
 	// var toggleMode = function (mode) {
@@ -24,9 +26,11 @@
 
 	var toggleSlide = function (show) {
 		if (typeof show !== 'undefined') {
-			_isPanelShown = false;
+			_isPanelShown = show;
+			_isOverlayShown = show;
 		} else {
 			_isPanelShown = !_isPanelShown;
+			_isOverlayShown = _isPanelShown;
 		}
 	};
 
@@ -45,6 +49,10 @@
 
 		creatingState: function () {
 			return _creating;
+		},
+
+		showOverlay: function () {
+			return _isOverlayShown;
 		},
 
 		// addToggleSearchListener: function (callback) {
@@ -77,6 +85,14 @@
 
 		removeToggleIndexPanelListener: function (callback) {
 			this.removeListener(SLIDE_PANEL_EVENT, callback);
+		},
+
+		addToggleOverlayListener: function (callback) {
+			this.on(TOGGLE_OVERLAY_EVENT, callback);
+		},
+
+		removeToggleOverlayListener: function (callback) {
+			this.removeListener(TOGGLE_OVERLAY_EVENT, callback)
 		},
 
 		// addToggleModeListener: function (callback) {

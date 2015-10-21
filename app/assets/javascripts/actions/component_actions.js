@@ -27,6 +27,13 @@ window.ComponentActions = {
 	// 	});
 	// },
 
+	togglerOverlay: function (isShown) {
+		AppDispatcher.dispatch({
+			actionType: APP_CONSTANTS.TOGGLE_OVERLAY,
+			isShown: isShown
+		});
+	},
+
 	saveNewAlbum: function (album) {
 		ApiUtil.updateAlbum(album.id, album.title, album.description);
 		AlbumStore.clearNewAlbum();
@@ -39,12 +46,12 @@ window.ComponentActions = {
 		});
 	},
 
-	toggleSearchBar: function (showSearchBox) {
-		AppDispatcher.dispatch({
-			actionType: APP_CONSTANTS.TOGGLE_SEARCH,
-			showSearchBox: showSearchBox
-		});
-	},
+	// toggleSearchBar: function (showSearchBox) {
+	// 	AppDispatcher.dispatch({
+	// 		actionType: APP_CONSTANTS.TOGGLE_SEARCH,
+	// 		showSearchBox: showSearchBox
+	// 	});
+	// },
 
 	toggleImg: function (picture) {
 		AppDispatcher.dispatch({

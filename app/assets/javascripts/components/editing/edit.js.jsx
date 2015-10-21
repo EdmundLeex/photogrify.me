@@ -13,19 +13,22 @@ var Edit = React.createClass({
     	description: description,
     	pictures: [],
     	picCount: null,
-    	creatingState: null
+    	creatingState: null,
+    	showOverlay: false
     };
 	},
 
 	componentDidMount: function () {
 		AlbumStore.addAlbumsIndexChangeListener(this._onTitleChanged);
 		AlbumStore.addAlbumUpdateListener(this._onTitleChanged);
+		TogglerStore.addToggleIndexPanelListener(this._onOverlayToggled);
 		// PictureStore.addPicturesCollectionChangedListener(this._onSwitch);
 	},
 
 	componentWillUnmount: function () {
 		AlbumStore.removeAlbumsIndexChangeListener(this._onTitleChanged);
 		AlbumStore.removeAlbumUpdateListener(this._onTitleChanged);
+		TogglerStore.removeToggleIndexPanelListener(this._onOverlayToggled);
 		// PictureStore.removePicturesCollectionChangedListener(this._onSwitch);
 	},
 
@@ -42,6 +45,10 @@ var Edit = React.createClass({
 			albumId: AlbumStore.latestAlbum().id,
 			title: AlbumStore.latestAlbum().title,
 		});
+	},
+
+	_onOverlayToggled: function () {
+		this.setState({showOverlay: TogglerStore.showOverlay()});
 	},
 
 	onDeleteClick: function () {
@@ -81,11 +88,18 @@ var Edit = React.createClass({
 		ApiUtil.updateAlbum(this.props.params.albumId, this.state.title, description, imgUrls);
 	},
 
+	handleOverlayClick: function () {
+		ComponentActions.slideOut(false);
+	},
 
 	render: function () {
 		var pictures = PictureStore.all();
+		var showOverlay = (this.state.showOverlay) ? "" : "hide";
+
 		return (
 			<div className="album-show">
+				<div className={"album-main-overlay " + showOverlay}
+						 onClick={this.handleOverlayClick}></div>
 				<div className="form-container">
 					<TitleBar mode={'edit'}
 										title={this.state.title}

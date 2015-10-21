@@ -114,9 +114,14 @@ var New = React.createClass({
 		}
 	},
 
+	handleOverlayClick: function () {
+		ComponentActions.slideOut(false);
+	},
+
 	render: function () {
 		var indexKlass = "";
 		var albums = AlbumStore.all();
+		var showOverlay = (this.state.isPanelShown) ? "" : "hide";
 
 		if (!this.state.isPanelShown) { indexKlass = "slide-out"; }
 		return (
@@ -125,6 +130,8 @@ var New = React.createClass({
 															history={this.history}
 															klass={indexKlass}
 															params={this.props.params} />
+				<div className={"album-main-overlay " + showOverlay}
+						 onClick={this.handleOverlayClick}></div>
 				<TitleBar mode={this.state.mode}
 									title={this.state.title}
 									albumId={this.props.params.albumId}
