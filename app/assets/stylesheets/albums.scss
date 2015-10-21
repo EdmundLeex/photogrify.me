@@ -27,7 +27,7 @@
 	/*background-color: white;*/
 }
 
-/*.album-show-main-overlay {
+.album-main-overlay {
 	opacity: 1;
 	height: 100vh;
 	width: 100%;
@@ -35,12 +35,13 @@
 	position: absolute;
 	z-index: 5;
 	transition: opacity 1.5s linear;
-/*  transition: background-color 1s;
+  transition: background-color 1s;
   -webkit-transition: background-color 1500ms;
   -moz-transition: background-color 1500ms;
   -o-transition: background-color 1500ms;
-*/
-/*.album-show-main-overlay.hidden{
+}
+
+.album-main-overlay.hide{
 	opacity: 0;
 	display: block !important;
 	height: 100vh;
@@ -53,7 +54,7 @@
   -moz-transition: background-color 1500ms;
   -o-transition: background-color 1500ms;
 }
-*/
+
 .album-show {
 	position: relative;
 	opacity: 1;
