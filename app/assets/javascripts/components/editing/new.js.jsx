@@ -117,7 +117,7 @@ var New = React.createClass({
 	render: function () {
 		var indexKlass = "";
 		var albums = AlbumStore.all();
-		// pass in options to show buttons
+
 		if (!this.state.isPanelShown) { indexKlass = "slide-out"; }
 		return (
 			<div className="album-new-main">
