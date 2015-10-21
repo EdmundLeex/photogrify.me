@@ -37,8 +37,9 @@
 .albums-index-title {
 	position: relative;
 	width: 100%;
-	height: 100px;
-	background-color: #FFFFFF;
+	height: 40px;
+	padding: 5px;
+	background-color: black;
 	/*background-color: #F3F5F6;*/
 	/*margin-left: 20px;*/
 	color: #A9A9A9;
@@ -67,7 +68,7 @@
 }
 
 .album-index-item:hover {
-	background-color: #bbbbbc;
+	background-color: rgba(0,0,0,0.5);
 }
 
 .selected {
@@ -77,15 +78,14 @@
 .search-box {
 	position: relative;
   margin: 0 auto;
-  margin-top: 20px;
   width: 90%;
 	height: 30px;
 	padding-left: 10px;
-  background: white;
-  border-color: #BBBBBC;
-  border-width: 1px;
-  border-style: solid;
-  border-radius: 5px;
+  background: rgba(0,0,0,0);
+  /*border-color: #BBBBBC;*/
+  /*border-width: 1px;*/
+  /*border-style: solid;*/
+  /*border-radius: 5px;*/
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   -ms-box-sizing: border-box;
@@ -98,6 +98,11 @@
 	  border: none;
 	  outline: none;
 	  font-size: 16px;
+	  background: rgba(0,0,0,0);
 	  width: calc(100% - 35px);
   }
+}
+
+.search-box:hover :focus {
+	border: 1px solid gray;
 }

@@ -1,7 +1,7 @@
 var AllPicturesBtn = React.createClass({
 	render: function () {
 		return (
-			<div className="sidebar-thumbs" onClick={this.onClickHandler}>
+			<div className="sidebar-thumbs" data-toggle="tooltip" title="ALL PICTURES" onClick={this.onClickHandler}>
 				<span className="glyphicon glyphicon-th"></span>
 			</div>
 		);

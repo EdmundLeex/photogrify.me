@@ -27,9 +27,15 @@ var PicturesWall = React.createClass({
 		this.setState({ isPanelShown: TogglerStore.isPanelShown() });
 	},
 
+	getRandomSize: function (min, max) {
+	  return Math.round(Math.random() * (max - min) + min);
+	},
+
 	render: function () {
 		var indexKlass = "";
 		var albums = AlbumStore.all();
+		var size;
+		var that = this;
 
 		if (!this.state.isPanelShown) { indexKlass = "slide-out"; }
 		return (
@@ -38,8 +44,31 @@ var PicturesWall = React.createClass({
 															history={this.history}
 															klass={indexKlass}
 															params={this.props.params} />
-				<PicturesCollection pictures={this.state.pictures} />
+				<div id="photos">
+					{this.state.pictures.map(function (pic) {
+						size = "h_" + that.getRandomSize(100, 500);
+						return <WallPicItem key={pic.id} picture={pic} size={size} />
+					})}
+				</div>
 			</div>
 		);
 	}
 });
+
+var WallPicItem = React.createClass({
+	render: function () {
+		var url = APP_CONFIG.ImageUrlByOptions(
+			this.props.picture.picture_url,
+			this.props.size
+		);
+
+		return (
+			<div className="img"
+					 draggable="true"
+					 onDragStart={this.handleDragStart}
+					 onDragEnd={this.handleDragEnd}>
+				<img src={url} onClick={this.handleClick} />
+			</div>
+		);
+	}
+})

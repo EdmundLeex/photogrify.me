@@ -27,26 +27,44 @@ var TitleBtnGroup = React.createClass({
 			console.log('new btnGrp');
 			btnGrp = (
 				<div className="title-btn-group">
-					<span className="glyphicon glyphicon-upload" id="upload" onClick={this._onUploadClick}></span>
-					<span className="glyphicon glyphicon-remove" onClick={this._onCancelClick}></span>
+					<span className="glyphicon glyphicon-upload"
+								id="upload"
+								onClick={this._onUploadClick}
+								data-toggle="tooltip" title="UPLOAD PICTURES"></span>
+					<span className="glyphicon glyphicon-remove"
+								onClick={this._onCancelClick}
+								data-toggle="tooltip" title="DELETE"></span>
 				</div>
 			)
 		} else if (this.props.mode === 'edit') {
 			console.log('edit btnGrp');
 			btnGrp = (
 				<div className="title-btn-group">
-					<span className="glyphicon glyphicon-upload" id="upload" onClick={this._onUploadClick}></span>
-					<span className="glyphicon glyphicon-trash" onClick={this._onDeleteClick}></span>
-					<span className="glyphicon glyphicon-ok" onClick={this._onSaveClick}></span>
+					<span className="glyphicon glyphicon-upload"
+								id="upload"
+								onClick={this._onUploadClick}
+								data-toggle="tooltip" title="UPLOAD PICTURES"></span>
+					<span className="glyphicon glyphicon-trash"
+								onClick={this._onDeleteClick}
+								data-toggle="tooltip" title="DELETE"></span>
+					<span className="glyphicon glyphicon-ok"
+								onClick={this._onSaveClick}
+								data-toggle="tooltip" title="DONE"></span>
 				</div>
 			)
 		} else {
 			console.log('view btnGrp');
 			btnGrp = (
 				<div className="title-btn-group">
-					<span className="glyphicon glyphicon-edit" onClick={this._onEditClick}></span>
-					<span className="glyphicon glyphicon-upload" onClick={this._onUploadClick}></span>
-					<span className="glyphicon glyphicon-trash" onClick={this._onDeleteClick}></span>
+					<span className="glyphicon glyphicon-edit"
+								onClick={this._onEditClick}
+								data-toggle="tooltip" title="EDIT"></span>
+					<span className="glyphicon glyphicon-upload"
+								onClick={this._onUploadClick}
+								data-toggle="tooltip" title="UPLOAD PICTURES"></span>
+					<span className="glyphicon glyphicon-trash"
+								onClick={this._onDeleteClick}
+								data-toggle="tooltip" title="DELETE"></span>
 				</div>
 			)
 		}
