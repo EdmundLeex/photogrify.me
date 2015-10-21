@@ -31,8 +31,6 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'bootstrap-sass'
 
-gem "browserify-rails"
-
 gem "cloudinary"
 
 gem 'figaro'
