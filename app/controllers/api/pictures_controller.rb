@@ -37,7 +37,7 @@ class Api::PicturesController < ApplicationController
 		end
 
 		if move_from_album.cover_picture_url == moved_img.picture_url
-			if @pictures
+			if @pictures.blank?
 				move_from_album.update(cover_picture_url: @pictures[0].picture_url)
 			else
 				move_from_album.update(cover_picture_url: "")

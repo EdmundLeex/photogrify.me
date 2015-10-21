@@ -28,6 +28,16 @@ img_urls = [
 	"http://impressivemagazine.com/wp-content/uploads/2014/01/national_parks_yosemite.jpg"
 ]
 
+def get_imgs_from_cloudinary
+	public_ids = Cloudinary::Api.resources(
+		type: :upload,
+		cloud_name: ENV['cloud_name'],
+		api_key: ENV['api_key'],
+		api_secret: ENV['api_secret']
+	)['resources'][1..-1]
+	public_ids
+end
+
 User.destroy_all
 
 User.create(username: 'demo', password: 'secret')
@@ -65,12 +75,13 @@ if Rails.env == 'production'
 	print "\n"
 	puts "Upload finished."
 else
-	seed_imgs = get_ids
+	seed_imgs = get_imgs_from_cloudinary
 end
 
 puts "Persisting Cloudinary urls to database"
 
 Picture.destroy_all
+# debugger
 seed_imgs.each do |img|
 	Album.first.pictures.create(picture_url: img['url'], public_id: img['public_id'])
 	print "."
@@ -89,12 +100,3 @@ failed_imgs.each do |url, error|
 	puts "  " + error.to_s
 end
 puts "=" * 40
-
-def get_ids
-	public_ids = Cloudinary::Api.resources(
-		type: :upload,
-		cloud_name: ENV['cloud_name'],
-		api_key: ENV['api_key'],
-		api_secret: ENV['api_secret']
-	)['resources'].map { |h| h['public_id']}
-end
