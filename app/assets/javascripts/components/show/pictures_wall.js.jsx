@@ -39,15 +39,17 @@ var PicturesWall = React.createClass({
 
 		if (!this.state.isPanelShown) { indexKlass = "slide-out"; }
 		return (
-			<div className="pictures-wall" id="photos">
+			<div className="pictures-wall">
 				<AlbumsIndexContainer albums={albums}
 															history={this.history}
 															klass={indexKlass}
 															params={this.props.params} />
-				{this.state.pictures.map(function (pic) {
-					size = "w_" + that.getRandomSize(200, 400);
-					return <WallPicItem key={pic.id} picture={pic} size={size} />
-				})}
+				<div id="photos">
+					{this.state.pictures.map(function (pic) {
+						size = "h_" + that.getRandomSize(100, 500);
+						return <WallPicItem key={pic.id} picture={pic} size={size} />
+					})}
+				</div>
 			</div>
 		);
 	}
@@ -61,15 +63,11 @@ var WallPicItem = React.createClass({
 		);
 
 		return (
-			<div className="img-thumb"
+			<div className="img"
 					 draggable="true"
 					 onDragStart={this.handleDragStart}
 					 onDragEnd={this.handleDragEnd}>
 				<img src={url} onClick={this.handleClick} />
-				<div className="thumb-tools">
-					<span className="thumb-delete glyphicon glyphicon-trash"
-								onClick={this.handleClickDelete}></span>
-				</div>
 			</div>
 		);
 	}
