@@ -94,7 +94,7 @@ var Edit = React.createClass({
 
 	render: function () {
 		var pictures = PictureStore.all();
-		var showOverlay = (this.state.showOverlay) ? "" : "hide";
+		var showOverlay = (this.state.showOverlay) ? "" : "behind";
 
 		return (
 			<div className="album-show">

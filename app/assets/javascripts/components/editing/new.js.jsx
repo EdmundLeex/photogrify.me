@@ -121,7 +121,7 @@ var New = React.createClass({
 	render: function () {
 		var indexKlass = "";
 		var albums = AlbumStore.all();
-		var showOverlay = (this.state.isPanelShown) ? "" : "hide";
+		var showOverlay = (this.state.isPanelShown) ? "" : "behind";
 
 		if (!this.state.isPanelShown) { indexKlass = "slide-out"; }
 		return (
