@@ -124,8 +124,9 @@
 	    font-family: 'Ubuntu', sans-serif;
 		}
 
-		input:hover {
-			color: #128fdc;
+		input:hover,:focus {
+			color: white;
+			opacity: 0.8;
 		}
 
 		.editing {
