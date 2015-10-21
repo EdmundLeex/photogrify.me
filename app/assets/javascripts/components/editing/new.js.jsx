@@ -54,7 +54,11 @@ var New = React.createClass({
 	},
 
 	_onToggleCreating: function () {
-		this.setState({creatingState: TogglerStore.creatingState()});
+		this.setState({ creatingState: TogglerStore.creatingState() });
+	},
+
+	_onSlide: function () {
+		this.setState({ isPanelShown: TogglerStore.isPanelShown() });
 	},
 
 	onDeleteClick: function () {

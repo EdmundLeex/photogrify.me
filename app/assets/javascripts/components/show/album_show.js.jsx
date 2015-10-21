@@ -51,11 +51,11 @@ var AlbumShow = React.createClass({
 	},
 
 	_onEnlarge: function () {
-		this.setState({enlargedImg: PictureStore.enlargedImg()});
+		this.setState({ enlargedImg: PictureStore.enlargedImg() });
 	},
 
 	_onSlide: function () {
-		this.setState({ isExpanded: !TogglerStore.isPanelShown() })
+		this.setState({ isExpanded: !TogglerStore.isPanelShown() });
 	},
 
 	onEditClick: function () {
