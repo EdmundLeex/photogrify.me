@@ -26,7 +26,7 @@ namespace :cloudinary do
 	end
 
 	task :count => :environment do
-		puts "Cloudinary image count: #{get_ids.size - 1}"
+		puts "Cloudinary image count: #{get_ids.size}"
 	end
 
 	def get_ids
@@ -35,6 +35,6 @@ namespace :cloudinary do
 			cloud_name: ENV['cloud_name'],
 			api_key: ENV['api_key'],
 			api_secret: ENV['api_secret']
-		)['resources'].map { |h| h['public_id']}
+		)['resources'].map { |h| h['public_id']}[1..-1]
 	end
 end

@@ -13,8 +13,19 @@ img_urls = [
 	"https://trashmashup.files.wordpress.com/2013/05/tmu2.jpg",
 	"http://kevinwarnock.com/wp-content/uploads/2012/10/Aaron-Bray-owner-of-PushPullArtDesign-dot-com-October-20-2012-Lower-Haight-Urban-Air-Market-San-Francisco.jpg",
 	"http://www.enjoyourholiday.com/wp-content/uploads/2013/10/San-Francisco-Tramline.jpg",
+	"https://c1.staticflickr.com/3/2856/9681774337_75bc6c7d2e_b.jpg",
+	"http://screen-wallpapers.com/wallpapers/4138/San-Francisco,%20USA.jpg",
+	# here up is sf
 	"http://static.onemansblog.com/wp-content/uploads/2015/02/San-Fran-Street-Artist2.jpg",
-	"http://www.dailyemerald.com/wp-content/uploads/2013/08/20130824.as_.AesopRock.823.jpg"
+	"http://www.dailyemerald.com/wp-content/uploads/2013/08/20130824.as_.AesopRock.823.jpg",
+	"http://i.kinja-img.com/gawker-media/image/upload/jhveeytnicbaekstrb5s.png",
+	"https://static.pexels.com/photos/6550/nature-sky-sunset-man.jpeg",
+	"https://static.pexels.com/photos/6495/landscape-mountains-nature-trees.jpeg",
+	"https://farm6.staticflickr.com/5548/11874722676_6450fcb8ba_b.jpg",
+	"https://c1.staticflickr.com/1/48/133364703_5ad410ea7a_b.jpg",
+	"https://picload.files.wordpress.com/2012/10/seljalandsfoss-falls-in-iceland.jpg",
+	"http://static1.squarespace.com/static/52e77ab3e4b0a4877ee01abd/t/530b8811e4b0dd985a47773a/1393264664531/IMG_7161.jpg?format=1500w",
+	"http://impressivemagazine.com/wp-content/uploads/2014/01/national_parks_yosemite.jpg"
 ]
 
 User.destroy_all
@@ -28,36 +39,38 @@ Album.create(title: 'Demo Album1', description: 'Demo description', user: User.f
 Album.create(title: 'Demo Album2', description: '', user: User.first)
 Album.create(title: 'Demo Album3', description: 'description', user: User.first)
 
-
-Picture.destroy_all
-begin
-	Rake::Task['cloudinary:destroy_all'].invoke
-rescue
-	retry
-end
-
 seed_imgs = []
 failed_imgs = {}
-# img_file = File.read('./db/images/images.txt').split("\n")
 
-puts "Uploading to Cloudinary:"
-img_urls.each do |url|
+if Rails.env == 'production'
 	begin
-		seed_imgs << Cloudinary::Uploader.upload(url, cloud_name: ENV['cloud_name'],
-																									public_id: ENV['public_id'],
-																									api_key: ENV['api_key'],
-																									api_secret: ENV['api_secret'])
-	rescue CloudinaryException => e
-		failed_imgs[url] = e
-		next
+		Rake::Task['cloudinary:destroy_all'].invoke
+	rescue
+		retry
 	end
-	print "."
+
+	puts "Uploading to Cloudinary:"
+	img_urls.each do |url|
+		begin
+			seed_imgs << Cloudinary::Uploader.upload(url, cloud_name: ENV['cloud_name'],
+																										public_id: ENV['public_id'],
+																										api_key: ENV['api_key'],
+																										api_secret: ENV['api_secret'])
+		rescue CloudinaryException => e
+			failed_imgs[url] = e
+			next
+		end
+		print "."
+	end
+	print "\n"
+	puts "Upload finished."
+else
+	seed_imgs = get_ids
 end
-print "\n"
-puts "Upload finished."
 
 puts "Persisting Cloudinary urls to database"
 
+Picture.destroy_all
 seed_imgs.each do |img|
 	Album.first.pictures.create(picture_url: img['url'], public_id: img['public_id'])
 	print "."
@@ -76,3 +89,12 @@ failed_imgs.each do |url, error|
 	puts "  " + error.to_s
 end
 puts "=" * 40
+
+def get_ids
+	public_ids = Cloudinary::Api.resources(
+		type: :upload,
+		cloud_name: ENV['cloud_name'],
+		api_key: ENV['api_key'],
+		api_secret: ENV['api_secret']
+	)['resources'].map { |h| h['public_id']}
+end
