@@ -100,6 +100,10 @@ var AlbumShow = React.createClass({
 		ComponentActions.toggleImg(nextImg);
 	},
 
+	handleClick: function () {
+		ComponentActions.slideOut(false);
+	},
+
 	render: function () {
 		var album;
 		var expandKlass = "";
@@ -114,7 +118,8 @@ var AlbumShow = React.createClass({
 		if (album) { cover_picture_url = album.cover_picture_url; }
 
 		return (
-			<div className={"album-show " + this.props.klass + expandKlass}>
+			<div className={"album-show " + this.props.klass + expandKlass}
+					 onClick={this.handleClick}>
 				<div className="album-show-container">
 					{imgFrame}
 					<TitleBar mode={'show'}
