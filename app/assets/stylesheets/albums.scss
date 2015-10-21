@@ -103,17 +103,19 @@
 
 	.title {
 		min-width: 300px;
+		/*margin-top: 25px;*/
+		margin-left: 20px;
+		float: left;
 		/*color: #A9A9A9;*/
 		input {
 			display: block;
 			height: 50px;
 			min-width: 200px;
 			background: rgba(154, 206, 235, 0);
-			text-align: center;
+			/*text-align: center;*/
 			border: 0;
 	    outline: 0;
 			margin: auto;
-			margin-top: 25px;
 			box-sizing: border-box;
 	    -moz-box-sizing: border-box;
 			text-overflow: ellipsis;
