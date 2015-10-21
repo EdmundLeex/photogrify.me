@@ -135,9 +135,9 @@
 }
 
 .title-btn-group {
-	float: right;
-	margin-right: 40px;
-	margin-top: -15px;
+	position: fixed;
+	top: 10px;
+	right: 40px;
 
 	span {
 		margin-left: 15px;
