@@ -26,7 +26,7 @@ var AlbumIndexItem = React.createClass({
 			"selected" : "";
 
 		try {
-			var url = APP_CONFIG.ImageUrlBySize(
+			var url = APP_CONFIG.ImageUrlByOptions(
 				props.album.cover_picture_url,
 				APP_CONFIG.INDEX_COVER_SIZE
 			);

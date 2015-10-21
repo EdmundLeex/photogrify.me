@@ -107,12 +107,16 @@ var AlbumShow = React.createClass({
 										handleClickRight={this.onRightClick} /> : "";
 		var expandKlass;
 		if (!this.state.isExpanded) { expandKlass = " shrank"; }
+		var album = AlbumStore.find(this.props.params.albumId);
+		var cover_picture_url = album.cover_picture_url;
+
 		return (
 			<div className={"album-show " + this.props.klass + expandKlass}>
 				<div className="album-show-container">
 					{imgFrame}
 					<TitleBar mode={'show'}
 										title={this.state.title}
+										cover_picture_url={cover_picture_url}
 										onEditClick={this.onEditClick}
 										onUploadClick={this.onUploadClick}
 									  onDeleteClick={this.onDeleteClick}

@@ -33,9 +33,19 @@ var TitleBar = React.createClass({
 
 	render: function () {
 		var titleBar = this.renderTitle();
+		try {
+
+			var url = APP_CONFIG.ImageUrlByOptions(
+				this.props.cover_picture_url,
+				"e_brightness:30/e_blur:200"
+			);
+			var divStyle = {backgroundImage: 'url(' + url + ')'};
+		} catch(e) {
+			console.log(e);
+		}
 
 		return (
-			<div className="album-show-title">
+			<div className="album-show-title" style={divStyle}>
 				{titleBar}
 				<span className="count">{this.state.picCount}</span>
 				<TitleBtnGroup mode={this.props.mode}

@@ -92,10 +92,13 @@
 	position: relative;
 	float: left;
 	width: 100%;
-	height: 100px;
-	background-color: inherit;
-	background-color: #FFFFFF;
-	border-bottom: 1px solid #ececec;
+	height: 200px;
+	/*background-color: inherit;*/
+	/*background-color: #FFFFFF;*/
+	/*border-bottom: 2px solid #ececec;*/
+	background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 
 	.title {
 		min-width: 300px;
