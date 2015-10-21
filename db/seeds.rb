@@ -57,6 +57,7 @@ print "\n"
 puts "Upload finished."
 
 puts "Persisting Cloudinary urls to database"
+
 seed_imgs.each do |img|
 	Album.first.pictures.create(picture_url: img['url'], public_id: img['public_id'])
 	print "."
