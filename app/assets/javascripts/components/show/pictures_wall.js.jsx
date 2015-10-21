@@ -27,19 +27,50 @@ var PicturesWall = React.createClass({
 		this.setState({ isPanelShown: TogglerStore.isPanelShown() });
 	},
 
+	getRandomSize: function (min, max) {
+	  return Math.round(Math.random() * (max - min) + min);
+	},
+
 	render: function () {
 		var indexKlass = "";
 		var albums = AlbumStore.all();
+		var size;
+		var that = this;
 
 		if (!this.state.isPanelShown) { indexKlass = "slide-out"; }
 		return (
-			<div className="pictures-wall">
+			<div className="pictures-wall" id="photos">
 				<AlbumsIndexContainer albums={albums}
 															history={this.history}
 															klass={indexKlass}
 															params={this.props.params} />
-				<PicturesCollection pictures={this.state.pictures} />
+				{this.state.pictures.map(function (pic) {
+					size = "w_" + that.getRandomSize(200, 400);
+					return <WallPicItem key={pic.id} picture={pic} size={size} />
+				})}
 			</div>
 		);
 	}
 });
+
+var WallPicItem = React.createClass({
+	render: function () {
+		var url = APP_CONFIG.ImageUrlByOptions(
+			this.props.picture.picture_url,
+			this.props.size
+		);
+
+		return (
+			<div className="img-thumb"
+					 draggable="true"
+					 onDragStart={this.handleDragStart}
+					 onDragEnd={this.handleDragEnd}>
+				<img src={url} onClick={this.handleClick} />
+				<div className="thumb-tools">
+					<span className="thumb-delete glyphicon glyphicon-trash"
+								onClick={this.handleClickDelete}></span>
+				</div>
+			</div>
+		);
+	}
+})
