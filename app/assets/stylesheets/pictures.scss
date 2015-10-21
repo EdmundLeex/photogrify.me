@@ -182,9 +182,12 @@
 }*/
 
 .img-frame-overlay {
-	position: absolute;
-	z-index: 5;
-	transfrom: translateX(-100px);
+	position: fixed;
+  width: 100vh;
+  height: 100vh;
+	z-index: 30;
+  background: rgba(0,0,0,0.5);
+	/*transfrom: translateX(-100px);*/
 
 	.img-frame {
 		cursor: pointer;
