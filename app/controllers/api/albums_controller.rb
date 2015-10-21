@@ -79,6 +79,13 @@ class Api::AlbumsController < ApplicationController
     end
   end
 
+  def update_cover
+    picture = Picture.find(params[:imgId])
+    picture.album.update(cover_picture_url: picture.picture_url)
+    @albums = albums_in_desc
+    render :index
+  end
+
   private
 
   def save_pictures_to_album(album, picture_urls)
