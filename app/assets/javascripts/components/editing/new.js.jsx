@@ -9,7 +9,8 @@ var New = React.createClass({
     	pictures: [],
     	picCount: null,
     	mode: 'new',
-    	creatingState: null
+    	creatingState: null,
+    	isPanelShown: TogglerStore.isPanelShown()
     };
 	},
 
@@ -18,6 +19,7 @@ var New = React.createClass({
 		AlbumStore.addAlbumUpdateListener(this._onTitleChanged);
 		AlbumStore.addAlbumCreateListener(this._onAlbumCreated);
 		TogglerStore.addToggleCreatingListener(this._onToggleCreating);
+		TogglerStore.addToggleIndexPanelListener(this._onSlide);
 		// PictureStore.addPicturesCollectionChangedListener(this._onSwitch);
 	},
 
@@ -26,6 +28,7 @@ var New = React.createClass({
 		AlbumStore.removeAlbumUpdateListener(this._onTitleChanged);
 		AlbumStore.removeAlbumCreateListener(this._onAlbumCreated);
 		TogglerStore.removeToggleCreatingListener(this._onToggleCreating);
+		TogglerStore.removeToggleIndexPanelListener(this._onSlide);
 		// PictureStore.removePicturesCollectionChangedListener(this._onSwitch);
 	},
 
@@ -108,10 +111,16 @@ var New = React.createClass({
 	},
 
 	render: function () {
-		console.log('new rendered');
+		var indexKlass = "";
+		var albums = AlbumStore.all();
 		// pass in options to show buttons
+		if (!this.state.isPanelShown) { indexKlass = "slide-out"; }
 		return (
 			<div className="album-new-main">
+				<AlbumsIndexContainer albums={albums}
+															history={this.history}
+															klass={indexKlass}
+															params={this.props.params} />
 				<TitleBar mode={this.state.mode}
 									title={this.state.title}
 									albumId={this.props.params.albumId}
