@@ -10,5 +10,6 @@ Rails.application.routes.draw do
   	resources :albums, only: [:index, :create, :update, :destroy, :show]
   	resources :pictures, only: [:index, :destroy]
   	patch "transfer", to: "pictures#transfer"
+    patch "update_cover", to: "albums#update_cover"
   end
 end

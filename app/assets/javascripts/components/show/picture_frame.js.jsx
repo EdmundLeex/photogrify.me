@@ -16,7 +16,7 @@ var PictureFrame = React.createClass({
 	},
 
 	render: function () {
-		var url = APP_CONFIG.ImageUrlBySize(
+		var url = APP_CONFIG.ImageUrlByOptions(
 			this.props.picture.picture_url,
 			APP_CONFIG.FRAME_SIZE
 		);

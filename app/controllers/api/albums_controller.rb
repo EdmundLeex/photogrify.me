@@ -79,10 +79,14 @@ class Api::AlbumsController < ApplicationController
     end
   end
 
-  private
-  def albums_in_desc
-    current_user.albums.all.order('updated_at DESC')
+  def update_cover
+    picture = Picture.find(params[:imgId])
+    picture.album.update(cover_picture_url: picture.picture_url)
+    @albums = albums_in_desc
+    render :index
   end
+
+  private
 
   def save_pictures_to_album(album, picture_urls)
     ActiveRecord::Base.transaction do

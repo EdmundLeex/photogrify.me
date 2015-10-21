@@ -36,10 +36,16 @@ class Api::PicturesController < ApplicationController
 			move_to_album.update(cover_picture_url: moved_img.picture_url)
 		end
 
-		if move_from_album.cover_picture_url == moved_img
-			move_from_album.update(cover_picture_url: @pictures[0].picture_url)
+		if move_from_album.cover_picture_url == moved_img.picture_url
+			if @pictures
+				move_from_album.update(cover_picture_url: @pictures[0].picture_url)
+			else
+				move_from_album.update(cover_picture_url: "")
+			end
 		end
 
-		render :index
+		@albums = albums_in_desc
+
+		render :transfer
 	end
 end

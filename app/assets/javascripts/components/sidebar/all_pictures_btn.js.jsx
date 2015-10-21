@@ -8,6 +8,7 @@ var AllPicturesBtn = React.createClass({
 	},
 
 	onClickHandler: function () {
+		ComponentActions.slideOut(false);
 		this.props.history.pushState(null, '/pictures');
 	}
 });

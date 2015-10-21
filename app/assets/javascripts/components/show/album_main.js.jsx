@@ -47,7 +47,7 @@ var AlbumsMain = React.createClass({
 
 		var albumShow,
 				album,
-				indexKlass = ""
+				indexKlass = "",
 				klass = "";
 
 		// if (this.state.isPanelShown) { klass = "shrank"; }

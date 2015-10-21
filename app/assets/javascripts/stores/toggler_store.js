@@ -22,8 +22,12 @@
 		_creating = creating;
 	};
 
-	var toggleSlide = function () {
-		_isPanelShown = !_isPanelShown;
+	var toggleSlide = function (show) {
+		if (typeof show !== 'undefined') {
+			_isPanelShown = false;
+		} else {
+			_isPanelShown = !_isPanelShown;
+		}
 	};
 
 	root.TogglerStore = $.extend({}, EventEmitter.prototype, {
@@ -98,7 +102,7 @@
 					TogglerStore.emit(TOGGLE_CREATING_EVENT);
 					break;
 				case APP_CONSTANTS.SLIDE_PANEL:
-					toggleSlide();
+					toggleSlide(payload.show);
 					TogglerStore.emit(SLIDE_PANEL_EVENT);
 					break;
 				default:

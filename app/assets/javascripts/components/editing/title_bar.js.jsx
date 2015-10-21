@@ -31,11 +31,35 @@ var TitleBar = React.createClass({
 		this.props.onEditTitleFinish(this.state.title);
 	},
 
+	handleDragOver: function (e) {
+		e.preventDefault();
+	},
+
+	handleDrop: function (e) {
+		e.preventDefault();
+		var imgId = e.dataTransfer.getData(APP_CONSTANTS.DRAGGING_IMG);
+		ApiUtil.updateAlbumCover(imgId);
+		// console.log("dragged: " + imgId);
+	},
+
 	render: function () {
 		var titleBar = this.renderTitle();
+		try {
+
+			var url = APP_CONFIG.ImageUrlByOptions(
+				this.props.cover_picture_url,
+				"e_brightness:50/e_blur:200"
+			);
+			var divStyle = {backgroundImage: 'url(' + url + ')'};
+		} catch(e) {
+			console.log(e);
+		}
 
 		return (
-			<div className="album-show-title">
+			<div className="album-show-title"
+					 style={divStyle}
+					 onDrop={this.handleDrop}
+					 onDragOver={this.handleDragOver}>
 				{titleBar}
 				<span className="count">{this.state.picCount}</span>
 				<TitleBtnGroup mode={this.props.mode}

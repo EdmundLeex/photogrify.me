@@ -11,7 +11,7 @@ window.APP_CONFIG = {
 
 	FRAME_SIZE: 'h_600',
 
-	ImageUrlBySize: function (url, optionsStr) {
+	ImageUrlByOptions: function (url, optionsStr) {
 		url = url.split('/');
 		var insert_index = url.indexOf('upload') + 1;
 		url.splice(insert_index, 0, optionsStr);

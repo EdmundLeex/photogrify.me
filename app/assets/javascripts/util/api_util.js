@@ -54,7 +54,24 @@ window.ApiUtil = {
 
 			success: function (respData) {
 				console.log(respData);
-				ApiActions.receivePicturesFromOneAlbum({pictures: respData});
+				ApiActions.receivePicturesFromOneAlbum(respData);
+				ApiActions.receiveAllAlbums(respData.albums);
+			},
+			error: function (respData) {
+				console.log(respData);
+			}
+		});
+	},
+
+	updateAlbumCover: function (imgId) {
+		$.ajax({
+			url: '/api/update_cover',
+			type: 'patch',
+			dataType: 'json',
+			data: {imgId: imgId},
+
+			success: function (respData) {
+				ApiActions.receiveAllAlbums(respData);
 			},
 			error: function (respData) {
 				console.log(respData);

@@ -53,9 +53,10 @@ window.ComponentActions = {
 		});
 	},
 
-	slideOut: function () {
+	slideOut: function (show) {
 		AppDispatcher.dispatch({
-			actionType: APP_CONSTANTS.SLIDE_PANEL
+			actionType: APP_CONSTANTS.SLIDE_PANEL,
+			show: show
 		});
 	}
 
