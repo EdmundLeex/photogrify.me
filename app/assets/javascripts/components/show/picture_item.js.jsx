@@ -9,10 +9,12 @@ var PictureItem = React.createClass({
 
 	handleDragStart: function (e) {
 		e.dataTransfer.setData(APP_CONSTANTS.DRAGGING_IMG, this.props.picture.id);
+		e.currentTarget.style.opacity = "0.2";
 	},
 
 	handleDragEnd: function (e) {
 		e.preventDefault();
+		e.currentTarget.style.opacity = "1";
 		// var imgId = e.dataTransfer.getData(APP_CONSTANTS.DRAGGING_IMG);
 	},
 

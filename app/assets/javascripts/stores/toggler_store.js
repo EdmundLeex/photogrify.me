@@ -4,17 +4,23 @@
 	var TOGGLE_CREATING_EVENT = "TOGGLE_CREATING_EVENT";
 	var SLIDE_PANEL_EVENT = "SLIDE_PANEL_EVENT";
 	var TOGGLE_OVERLAY_EVENT = "TOGGLE_OVERLAY_EVENT";
+	var DROP_TO_ALBUM_EVENT = "DROP_TO_ALBUM_EVENT";
 	// var TOGGLE_MODE_EVENT = "TOGGLE_MODE_EVENT";
 	// var _showSearchBox = false;
 	var _editingTitle = false;
 	var _creating = 'new';
 	var _isPanelShown = false;
 	var _isOverlayShown = false;
+	var _droppinToAlbumId = null;
 	// var _mode = 'view';
 
 	// var toggleMode = function (mode) {
 	// 	_mode = mode;
 	// };
+
+	var toggleAlbumDropEffect = function (albumId) {
+		_droppinToAlbumId = albumId;
+	};
 
 	var toggleEditing = function (editing) {
 		_editingTitle = editing;
@@ -55,6 +61,10 @@
 			return _isOverlayShown;
 		},
 
+		droppinToAlbumId: function () {
+			return _droppinToAlbumId;
+		},
+
 		// addToggleSearchListener: function (callback) {
 		// 	this.on(TOGGLE_SEARCH_EVENT, callback);
 		// },
@@ -92,7 +102,15 @@
 		},
 
 		removeToggleOverlayListener: function (callback) {
-			this.removeListener(TOGGLE_OVERLAY_EVENT, callback)
+			this.removeListener(TOGGLE_OVERLAY_EVENT, callback);
+		},
+
+		addToggleAlbumDropListener: function (callback) {
+			this.on(DROP_TO_ALBUM_EVENT, callback);
+		},
+
+		removeToggleAlbumDropListener: function (callback) {
+			this.removeListener(DROP_TO_ALBUM_EVENT, callback);
 		},
 
 		// addToggleModeListener: function (callback) {
@@ -120,6 +138,10 @@
 				case APP_CONSTANTS.SLIDE_PANEL:
 					toggleSlide(payload.show);
 					TogglerStore.emit(SLIDE_PANEL_EVENT);
+					break;
+				case APP_CONSTANTS.DROP_TO_ALBUM:
+					toggleAlbumDropEffect(payload.albumId);
+					TogglerStore.emit(DROP_TO_ALBUM_EVENT);
 					break;
 				default:
 					break;

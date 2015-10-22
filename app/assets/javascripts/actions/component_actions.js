@@ -65,6 +65,13 @@ window.ComponentActions = {
 			actionType: APP_CONSTANTS.SLIDE_PANEL,
 			show: show
 		});
+	},
+
+	dropToAlbum: function (albumId) {
+		AppDispatcher.dispatch({
+			actionType: APP_CONSTANTS.DROP_TO_ALBUM,
+			albumId: albumId
+		})
 	}
 
 	// retrieveAlbumState: function (albumId) {

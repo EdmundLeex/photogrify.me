@@ -8,7 +8,18 @@ var AlbumIndexItem = React.createClass({
 	},
 
 	handleDragOver: function (e) {
+
 		e.preventDefault();
+		ComponentActions.dropToAlbum(e.currentTarget.dataset.albumId);
+		// e.currentTarget.classList.add("drop-zone");
+		// e.currentTarget.firstChild.classList.remove("hidden");
+	},
+
+	handleDragLeave: function (e) {
+		e.preventDefault();
+		ComponentActions.dropToAlbum(null);
+		// e.currentTarget.classList.remove("drop-zone");
+		// e.currentTarget.firstChild.classList.add("hidden");
 	},
 
 	handleDrop: function (e) {
@@ -22,8 +33,10 @@ var AlbumIndexItem = React.createClass({
 
 	render: function () {
 		var props = this.props;
-		var klass = (parseInt(props.params.albumId) === props.album.id) ?
+		var selectedKlass = (parseInt(props.params.albumId) === props.album.id) ?
 			"selected" : "";
+		var droppZoneKlass = (this.props.isDroppingTo) ? "drop-zone" : "";
+		var dropContentKlass = (this.props.isDroppingTo) ? "" : "hidden";
 
 		try {
 			var url = APP_CONFIG.ImageUrlByOptions(
@@ -36,13 +49,18 @@ var AlbumIndexItem = React.createClass({
 		}
 
 		return (
-			<div className="album-index-item-container"
-					 onDragOver={this.handleDragOver}
-					 onDrop={this.handleDrop}
+			<div className={"album-index-item-container " + droppZoneKlass}
+					 data-album-id={this.props.album.id}
+					 onDragEnter={this.handleDragOver}
 					 style={divStyle} >
-				<div className={"album-index-item " + klass}
+				<div className={"album-index-item " + selectedKlass}
 						onClick={this.handleClick}>
 					{props.album.title}
+				</div>
+				<div className={"drop-window-content " + dropContentKlass}
+						 onDragLeave={this.handleDragLeave}
+						 onDrop={this.handleDrop}>
+					Drag picture here
 				</div>
 			</div>
 		);
