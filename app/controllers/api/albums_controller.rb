@@ -91,11 +91,11 @@ class Api::AlbumsController < ApplicationController
   def save_pictures_to_album(album, picture_urls)
     ActiveRecord::Base.transaction do
       picture_urls.each do |url|
-        album.pictures.create(picture_url: url['url'], public_id: url['public_id'])
+        album.pictures.create(picture_url: url['secure_url'], public_id: url['public_id'])
       end
 
       unless album.cover_picture_url
-        album.update(cover_picture_url: picture_urls.first['url'])
+        album.update(cover_picture_url: picture_urls.first['secure_url'])
       end
     end
   end
