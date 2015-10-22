@@ -8,22 +8,11 @@ var AlbumIndexItem = React.createClass({
 	},
 
 	handleDragOver: function (e) {
-		// e.preventDefault();
-		// ComponentActions.dropToAlbum(e.currentTarget.dataset.albumId);
-		// e.currentTarget.classList.add("drop-zone");
-		// e.currentTarget.firstChild.classList.remove("hidden");
-	},
-
-	handleDragLeave: function (e) {
-		// e.preventDefault();
-		// ComponentActions.dropToAlbum(null);
-		// e.currentTarget.classList.remove("drop-zone");
-		// e.currentTarget.firstChild.classList.add("hidden");
+		e.preventDefault();
 	},
 
 	handleDrop: function (e) {
 		e.preventDefault();
-		alert("got a drop");
 		if (parseInt(this.props.params.albumId) !== this.props.album.id) {
 			var imgId = e.dataTransfer.getData(APP_CONSTANTS.DRAGGING_IMG);
 			ApiUtil.transferImg(imgId, this.props.album.id);
@@ -35,7 +24,7 @@ var AlbumIndexItem = React.createClass({
 		var props = this.props;
 		var selectedKlass = (parseInt(props.params.albumId) === props.album.id) ?
 			"selected" : "";
-		var droppZoneKlass = (this.props.isDroppingTo) ? "drop-zone" : "";
+		// var droppZoneKlass = (this.props.isDroppingTo) ? "drop-zone" : "";
 		var dropContentKlass = (this.props.isDroppingTo) ? "" : "hidden";
 
 		try {
@@ -49,21 +38,20 @@ var AlbumIndexItem = React.createClass({
 		}
 
 		return (
-			<div className={"album-index-item-container " + droppZoneKlass}
+			<div className={"album-index-item-container"}
 					 data-album-id={this.props.album.id}
-					 onDragEnter={this.handleDragOver}
-					 onDrop={this.handleDrop}
+					 onDragOver={this.handleDragOver}
 					 style={divStyle} >
 				<div className={"album-index-item " + selectedKlass}
-						onClick={this.handleClick} onDrop={this.handleDrop}>
+						onClick={this.handleClick} onDragOver={this.handleDragOver}>
 					{props.album.title}
 				</div>
-
+				<div className={"drop-window-content " + dropContentKlass}
+				onDragOver={this.handleDragOver}
+						 onDrop={this.handleDrop}>
+					Drop your picture here
+				</div>
 			</div>
 		);
 	}
 });
-				// <div className={"drop-window-content " + dropContentKlass}
-				// 		 onDrop={this.handleDrop}>
-				// 	Drag picture here
-				// </div>
