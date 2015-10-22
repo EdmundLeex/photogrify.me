@@ -11,15 +11,15 @@
 	var _creating = 'new';
 	var _isPanelShown = false;
 	var _isOverlayShown = false;
-	var _droppingToAlbum = false;
+	var _isDragging = false;
 	// var _mode = 'view';
 
 	// var toggleMode = function (mode) {
 	// 	_mode = mode;
 	// };
 
-	var toggleAlbumDropEffect = function (isDropping) {
-		_droppingToAlbum = isDropping;
+	var toggleDragging = function (isDragging) {
+		_isDragging = isDragging;
 	};
 
 	var toggleEditing = function (editing) {
@@ -61,8 +61,8 @@
 			return _isOverlayShown;
 		},
 
-		isDroppingToAlbum: function () {
-			return _droppingToAlbum;
+		isDragging: function () {
+			return _isDragging;
 		},
 
 		// addToggleSearchListener: function (callback) {
@@ -139,8 +139,8 @@
 					toggleSlide(payload.show);
 					TogglerStore.emit(SLIDE_PANEL_EVENT);
 					break;
-				case APP_CONSTANTS.DROP_TO_ALBUM:
-					toggleAlbumDropEffect(payload.isDropping);
+				case APP_CONSTANTS.IS_DRAGGING:
+					toggleDragging(payload.isDragging);
 					TogglerStore.emit(DROP_TO_ALBUM_EVENT);
 					break;
 				default:

@@ -67,10 +67,10 @@ window.ComponentActions = {
 		});
 	},
 
-	isDroppingToAlbum: function (isDropping) {
+	isDroppingToAlbum: function (isDragging) {
 		AppDispatcher.dispatch({
-			actionType: APP_CONSTANTS.DROP_TO_ALBUM,
-			isDropping: isDropping
+			actionType: APP_CONSTANTS.IS_DRAGGING,
+			isDragging: isDragging
 		})
 	}
 

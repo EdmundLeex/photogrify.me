@@ -25,7 +25,7 @@ var AlbumIndexItem = React.createClass({
 		var selectedKlass = (parseInt(props.params.albumId) === props.album.id) ?
 			"selected" : "";
 		// var droppZoneKlass = (this.props.isDroppingTo) ? "drop-zone" : "";
-		var dropContentKlass = (this.props.isDroppingTo) ? "" : "hidden";
+		var dropContentKlass = (this.props.isDragging) ? "" : "hidden";
 
 		try {
 			var url = APP_CONFIG.ImageUrlByOptions(
@@ -43,11 +43,11 @@ var AlbumIndexItem = React.createClass({
 					 onDragOver={this.handleDragOver}
 					 style={divStyle} >
 				<div className={"album-index-item " + selectedKlass}
-						onClick={this.handleClick} onDragOver={this.handleDragOver}>
+						 onClick={this.handleClick} onDragOver={this.handleDragOver}>
 					{props.album.title}
 				</div>
 				<div className={"drop-window-content " + dropContentKlass}
-				onDragOver={this.handleDragOver}
+						 onDragOver={this.handleDragOver}
 						 onDrop={this.handleDrop}>
 					Drop your picture here
 				</div>

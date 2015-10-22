@@ -70,6 +70,7 @@ var TitleBar = React.createClass({
 												 onUploadClick={this.props.onUploadClick}
 												 onCancelClick={this.props.onCancelClick} />
 				</div>
+				
 			</div>
 		);
 	},

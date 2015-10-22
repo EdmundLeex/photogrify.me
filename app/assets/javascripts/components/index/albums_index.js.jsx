@@ -1,26 +1,8 @@
 var AlbumsIndex = React.createClass({
-	getInitialState: function () {
-    return {
-    	idDroppinToAlbum: false
-    };
-	},
-
-	componentDidMount: function () {
-		TogglerStore.addToggleAlbumDropListener(this._onDropToAlbum);
-	},
-
-	componentWillUnmount: function () {
-		TogglerStore.removeToggleAlbumDropListener(this._onDropToAlbum);
-	},
-
-	_onDropToAlbum: function () {
-		this.setState({idDroppinToAlbum: TogglerStore.isDroppingToAlbum()});
-	},
 
 	render: function () {
 		var params = this.props.params;
 		var history = this.props.history;
-		var isDroppingTo;
 
 		return (
 			<div className="albums-index">
@@ -29,7 +11,7 @@ var AlbumsIndex = React.createClass({
 																 album={album}
 																 params={params}
 																 history={history}
-																 isDroppingTo={this.state.idDroppinToAlbum} />
+																 isDragging={this.props.isDragging} />
 				}, this)}
 			</div>
 		);

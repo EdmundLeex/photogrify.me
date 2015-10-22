@@ -4,7 +4,8 @@ var AlbumsMain = React.createClass({
 	getInitialState: function () {
 		return {
 			albums: AlbumStore.all(),
-			isPanelShown: TogglerStore.isPanelShown()
+			isPanelShown: TogglerStore.isPanelShown(),
+			isDragging: false
 		};
 	},
 
@@ -14,6 +15,7 @@ var AlbumsMain = React.createClass({
 		// AlbumStore.addAlbumSwitchedListener(this._onSwitch);
 		AlbumStore.addAlbumUpdateListener(this._onChange);
 		TogglerStore.addToggleIndexPanelListener(this._onSlide);
+		TogglerStore.addToggleAlbumDropListener(this._onDragging);
 		ApiUtil.fetchAllAlbums(true);
 	},
 
@@ -23,6 +25,11 @@ var AlbumsMain = React.createClass({
 		// AlbumStore.removeAlbumSwitchedListener(this._onSwitch);
 		AlbumStore.removeAlbumUpdateListener(this._onChange);
 		TogglerStore.removeToggleIndexPanelListener(this._onSlide);
+		TogglerStore.removeToggleAlbumDropListener(this._onDragging);
+	},
+
+	_onDragging: function () {
+		this.setState({isDragging: TogglerStore.isDragging()});
 	},
 
 	_onChange: function () {
@@ -65,7 +72,8 @@ var AlbumsMain = React.createClass({
 				<AlbumsIndexContainer albums={this.state.albums}
 															history={this.history}
 															klass={indexKlass}
-															params={this.props.params} />
+															params={this.props.params}
+															isDragging={this.state.isDragging} />
 				{albumShow}
 				{this.props.children}
 			</div>

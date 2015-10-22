@@ -7,7 +7,8 @@ var AlbumsIndexContainer = React.createClass({
 				</div>
 				<AlbumsIndex albums={this.props.albums}
 										 history={this.props.history}
-										 params={this.props.params} />
+										 params={this.props.params}
+										 isDragging={this.props.isDragging} />
 			</div>
 		);
 	}
