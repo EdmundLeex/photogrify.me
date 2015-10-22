@@ -180,18 +180,37 @@
 
 .album-thumbnails {
 	position: relative;
-	height: 100px;
+	height: 120px;
 	margin: 40px;
-	margin-top: 140px;
+	width: calc(100% - 73px);
+	padding: 5px;
+	margin-top: 200px;
 	background-color: gray;
+
+	.pictures-collection {
+		margin: 0;
+	}
+
+	.img-thumb,img {
+		height: 100px;
+		width: 100px;
+	}
 }
 
-/*#editor {
-	margin: 40px;
-	background-color: white;
-	min-height: 350px;
+#editor {
+  margin-left: 40px;
+  margin-right: 40px;
+  margin-top: 15px;
+  padding: 5px;
+  position: relative;
+  width: calc(100% - 73px);
+  display: block;
+  float: left;
+  height: 100%;
+  background: #FAFAFA;
+  box-shadow: 5px 5px 10px rgba(208, 208, 208, 0.56);
 }
-*/
+
 #ql-editor-1 {
 	min-height: 350px;
 }

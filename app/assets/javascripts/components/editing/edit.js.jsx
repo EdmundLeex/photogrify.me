@@ -111,8 +111,6 @@ var Edit = React.createClass({
 									  onCancelClick={this.onCancelClick}
 									  onEditTitleFinish={this.onDoneEditing}
 									  linkState={this.linkState} />
-					<ThumbNails history={this.state.history}
-											pictures={pictures} />
 					<div id="editor">
 						<QEditor albumId={this.props.params.albumId}
 										 description={this.state.description}
@@ -124,3 +122,5 @@ var Edit = React.createClass({
 		);
 	}
 });
+					// <ThumbNails history={this.state.history}
+					// 						pictures={pictures} />
