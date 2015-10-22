@@ -7,6 +7,7 @@ var AlbumShow = React.createClass({
     	pictures: [],
     	enlargedImg: null,
     	isExpanded: !TogglerStore.isPanelShown(),
+    	isDragging: false
     };
 	},
 
@@ -17,6 +18,7 @@ var AlbumShow = React.createClass({
 		PictureStore.addPicturesCollectionChangedListener(this._onChange);
 		PictureStore.addTogglePictureListener(this._onEnlarge);
 		TogglerStore.addToggleIndexPanelListener(this._onSlide);
+		TogglerStore.addToggleAlbumDropListener(this._onDragging);
 		// ApiUtil.fetchAllAlbums();
 	},
 
@@ -26,6 +28,7 @@ var AlbumShow = React.createClass({
 		PictureStore.removePicturesCollectionChangedListener(this._onChange);
 		PictureStore.removeTogglePictureListener(this._onEnlarge);
 		TogglerStore.removeToggleIndexPanelListener(this._onSlide);
+		TogglerStore.removeToggleAlbumDropListener(this._onDragging);
 	},
 
 	componentWillReceiveProps: function (nextProps) {
@@ -56,6 +59,10 @@ var AlbumShow = React.createClass({
 
 	_onSlide: function () {
 		this.setState({ isExpanded: !TogglerStore.isPanelShown() });
+	},
+
+	_onDragging: function () {
+		this.setState({isDragging: TogglerStore.isDragging()});
 	},
 
 	onEditClick: function () {
@@ -129,7 +136,8 @@ var AlbumShow = React.createClass({
 										onUploadClick={this.onUploadClick}
 									  onDeleteClick={this.onDeleteClick}
 									  onEditTitleFinish={this.onDoneEditing}
-									  linkState={this.linkState} />
+									  linkState={this.linkState}
+									  isDragging={this.state.isDragging} />
 					<PicturesCollection history={this.history}
 															pictures={this.state.pictures}
 															handleClick={this.onImgClick}  />

@@ -44,6 +44,7 @@ var TitleBar = React.createClass({
 
 	render: function () {
 		var titleBar = this.renderTitle();
+		var dropContentKlass = (this.props.isDragging) ? "" : "hidden";
 		try {
 
 			var url = APP_CONFIG.ImageUrlByOptions(
@@ -70,7 +71,11 @@ var TitleBar = React.createClass({
 												 onUploadClick={this.props.onUploadClick}
 												 onCancelClick={this.props.onCancelClick} />
 				</div>
-				
+				<div className={"drop-window-content " + dropContentKlass}
+						 onDragOver={this.handleDragOver}
+						 onDrop={this.handleDrop}>
+					Drop your picture here
+				</div>
 			</div>
 		);
 	},
