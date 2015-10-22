@@ -48,7 +48,7 @@ var TitleBar = React.createClass({
 
 			var url = APP_CONFIG.ImageUrlByOptions(
 				this.props.cover_picture_url,
-				"e_brightness:50/e_blur:200"
+				"e_brightness:20"
 			);
 			var divStyle = {backgroundImage: 'url(' + url + ')'};
 		} catch(e) {
@@ -60,14 +60,16 @@ var TitleBar = React.createClass({
 					 style={divStyle}
 					 onDrop={this.handleDrop}
 					 onDragOver={this.handleDragOver}>
-				{titleBar}
-				<span className="count">{this.state.picCount}</span>
-				<TitleBtnGroup mode={this.props.mode}
-											 onEditClick={this.props.onEditClick}
-											 onDeleteClick={this.props.onDeleteClick}
-											 onSaveClick={this.props.onSaveClick}
-											 onUploadClick={this.props.onUploadClick}
-											 onCancelClick={this.props.onCancelClick} />
+				<div className="overlay">
+					{titleBar}
+					<span className="count">{this.state.picCount}</span>
+					<TitleBtnGroup mode={this.props.mode}
+												 onEditClick={this.props.onEditClick}
+												 onDeleteClick={this.props.onDeleteClick}
+												 onSaveClick={this.props.onSaveClick}
+												 onUploadClick={this.props.onUploadClick}
+												 onCancelClick={this.props.onCancelClick} />
+				</div>
 			</div>
 		);
 	},
