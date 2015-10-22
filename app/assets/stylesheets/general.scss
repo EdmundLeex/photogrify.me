@@ -27,3 +27,12 @@
   top: 20px;
   bottom: 20px;
 }
+
+.alert-danger {
+  top: 0;
+  margin-top: 20px;
+  padding: 12px !important;
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+}
