@@ -39,15 +39,14 @@ var PicturesWall = React.createClass({
 
 		if (!this.state.isPanelShown) { indexKlass = "slide-out"; }
 		return (
-			<div className="pictures-wall">
+			<div className="pictures-wall-wrapper">
 				<AlbumsIndexContainer albums={albums}
 															history={this.history}
 															klass={indexKlass}
 															params={this.props.params} />
-				<div id="photos">
+				<div className="pictures-wall clearfix">
 					{this.state.pictures.map(function (pic) {
-						size = "h_" + that.getRandomSize(100, 500);
-						return <WallPicItem key={pic.id} picture={pic} size={size} />
+						return <WallPicItem key={pic.id} picture={pic} />
 					})}
 				</div>
 			</div>
@@ -59,15 +58,13 @@ var WallPicItem = React.createClass({
 	render: function () {
 		var url = APP_CONFIG.ImageUrlByOptions(
 			this.props.picture.picture_url,
-			this.props.size
+			"w_400,h_400,c_fill"
 		);
 
+		var divStyle = {backgroundImage: 'url(' + url + ')'};
+
 		return (
-			<div className="img"
-					 draggable="true"
-					 onDragStart={this.handleDragStart}
-					 onDragEnd={this.handleDragEnd}>
-				<img src={url} onClick={this.handleClick} />
+			<div className="pic-wall-thumb" style={divStyle}>
 			</div>
 		);
 	}
