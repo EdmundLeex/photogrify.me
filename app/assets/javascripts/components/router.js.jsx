@@ -10,6 +10,17 @@ $(function () {
   if (root) {
   	window.NEW_ALBUM_PATH = "NEW_ALBUM_PATH";
   	var App = React.createClass({
+  		componentDidMount: function () {
+  			setInterval(this._checkAlbums.bind(this), 1000)
+  		},
+
+  		_checkAlbums: function () {
+  			if (AlbumStore.all().length === 0) {
+  			console.log('checking albums');
+  				ApiUtil.fetchAllAlbums();
+  			}
+  		},
+
 	    render: function(){
 	      return (
           <div>
