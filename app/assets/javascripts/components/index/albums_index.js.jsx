@@ -1,7 +1,7 @@
 var AlbumsIndex = React.createClass({
 	getInitialState: function () {
     return {
-    	droppingAlbumId: null
+    	idDroppinToAlbum: false
     };
 	},
 
@@ -14,7 +14,7 @@ var AlbumsIndex = React.createClass({
 	},
 
 	_onDropToAlbum: function () {
-		this.setState({droppingAlbumId: TogglerStore.droppinToAlbumId()});
+		this.setState({idDroppinToAlbum: TogglerStore.isDroppingToAlbum()});
 	},
 
 	render: function () {
@@ -25,13 +25,11 @@ var AlbumsIndex = React.createClass({
 		return (
 			<div className="albums-index">
 				{this.props.albums.map(function (album) {
-					isDroppingTo = (album.id === parseInt(this.state.droppingAlbumId)) ?
-						true : false;
 					return <AlbumIndexItem key={album.id}
 																 album={album}
 																 params={params}
 																 history={history}
-																 isDroppingTo={isDroppingTo} />
+																 isDroppingTo={this.state.idDroppinToAlbum} />
 				}, this)}
 			</div>
 		);

@@ -10,11 +10,13 @@ var PictureItem = React.createClass({
 	handleDragStart: function (e) {
 		e.dataTransfer.setData(APP_CONSTANTS.DRAGGING_IMG, this.props.picture.id);
 		e.currentTarget.style.opacity = "0.2";
+		ComponentActions.isDroppingToAlbum(true);
 	},
 
 	handleDragEnd: function (e) {
-		e.preventDefault();
+		// e.preventDefault();
 		e.currentTarget.style.opacity = "1";
+		ComponentActions.isDroppingToAlbum(false);
 		// var imgId = e.dataTransfer.getData(APP_CONSTANTS.DRAGGING_IMG);
 	},
 

@@ -8,22 +8,22 @@ var AlbumIndexItem = React.createClass({
 	},
 
 	handleDragOver: function (e) {
-
-		e.preventDefault();
-		ComponentActions.dropToAlbum(e.currentTarget.dataset.albumId);
+		// e.preventDefault();
+		// ComponentActions.dropToAlbum(e.currentTarget.dataset.albumId);
 		// e.currentTarget.classList.add("drop-zone");
 		// e.currentTarget.firstChild.classList.remove("hidden");
 	},
 
 	handleDragLeave: function (e) {
-		e.preventDefault();
-		ComponentActions.dropToAlbum(null);
+		// e.preventDefault();
+		// ComponentActions.dropToAlbum(null);
 		// e.currentTarget.classList.remove("drop-zone");
 		// e.currentTarget.firstChild.classList.add("hidden");
 	},
 
 	handleDrop: function (e) {
 		e.preventDefault();
+		alert("got a drop");
 		if (parseInt(this.props.params.albumId) !== this.props.album.id) {
 			var imgId = e.dataTransfer.getData(APP_CONSTANTS.DRAGGING_IMG);
 			ApiUtil.transferImg(imgId, this.props.album.id);
@@ -52,17 +52,18 @@ var AlbumIndexItem = React.createClass({
 			<div className={"album-index-item-container " + droppZoneKlass}
 					 data-album-id={this.props.album.id}
 					 onDragEnter={this.handleDragOver}
+					 onDrop={this.handleDrop}
 					 style={divStyle} >
 				<div className={"album-index-item " + selectedKlass}
-						onClick={this.handleClick}>
+						onClick={this.handleClick} onDrop={this.handleDrop}>
 					{props.album.title}
 				</div>
-				<div className={"drop-window-content " + dropContentKlass}
-						 onDragLeave={this.handleDragLeave}
-						 onDrop={this.handleDrop}>
-					Drag picture here
-				</div>
+
 			</div>
 		);
 	}
 });
+				// <div className={"drop-window-content " + dropContentKlass}
+				// 		 onDrop={this.handleDrop}>
+				// 	Drag picture here
+				// </div>

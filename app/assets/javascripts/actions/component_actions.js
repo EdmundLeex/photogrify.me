@@ -67,10 +67,10 @@ window.ComponentActions = {
 		});
 	},
 
-	dropToAlbum: function (albumId) {
+	isDroppingToAlbum: function (isDropping) {
 		AppDispatcher.dispatch({
 			actionType: APP_CONSTANTS.DROP_TO_ALBUM,
-			albumId: albumId
+			isDropping: isDropping
 		})
 	}
 
