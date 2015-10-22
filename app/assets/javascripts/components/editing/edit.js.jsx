@@ -95,6 +95,8 @@ var Edit = React.createClass({
 	render: function () {
 		var pictures = PictureStore.all();
 		var showOverlay = (this.state.showOverlay) ? "" : "behind";
+		var albumId = this.props.params.albumId;
+		var cover_picture_url = AlbumStore.find(albumId).cover_picture_url;
 
 		return (
 			<div className="album-show">
@@ -103,7 +105,8 @@ var Edit = React.createClass({
 				<div className="form-container">
 					<TitleBar mode={'edit'}
 										title={this.state.title}
-										albumId={this.props.params.albumId}
+										albumId={albumId}
+										cover_picture_url={cover_picture_url}
 										onEditClick={this.onEditClick}
 									  onDeleteClick={this.onDeleteClick}
 									  onSaveClick={this.onSaveClick}
@@ -112,7 +115,7 @@ var Edit = React.createClass({
 									  onEditTitleFinish={this.onDoneEditing}
 									  linkState={this.linkState} />
 					<div id="editor">
-						<QEditor albumId={this.props.params.albumId}
+						<QEditor albumId={albumId}
 										 description={this.state.description}
 										 linkState={this.linkState}
 										 onDoneTyping={this.onDoneEditing} />
