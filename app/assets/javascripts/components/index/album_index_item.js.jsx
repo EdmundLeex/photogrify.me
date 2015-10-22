@@ -38,7 +38,7 @@ var AlbumIndexItem = React.createClass({
 		}
 
 		return (
-			<div className={"album-index-item-container"}
+			<div className={"album-index-item-container " + selectedKlass}
 					 data-album-id={this.props.album.id}
 					 onDragOver={this.handleDragOver}
 					 style={divStyle} >

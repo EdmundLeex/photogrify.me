@@ -18,6 +18,10 @@
   padding: 40px;
 }
 
+.drop-window-content:hover {
+  transform: scale(1.1, 1.1);
+}
+
 .album-show-title .drop-window-content {
   font-size: 25px;
   top: 20px;
