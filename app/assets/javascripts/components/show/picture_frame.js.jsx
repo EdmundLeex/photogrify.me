@@ -23,14 +23,20 @@ var PictureFrame = React.createClass({
 
 		return (
 			<div className="img-frame-overlay">
+				<div className="slideshow-close"
+							onClick={this.handleClickClose}>
+					<span className="glyphicon glyphicon-remove"></span>
+				</div>
 				<div className="img-frame" onClick={this.handleClick}>
-					<div className="glyphicon glyphicon-menu-left slideshow-arrow"
-								onClick={this.handleClickLeft}></div>
-					<div className="glyphicon glyphicon-remove slideshow-close"
-								onClick={this.handleClickClose}></div>
+					<div className="slideshow-arrow left-arrow"
+								onClick={this.handleClickLeft}>
+						<span className="glyphicon glyphicon-menu-left"></span>
+					</div>
 					<img src={url}/>
-					<div className="glyphicon glyphicon-menu-right slideshow-arrow"
-								onClick={this.handleClickRight}></div>
+					<div className="slideshow-arrow right-arrow"
+								onClick={this.handleClickRight}>
+						<span className="glyphicon glyphicon-menu-right"></span>
+					</div>
 				</div>
 			</div>
 		);
