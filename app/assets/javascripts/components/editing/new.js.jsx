@@ -10,26 +10,35 @@ var New = React.createClass({
     	picCount: null,
     	mode: 'new',
     	creatingState: null,
-    	isPanelShown: TogglerStore.isPanelShown()
+    	isPanelShown: TogglerStore.isPanelShown(),
+    	albums: AlbumStore.all()
     };
 	},
 
 	componentDidMount: function () {
-		// AlbumStore.addAlbumsIndexChangeListener(this._onSwitch);
+		AlbumStore.addAlbumsIndexChangeListener(this._onAlbumsIndexChange);
 		AlbumStore.addAlbumUpdateListener(this._onTitleChanged);
 		AlbumStore.addAlbumCreateListener(this._onAlbumCreated);
+		AlbumStore.addSearchAlbumListener(this._onSearch);
 		TogglerStore.addToggleCreatingListener(this._onToggleCreating);
 		TogglerStore.addToggleIndexPanelListener(this._onSlide);
-		// PictureStore.addPicturesCollectionChangedListener(this._onSwitch);
 	},
 
 	componentWillUnmount: function () {
-		// AlbumStore.removeAlbumsIndexChangeListener(this._onSwitch);
+		AlbumStore.removeAlbumsIndexChangeListener(this._onAlbumsIndexChange);
 		AlbumStore.removeAlbumUpdateListener(this._onTitleChanged);
 		AlbumStore.removeAlbumCreateListener(this._onAlbumCreated);
+		AlbumStore.removeSearchAlbumListener(this._onSearch);
 		TogglerStore.removeToggleCreatingListener(this._onToggleCreating);
 		TogglerStore.removeToggleIndexPanelListener(this._onSlide);
-		// PictureStore.removePicturesCollectionChangedListener(this._onSwitch);
+	},
+
+	_onAlbumsIndexChange: function () {
+		this.setState({ albums: AlbumStore.all() });
+	},
+
+	_onSearch: function () {
+		this.setState({ albums: AlbumStore.matchedAlbums() });
 	},
 
 	_onTitleChanged: function () {
@@ -120,13 +129,12 @@ var New = React.createClass({
 
 	render: function () {
 		var indexKlass = "";
-		var albums = AlbumStore.all();
 		var showOverlay = (this.state.isPanelShown) ? "" : "behind";
 
 		if (!this.state.isPanelShown) { indexKlass = "slide-out"; }
 		return (
 			<div className="album-new-main">
-				<AlbumsIndexContainer albums={albums}
+				<AlbumsIndexContainer albums={this.state.albums}
 															history={this.history}
 															klass={indexKlass}
 															params={this.props.params} />

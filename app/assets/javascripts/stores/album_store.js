@@ -216,8 +216,8 @@
 				// 	AlbumStore.emit(TOGGLE_CREATING_EVENT);
 				// 	break;
 				case APP_CONSTANTS.SEARCH_ALBUM:
-					searchAlbum(payload.queryStr);
 					_queryStr = payload.queryStr;
+					searchAlbum(_queryStr);
 					AlbumStore.emit(SEARCH_ALBUM_EVENT);
 					break;
 				// case APP_CONSTANTS.RETRIEVE_ALBUM_STATE:
