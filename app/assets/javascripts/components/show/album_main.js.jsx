@@ -48,7 +48,7 @@ var AlbumsMain = React.createClass({
 	},
 
 	_onShowConfModal: function () {
-		this.setState({ isConfModalShown: true });
+		this.setState({ isConfModalShown: TogglerStore.confModalOpts().isShown });
 	},
 
 	// _onSwitch: function () {
@@ -59,8 +59,7 @@ var AlbumsMain = React.createClass({
 		var albumShow,
 				album,
 				indexKlass = "",
-				klass = "",
-				confModal;
+				klass = "";
 
 		// if (this.state.isPanelShown) { klass = "shrank"; }
 		if (this.state.albums.length && !this.props.params.albumId) {
@@ -72,18 +71,9 @@ var AlbumsMain = React.createClass({
 
 		if (!this.state.isPanelShown) { indexKlass = "slide-out"; }
 
-		// if (this.state.isConfModalShown) {
-			confModal = <Confirmation callback={TogglerStore.confModalOpts.callback}
-																model={TogglerStore.confModalOpts.model}
-																msg={TogglerStore.confModalOpts.msg}
-																path={TogglerStore.confModalOpts.path} />
-		// } else {
-		// 	confModal = <div></div>
-		// }
-
 		return (
 			<div className="album-show-main">
-				{confModal}
+				<Confirmation show={this.state.isConfModalShown} />
 				<AlbumsIndexContainer albums={this.state.albums}
 															history={this.history}
 															klass={indexKlass}

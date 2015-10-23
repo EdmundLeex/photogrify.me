@@ -6,6 +6,7 @@
 	var TOGGLE_OVERLAY_EVENT = "TOGGLE_OVERLAY_EVENT";
 	var DROP_TO_ALBUM_EVENT = "DROP_TO_ALBUM_EVENT";
 	var SHOW_CONFIRMATION_EVENT = "SHOW_CONFIRMATION_EVENT";
+	var HIDE_CONFIRMATION_EVENT = "HIDE_CONFIRMATION_EVENT";
 	// var TOGGLE_MODE_EVENT = "TOGGLE_MODE_EVENT";
 	// var _showSearchBox = false;
 	var _editingTitle = false;
@@ -42,11 +43,14 @@
 		}
 	};
 
-	var showConfModal = function (callback, model, msg, path) {
-		_confModalOpts.callback = callback;
-		_confModalOpts.model = model;
-		_confModalOpts.msg = msg;
-		_confModalOpts.path = path;
+	var showConfModal = function (isShown, callback, model, msg, path) {
+		_confModalOpts.isShown = isShown;
+		if (isShown) {
+			_confModalOpts.callback = callback;
+			_confModalOpts.model = model.toUpperCase();
+			_confModalOpts.msg = msg;
+			_confModalOpts.path = path || "albums/" + AlbumStore.all()[0].id;
+		}
 	};
 
 	root.TogglerStore = $.extend({}, EventEmitter.prototype, {
@@ -166,6 +170,7 @@
 					break;
 				case APP_CONSTANTS.SHOW_CONFIRMATION:
 					showConfModal(
+						payload.show,
 						payload.callback,
 						payload.model,
 						payload.msg,

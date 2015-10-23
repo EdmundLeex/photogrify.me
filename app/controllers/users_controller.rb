@@ -7,8 +7,8 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      @user.albums.create(title: "First Album")
       login_user!(@user)
+      ensure_album
       redirect_to root_url
     else
       flash.now[:danger] = @user.errors.full_messages

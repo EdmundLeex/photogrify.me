@@ -72,11 +72,14 @@ class Api::AlbumsController < ApplicationController
       end
 
       album.destroy
+      ensure_album
+
       @albums = albums_in_desc
       @msg = "#{album.title} is deleted."
+
       render :index
     else
-      # TODO: page not found
+      render_generic_error
     end
   end
 

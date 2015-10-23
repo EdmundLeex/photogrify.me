@@ -22,6 +22,7 @@ class ApplicationController < ActionController::Base
 
   def login_user!(user)
     session[:session_token] = user.reset_session_token!
+    @current_user = user
   end
 
   def require_user!
@@ -50,5 +51,11 @@ class ApplicationController < ActionController::Base
   def render_generic_error
     @feedback = GENERIC_ERROR
     render "api/shared/feedback"
+  end
+
+  def ensure_album
+    if current_user.albums.size == 0
+      current_user.albums.create(title: "First Album")
+    end
   end
 end

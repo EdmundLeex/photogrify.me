@@ -85,13 +85,14 @@ var AlbumShow = React.createClass({
 
 	onDeleteClick: function () {
 		ComponentActions.showConfirmation(
+			true,
 			ApiUtil.deleteAlbum.bind(null, this.props.params.albumId),
 			"album",
 			this.state.title,
-			'/'
+			null
 		);
-		ApiUtil.deleteAlbum(this.props.params.albumId);
-		this.history.pushState(null, '/');
+		// ApiUtil.deleteAlbum(this.props.params.albumId);
+		// this.history.pushState(null, '/');
 	},
 
 	onDoneEditing: function (title, imgUrls) {

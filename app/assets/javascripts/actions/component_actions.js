@@ -81,9 +81,10 @@ window.ComponentActions = {
 		});
 	},
 
-	showConfirmation: function (callback, model, msg, path) {
+	showConfirmation: function (show, callback, model, msg, path) {
 		AppDispatcher.dispatch({
 			actionType: APP_CONSTANTS.SHOW_CONFIRMATION,
+			show: show,
 			callback: callback,
 			model: model,
 			msg: msg,

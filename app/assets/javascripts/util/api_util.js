@@ -150,15 +150,16 @@ window.ApiUtil = {
 	// 	});
 	// },
 
-	deleteAlbum: function (id) {
+	deleteAlbum: function (id, callback) {
 		$.ajax({
 			url: '/api/albums/' + id,
 			type: 'delete',
 			dataType: 'json',
 
 			success: function (respData) {
-				ComponentActions.newMsg(respData.msg);
 				ApiActions.receiveAllAlbums(respData.albums);
+				ComponentActions.newMsg(respData.msg);
+				callback();
 			},
 			error: function (respData) {
 				console.log(respData);
