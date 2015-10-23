@@ -4,7 +4,13 @@ var PictureItem = React.createClass({
 	},
 
 	handleClickDelete: function (e) {
-		ApiUtil.deletePicture(this.props.picture.id)
+		ComponentActions.showConfirmation(
+			true,
+			ApiUtil.deletePicture.bind(null, this.props.picture.id),
+			"picture",
+			"this picture",
+			null
+		);
 	},
 
 	handleDragStart: function (e) {

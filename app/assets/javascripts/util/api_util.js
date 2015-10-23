@@ -38,6 +38,7 @@ window.ApiUtil = {
 			success: function (respData) {
 				ComponentActions.newMsg(respData.msg);
 				ApiActions.receivePicturesFromOneAlbum(respData);
+				ComponentActions.showConfirmation(false);
 			},
 			error: function (respData) {
 				console.log(respData);

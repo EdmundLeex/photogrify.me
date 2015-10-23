@@ -89,7 +89,7 @@ var AlbumShow = React.createClass({
 			ApiUtil.deleteAlbum.bind(null, this.props.params.albumId),
 			"album",
 			this.state.title,
-			null
+			'/'
 		);
 		// ApiUtil.deleteAlbum(this.props.params.albumId);
 		// this.history.pushState(null, '/');

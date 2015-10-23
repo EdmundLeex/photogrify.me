@@ -8,7 +8,7 @@ var Confirmation = React.createClass({
 	handleDelete: function () {
 		var self = this;
 		TogglerStore.confModalOpts().callback(function () {
-			self.history.pushState(null, TogglerStore.confModalOpts.path);
+			self.history.pushState(null, TogglerStore.confModalOpts().path);
 			ComponentActions.showConfirmation(false);
 		});
 

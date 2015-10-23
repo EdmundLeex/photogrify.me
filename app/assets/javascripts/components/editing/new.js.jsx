@@ -11,7 +11,8 @@ var New = React.createClass({
     	mode: 'new',
     	creatingState: null,
     	isPanelShown: TogglerStore.isPanelShown(),
-    	albums: AlbumStore.all()
+    	albums: AlbumStore.all(),
+    	isConfModalShown: false
     };
 	},
 
@@ -22,6 +23,7 @@ var New = React.createClass({
 		AlbumStore.addSearchAlbumListener(this._onSearch);
 		TogglerStore.addToggleCreatingListener(this._onToggleCreating);
 		TogglerStore.addToggleIndexPanelListener(this._onSlide);
+		TogglerStore.addShowConfModalListener(this._onShowConfModal);
 	},
 
 	componentWillUnmount: function () {
@@ -31,6 +33,7 @@ var New = React.createClass({
 		AlbumStore.removeSearchAlbumListener(this._onSearch);
 		TogglerStore.removeToggleCreatingListener(this._onToggleCreating);
 		TogglerStore.removeToggleIndexPanelListener(this._onSlide);
+		TogglerStore.removeShowConfModalListener(this._onShowConfModal);
 	},
 
 	_onAlbumsIndexChange: function () {
@@ -70,10 +73,18 @@ var New = React.createClass({
 		this.setState({ isPanelShown: TogglerStore.isPanelShown() });
 	},
 
+	_onShowConfModal: function () {
+		this.setState({ isConfModalShown: TogglerStore.confModalOpts().isShown });
+	},
+
 	onDeleteClick: function () {
-		// prompt confirmation
-		ApiUtil.deleteAlbum(this.props.params.albumId);
-		this.history.pushState(null, '/');
+		ComponentActions.showConfirmation(
+			true,
+			ApiUtil.deleteAlbum.bind(null, this.state.albumId),
+			"album",
+			this.state.title,
+			'/'
+		);
 	},
 
 	onUploadClick: function () {
@@ -134,6 +145,7 @@ var New = React.createClass({
 		if (!this.state.isPanelShown) { indexKlass = "slide-out"; }
 		return (
 			<div className="album-new-main">
+				<Confirmation show={this.state.isConfModalShown} />
 				<AlbumsIndexContainer albums={this.state.albums}
 															history={this.history}
 															klass={indexKlass}

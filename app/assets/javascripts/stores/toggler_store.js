@@ -134,7 +134,7 @@
 			this.on(SHOW_CONFIRMATION_EVENT, callback);
 		},
 
-		removeShowConfListener: function (callback) {
+		removeShowConfModalListener: function (callback) {
 			this.removeListener(SHOW_CONFIRMATION_EVENT, callback);
 		},
 

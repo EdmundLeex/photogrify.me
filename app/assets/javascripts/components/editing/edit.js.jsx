@@ -52,9 +52,13 @@ var Edit = React.createClass({
 	},
 
 	onDeleteClick: function () {
-		// prompt confirmation
-		ApiUtil.deleteAlbum(this.props.params.albumId);
-		this.history.pushState(null, '/');
+		ComponentActions.showConfirmation(
+			true,
+			ApiUtil.deleteAlbum.bind(null, this.props.params.albumId),
+			"album",
+			this.state.title,
+			'/'
+		);
 	},
 
 	onUploadClick: function () {
