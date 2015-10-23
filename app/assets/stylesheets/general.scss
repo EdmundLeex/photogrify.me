@@ -89,3 +89,16 @@
   transform: translateY(-50%) translateX(-50%);
   background-color: rebeccapurple;
 }
+
+.conf-icon {
+  position: relative;
+  margin: 0;
+  width: 40px;
+  left: 50%;
+  margin-bottom: 25px;
+  transform: translateX(-50%);
+
+  span {
+    font-size: 30px;
+  }
+}
