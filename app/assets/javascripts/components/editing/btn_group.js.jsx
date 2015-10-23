@@ -31,9 +31,6 @@ var TitleBtnGroup = React.createClass({
 								id="upload"
 								onClick={this._onUploadClick}
 								data-toggle="tooltip" title="UPLOAD PICTURES"></span>
-					<span className="glyphicon glyphicon-remove"
-								onClick={this._onCancelClick}
-								data-toggle="tooltip" title="DELETE"></span>
 				</div>
 			)
 		} else if (this.props.mode === 'edit') {
@@ -44,9 +41,6 @@ var TitleBtnGroup = React.createClass({
 								id="upload"
 								onClick={this._onUploadClick}
 								data-toggle="tooltip" title="UPLOAD PICTURES"></span>
-					<span className="glyphicon glyphicon-trash"
-								onClick={this._onDeleteClick}
-								data-toggle="tooltip" title="DELETE"></span>
 					<span className="glyphicon glyphicon-ok"
 								onClick={this._onSaveClick}
 								data-toggle="tooltip" title="DONE"></span>
