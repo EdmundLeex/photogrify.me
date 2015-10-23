@@ -17,12 +17,14 @@ var PictureItem = React.createClass({
 		e.dataTransfer.setData(APP_CONSTANTS.DRAGGING_IMG, this.props.picture.id);
 		e.currentTarget.style.opacity = "0.2";
 		ComponentActions.isDroppingToAlbum(true);
+		ComponentActions.slideOut(true);
 	},
 
 	handleDragEnd: function (e) {
 		// e.preventDefault();
 		e.currentTarget.style.opacity = "1";
 		ComponentActions.isDroppingToAlbum(false);
+		ComponentActions.slideOut(false);
 		// var imgId = e.dataTransfer.getData(APP_CONSTANTS.DRAGGING_IMG);
 	},
 
