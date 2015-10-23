@@ -43,7 +43,7 @@
 
 .feedback-msg {
   width: 600px;
-  background-color: #272727;
+  background-color: #128fdc;
   z-index: 50;
   position: fixed;
   display: block;
@@ -54,34 +54,14 @@
   left: 50%;
   transform: translateX(-50%);
   margin-top: 20px;
-  border-bottom-color: rgb(0, 0, 0);
-  border-bottom-left-radius: 4px;
-  border-bottom-right-radius: 4px;
-  border-bottom-style: none;
-  border-bottom-width: 0px;
-  border-image-outset: 0px;
-  border-image-repeat: stretch;
-  border-image-slice: 100%;
-  border-image-source: none;
-  border-image-width: 1;
-  border-left-color: rgb(0, 0, 0);
-  border-left-style: none;
-  border-left-width: 0px;
-  border-right-color: rgb(0, 0, 0);
-  border-right-style: none;
-  border-right-width: 0px;
-  border-top-color: rgb(0, 0, 0);
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
-  border-top-style: none;
-  border-top-width: 0px;
+  border: 0px solid #FAFAFA;
+  border-radius: 4px;
   box-sizing: border-box;
   text-align: center;
   font-size: 16px;
   color: #FAFAFA;
   transition-delay: 0s, 0.4s;
   transition-duration: 0.4s, 1e-09s;
-  transition-property: opacity, visibility;
+  transition-property: all, visibility;
   transition-timing-function: ease-in-out, linear;
-  visability: hidden;
 }

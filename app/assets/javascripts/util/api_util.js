@@ -6,7 +6,7 @@ window.ApiUtil = {
 			dataType: 'json',
 
 			success: function (respData) {
-				ApiActions.receiveAllPictures(respData);
+				ApiActions.receiveAllPictures(respData.pictures);
 			},
 			error: function (respData) {
 				console.log(respData);
@@ -36,8 +36,8 @@ window.ApiUtil = {
 			dataType: 'json',
 
 			success: function (respData) {
-				console.log(respData);
-				ApiActions.receivePicturesFromOneAlbum({pictures: respData});
+				ComponentActions.newMsg(respData.msg);
+				ApiActions.receivePicturesFromOneAlbum(respData);
 			},
 			error: function (respData) {
 				console.log(respData);
@@ -53,7 +53,7 @@ window.ApiUtil = {
 			data: {imgId: imgId, albumId: albumId},
 
 			success: function (respData) {
-				console.log(respData);
+				ComponentActions.newMsg(respData.msg);
 				ApiActions.receivePicturesFromOneAlbum(respData);
 				ApiActions.receiveAllAlbums(respData.albums);
 			},
@@ -88,8 +88,8 @@ window.ApiUtil = {
 			dataType: 'json',
 
 			success: function (respData) {
-				var albumId = respData[0].id;
-				ApiActions.receiveAllAlbums(respData);
+				var albumId = respData.albums[0].id;
+				ApiActions.receiveAllAlbums(respData.albums);
 
 				// if (init) {
 				// 	ComponentActions.switchAlbum(albumId);
@@ -157,7 +157,8 @@ window.ApiUtil = {
 			dataType: 'json',
 
 			success: function (respData) {
-				ApiActions.receiveAllAlbums(respData);
+				ComponentActions.newMsg(respData.msg);
+				ApiActions.receiveAllAlbums(respData.albums);
 			},
 			error: function (respData) {
 				console.log(respData);

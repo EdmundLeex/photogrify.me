@@ -1,3 +1,5 @@
+json.msg "#{@msg}"
+
 json.album do
 	json.partial! 'api/shared/album', album: @album
 end

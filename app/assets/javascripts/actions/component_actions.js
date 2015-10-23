@@ -71,7 +71,14 @@ window.ComponentActions = {
 		AppDispatcher.dispatch({
 			actionType: APP_CONSTANTS.IS_DRAGGING,
 			isDragging: isDragging
-		})
+		});
+	},
+
+	newMsg: function (msg) {
+		AppDispatcher.dispatch({
+			actionType: APP_CONSTANTS.NEW_MESSAGE,
+			msg: msg
+		});
 	}
 
 	// retrieveAlbumState: function (albumId) {

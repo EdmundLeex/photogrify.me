@@ -15,6 +15,8 @@ class Api::PicturesController < ApplicationController
 			delete_from_cloudinary(picture.public_id)
 
 			@pictures = album.pictures
+			@msg = "Picture is deleted."
+
 			render :index
 		else
 			render_generic_error
@@ -45,6 +47,7 @@ class Api::PicturesController < ApplicationController
 			end
 
 			@albums = albums_in_desc
+			@msg = "Picture is moved to #{move_to_album.title}."
 
 			render :transfer
 		else

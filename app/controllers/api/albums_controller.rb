@@ -73,6 +73,7 @@ class Api::AlbumsController < ApplicationController
 
       album.destroy
       @albums = albums_in_desc
+      @msg = "#{album.title} is deleted."
       render :index
     else
       # TODO: page not found
@@ -85,6 +86,7 @@ class Api::AlbumsController < ApplicationController
     if picture
       picture.album.update(cover_picture_url: picture.picture_url)
       @albums = albums_in_desc
+      @msg = "You have changed the cover picture."
       render :index
     else
       render_generic_error
