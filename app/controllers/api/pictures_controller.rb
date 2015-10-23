@@ -1,4 +1,6 @@
 class Api::PicturesController < ApplicationController
+	before_action :require_user!
+
 	def index
 		@pictures = current_user.pictures
 		render :index
@@ -15,7 +17,7 @@ class Api::PicturesController < ApplicationController
 			@pictures = album.pictures
 			render :index
 		else
-			render :errors
+			render "api/shared/errors"
 		end
 	end
 
