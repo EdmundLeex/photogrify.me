@@ -17,8 +17,7 @@ class Api::PicturesController < ApplicationController
 			@pictures = album.pictures
 			render :index
 		else
-			@feedback = { error: GENERIC_ERROR }
-			render "api/shared/feedback"
+			render_generic_error
 		end
 	end
 
@@ -30,26 +29,26 @@ class Api::PicturesController < ApplicationController
 
 		if moved_img
 			moved_img.update(album_id: album_id.to_i)
-		else
-			# TODO: error msg
-		end
 
-		@pictures = move_from_album.pictures
+			@pictures = move_from_album.pictures
 
-		unless move_to_album.cover_picture_url
-			move_to_album.update(cover_picture_url: moved_img.picture_url)
-		end
-
-		if move_from_album.cover_picture_url == moved_img.picture_url
-			if @pictures.blank?
-				move_from_album.update(cover_picture_url: "")
-			else
-				move_from_album.update(cover_picture_url: @pictures[0].picture_url)
+			unless move_to_album.cover_picture_url
+				move_to_album.update(cover_picture_url: moved_img.picture_url)
 			end
+
+			if move_from_album.cover_picture_url == moved_img.picture_url
+				if @pictures.blank?
+					move_from_album.update(cover_picture_url: "")
+				else
+					move_from_album.update(cover_picture_url: @pictures[0].picture_url)
+				end
+			end
+
+			@albums = albums_in_desc
+
+			render :transfer
+		else
+			render_generic_error
 		end
-
-		@albums = albums_in_desc
-
-		render :transfer
 	end
 end
