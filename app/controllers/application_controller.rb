@@ -7,6 +7,20 @@ class ApplicationController < ActionController::Base
 
   GENERIC_ERROR = "Oops... something is wrong here. Try again."
 
+  def not_found
+    # raise ActionController::RoutingError.new('Not Found')
+    respond_to do |format|
+      format.html {
+        render "static_pages/not_found",
+        :layout => true,
+        :status => :not_found,
+        :head => :not_found
+      }
+      format.json { head :not_found }
+    end
+    # render "static_pages/not_found"
+  end
+
   def current_user
     return nil unless session[:session_token]
     @current_user ||= User.find_by_session_token(session[:session_token])

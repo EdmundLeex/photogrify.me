@@ -189,6 +189,11 @@
   background-size: cover;
 }
 
+.root-main.not-found {
+	background: image-url("not_found.jpg") no-repeat center center fixed;
+	height: 100vh;
+}
+
 .root-container {
 	position: relative;
 	max-width: 940px;

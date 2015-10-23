@@ -7,9 +7,11 @@ Rails.application.routes.draw do
   delete "logout", to: "sessions#destroy"
 
   namespace :api, default: { format: :json } do
-  	resources :albums, only: [:index, :create, :update, :destroy, :show]
-  	resources :pictures, only: [:index, :destroy]
-  	patch "transfer", to: "pictures#transfer"
+    resources :albums, only: [:index, :create, :update, :destroy, :show]
+    resources :pictures, only: [:index, :destroy]
+    patch "transfer", to: "pictures#transfer"
     patch "update_cover", to: "albums#update_cover"
   end
+
+  get "*path", to: "application#not_found"
 end
