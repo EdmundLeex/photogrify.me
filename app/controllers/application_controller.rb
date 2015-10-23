@@ -46,4 +46,9 @@ class ApplicationController < ActionController::Base
   def albums_in_desc
     current_user.albums.all.order('updated_at DESC')
   end
+
+  def render_generic_error
+    @feedback = GENERIC_ERROR
+    render "api/shared/feedback"
+  end
 end
