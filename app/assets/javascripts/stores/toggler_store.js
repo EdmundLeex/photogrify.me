@@ -5,6 +5,7 @@
 	var SLIDE_PANEL_EVENT = "SLIDE_PANEL_EVENT";
 	var TOGGLE_OVERLAY_EVENT = "TOGGLE_OVERLAY_EVENT";
 	var DROP_TO_ALBUM_EVENT = "DROP_TO_ALBUM_EVENT";
+	var SHOW_CONFIRMATION_EVENT = "SHOW_CONFIRMATION_EVENT";
 	// var TOGGLE_MODE_EVENT = "TOGGLE_MODE_EVENT";
 	// var _showSearchBox = false;
 	var _editingTitle = false;
@@ -12,6 +13,7 @@
 	var _isPanelShown = false;
 	var _isOverlayShown = false;
 	var _isDragging = false;
+	var _confModalOpts = {};
 	// var _mode = 'view';
 
 	// var toggleMode = function (mode) {
@@ -40,6 +42,13 @@
 		}
 	};
 
+	var showConfModal = function (callback, model, msg, path) {
+		_confModalOpts.callback = callback;
+		_confModalOpts.model = model;
+		_confModalOpts.msg = msg;
+		_confModalOpts.path = path;
+	};
+
 	root.TogglerStore = $.extend({}, EventEmitter.prototype, {
 		// showSearchBox: function () {
 		// 	return _showSearchBox;
@@ -63,6 +72,10 @@
 
 		isDragging: function () {
 			return _isDragging;
+		},
+
+		confModalOpts: function () {
+			return _confModalOpts;
 		},
 
 		// addToggleSearchListener: function (callback) {
@@ -113,6 +126,14 @@
 			this.removeListener(DROP_TO_ALBUM_EVENT, callback);
 		},
 
+		addShowConfModalListener: function (callback) {
+			this.on(SHOW_CONFIRMATION_EVENT, callback);
+		},
+
+		removeShowConfListener: function (callback) {
+			this.removeListener(SHOW_CONFIRMATION_EVENT, callback);
+		},
+
 		// addToggleModeListener: function (callback) {
 		// 	this.on(TOGGLE_MODE_EVENT, callback);
 		// },
@@ -142,6 +163,15 @@
 				case APP_CONSTANTS.IS_DRAGGING:
 					toggleDragging(payload.isDragging);
 					TogglerStore.emit(DROP_TO_ALBUM_EVENT);
+					break;
+				case APP_CONSTANTS.SHOW_CONFIRMATION:
+					showConfModal(
+						payload.callback,
+						payload.model,
+						payload.msg,
+						payload.path
+					);
+					TogglerStore.emit(SHOW_CONFIRMATION_EVENT);
 					break;
 				default:
 					break;

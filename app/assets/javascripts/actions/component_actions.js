@@ -79,6 +79,16 @@ window.ComponentActions = {
 			actionType: APP_CONSTANTS.NEW_MESSAGE,
 			msg: msg
 		});
+	},
+
+	showConfirmation: function (callback, model, msg, path) {
+		AppDispatcher.dispatch({
+			actionType: APP_CONSTANTS.SHOW_CONFIRMATION,
+			callback: callback,
+			model: model,
+			msg: msg,
+			path: path
+		});
 	}
 
 	// retrieveAlbumState: function (albumId) {
