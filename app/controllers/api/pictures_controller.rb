@@ -15,6 +15,7 @@ class Api::PicturesController < ApplicationController
 			@pictures = album.pictures
 			render :index
 		else
+			render :errors
 		end
 	end
 
