@@ -1,16 +1,32 @@
 var Confirmation = React.createClass({
 	render: function () {
 		return (
-			<div className="conf-modal">
-				<div className="conf-form-container">
-					<div className="conf-icon">
-						<span className="glyphicon glyphicon-trash"></span>
-					</div>
-					<div className="conf-title">DELETE</div>
-					<div className="conf-text">Are you sure?</div>
-					<div className="conf-btn-group">
-						<div className="cancel">Cancel</div>
-						<div className="delete">Delete</div>
+			<div className="modal conf-modal fade">
+				<div className="modal-dialog conf-form-container">
+					<div>
+						<div className="row">
+							<span className="center-block conf-icon glyphicon glyphicon-trash"></span>
+						</div>
+						<div className="row">
+							<div className="center-block conf-title">DELETE</div>
+						</div>
+						<div className="row">
+							<div className="center-block conf-msg">Are you sure?</div>
+						</div>
+						<div className="row conf-btn-group">
+							<div className="center-block">
+								<div className="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+									<div className="cancel conf-btn pull-right">
+										Cancel
+									</div>
+								</div>
+								<div className="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+									<div className="delete conf-btn pull-left">
+										Delete
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
