@@ -24,6 +24,7 @@ $(function () {
 	    render: function(){
 	      return (
           <div>
+          	<FeedBackMsg />
           	<Sidebar />
             {this.props.children}
           </div>

@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user, :current_user_id, :logged_in?
 
-  GENERIC_ERROR = "Oops... something is not quite right."
+  GENERIC_ERROR = "Oops... something is wrong here. Try again."
 
   def current_user
     return nil unless session[:session_token]
