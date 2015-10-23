@@ -20,7 +20,7 @@ class Api::AlbumsController < ApplicationController
 
       render json: @album
     else
-      # TODO: oops.. something went wrong
+      render_generic_error
     end
   end
 
@@ -56,7 +56,7 @@ class Api::AlbumsController < ApplicationController
 
         render :update
       else
-        # TODO: oops.. something went wrong
+        render_generic_error
       end
     else
       redirect_to home_url
@@ -81,9 +81,14 @@ class Api::AlbumsController < ApplicationController
 
   def update_cover
     picture = Picture.find(params[:imgId])
-    picture.album.update(cover_picture_url: picture.picture_url)
-    @albums = albums_in_desc
-    render :index
+
+    if picture
+      picture.album.update(cover_picture_url: picture.picture_url)
+      @albums = albums_in_desc
+      render :index
+    else
+      render_generic_error
+    end
   end
 
   private
