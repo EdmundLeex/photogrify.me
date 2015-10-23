@@ -17,7 +17,8 @@ class Api::PicturesController < ApplicationController
 			@pictures = album.pictures
 			render :index
 		else
-			render "api/shared/errors"
+			@feedback = { error: GENERIC_ERROR }
+			render "api/shared/feedback"
 		end
 	end
 
