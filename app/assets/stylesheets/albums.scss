@@ -167,8 +167,12 @@
 	span {
 		margin-left: 15px;
 	}
+
 }
 
+.title-btn:hover {
+	transform: translateY(-2px);
+}
 /*.title-bar-btn {
 	display: inline-block;
 	width: 24px;

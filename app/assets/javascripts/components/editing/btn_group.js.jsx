@@ -27,11 +27,11 @@ var TitleBtnGroup = React.createClass({
 			console.log('new btnGrp');
 			btnGrp = (
 				<div className="title-btn-group">
-					<span className="glyphicon glyphicon-upload"
+					<span className="title-btn glyphicon glyphicon-upload"
 								id="upload"
 								onClick={this._onUploadClick}
 								data-toggle="tooltip" title="UPLOAD PICTURES"></span>
-					<span className="glyphicon glyphicon-remove"
+					<span className="title-btn glyphicon glyphicon-remove"
 								onClick={this._onCancelClick}
 								data-toggle="tooltip" title="CANCEL"></span>
 				</div>
@@ -40,11 +40,11 @@ var TitleBtnGroup = React.createClass({
 			console.log('edit btnGrp');
 			btnGrp = (
 				<div className="title-btn-group">
-					<span className="glyphicon glyphicon-upload"
+					<span className="title-btn glyphicon glyphicon-upload"
 								id="upload"
 								onClick={this._onUploadClick}
 								data-toggle="tooltip" title="UPLOAD PICTURES"></span>
-					<span className="glyphicon glyphicon-ok"
+					<span className="title-btn glyphicon glyphicon-ok"
 								onClick={this._onSaveClick}
 								data-toggle="tooltip" title="DONE"></span>
 				</div>
@@ -53,13 +53,13 @@ var TitleBtnGroup = React.createClass({
 			console.log('view btnGrp');
 			btnGrp = (
 				<div className="title-btn-group">
-					<span className="glyphicon glyphicon-edit"
+					<span className="title-btn glyphicon glyphicon-edit"
 								onClick={this._onEditClick}
 								data-toggle="tooltip" title="EDIT"></span>
-					<span className="glyphicon glyphicon-upload"
+					<span className="title-btn glyphicon glyphicon-upload"
 								onClick={this._onUploadClick}
 								data-toggle="tooltip" title="UPLOAD PICTURES"></span>
-					<span className="glyphicon glyphicon-trash"
+					<span className="title-btn glyphicon glyphicon-trash"
 								onClick={this._onDeleteClick}
 								data-toggle="tooltip" title="DELETE"></span>
 				</div>
