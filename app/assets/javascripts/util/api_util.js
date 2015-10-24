@@ -138,19 +138,6 @@ window.ApiUtil = {
 		});
 	},
 
-	// updateDescription: function (id, description) {
-	// 	$.ajax({
-	// 		url: '/api/albums/' + id,
-	// 		type: 'patch',
-	// 		dataType: 'json',
-	// 		data: {"description": description},
-
-	// 		success: function (respData) {
-	// 			ApiActions.savedDescription(respData.description);
-	// 		}
-	// 	});
-	// },
-
 	deleteAlbum: function (id, callback) {
 		$.ajax({
 			url: '/api/albums/' + id,
