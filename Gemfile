@@ -37,6 +37,8 @@ gem 'figaro'
 
 gem 'newrelic_rpm'
 
+gem 'unicorn'
+
 # gem 'font-awesome-sass'
 
 # Use Unicorn as the app server
