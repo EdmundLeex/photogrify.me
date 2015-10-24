@@ -28,7 +28,11 @@
 		},
 
 		nextImg: function (dir) {
-			var imgIdx = _pictures.indexOf(_enlargedImg);
+			var imgIdx = $.map(_pictures, function(pic, idx) {
+		    if(pic.id === _enlargedImg.id) {
+	        return idx;
+		    }
+			})[0];
 			imgIdx = (imgIdx + dir >= 0) ? (imgIdx + dir) % _pictures.length : _pictures.length - 1;
 			return _pictures.slice()[imgIdx];
 		},

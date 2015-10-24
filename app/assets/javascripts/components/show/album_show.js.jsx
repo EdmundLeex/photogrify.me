@@ -105,11 +105,13 @@ var AlbumShow = React.createClass({
 	},
 
 	onLeftClick: function () {
+		console.log('left');
 		var nextImg = PictureStore.nextImg(-1);
 		ComponentActions.toggleImg(nextImg);
 	},
 
 	onRightClick: function () {
+		console.log('right');
 		var nextImg = PictureStore.nextImg(1);
 		ComponentActions.toggleImg(nextImg);
 	},
