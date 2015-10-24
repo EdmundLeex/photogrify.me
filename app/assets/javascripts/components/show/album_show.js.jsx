@@ -149,7 +149,7 @@ var AlbumShow = React.createClass({
 									  isDragging={this.state.isDragging} />
 					<PicturesCollection history={this.history}
 															pictures={this.state.pictures}
-															handleClick={this.onImgClick}  />
+															handleClick={this.onImgClick} />
 				</div>
 			</div>
 		);
