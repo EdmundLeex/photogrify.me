@@ -44,8 +44,9 @@ $(function () {
 	}
 
 	function fillForm(form) {
+		var username = randAccount();
 		form.find("#username").typed({
-			strings: ["demo"],
+			strings: [username],
 			typeSpeed: 5,
 			attr: "value",
 			callback: function () {
@@ -59,5 +60,10 @@ $(function () {
 				});
 			}
 		});
+	}
+
+	function randAccount() {
+		var idx = Math.floor(Math.random() * (GuestAccounts.length - 1));
+		return GuestAccounts[idx];
 	}
 });
