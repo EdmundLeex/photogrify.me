@@ -40,14 +40,37 @@ end
 
 User.destroy_all
 
-User.create(username: 'demo', password: 'secret')
-
+u1 = User.create(username: 'demo', password: 'secret')
+u2 = User.create(username: 'guest', password: 'secret')
+u3 = User.create(username: 'demo_account', password: 'secret')
+u4 = User.create(username: 'guest_account', password: 'secret')
+u5 = User.create(username: 'explorer', password: 'secret')
 
 Album.destroy_all
 
-Album.create(title: 'Demo Album1', description: 'Demo description', user: User.first)
-Album.create(title: 'Demo Album2', description: '', user: User.first)
-Album.create(title: 'Demo Album3', description: 'description', user: User.first)
+Album.create(title: 'Demo Album1', description: 'Demo description', user: u1)
+Album.create(title: 'Demo Album2', description: '', user: u1)
+Album.create(title: 'Demo Album3', description: 'description', user: u1)
+
+Album.create(title: 'Demo Album1', description: 'Demo description', user: u1)
+Album.create(title: 'Demo Album2', description: '', user: u1)
+Album.create(title: 'Demo Album3', description: 'description', user: u1)
+
+Album.create(title: 'Demo Album1', description: 'Demo description', user: u2)
+Album.create(title: 'Demo Album2', description: '', user: u2)
+Album.create(title: 'Demo Album3', description: 'description', user: u2)
+
+Album.create(title: 'Demo Album1', description: 'Demo description', user: u3)
+Album.create(title: 'Demo Album2', description: '', user: u3)
+Album.create(title: 'Demo Album3', description: 'description', user: u3)
+
+Album.create(title: 'Demo Album1', description: 'Demo description', user: u4)
+Album.create(title: 'Demo Album2', description: '', user: u4)
+Album.create(title: 'Demo Album3', description: 'description', user: u4)
+
+Album.create(title: 'Demo Album1', description: 'Demo description', user: u5)
+Album.create(title: 'Demo Album2', description: '', user: u5)
+Album.create(title: 'Demo Album3', description: 'description', user: u5)
 
 seed_imgs = []
 failed_imgs = {}
