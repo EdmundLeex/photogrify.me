@@ -11,7 +11,7 @@ $(function () {
   	window.NEW_ALBUM_PATH = "NEW_ALBUM_PATH";
   	var App = React.createClass({
   		componentDidMount: function () {
-  			setInterval(this._checkAlbums, 1000)
+  			setInterval(this._checkAlbums, 10000)
   		},
 
   		_checkAlbums: function () {
@@ -24,7 +24,7 @@ $(function () {
 	    render: function(){
 	      return (
           <div>
-          	<FeedBackMsg />
+          	<FeedbackMsg />
           	<Sidebar />
             {this.props.children}
           </div>

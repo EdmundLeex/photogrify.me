@@ -90,6 +90,13 @@ window.ComponentActions = {
 			msg: msg,
 			path: path
 		});
+	},
+
+	loggingOut: function (bool) {
+		AppDispatcher.dispatch({
+			actionType: APP_CONSTANTS.LOGGING_OUT,
+			bool: bool
+		})
 	}
 
 	// retrieveAlbumState: function (albumId) {

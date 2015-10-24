@@ -156,12 +156,14 @@ window.ApiUtil = {
 	},
 
 	logout: function () {
+		ComponentActions.loggingOut(true);
 		$.ajax({
 			url: '/logout',
 			type: 'delete',
 			dataType: 'json',
 
 			success: function (respData) {
+				ComponentActions.newMsg(respData.msg);
 				window.location.href = respData.redirect;
 			},
 			error: function (respData) {

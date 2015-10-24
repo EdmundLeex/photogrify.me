@@ -1,4 +1,4 @@
-var FeedBackMsg = React.createClass({
+var FeedbackMsg = React.createClass({
 	getInitialState: function () {
     return {
     	msg: null
