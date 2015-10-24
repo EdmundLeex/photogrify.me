@@ -10,10 +10,11 @@
 			The home for your photo collections.
 		</div>
 		<div class="achievement">
-			<a href="" id="signup-btn">Sign up now</a>
-			<div id="signin-btn">
+			<a href="" id="guest-btn">Explore as guest</a>
+			<div class="auth-btn-grp">
 				or 
-				<a href="">Sign in</a>
+				<a href="" id="signin-btn">Sign in</a> |
+				<a href="" id="signup-btn">Sign up</a>
 			</div>
 		</div>
 	</div>
@@ -31,10 +32,10 @@
 		<a href="" id="close-btn">CLOSE</a>
 		<div class="auth-form">
 			<div class="auth-form-logo"><%= image_tag('logo-icon-white.png') %></div>
-			<form class="auth-form-field clearfix" action="" method="post">
+			<form id="auth-form" class="auth-form-field clearfix" action="" method="post">
 				<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-				<input type="text" placeholder="Username" name="user[username]" value="<%= username %>">
-				<input type="password" placeholder="Password" name="user[password]">
+				<input id="username" type="text" placeholder="Username" name="user[username]" value="<%= username %>">
+				<input id="password" type="password" placeholder="Password" name="user[password]">
 				<% if behind == "" %>
 					<input type="submit" class="submit-btn" value="<%= btn_text %>">
 				<% else %>

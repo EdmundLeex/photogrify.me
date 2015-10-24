@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap
+//= require typed.min
 //= require flux
 //= require eventemitter
 //= require retry
