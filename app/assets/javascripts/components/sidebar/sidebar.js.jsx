@@ -9,7 +9,9 @@ var Sidebar = React.createClass({
 	render: function () {
 		return (
 			<div className="sidebar">
-				<div className="logo sidebar-thumbs" onClick={this.handleClickLogo}>
+				<div className="logo sidebar-thumbs"
+						 onClick={this.handleClickLogo}
+						 data-toggle="tooltip" title="HOME">
 					<img src="images/logo-sidebar.png" alt=""/>
 				</div>
 				<div className="sidebar-btn-group">

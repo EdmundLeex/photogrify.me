@@ -98,7 +98,8 @@ var TitleBar = React.createClass({
 							 onFocus={this.toggleToFocus}
 							 onBlur={this.toggleToBlur}
 							 className={klass}
-							 valueLink={this.props.linkState("title")} />
+							 valueLink={this.props.linkState("title")}
+							 data-toggle="tooltip" title="CLICK TO EDIT TITLE" />
 			</div>
 		);
 	}
