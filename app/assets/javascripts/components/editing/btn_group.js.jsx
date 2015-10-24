@@ -31,8 +31,11 @@ var TitleBtnGroup = React.createClass({
 								id="upload"
 								onClick={this._onUploadClick}
 								data-toggle="tooltip" title="UPLOAD PICTURES"></span>
+					<span className="glyphicon glyphicon-remove"
+								onClick={this._onCancelClick}
+								data-toggle="tooltip" title="CANCEL"></span>
 				</div>
-			)
+			);
 		} else if (this.props.mode === 'edit') {
 			console.log('edit btnGrp');
 			btnGrp = (
@@ -45,7 +48,7 @@ var TitleBtnGroup = React.createClass({
 								onClick={this._onSaveClick}
 								data-toggle="tooltip" title="DONE"></span>
 				</div>
-			)
+			);
 		} else {
 			console.log('view btnGrp');
 			btnGrp = (
