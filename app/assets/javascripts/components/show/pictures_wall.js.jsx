@@ -4,18 +4,21 @@ var PicturesWall = React.createClass({
 	getInitialState: function () {
     return {
     	pictures: [],
-    	isPanelShown: TogglerStore.isPanelShown()
+    	isPanelShown: TogglerStore.isPanelShown(),
+    	enlargedImg: null
     };
 	},
 
 	componentDidMount: function () {
 		ApiUtil.fetchAllPictures();
 		PictureStore.addAllPicturesChangedListener(this.onChange);
+		PictureStore.addTogglePictureListener(this._onEnlarge);
 		TogglerStore.addToggleIndexPanelListener(this._onSlide);
 	},
 
 	componentWillUnmount: function () {
 		PictureStore.removeAllPicturesChangedListener(this.onChange);
+		PictureStore.removeTogglePictureListener(this._onEnlarge);
 		TogglerStore.removeToggleIndexPanelListener(this._onSlide);
 	},
 
@@ -27,8 +30,26 @@ var PicturesWall = React.createClass({
 		this.setState({ isPanelShown: TogglerStore.isPanelShown() });
 	},
 
+	_onEnlarge: function () {
+		this.setState({ enlargedImg: PictureStore.enlargedImg() });
+	},
+
 	getRandomSize: function (min, max) {
 	  return Math.round(Math.random() * (max - min) + min);
+	},
+
+	onImgClick: function (picture) {
+		ComponentActions.toggleImg(picture);
+	},
+
+	onLeftClick: function () {
+		var nextImg = PictureStore.nextImg(-1);
+		ComponentActions.toggleImg(nextImg);
+	},
+
+	onRightClick: function () {
+		var nextImg = PictureStore.nextImg(1);
+		ComponentActions.toggleImg(nextImg);
 	},
 
 	render: function () {
@@ -36,18 +57,26 @@ var PicturesWall = React.createClass({
 		var albums = AlbumStore.all();
 		var size;
 		var that = this;
+		var imgFrame = (this.state.enlargedImg) ?
+			<PictureFrame picture={this.state.enlargedImg}
+										handleClick={this.onImgClick}
+										handleClickLeft={this.onLeftClick}
+										handleClickRight={this.onRightClick} /> : "";
 
 		if (!this.state.isPanelShown) { indexKlass = "slide-out"; }
 		return (
 			<div className="pictures-wall-wrapper">
+				{imgFrame}
 				<AlbumsIndexContainer albums={albums}
 															history={this.history}
 															klass={indexKlass}
 															params={this.props.params} />
 				<div className="pictures-wall clearfix">
 					{this.state.pictures.map(function (pic) {
-						return <WallPicItem key={pic.id} picture={pic} />
-					})}
+						return <WallPicItem key={pic.id}
+																picture={pic}
+																handleClick={this.onImgClick} />
+					}, this)}
 				</div>
 			</div>
 		);
@@ -55,6 +84,10 @@ var PicturesWall = React.createClass({
 });
 
 var WallPicItem = React.createClass({
+	handleClick: function () {
+		this.props.handleClick(this.props.picture);
+	},
+
 	render: function () {
 		var url = APP_CONFIG.ImageUrlByOptions(
 			this.props.picture.picture_url,
@@ -64,7 +97,9 @@ var WallPicItem = React.createClass({
 		var divStyle = {backgroundImage: 'url(' + url + ')'};
 
 		return (
-			<div className="pic-wall-thumb" style={divStyle}>
+			<div className="pic-wall-thumb"
+					 style={divStyle}
+					 onClick={this.handleClick}>
 			</div>
 		);
 	}
