@@ -87,6 +87,7 @@
   margin: 0 auto;
   width: 90%;
 	height: 30px;
+	padding-top: 1px;
 	padding-left: 10px;
   background: rgba(0,0,0,0);
   /*border-color: #BBBBBC;*/
@@ -99,17 +100,27 @@
   -o-box-sizing: border-box;
   box-sizing: border-box;
 
+  &:hover {
+		border: 1px solid gray;
+  }
+
+  &:focus {
+  	border: 1px solid gray;
+  }
+
   input {
 	  padding: 0 0 0 10px;
 	  /*width: 100%;*/
+	  line-height: normal;
 	  border: none;
 	  outline: none;
 	  font-size: 16px;
 	  background: rgba(0,0,0,0);
 	  width: calc(100% - 35px);
   }
+
 }
 
-.search-box:hover :focus {
+.search-box:focus {
 	border: 1px solid gray;
 }

@@ -52,11 +52,16 @@ var PicturesWall = React.createClass({
 		ComponentActions.toggleImg(nextImg);
 	},
 
+	handleOverlayClick: function () {
+		ComponentActions.slideOut(false);
+	},
+
 	render: function () {
 		var indexKlass = "";
 		var albums = AlbumStore.all();
 		var size;
 		var that = this;
+		var showOverlay = (this.state.isPanelShown) ? "" : "behind";
 		var imgFrame = (this.state.enlargedImg) ?
 			<PictureFrame picture={this.state.enlargedImg}
 										handleClick={this.onImgClick}
@@ -67,6 +72,8 @@ var PicturesWall = React.createClass({
 		return (
 			<div className="pictures-wall-wrapper">
 				{imgFrame}
+				<div className={"album-main-overlay " + showOverlay}
+						 onClick={this.handleOverlayClick}></div>
 				<AlbumsIndexContainer albums={albums}
 															history={this.history}
 															klass={indexKlass}

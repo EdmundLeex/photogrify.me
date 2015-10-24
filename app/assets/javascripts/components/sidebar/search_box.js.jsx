@@ -21,7 +21,7 @@ var SearchBox = React.createClass({
 
 	render: function () {
 		return (
-			<div className="search-box">
+			<div className="search-box" tabIndex="-1">
 				<span className="glyphicon glyphicon-search"></span>
 				<input type="text"
 							 placeholder="search"
