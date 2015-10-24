@@ -108,6 +108,14 @@
   flex-basis: 180px;
   flex-grow: 1 auto;
   flex-shrink: 1 auto;
+  transition: all ease-out 0.1s;
+
+  &:hover {
+    transform: translateX(-5px) translateY(-5px);
+    box-shadow: 3px 3px 5px;
+    cursor: pointer;
+    transition: all ease-out 0.1s;
+  }
 }
 
 @media all and (min-width: 327px) {
