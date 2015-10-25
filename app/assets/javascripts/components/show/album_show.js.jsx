@@ -145,8 +145,7 @@ var AlbumShow = React.createClass({
 									  onEditTitleFinish={this.onDoneEditing}
 									  linkState={this.linkState}
 									  isDragging={this.state.isDragging} />
-					<PicturesCollection history={this.history}
-															pictures={this.state.pictures}
+					<PicturesCollection pictures={this.state.pictures}
 															handleClick={this.onImgClick} />
 				</div>
 			</div>

@@ -92,7 +92,10 @@
         pictureId: picture.id
       });
       marker.addListener('click', function () {
-        that.props.onMarkerClick(picture)
+        that.props.onMarkerClick(picture);
+      });
+      marker.addListener('mouseover', function () {
+        that.props.onMarkerHover(picture);
       });
       this.markers.push(marker);
     },
