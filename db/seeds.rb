@@ -109,13 +109,12 @@ end
 puts "Persisting Cloudinary urls to database"
 
 Picture.destroy_all
-# debugger
 seed_imgs.each do |img|
 	Album.first.pictures.create(
 		picture_url: img['url'],
 		public_id: img['public_id'],
 		latitude: rand(SF_SOUTH..SF_NORTH),
-		longitude: rand(SF_EAST..SF_WEST)
+		longitude: rand(SF_WEST..SF_EAST)
 	)
 	print "."
 end
