@@ -42,7 +42,7 @@ $(function () {
 					</Route>
 					<Route path="new" component={New} />
 					<Route path="pictures" component={PicturesWall} />
-					<Route path="map" component={Map} />
+					<Route path="map" component={MapMain} />
 					<Route path="*" component={NotFound} />
 				</Route>
 			</Router>

@@ -30,33 +30,33 @@
     },
 
     _onChange: function(){
-      // var benches = this.props.benches;
-      // var toAdd = [], toRemove = this.markers.slice(0);
-      // benches.forEach(function(bench, idx){
-      //   var idx = -1;
-      //   //check if bench is already on map as a marker
-      //   for(var i = 0; i < toRemove.length; i++){
-      //     if(toRemove[i].benchId == bench.id){
-      //       idx = i;
-      //       break;
-      //     }
-      //   }
-      //   if(idx === -1){
-      //     //if it's not already on the map, we need to add a marker
-      //     toAdd.push(bench);
-      //   } else {
-      //     //if it IS already on the map AND in the store, we don't need
-      //     //to remove it
-      //     toRemove.splice(idx, 1);
-      //   }
-      // });
-      // toAdd.forEach(this.createMarkerFromBench);
-      // toRemove.forEach(this.removeMarker);
+      var pictures = this.props.pictures;
+      var toAdd = [], toRemove = this.markers.slice(0);
+      pictures.forEach(function(picture, idx){
+        var idx = -1;
+        //check if picture is already on map as a marker
+        for(var i = 0; i < toRemove.length; i++){
+          if(toRemove[i].pictureId == picture.id){
+            idx = i;
+            break;
+          }
+        }
+        if(idx === -1){
+          //if it's not already on the map, we need to add a marker
+          toAdd.push(picture);
+        } else {
+          //if it IS already on the map AND in the store, we don't need
+          //to remove it
+          toRemove.splice(idx, 1);
+        }
+      });
+      toAdd.forEach(this.createMarkerFromPicture);
+      toRemove.forEach(this.removeMarker);
 
-      // if (this.props.singleBench) {
-      //   this.map.setOptions({draggable: false});
-      //   this.map.setCenter(this.centerBenchCoords());
-      // }
+      if (this.props.singleBench) {
+        this.map.setOptions({draggable: false});
+        this.map.setCenter(this.centerBenchCoords());
+      }
     },
 
     componentWillUnmount: function(){
@@ -83,29 +83,29 @@
       // });
     },
 
-    // createMarkerFromBench: function (bench) {
-    //   var that = this;
-    //   var pos = new google.maps.LatLng(bench.lat, bench.lng);
-    //   var marker = new google.maps.Marker({
-    //     position: pos,
-    //     map: this.map,
-    //     benchId: bench.id
-    //   });
-    //   marker.addListener('click', function () {
-    //     that.props.onMarkerClick(bench)
-    //   });
-    //   this.markers.push(marker);
-    // },
+    createMarkerFromPicture: function (picture) {
+      var that = this;
+      var pos = new google.maps.LatLng(picture.lat, picture.lng);
+      var marker = new google.maps.Marker({
+        position: pos,
+        map: this.map,
+        pictureId: picture.id
+      });
+      marker.addListener('click', function () {
+        that.props.onMarkerClick(picture)
+      });
+      this.markers.push(marker);
+    },
 
-    // removeMarker: function(marker){
-    //   for(var i = 0; i < this.markers.length; i++){
-    //     if (this.markers[i].benchId === marker.benchId){
-    //       this.markers[i].setMap(null);
-    //       this.markers.splice(i, 1);
-    //       break;
-    //     }
-    //   }
-    // },
+    removeMarker: function(marker){
+      for(var i = 0; i < this.markers.length; i++){
+        if (this.markers[i].pictureId === marker.pictureId){
+          this.markers[i].setMap(null);
+          this.markers.splice(i, 1);
+          break;
+        }
+      }
+    },
 
     render: function(){
       return ( <div className="map album-show-main" ref="map">Map</div>);
