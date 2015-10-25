@@ -1,6 +1,24 @@
 var TitleBtnGroup = React.createClass({
+	getInitialState: function () {
+    return {
+    	isDeletingAlbum: AjaxStore.isDeletingAlbum()
+    };
+	},
+
+	componentDidMount: function () {
+  	AjaxStore.addIsDeletingAlbumListener(this._deletingAlbum);
+	},
+
+	componentWillUnmount: function () {
+  	AjaxStore.removeIsDeletingAlbumListener(this._deletingAlbum);
+	},
+
+	_deletingAlbum: function () {
+		this.setState({ isDeletingAlbum: AjaxStore.isDeletingAlbum() });
+	},
+
 	_onDeleteClick: function () {
-		this.props.onDeleteClick();
+		if (!this.state.isDeletingAlbum) {this.props.onDeleteClick();}
 	},
 
 	_onEditClick: function () {
@@ -22,6 +40,7 @@ var TitleBtnGroup = React.createClass({
 
 	render: function () {
 		var btnGrp;
+		var statusKlass = (this.state.isDeletingAlbum) ? "disabled" : "";
 
 		if (this.props.mode === 'new') {
 			console.log('new btnGrp');
@@ -59,7 +78,7 @@ var TitleBtnGroup = React.createClass({
 					<span className="title-btn glyphicon glyphicon-upload"
 								onClick={this._onUploadClick}
 								data-toggle="tooltip" title="UPLOAD PICTURES"></span>
-					<span className="title-btn glyphicon glyphicon-trash"
+					<span className={"title-btn glyphicon glyphicon-trash " + statusKlass}
 								onClick={this._onDeleteClick}
 								data-toggle="tooltip" title="DELETE"></span>
 				</div>

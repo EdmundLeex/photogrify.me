@@ -96,7 +96,14 @@ window.ComponentActions = {
 		AppDispatcher.dispatch({
 			actionType: APP_CONSTANTS.LOGGING_OUT,
 			bool: bool
-		})
+		});
+	},
+
+	deletingAlbum: function (bool) {
+		AppDispatcher.dispatch({
+			actionType: APP_CONSTANTS.DELETING_ALBUM,
+			bool: bool
+		});
 	}
 
 	// retrieveAlbumState: function (albumId) {

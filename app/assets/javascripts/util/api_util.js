@@ -139,6 +139,7 @@ window.ApiUtil = {
 	},
 
 	deleteAlbum: function (id, callback) {
+		ComponentActions.deletingAlbum(true);
 		$.ajax({
 			url: '/api/albums/' + id,
 			type: 'delete',
@@ -148,6 +149,7 @@ window.ApiUtil = {
 				ApiActions.receiveAllAlbums(respData.albums);
 				ComponentActions.newMsg(respData.msg);
 				callback();
+				ComponentActions.deletingAlbum(false);
 			},
 			error: function (respData) {
 				console.log(respData);
