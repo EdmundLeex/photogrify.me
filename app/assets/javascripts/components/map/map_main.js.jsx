@@ -101,6 +101,7 @@
 							 onMarkerClick={this.onMarkerClick}
 							 onMarkerHover={this.onMarkerHover} />
 					<div className="map-pic-list">
+						
 						<PicturesCollection pictures={this.state.pictures}
 																handleClick={this.onImgClick}
 																isDeletable={false} />

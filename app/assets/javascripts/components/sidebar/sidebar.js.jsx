@@ -6,6 +6,10 @@ var Sidebar = React.createClass({
 		this.history.pushState(null, '/');
 	},
 
+	handleClickMap: function () {
+		this.history.pushState(null, '/map');
+	},
+
 	render: function () {
 		return (
 			<div className="sidebar">
@@ -18,6 +22,9 @@ var Sidebar = React.createClass({
 					<CreateAlbumBtn history={this.history} />
 					<AllAlbumsBtn history={this.history} />
 					<AllPicturesBtn history={this.history} />
+					<div className="sidebar-thumbs map-icon">
+						<span className="" onClick={this.handleClickMap}></span>
+					</div>
 				</div>
 				<UserMenuBtn />
 			</div>
