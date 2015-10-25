@@ -73,6 +73,7 @@ window.ApiUtil = {
 
 			success: function (respData) {
 				ApiActions.receiveAllAlbums(respData.albums);
+				ComponentActions.newMsg(respData.msg);
 			},
 			error: function (respData) {
 				console.log(respData);
@@ -115,6 +116,7 @@ window.ApiUtil = {
 
 			success: function (respData) {
 				ApiActions.createAlbum(respData);
+				ComponentActions.newMsg("New album created.");
 			},
 			error: function (respData) {
 				console.log(respData);
@@ -131,6 +133,7 @@ window.ApiUtil = {
 
 			success: function (respData) {
 				ApiActions.updatedAlbum(respData);
+				ComponentActions.newMsg(respData.msg);
 			},
 			error: function (respData) {
 				console.log(respData);

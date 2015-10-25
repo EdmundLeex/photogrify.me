@@ -17,6 +17,7 @@ class Api::AlbumsController < ApplicationController
       if picture_urls
         save_pictures_to_album(@album, picture_urls)
       end
+      @msg = "#{@album.title} is created."
 
       render json: @album
     else
@@ -53,6 +54,7 @@ class Api::AlbumsController < ApplicationController
           save_pictures_to_album(@album, picture_urls)
         end
         @pictures = @album.pictures
+        @msg = "#{@album.title} is saved."
 
         render :update
       else
