@@ -72,8 +72,8 @@ window.ApiUtil = {
 			data: {imgId: imgId},
 
 			success: function (respData) {
-				ApiActions.receiveAllAlbums(respData.albums);
 				ComponentActions.newMsg(respData.msg);
+				ApiActions.receiveAllAlbums(respData.albums);
 			},
 			error: function (respData) {
 				console.log(respData);
