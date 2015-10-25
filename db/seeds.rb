@@ -1,3 +1,8 @@
+SF_NORTH = 37.80761093884952
+SF_SOUTH = 37.70799502080717
+SF_EAST = -122.38071208953858
+SF_WEST = -122.51529460906983
+
 img_urls = [
 	"http://sanfranciscodeluxetours.com/images/sfdeluxe-gal-img-51.jpg",
 	"http://wallpaperput.com/wp-content/uploads/2014/11/landscape-beautiful-san-francisco-at-night-wallpaper.jpg",
@@ -106,7 +111,12 @@ puts "Persisting Cloudinary urls to database"
 Picture.destroy_all
 # debugger
 seed_imgs.each do |img|
-	Album.first.pictures.create(picture_url: img['url'], public_id: img['public_id'])
+	Album.first.pictures.create(
+		picture_url: img['url'],
+		public_id: img['public_id'],
+		latitude: rand(SF_SOUTH..SF_NORTH),
+		longitude: rand(SF_EAST..SF_WEST)
+	)
 	print "."
 end
 print "\n"
