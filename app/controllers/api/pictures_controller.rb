@@ -2,7 +2,15 @@ class Api::PicturesController < ApplicationController
 	before_action :require_user!
 
 	def index
-		@pictures = current_user.pictures
+		if bounds = params[:bounds]
+			@pictures = current_user.pictures
+															.where("latitude  < ?", bounds[:northEast][:lat])
+															.where("latitude  > ?", bounds[:southWest][:lat])
+															.where("longitude > ?", bounds[:southWest][:lng])
+															.where("longitude < ?", bounds[:northEast][:lng])
+		else
+			@pictures = current_user.pictures
+		end
 		render :index
 	end
 

@@ -17,4 +17,12 @@ class Picture < ActiveRecord::Base
   delegate :user, to: :album
 
   validates :album_id, presence: true
+
+  def self.find_user_pictures_in_bounds(user, bounds)
+  	self.where("latitude  < ?", bounds[:northEast][:lat])
+        .where("latitude  > ?", bounds[:southWest][:lat])
+        .where("longitude > ?", bounds[:southWest][:lng])
+        .where("longitude < ?", bounds[:northEast][:lng])
+        .where("user_id   = ?", user.id)
+  end
 end

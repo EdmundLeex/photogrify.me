@@ -29,6 +29,22 @@ window.ApiUtil = {
 		});
 	},
 
+	fetchPicturesByFilter: function () {
+		var filter = FilterParamsStore.params();
+		$.ajax({
+			url: '/api/pictures/',
+			type: 'get',
+			data: filter,
+
+			success: function (respData) {
+				ApiActions.receiveAllPictures(respData.pictures);
+			},
+			error: function (respData) {
+				console.log(respData);
+			}
+		});
+	},
+
 	deletePicture: function (imgId) {
 		$.ajax({
 			url: '/api/pictures/' + imgId,

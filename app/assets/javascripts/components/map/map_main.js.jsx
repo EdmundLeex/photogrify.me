@@ -14,7 +14,8 @@
 
     _filtersChanged: function () {
       this.setState({ filterParams: FilterParamsStore.params() });
-      ApiUtil.fetchAllPictures();
+      // ApiUtil.fetchAllPictures();
+      ApiUtil.fetchPicturesByFilter();
     },
 
     _onEnlarge: function () {
