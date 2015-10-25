@@ -4,12 +4,14 @@ var PicturesCollection = React.createClass({
 	},
 
 	render: function () {
-		var that = this;
 		return (
 			<div className="pictures-collection clearfix">
 				{this.props.pictures.map(function (pic) {
-					return <PictureItem key={pic.id} picture={pic} handleClick={that.onImgClick} />
-				})}
+					return <PictureItem key={pic.id}
+															picture={pic}
+															handleClick={this.onImgClick}
+															isDeletable={this.props.isDeletable} />
+				}, this)}
 			</div>
 		);
 	}

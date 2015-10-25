@@ -146,7 +146,8 @@ var AlbumShow = React.createClass({
 									  linkState={this.linkState}
 									  isDragging={this.state.isDragging} />
 					<PicturesCollection pictures={this.state.pictures}
-															handleClick={this.onImgClick} />
+															handleClick={this.onImgClick}
+															isDeletable={true} />
 				</div>
 			</div>
 		);

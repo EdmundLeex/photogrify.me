@@ -4,8 +4,18 @@
 	    return {
 	    	pictures: PictureStore.all(),
 	    	filterParams: FilterParamsStore.params(),
-	    	enlargedImg: null
+	    	enlargedImg: null,
+	    	albums: AlbumStore.all(),
+				isPanelShown: false,
 	    };
+		},
+
+		_onChange: function () {
+			this.setState({ albums: AlbumStore.all() });
+		},
+
+		_onSlide: function () {
+			this.setState({ isPanelShown: TogglerStore.isPanelShown() });
 		},
 
 		_picturesChanged: function(){
@@ -49,20 +59,31 @@
     	// show preview on top left corner or highlight picture in list
     },
 
+    componentWillMount: function () {
+    	ComponentActions.slideOut(false);
+    },
+
 		componentDidMount: function(){
+			AlbumStore.addAlbumsIndexChangeListener(this._onChange);
       PictureStore.addAllPicturesChangedListener(this._picturesChanged);
       PictureStore.addTogglePictureListener(this._onEnlarge);
       FilterParamsStore.addChangeListener(this._filtersChanged);
+      TogglerStore.addToggleIndexPanelListener(this._onSlide);
+      ApiUtil.fetchAllAlbums(true);
       ApiUtil.fetchAllPictures();
     },
 
     componentWillUnmount: function(){
+    	AlbumStore.removeAlbumsIndexChangeListener(this._onChange);
       PictureStore.removeAllPicturesChangedListener(this._picturesChanged);
       PictureStore.removeTogglePictureListener(this._onEnlarge);
+      TogglerStore.removeToggleIndexPanelListener(this._onSlide);
       // FilterParamsStore.removeChangeListener(this._filtersChanged);
     },
 
 		render: function () {
+			var indexKlass;
+			if (!this.state.isPanelShown) { indexKlass = "slide-out"; }
 			var imgFrame = (this.state.enlargedImg) ?
 			<PictureFrame picture={this.state.enlargedImg}
 										handleClick={this.onImgClick}
@@ -72,12 +93,17 @@
 			return (
 				<div className="album-show-main">
 					{imgFrame}
+					<AlbumsIndexContainer albums={this.state.albums}
+																history={this.history}
+																klass={indexKlass}
+																params={this.props.params} />
 					<Map pictures={this.state.pictures}
 							 onMarkerClick={this.onMarkerClick}
 							 onMarkerHover={this.onMarkerHover} />
 					<div className="map-pic-list">
 						<PicturesCollection pictures={this.state.pictures}
-																handleClick={this.onImgClick} />
+																handleClick={this.onImgClick}
+																isDeletable={false} />
 					</div>
 				</div>
 			);

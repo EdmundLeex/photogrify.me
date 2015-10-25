@@ -40,10 +40,12 @@ var PictureItem = React.createClass({
 					 onDragStart={this.handleDragStart}
 					 onDragEnd={this.handleDragEnd}>
 				<img src={url} onClick={this.handleClick} />
-				<div className="thumb-tools">
-					<span className="thumb-delete glyphicon glyphicon-trash"
-								onClick={this.handleClickDelete}></span>
-				</div>
+				{(this.props.isDeletable) ?
+					<div className="thumb-tools">
+						<span className="thumb-delete glyphicon glyphicon-trash"
+									onClick={this.handleClickDelete}></span>
+					</div> : <div></div>
+				}
 			</div>
 		);
 	}
