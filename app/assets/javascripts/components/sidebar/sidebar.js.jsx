@@ -2,7 +2,7 @@ var Sidebar = React.createClass({
 	mixins: [ReactRouter.History],
 
 	handleClickLogo: function () {
-		ComponentActions.slideOut(false);
+		ComponentActions.slideOut(true);
 		this.history.pushState(null, '/');
 	},
 
