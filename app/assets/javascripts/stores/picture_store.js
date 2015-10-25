@@ -2,9 +2,11 @@
 	var PICTURES_COLLECTION_CHANGED_EVENT = "PICTURES_COLLECTION_CHANGED_EVENT";
 	var ALL_PICTURES_RECEIVED_EVENT = "ALL_PICTURES_RECEIVED_EVENT";
 	var PICTURE_TOGGLE_EVENT = "PICTURE_TOGGLE_EVENT";
+	var HIGHLIGHT_PICTURE_EVENT = "HIGHLIGHT_PICTURE_EVENT";
 
 	var _pictures = [];
 	var _enlargedImg = null;
+	var _highlightImg = null;
 
 	var resetPictures = function (pictures) {
 		_pictures = pictures;
@@ -12,6 +14,10 @@
 
 	var setEnlargeImg = function (img) {
 		_enlargedImg = img;
+	};
+
+	var setHighlightImg = function (img) {
+		_highlightImg = img;
 	};
 
 	root.PictureStore = $.extend({}, EventEmitter.prototype, {
@@ -25,6 +31,10 @@
 
 		enlargedImg: function () {
 			return _enlargedImg;
+		},
+
+		highlightPicture: function () {
+			return _highlightImg;
 		},
 
 		nextImg: function (dir) {
@@ -67,6 +77,14 @@
 			this.removeListener(PICTURE_TOGGLE_EVENT, callback);
 		},
 
+		addHighlightPictureListener: function (callback) {
+			this.on(HIGHLIGHT_PICTURE_EVENT, callback);
+		},
+
+		removeHighlightPictureListener: function (callback) {
+			this.removeListener(HIGHLIGHT_PICTURE_EVENT, callback);
+		},
+
 		dispatchId: AppDispatcher.register(function (payload) {
 			switch (payload.actionType) {
 				case APP_CONSTANTS.ALBUM_PICTURES_RECEIVED:
@@ -84,6 +102,10 @@
 				case APP_CONSTANTS.ALBUM_UPDATED:
 					resetPictures(payload.pictures);
 					PictureStore.emit(PICTURES_COLLECTION_CHANGED_EVENT);
+					break;
+				case APP_CONSTANTS.HIGHLIGHT_PICTURE:
+					setHighlightImg(payload.picture);
+					PictureStore.emit(HIGHLIGHT_PICTURE_EVENT);
 					break;
 				default:
 					break;

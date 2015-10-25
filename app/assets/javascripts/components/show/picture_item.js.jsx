@@ -35,7 +35,7 @@ var PictureItem = React.createClass({
 		);
 
 		return (
-			<div className="img-thumb"
+			<div className={"img-thumb " + this.props.klass}
 					 draggable="true"
 					 onDragStart={this.handleDragStart}
 					 onDragEnd={this.handleDragEnd}>

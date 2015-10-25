@@ -104,6 +104,13 @@ window.ComponentActions = {
 			actionType: APP_CONSTANTS.DELETING_ALBUM,
 			bool: bool
 		});
+	},
+
+	highlightPicture: function (picture) {
+		AppDispatcher.dispatch({
+			actionType: APP_CONSTANTS.HIGHLIGHT_PICTURE,
+			picture: picture
+		})
 	}
 
 	// retrieveAlbumState: function (albumId) {

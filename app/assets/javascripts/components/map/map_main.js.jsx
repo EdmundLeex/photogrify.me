@@ -7,6 +7,7 @@
 	    	enlargedImg: null,
 	    	albums: AlbumStore.all(),
 				isPanelShown: false,
+				highlightPicture: null
 	    };
 		},
 
@@ -30,6 +31,10 @@
 
     _onEnlarge: function () {
     	this.setState({ enlargedImg: PictureStore.enlargedImg() });
+    },
+
+    _onMarkerHighlight: function () {
+    	this.setState({ highlightPicture: PictureStore.highlightPicture() });
     },
 
     onMarkerClick: function (picture) {
@@ -57,6 +62,7 @@
 
     showPreview: function (picture) {
     	// show preview on top left corner or highlight picture in list
+    	ComponentActions.highlightPicture(picture);
     },
 
     componentWillMount: function () {
@@ -69,6 +75,7 @@
       PictureStore.addTogglePictureListener(this._onEnlarge);
       FilterParamsStore.addChangeListener(this._filtersChanged);
       TogglerStore.addToggleIndexPanelListener(this._onSlide);
+      PictureStore.addHighlightPictureListener(this._onMarkerHighlight);
       ApiUtil.fetchAllAlbums(true);
       ApiUtil.fetchAllPictures();
     },
@@ -78,6 +85,7 @@
       PictureStore.removeAllPicturesChangedListener(this._picturesChanged);
       PictureStore.removeTogglePictureListener(this._onEnlarge);
       TogglerStore.removeToggleIndexPanelListener(this._onSlide);
+      PictureStore.removeHighlightPictureListener(this._onMarkerHighlight);
       // FilterParamsStore.removeChangeListener(this._filtersChanged);
     },
 
@@ -101,10 +109,10 @@
 							 onMarkerClick={this.onMarkerClick}
 							 onMarkerHover={this.onMarkerHover} />
 					<div className="map-pic-list">
-						
 						<PicturesCollection pictures={this.state.pictures}
 																handleClick={this.onImgClick}
-																isDeletable={false} />
+																isDeletable={false}
+																highlightPicture={this.state.highlightPicture} />
 					</div>
 				</div>
 			);

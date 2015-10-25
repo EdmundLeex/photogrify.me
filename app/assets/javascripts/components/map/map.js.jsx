@@ -97,6 +97,9 @@
       marker.addListener('mouseover', function () {
         that.props.onMarkerHover(picture);
       });
+      marker.addListener('mouseout', function () {
+        that.props.onMarkerHover(null);
+      });
       this.markers.push(marker);
     },
 
