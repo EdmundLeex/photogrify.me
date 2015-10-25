@@ -11,7 +11,7 @@
 	// var _showSearchBox = false;
 	var _editingTitle = false;
 	var _creating = 'new';
-	var _isPanelShown = false;
+	var _isPanelShown = true;
 	var _isOverlayShown = false;
 	var _isDragging = false;
 	var _confModalOpts = {};
