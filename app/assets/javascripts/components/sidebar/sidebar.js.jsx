@@ -22,7 +22,9 @@ var Sidebar = React.createClass({
 					<CreateAlbumBtn history={this.history} />
 					<AllAlbumsBtn history={this.history} />
 					<AllPicturesBtn history={this.history} />
-					<div className="sidebar-thumbs map-icon" onClick={this.handleClickMap}>
+					<div className="sidebar-thumbs map-icon"
+							 onClick={this.handleClickMap}
+							 data-toggle="tooltip" title="WORLD MAP">
 					</div>
 				</div>
 				<UserMenuBtn />
