@@ -33,7 +33,7 @@ $(function () {
   			this.joyrideAddSteps([{
 					title: "hello", //optional
 	        text: "...",
-	        selector: "div.logo.sidebar-thums",
+	        selector: "div.logo.sidebar-thumbs",
 	        position: "..."
   			}]);
 
