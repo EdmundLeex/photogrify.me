@@ -39,7 +39,6 @@ var TitleBar = React.createClass({
 		e.preventDefault();
 		var imgId = e.dataTransfer.getData(APP_CONSTANTS.DRAGGING_IMG);
 		ApiUtil.updateAlbumCover(imgId);
-		// console.log("dragged: " + imgId);
 	},
 
 	render: function () {
@@ -53,7 +52,7 @@ var TitleBar = React.createClass({
 			);
 			var divStyle = {backgroundImage: 'url(' + url + ')'};
 		} catch(e) {
-			console.log(e);
+			// no op
 		}
 
 		return (

@@ -17,14 +17,12 @@ var AlbumIndexItem = React.createClass({
 			var imgId = e.dataTransfer.getData(APP_CONSTANTS.DRAGGING_IMG);
 			ApiUtil.transferImg(imgId, this.props.album.id);
 		}
-		// console.log("dragged: " + imgId);
 	},
 
 	render: function () {
 		var props = this.props;
 		var selectedKlass = (parseInt(props.params.albumId) === props.album.id) ?
 			"selected" : "";
-		// var droppZoneKlass = (this.props.isDroppingTo) ? "drop-zone" : "";
 		var dropContentKlass = (this.props.isDragging) ? "" : "hidden";
 
 		try {
@@ -34,7 +32,7 @@ var AlbumIndexItem = React.createClass({
 			);
 			var divStyle = {backgroundImage: 'url(' + url + ')'};
 		} catch(e) {
-			console.log(e);
+			// no op
 		}
 
 		return (

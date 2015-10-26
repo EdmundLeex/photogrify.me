@@ -92,7 +92,6 @@ var New = React.createClass({
 		cloudinary.openUploadWidget(
 			APP_CONFIG.CLOUDINARY_CONFIG,
 			function (error, result) {
-			console.log(error, result);
 			if (typeof result !== 'undefined') {
 				that.onDoneEditing({imgUrls: JSON.stringify(result)});
 			}
@@ -119,8 +118,6 @@ var New = React.createClass({
 		if (this.state.mode === 'edit') {
 			ApiUtil.updateAlbum(this.state.albumId, this.state.title, description, imgUrls);
 		} else {
-			console.log(this.state.creatingState);
-			// debugger
 			if (this.state.creatingState !== 'created' && this.state.creatingState !== 'creating') {
 				if (this.state.title || description || imgUrls) {
 					ComponentActions.toggleCreating('creating');

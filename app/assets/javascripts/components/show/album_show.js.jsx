@@ -51,7 +51,7 @@ var AlbumShow = React.createClass({
 				description: album.description
 			});
 		}catch(e){
-			console.log(e);
+			// no op
 		}
 	},
 
@@ -75,11 +75,7 @@ var AlbumShow = React.createClass({
 		var that = this;
 		cloudinary.openUploadWidget(APP_CONFIG.CLOUDINARY_CONFIG,
 			function (error, result) {
-				console.log(error, result);
 				if (typeof result !== 'undefined') {
-					// var urls = result.map(function (img) {
-					// 	return img.url;
-					// });
 					that.onDoneEditing(null, JSON.stringify(result));
 				}
 		});

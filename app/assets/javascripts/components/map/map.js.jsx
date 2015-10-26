@@ -11,7 +11,6 @@
 
   root.Map = React.createClass({
     componentDidMount: function(){
-      console.log('map mounted');
       var map = React.findDOMNode(this.refs.map);
       var mapOptions = {
         center: this.centerCoords(),
@@ -63,7 +62,6 @@
     },
 
     componentWillUnmount: function(){
-      console.log("map UNmounted");
     },
 
     registerListeners: function(){
@@ -77,7 +75,6 @@
           northEast: northEast,
           southWest: southWest
         };
-        console.log(bounds);
         FilterActions.updateBounds(bounds);
       });
       // google.maps.event.addListener(this.map, 'click', function(event) {

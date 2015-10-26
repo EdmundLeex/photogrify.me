@@ -10364,7 +10364,7 @@ Quill = (function(superClass) {
       }
       this.editor.doc.setHTML(html);
     } catch(e) {
-      console.log(e);
+      // console.log(e);
     }
     return this.editor.checkUpdate(source);
   };

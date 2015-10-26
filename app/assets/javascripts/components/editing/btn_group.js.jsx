@@ -43,7 +43,6 @@ var TitleBtnGroup = React.createClass({
 		var statusKlass = (this.state.isDeletingAlbum) ? "disabled" : "";
 
 		if (this.props.mode === 'new') {
-			console.log('new btnGrp');
 			btnGrp = (
 				<div className="title-btn-group">
 					<div className="title-btn-wrapper">
@@ -60,7 +59,6 @@ var TitleBtnGroup = React.createClass({
 				</div>
 			);
 		} else if (this.props.mode === 'edit') {
-			console.log('edit btnGrp');
 			btnGrp = (
 				<div className="title-btn-group">
 					<div className="title-btn-wrapper">
@@ -77,7 +75,6 @@ var TitleBtnGroup = React.createClass({
 				</div>
 			);
 		} else {
-			console.log('view btnGrp');
 			btnGrp = (
 				<div className="title-btn-group">
 					<div className="title-btn-wrapper">

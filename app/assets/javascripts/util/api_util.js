@@ -9,7 +9,7 @@ window.ApiUtil = {
 				ApiActions.receiveAllPictures(respData.pictures);
 			},
 			error: function (respData) {
-				console.log(respData);
+				// no op
 			}
 		});
 	},
@@ -24,7 +24,7 @@ window.ApiUtil = {
 				ApiActions.receivePicturesFromOneAlbum(respData);
 			},
 			error: function (respData) {
-				console.log(respData);
+				// no op
 			}
 		});
 	},
@@ -40,7 +40,7 @@ window.ApiUtil = {
 				ApiActions.receiveAllPictures(respData.pictures);
 			},
 			error: function (respData) {
-				console.log(respData);
+				// no op
 			}
 		});
 	},
@@ -57,7 +57,7 @@ window.ApiUtil = {
 				ComponentActions.showConfirmation(false);
 			},
 			error: function (respData) {
-				console.log(respData);
+				// no op
 			}
 		});
 	},
@@ -75,7 +75,7 @@ window.ApiUtil = {
 				ApiActions.receiveAllAlbums(respData.albums);
 			},
 			error: function (respData) {
-				console.log(respData);
+				// no op
 			}
 		});
 	},
@@ -92,14 +92,12 @@ window.ApiUtil = {
 				ApiActions.receiveAllAlbums(respData.albums);
 			},
 			error: function (respData) {
-				console.log(respData);
+				// no op
 			}
 		});
 	},
 
-	fetchAllAlbums: function (init) {
-		// get request
-		// dispatch action
+	fetchAllAlbums: function () {
 		$.ajax({
 			url: '/api/albums',
 			type: 'get',
@@ -108,16 +106,9 @@ window.ApiUtil = {
 			success: function (respData) {
 				var albumId = respData.albums[0].id;
 				ApiActions.receiveAllAlbums(respData.albums);
-
-				// if (init) {
-				// 	ComponentActions.switchAlbum(albumId);
-				// 	ApiUtil.fetchPicturesFromAlbum(albumId);
-				// }
-
-				// show welcome page, setTimeout disappear
 			},
 			error: function (respData) {
-				console.log(respData);
+				// no op
 			}
 		});
 	},
@@ -135,7 +126,7 @@ window.ApiUtil = {
 				ComponentActions.newMsg("New album created.");
 			},
 			error: function (respData) {
-				console.log(respData);
+				// no op
 			}
 		});
 	},
@@ -152,7 +143,7 @@ window.ApiUtil = {
 				ComponentActions.newMsg(respData.msg);
 			},
 			error: function (respData) {
-				console.log(respData);
+				// no op
 			}
 		});
 	},
@@ -171,7 +162,7 @@ window.ApiUtil = {
 				ComponentActions.deletingAlbum(false);
 			},
 			error: function (respData) {
-				console.log(respData);
+				// no op
 			}
 		});
 	},
@@ -188,7 +179,7 @@ window.ApiUtil = {
 				window.location.href = respData.redirect;
 			},
 			error: function (respData) {
-				console.log(respData);
+				// no op
 			}
 		});
 	}

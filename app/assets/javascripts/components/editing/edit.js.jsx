@@ -66,7 +66,6 @@ var Edit = React.createClass({
 		cloudinary.openUploadWidget(
 			APP_CONFIG.CLOUDINARY_CONFIG,
 			function (error, result) {
-			console.log(error, result);
 			if (typeof result !== 'undefined') {
 				that.onDoneEditing({imgUrls: JSON.stringify(result)});
 			}

@@ -16,7 +16,6 @@ $(function () {
 
   		_checkAlbums: function () {
   			if (AlbumStore.all().length === 0) {
-  			console.log('checking albums');
   				ApiUtil.fetchAllAlbums();
   			}
   		},

@@ -61,7 +61,6 @@ var QEditor = React.createClass({
 	},
 
 	onDoneTyping: function () {
-		console.log('done');
 		this.props.onDoneTyping({description: this.state.value});
 	},
 
@@ -111,7 +110,6 @@ var QEditor = React.createClass({
 	},
 
 	render: function () {
-		console.log('rendered');
 		return (
       <ReactQuill value={this.state.value}
       						theme={this.state.theme}
