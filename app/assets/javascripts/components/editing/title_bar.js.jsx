@@ -87,7 +87,7 @@ var TitleBar = React.createClass({
 			placeholder = "";
 		} else {
 			klass = "";
-			placeholder = "Album title goes here...";
+			placeholder = "Title goes here...";
 		}
 
 		return (
@@ -99,8 +99,10 @@ var TitleBar = React.createClass({
 							 className={klass}
 							 valueLink={this.props.linkState("title")}
 							 data-toggle="tooltip" title="CLICK TO EDIT TITLE" />
-				<div className="description"
-						 dangerouslySetInnerHTML={{__html: this.props.description}}></div>
+				{(!this.props.mode === "edit" || !this.props.mode === "new") ?
+					<div className="description"
+							 dangerouslySetInnerHTML={{__html: this.props.description}}></div> :
+					<div></div>}
 			</div>
 		);
 	}
