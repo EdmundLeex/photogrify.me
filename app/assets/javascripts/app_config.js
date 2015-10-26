@@ -9,7 +9,7 @@ window.APP_CONFIG = {
 
 	INDEX_COVER_SIZE: 'w_350,h_120,c_fill',
 
-    MAP_PREVIEW_SIZE: 'w_120,h_120,c_fill',
+  MAP_PREVIEW_SIZE: 'w_120,h_120,c_fill',
 
 	FRAME_SIZE: 'h_600',
 
@@ -20,24 +20,24 @@ window.APP_CONFIG = {
 		return url.join('/');
 	},
 
-    HomePageTour: [{
-      title: "hello", //optional
-      text: "...",
-      selector: "div.logo.sidebar-thumbs",
-      position: "..."
-    }]
+  HomePageTour: [{
+    title: "hello", //optional
+    text: "...",
+    selector: "div.logo.sidebar-thumbs",
+    position: "..."
+  }]
 
-    ConsolPrint: function () {
-      console.log('%c       _/_/_/    _/      _/    _/_/_/   _/_/_/_/_/    _/_/_/      _/_/_/    _/_/_/   _/_/_/_/  _/       _/ ', 'color: #46BCEC');
-      console.log('%c     _/     _/  _/      _/  _/      _/     _/      _/      _/  _/      _/    _/     _/          _/    _/   ', 'color: #46BCEC');
-      console.log('%c    _/     _/  _/_/_/_/_/  _/      _/     _/      _/      _/  _/            _/     _/_/_/_/      _/ _/     ', 'color: #46BCEC');
-      console.log('%c   _/_/_/_/   _/      _/  _/      _/     _/      _/      _/  _/    _/_/    _/     _/             _/        ', 'color: #46BCEC');
-      console.log('%c  _/         _/      _/  _/      _/     _/      _/      _/  _/      _/    _/     _/             _/         ', 'color: #46BCEC');
-      console.log('%c _/         _/      _/    _/_/_/       _/        _/_/_/     _/_/_/_/   _/_/_/   _/             _/          ', 'color: #46BCEC');
-      console.log("Interested in hiring? See my Linked in profile or contact me by edmund.xz.lee@gmail.com");
-      console.log("Just wanted to peek under the hood? Head to my github repo and check it out");
-      console.log("https://github.com/EdmundLeex");
-    },
+  ConsolPrint: function () {
+    console.log('%c       _/_/_/    _/      _/    _/_/_/   _/_/_/_/_/    _/_/_/      _/_/_/    _/_/_/   _/_/_/_/  _/       _/ ', 'color: #46BCEC');
+    console.log('%c     _/     _/  _/      _/  _/      _/     _/      _/      _/  _/      _/    _/     _/          _/    _/   ', 'color: #46BCEC');
+    console.log('%c    _/     _/  _/_/_/_/_/  _/      _/     _/      _/      _/  _/            _/     _/_/_/_/      _/ _/     ', 'color: #46BCEC');
+    console.log('%c   _/_/_/_/   _/      _/  _/      _/     _/      _/      _/  _/    _/_/    _/     _/             _/        ', 'color: #46BCEC');
+    console.log('%c  _/         _/      _/  _/      _/     _/      _/      _/  _/      _/    _/     _/             _/         ', 'color: #46BCEC');
+    console.log('%c _/         _/      _/    _/_/_/       _/        _/_/_/     _/_/_/_/   _/_/_/   _/             _/          ', 'color: #46BCEC');
+    console.log("Interested in hiring? See my Linked in profile or contact me by edmund.xz.lee@gmail.com");
+    console.log("Just wanted to peek under the hood? Head to my github repo and check it out");
+    console.log("https://github.com/EdmundLeex");
+  },
 
 	MAP_STYLE: [
     {
