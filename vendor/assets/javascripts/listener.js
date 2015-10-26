@@ -4,7 +4,7 @@
     } else if (typeof exports === 'object') {
         module.exports = factory();
     } else {
-        root.eventListener = factory();
+        root.listener = factory();
   }
 }(this, function () {
 	function wrap(standard, fallback) {
@@ -17,7 +17,7 @@
 		}
 	}
 
-    return {
+  return {
 		add: wrap('addEventListener', 'attachEvent'),
 		remove: wrap('removeEventListener', 'detachEvent')
 	};

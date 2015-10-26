@@ -20,12 +20,38 @@ window.APP_CONFIG = {
 		return url.join('/');
 	},
 
-  HomePageTour: [{
-    title: "hello", //optional
-    text: "...",
-    selector: "div.logo.sidebar-thumbs",
-    position: "..."
-  }]
+  HomePageTour: [
+    {
+      text: "Welcome to photogrify.me. Here's couple tips to help you get familiar with your private photo space.",
+      selector: "div.logo.sidebar-thumbs",
+      position: "center"
+    },
+    {
+      text: "These are the buttons that you can use to navigate throughout the application.",
+      selector: "div.sidebar-btn-group",
+      position: "right"
+    },
+    {
+      text: "Here you can search for your albums.",
+      selector: "div.search-box",
+      position: "bottom"
+    },
+    {
+      text: "You can edit your title at any time.",
+      selector: "div.title>input",
+      position: "bottom"
+    },
+    {
+      text: "And you can drag your picture to another album. To change the album cover, simple drag the picture you like to the cover area.",
+      selector: "div.pictures-collection",
+      position: "center"
+    },
+    {
+      text: "By clicking the picture, you can see them in slideshow mode.",
+      selector: "div.pictures-collection",
+      position: "center"
+    }
+  ],
 
   ConsolPrint: function () {
     console.log('%c       _/_/_/    _/      _/    _/_/_/   _/_/_/_/_/    _/_/_/      _/_/_/    _/_/_/   _/_/_/_/  _/       _/ ', 'color: #46BCEC');
