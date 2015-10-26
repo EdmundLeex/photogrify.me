@@ -26,7 +26,7 @@
 		},
 
 		removeIsLoggingOutListener: function (callback) {
-			this.removeListener(LOGGING_OUT_EVENT, callback)
+			this.removeListener(LOGGING_OUT_EVENT, callback);
 		},
 
 		addIsDeletingAlbumListener: function (callback) {
