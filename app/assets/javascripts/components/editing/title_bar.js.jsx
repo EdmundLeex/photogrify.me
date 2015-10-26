@@ -88,7 +88,7 @@ var TitleBar = React.createClass({
 			placeholder = "";
 		} else {
 			klass = "";
-			placeholder = "No Title";
+			placeholder = "Type here for your album title...";
 		}
 
 		return (
