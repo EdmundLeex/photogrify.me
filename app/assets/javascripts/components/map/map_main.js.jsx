@@ -1,5 +1,10 @@
 (function(root){
 	root.MapMain = React.createClass({
+    mixins: [
+      React.addons.PureRenderMixin,
+      JoyrideMixin
+    ],
+
 		getInitialState: function () {
 	    return {
 	    	pictures: PictureStore.all(),
@@ -95,9 +100,26 @@
     componentWillMount: function () {
     	ComponentActions.slideOut(false);
       this.markers = [];
+
+      this.joyrideSetOptions({
+      showSkipButton: true,
+      tooltipOffset: 10,
+      showStepsProgress: true,
+
+      stepCallback: function(step) {
+        console.log(step);
+      },
+
+      completeCallback: function(steps) {
+        console.log(steps);
+      }
+    });
     },
 
 		componentDidMount: function(){
+      this.joyrideAddSteps(APP_CONFIG.MapTour);
+      this.joyrideStart();
+
 			AlbumStore.addAlbumsIndexChangeListener(this._onChange);
       PictureStore.addAllPicturesChangedListener(this._picturesChanged);
       PictureStore.addTogglePictureListener(this._onEnlarge);

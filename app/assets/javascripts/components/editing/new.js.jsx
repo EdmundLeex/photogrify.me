@@ -1,5 +1,10 @@
 var New = React.createClass({
-	mixins: [ReactRouter.History, React.addons.LinkedStateMixin],
+	mixins: [
+		ReactRouter.History,
+		React.addons.LinkedStateMixin,
+		React.addons.PureRenderMixin,
+		JoyrideMixin
+	],
 
 	getInitialState: function () {
     return {
@@ -35,6 +40,7 @@ var New = React.createClass({
 	componentDidMount: function () {
 		this.joyrideAddSteps(APP_CONFIG.NewEditPageTour);
 		this.joyrideStart();
+
 		AlbumStore.addAlbumsIndexChangeListener(this._onAlbumsIndexChange);
 		AlbumStore.addAlbumUpdateListener(this._onTitleChanged);
 		AlbumStore.addAlbumCreateListener(this._onAlbumCreated);

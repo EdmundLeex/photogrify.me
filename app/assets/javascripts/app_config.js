@@ -65,9 +65,23 @@ window.APP_CONFIG = {
       position: "top"
     },
     {
-      text: "All the changes you made are auto-save. So you will never need to worry losing it."
+      text: "All the changes you made are auto-save. So you will never need to worry losing it.",
       selector: "div.quill",
       position: "top"
+    }
+  ],
+
+  MapTour: [
+    {
+      text: "On this page, you can find all your photos on the map. Rest assured, all your photos are guaranteed private" +
+        "(If you disabled sharing the geolocation on your camera, your photo won't show up the map)",
+      selector: "div.map",
+      position: "center"
+    },
+    {
+      text: "You can click this triangle to collapse the side panel.",
+      selector: "div.collapse-btn",
+      position: "left"
     }
   ],
 
