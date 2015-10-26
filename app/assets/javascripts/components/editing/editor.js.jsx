@@ -1,22 +1,7 @@
 var QEditor = React.createClass({
-	// mixins: [React.addons.LinkedStateMixin],
-
 	typingTimer: {},
 
-	// validEdit: function () {
-	// 	return (this.props.mode === 'edit' && typeof this.props.album !== 'undefined');
-	// },
-
 	getInitialState: function() {
-		// var description,
-		// 		albumId;
-		// if (this.validEdit()) {
-		// 	description = this.props.album.description;
-		// 	albumId = this.props.album.id;
-		// } else {
-		// 	description = "";
-		// }
-
 		return {
 			// albumId: albumId,
 			theme: 'snow',
@@ -38,16 +23,6 @@ var QEditor = React.createClass({
 		this.setState({value: nextProps.description});
 	},
 
-	// componentWillUnmount: function () {
-	// 	AlbumStore.removeAlbumUpdateListener(this._onSaved);
-	// 	AlbumStore.removeAlbumCreateListener(this._onAlbumCreated);
-	// 	if (this.state.albumId) {
-	// 		ApiUtil.updateAlbum(this.state.albumId, null, this.state.value);
-	// 		if (this.typingTimer.typing) {clearTimeout(this.typingTimer.typing)};
-	// 		delete(this.typingTimer.typing);
-	// 	}
-	// },
-
 	onKeyDown: function () {
 		if (this.typingTimer.typing) {clearTimeout(this.typingTimer.typing)};
 		delete(this.typingTimer.typing);
@@ -63,10 +38,6 @@ var QEditor = React.createClass({
 	onDoneTyping: function () {
 		this.props.onDoneTyping({description: this.state.value});
 	},
-
-	// onBlur: function () {
-	// 	this.onDoneTyping
-	// },
 
 	formatRange: function(range) {
 		return range
@@ -120,36 +91,3 @@ var QEditor = React.createClass({
     );
 	}
 });
-
-
-
-
-// var quill;
-
-// var QEditor = React.createClass({
-// 	componentDidMount: function () {
-// 		quill = new Quill('#q-editor', {
-// 			theme: 'snow'
-// 		});
-
-// 		quill.addModule('toolbar', { container: '#toolbar' });
-// 	},
-
-// 	render: function () {
-// 		return (
-// 			<div className="q-editor">
-// 				<div id="toolbar">
-// 				  <select className="ql-size">
-// 				    <option value="10px">Small</option>
-// 				    <option value="13px" selected>Normal</option>
-// 				    <option value="18px">Large</option>
-// 				    <option value="32px">Huge</option>
-// 				  </select>
-// 				  <button className="ql-bold"></button>
-// 				</div>
-// 				<div id="q-editor">
-// 				</div>
-// 			</div>
-// 		);
-// 	}
-// });

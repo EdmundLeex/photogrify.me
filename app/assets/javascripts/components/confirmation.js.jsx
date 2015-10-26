@@ -11,16 +11,6 @@ var Confirmation = React.createClass({
 			self.history.pushState(null, TogglerStore.confModalOpts().path);
 			ComponentActions.showConfirmation(false);
 		});
-
-		// ApiUtil.deleteAlbum(this.props.params.albumId);
-		// this.history.pushState(null, '/');
-
-		// ComponentActions.showConfirmation(
-		// 	ApiUtil.deleteAlbum.bind(null, this.props.params.albumId),
-		// 	"album",
-		// 	this.state.title,
-		// 	'/'
-		// );
 	},
 
 	render: function () {

@@ -22,7 +22,6 @@ var TitleBtnGroup = React.createClass({
 	},
 
 	_onEditClick: function () {
-		// ComponentActions.toggleMode('edit');
 		this.props.onEditClick();
 	},
 

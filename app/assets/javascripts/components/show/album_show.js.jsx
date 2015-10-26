@@ -41,8 +41,6 @@ var AlbumShow = React.createClass({
 	},
 
 	_onChange: function () {
-		// change count, title
-
 		var album = AlbumStore.find(this.props.params.albumId);
 		try{
 			this.setState({
@@ -89,12 +87,9 @@ var AlbumShow = React.createClass({
 			this.state.title,
 			'/'
 		);
-		// ApiUtil.deleteAlbum(this.props.params.albumId);
-		// this.history.pushState(null, '/');
 	},
 
 	onDoneEditing: function (title, imgUrls) {
-		// var title = AlbumStore.find(this.props.params.albumId);
 		ApiUtil.updateAlbum(this.props.params.albumId, title, null, imgUrls);
 	},
 

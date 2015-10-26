@@ -21,11 +21,9 @@ var PictureItem = React.createClass({
 	},
 
 	handleDragEnd: function (e) {
-		// e.preventDefault();
 		e.currentTarget.style.opacity = "1";
 		ComponentActions.isDroppingToAlbum(false);
 		ComponentActions.slideOut(false);
-		// var imgId = e.dataTransfer.getData(APP_CONSTANTS.DRAGGING_IMG);
 	},
 
 	handleMouseOver: function (e) {

@@ -8,7 +8,6 @@ var PictureFrame = React.createClass({
 	},
 
 	handleClick: function () {
-		// this.props.handleClick(null);
 	},
 
 	handleClickClose: function () {

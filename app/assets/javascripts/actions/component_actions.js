@@ -1,11 +1,4 @@
 window.ComponentActions = {
-	// switchAlbum: function (albumId) {
-	// 	AppDispatcher.dispatch({
-	// 		actionType: APP_CONSTANTS.ALBUM_SWITCHED,
-	// 		albumId: albumId
-	// 	});
-	// },
-
 	toggleEditing: function (editing) {
 		AppDispatcher.dispatch({
 			actionType: APP_CONSTANTS.TOGGLE_EDITING,
@@ -19,13 +12,6 @@ window.ComponentActions = {
 			creating: creating
 		});
 	},
-
-	// toggleMode: function (mode) {
-	// 	AppDispatcher.dispatch({
-	// 		actionType: APP_CONSTANTS.TOGGLE_MODE,
-	// 		mode: mode
-	// 	});
-	// },
 
 	togglerOverlay: function (isShown) {
 		AppDispatcher.dispatch({
@@ -45,13 +31,6 @@ window.ComponentActions = {
 			queryStr: queryStr
 		});
 	},
-
-	// toggleSearchBar: function (showSearchBox) {
-	// 	AppDispatcher.dispatch({
-	// 		actionType: APP_CONSTANTS.TOGGLE_SEARCH,
-	// 		showSearchBox: showSearchBox
-	// 	});
-	// },
 
 	toggleImg: function (picture) {
 		AppDispatcher.dispatch({
@@ -118,12 +97,4 @@ window.ComponentActions = {
 			actionType: APP_CONSTANTS.TOGGLE_PIC_LIST
 		});
 	}
-
-	// retrieveAlbumState: function (albumId) {
-	// 	ApiUtil.fetchAllAlbums();
-	// 	AppDispatcher.dispatch({
-	// 		actionType: APP_CONSTANTS.RETRIEVE_ALBUM_STATE,
-	// 		currentAlbumId: albumId
-	// 	});
-	// }
 };

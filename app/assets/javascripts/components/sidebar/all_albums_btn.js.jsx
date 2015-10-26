@@ -8,11 +8,7 @@ var AllAlbumsBtn = React.createClass({
 	},
 
 	onClickHandler: function () {
-		// fetech all albums
-		// call ApiUtil.fetchAllAlbums
 		ApiUtil.fetchAllAlbums();
-		// this.props.history.pushState(null, '/');
 		ComponentActions.slideOut();
-		// ComponentActions.toggleMode('view');
 	}
 });

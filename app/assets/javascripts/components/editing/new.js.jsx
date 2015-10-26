@@ -170,4 +170,3 @@ var New = React.createClass({
 		);
 	}
 });
-				// <ThumbNails />

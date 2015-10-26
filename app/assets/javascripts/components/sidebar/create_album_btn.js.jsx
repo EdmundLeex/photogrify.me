@@ -8,7 +8,6 @@ var CreateAlbumBtn = React.createClass({
 	},
 
 	onClickHandler: function () {
-		// ComponentActions.toggleMode('new');
 		ComponentActions.slideOut(false);
 		this.props.history.pushState(null, '/new');
 	}

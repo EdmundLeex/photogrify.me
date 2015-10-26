@@ -8,8 +8,7 @@
 	var SHOW_CONFIRMATION_EVENT = "SHOW_CONFIRMATION_EVENT";
 	var HIDE_CONFIRMATION_EVENT = "HIDE_CONFIRMATION_EVENT";
 	var TOGGLE_PIC_LIST_EVENT = "TOGGLE_PIC_LIST_EVENT";
-	// var TOGGLE_MODE_EVENT = "TOGGLE_MODE_EVENT";
-	// var _showSearchBox = false;
+
 	var _editingTitle = false;
 	var _creating = 'new';
 	var _isPanelShown = true;
@@ -17,11 +16,6 @@
 	var _isDragging = false;
 	var _confModalOpts = {};
 	var _isPicListShown = true;
-	// var _mode = 'view';
-
-	// var toggleMode = function (mode) {
-	// 	_mode = mode;
-	// };
 
 	var toggleDragging = function (isDragging) {
 		_isDragging = isDragging;
@@ -60,10 +54,6 @@
 	};
 
 	root.TogglerStore = $.extend({}, EventEmitter.prototype, {
-		// showSearchBox: function () {
-		// 	return _showSearchBox;
-		// },
-
 		isPanelShown: function () {
 			return _isPanelShown;
 		},
@@ -91,14 +81,6 @@
 		isPicListShown: function () {
 			return _isPicListShown;
 		},
-
-		// addToggleSearchListener: function (callback) {
-		// 	this.on(TOGGLE_SEARCH_EVENT, callback);
-		// },
-
-		// removeToggleSearchListener: function (callback) {
-		// 	this.removeListener(TOGGLE_SEARCH_EVENT, callback);
-		// },
 
 		addToggleEditingListener: function (callback) {
 			this.on(TOGGLE_EDITING_EVENT, callback);
@@ -156,20 +138,8 @@
 			this.removeListener(TOGGLE_PIC_LIST_EVENT, callback);
 		},
 
-		// addToggleModeListener: function (callback) {
-		// 	this.on(TOGGLE_MODE_EVENT, callback);
-		// },
-
-		// removeToggleModeListener: function (callback) {
-		// 	this.removeListener(TOGGLE_MODE_EVENT, callback);
-		// },
-
 		dispatchId: AppDispatcher.register(function (payload) {
 			switch (payload.actionType) {
-				// case APP_CONSTANTS.TOGGLE_SEARCH:
-				// 	_showSearchBox = !payload.showSearchBox;
-				// 	TogglerStore.emit(TOGGLE_SEARCH_EVENT);
-				// 	break;
 				case APP_CONSTANTS.TOGGLE_EDITING:
 					toggleEditing(payload.editing);
 					TogglerStore.emit(TOGGLE_EDITING_EVENT);

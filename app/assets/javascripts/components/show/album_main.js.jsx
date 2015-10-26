@@ -13,7 +13,6 @@ var AlbumsMain = React.createClass({
 	componentDidMount: function () {
 		AlbumStore.addAlbumsIndexChangeListener(this._onChange);
 		AlbumStore.addSearchAlbumListener(this._onSearch);
-		// AlbumStore.addAlbumSwitchedListener(this._onSwitch);
 		AlbumStore.addAlbumUpdateListener(this._onChange);
 		TogglerStore.addToggleIndexPanelListener(this._onSlide);
 		TogglerStore.addToggleAlbumDropListener(this._onDragging);
@@ -24,7 +23,6 @@ var AlbumsMain = React.createClass({
 	componentWillUnmount: function () {
 		AlbumStore.removeAlbumsIndexChangeListener(this._onChange);
 		AlbumStore.removeSearchAlbumListener(this._onSearch);
-		// AlbumStore.removeAlbumSwitchedListener(this._onSwitch);
 		AlbumStore.removeAlbumUpdateListener(this._onChange);
 		TogglerStore.removeToggleIndexPanelListener(this._onSlide);
 		TogglerStore.removeToggleAlbumDropListener(this._onDragging);
@@ -51,17 +49,12 @@ var AlbumsMain = React.createClass({
 		this.setState({ isConfModalShown: TogglerStore.confModalOpts().isShown });
 	},
 
-	// _onSwitch: function () {
-	// 	this.setState({ currentAlbum: AlbumStore.currentAlbum() });
-	// },
-
 	render: function () {
 		var albumShow,
 				album,
 				indexKlass = "",
 				klass = "";
 
-		// if (this.state.isPanelShown) { klass = "shrank"; }
 		if (this.state.albums.length && !this.props.params.albumId) {
 			album = this.state.albums[0];
 			albumShow = <AlbumShow params={{albumId: album.id}} />

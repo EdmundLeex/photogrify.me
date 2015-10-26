@@ -26,7 +26,6 @@
 
     _filtersChanged: function () {
       this.setState({ filterParams: FilterParamsStore.params() });
-      // ApiUtil.fetchAllPictures();
       ApiUtil.fetchPicturesByFilter();
     },
 
@@ -90,7 +89,6 @@
     },
 
     showPreview: function (picture) {
-    	// show preview on top left corner or highlight picture in list
     	ComponentActions.highlightPicture(picture);
     },
 

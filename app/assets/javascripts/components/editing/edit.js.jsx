@@ -129,5 +129,3 @@ var Edit = React.createClass({
 		);
 	}
 });
-					// <ThumbNails history={this.state.history}
-					// 						pictures={pictures} />
