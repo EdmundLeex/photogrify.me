@@ -12,6 +12,7 @@ $(function () {
   	var App = React.createClass({
   		componentDidMount: function () {
   			setInterval(this._checkAlbums, 10000);
+  			APP_CONFIG.ConsolPrint();
   		},
 
   		_checkAlbums: function () {

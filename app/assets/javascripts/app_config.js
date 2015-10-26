@@ -20,6 +20,18 @@ window.APP_CONFIG = {
 		return url.join('/');
 	},
 
+    ConsolPrint: function () {
+      console.log('%c       _/_/_/    _/      _/    _/_/_/   _/_/_/_/_/    _/_/_/      _/_/_/    _/_/_/   _/_/_/_/  _/       _/ ', 'color: #46BCEC');
+      console.log('%c     _/     _/  _/      _/  _/      _/     _/      _/      _/  _/      _/    _/     _/          _/    _/   ', 'color: #46BCEC');
+      console.log('%c    _/     _/  _/_/_/_/_/  _/      _/     _/      _/      _/  _/            _/     _/_/_/_/      _/ _/     ', 'color: #46BCEC');
+      console.log('%c   _/_/_/_/   _/      _/  _/      _/     _/      _/      _/  _/    _/_/    _/     _/             _/        ', 'color: #46BCEC');
+      console.log('%c  _/         _/      _/  _/      _/     _/      _/      _/  _/      _/    _/     _/             _/         ', 'color: #46BCEC');
+      console.log('%c _/         _/      _/    _/_/_/       _/        _/_/_/     _/_/_/_/   _/_/_/   _/             _/          ', 'color: #46BCEC');
+      console.log("Interested in hiring? See my Linked in profile or contact me by edmund.xz.lee@gmail.com");
+      console.log("Just wanted to peek under the hood? Head to my github repo and check it out");
+      console.log("https://github.com/EdmundLeex");
+    },
+
 	MAP_STYLE: [
     {
         "featureType": "administrative",
