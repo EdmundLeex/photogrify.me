@@ -34,7 +34,7 @@ var AlbumShow = React.createClass({
 	},
 
 	componentDidMount: function () {
-		this.joyrideAddSteps(APP_CONFIG.HomePageTour);
+		this.joyrideAddSteps(APP_CONFIG.EditPageTour);
 		this.joyrideStart();
 
 		ApiUtil.fetchPicturesFromAlbum(this.props.params.albumId);

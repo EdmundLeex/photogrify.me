@@ -53,6 +53,24 @@ window.APP_CONFIG = {
     }
   ],
 
+  NewEditPageTour: [
+    {
+      text: "Edit your album title by clicking the title bar.",
+      selector: "div.title>input",
+      position: "bottom"
+    },
+    {
+      text: "Edit your album description here.",
+      selector: "div.quill",
+      position: "top"
+    },
+    {
+      text: "All the changes you made are auto-save. So you will never need to worry losing it."
+      selector: "div.quill",
+      position: "top"
+    }
+  ],
+
   ConsolPrint: function () {
     console.log('%c       _/_/_/    _/      _/    _/_/_/   _/_/_/_/_/    _/_/_/      _/_/_/    _/_/_/   _/_/_/_/  _/       _/ ', 'color: #46BCEC');
     console.log('%c     _/     _/  _/      _/  _/      _/     _/      _/      _/  _/      _/    _/     _/          _/    _/   ', 'color: #46BCEC');

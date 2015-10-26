@@ -1,5 +1,10 @@
 var Edit = React.createClass({
-	mixins: [ReactRouter.History, React.addons.LinkedStateMixin],
+	mixins: [
+		ReactRouter.History,
+		React.addons.LinkedStateMixin,
+		React.addons.PureRenderMixin,
+		JoyrideMixin
+	],
 
 	getInitialState: function () {
 		var albumId = this.props.params.albumId;
@@ -18,18 +23,35 @@ var Edit = React.createClass({
     };
 	},
 
+	componentWillMount: function () {
+    this.joyrideSetOptions({
+      showSkipButton: true,
+      tooltipOffset: 10,
+      showStepsProgress: true,
+
+      stepCallback: function(step) {
+        console.log(step);
+      },
+
+      completeCallback: function(steps) {
+        console.log(steps);
+      }
+    });
+	},
+
 	componentDidMount: function () {
+		this.joyrideAddSteps(APP_CONFIG.NewEditPageTour);
+		this.joyrideStart();
+
 		AlbumStore.addAlbumsIndexChangeListener(this._onTitleChanged);
 		AlbumStore.addAlbumUpdateListener(this._onTitleChanged);
 		TogglerStore.addToggleIndexPanelListener(this._onOverlayToggled);
-		// PictureStore.addPicturesCollectionChangedListener(this._onSwitch);
 	},
 
 	componentWillUnmount: function () {
 		AlbumStore.removeAlbumsIndexChangeListener(this._onTitleChanged);
 		AlbumStore.removeAlbumUpdateListener(this._onTitleChanged);
 		TogglerStore.removeToggleIndexPanelListener(this._onOverlayToggled);
-		// PictureStore.removePicturesCollectionChangedListener(this._onSwitch);
 	},
 
 	_onTitleChanged: function () {
