@@ -14,7 +14,8 @@
       var map = React.findDOMNode(this.refs.map);
       var mapOptions = {
         center: this.centerCoords(),
-        zoom: 8
+        zoom: 8,
+        styles: APP_CONFIG.MAP_STYLE
       };
       this.map = new google.maps.Map(map, mapOptions);
       this.registerListeners();
@@ -114,7 +115,7 @@
     },
 
     render: function(){
-      return ( <div className="map album-show-main" ref="map">Map</div>);
+      return ( <div className="album-show-main map" ref="map">Map</div>);
     }
   });
 })(this);

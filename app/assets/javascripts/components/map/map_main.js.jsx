@@ -7,7 +7,8 @@
 	    	enlargedImg: null,
 	    	albums: AlbumStore.all(),
 				isPanelShown: false,
-				highlightPicture: null
+				highlightPicture: null,
+				isPicListShown: TogglerStore.isPicListShown()
 	    };
 		},
 
@@ -37,6 +38,10 @@
     	this.setState({ highlightPicture: PictureStore.highlightPicture() });
     },
 
+    _onTogglePicList: function () {
+    	this.setState({ isPicListShown: TogglerStore.isPicListShown() });
+    },
+
     onMarkerClick: function (picture) {
     	this.onImgClick(picture);
     },
@@ -60,6 +65,10 @@
     	ComponentActions.toggleImg(nextImg);
     },
 
+    onCollapse: function () {
+    	ComponentActions.togglePicList();
+    },
+
     showPreview: function (picture) {
     	// show preview on top left corner or highlight picture in list
     	ComponentActions.highlightPicture(picture);
@@ -75,6 +84,7 @@
       PictureStore.addTogglePictureListener(this._onEnlarge);
       FilterParamsStore.addChangeListener(this._filtersChanged);
       TogglerStore.addToggleIndexPanelListener(this._onSlide);
+      TogglerStore.addTogglePicListListener(this._onTogglePicList);
       PictureStore.addHighlightPictureListener(this._onMarkerHighlight);
       ApiUtil.fetchAllAlbums(true);
       ApiUtil.fetchAllPictures();
@@ -85,13 +95,16 @@
       PictureStore.removeAllPicturesChangedListener(this._picturesChanged);
       PictureStore.removeTogglePictureListener(this._onEnlarge);
       TogglerStore.removeToggleIndexPanelListener(this._onSlide);
+      TogglerStore.removeTogglePicListListener(this._onTogglePicList);
       PictureStore.removeHighlightPictureListener(this._onMarkerHighlight);
       // FilterParamsStore.removeChangeListener(this._filtersChanged);
     },
 
 		render: function () {
-			var indexKlass;
+			var indexKlass = "",
+					picListKlass = "";
 			if (!this.state.isPanelShown) { indexKlass = "slide-out"; }
+			if (!this.state.isPicListShown) {picListKlass = "collapsed"; }
 			var imgFrame = (this.state.enlargedImg) ?
 			<PictureFrame picture={this.state.enlargedImg}
 										handleClick={this.onImgClick}
@@ -108,7 +121,9 @@
 					<Map pictures={this.state.pictures}
 							 onMarkerClick={this.onMarkerClick}
 							 onMarkerHover={this.onMarkerHover} />
-					<div className="map-pic-list">
+					<div className={"map-pic-list " + picListKlass}>
+						<div className={"collapse-btn " + picListKlass}
+								 onClick={this.onCollapse}></div>
 						<PicturesCollection pictures={this.state.pictures}
 																handleClick={this.onImgClick}
 																isDeletable={false}

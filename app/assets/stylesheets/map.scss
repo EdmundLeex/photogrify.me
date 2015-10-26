@@ -1,9 +1,47 @@
+$collapse-btn:"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAUVJREFUSA21ljEOgjAUhsVI2XTnBmzunIILuJE4uDvqLdRL6CEIOxs38AAmDJQB/2d4phKgLWCT5rVN+b++1z8Ni0XTpJQ79H1d1w6vzRGXisgG40tVVUlZloGyPmmoAlgodBwnA+SEbAQvjo1dANISgJyRTYYejhWn7/oArBkgiwR3c0Fc86JN1AFIiy59D0iOskU24rTXBPDRRMl89DtKdi+KwjcFGQNYEKWKXNfNTS1tDWhAdB9Glh4L4IS0lp4KINCgpecAcDadlp4TwKCfuPqZTZvksHEMh6WqzBwZSFj3DOFtW5xAUzNIIR57nperp1bHYwEviBxx4hvKUquC7bF1iSD4wHMRCCGuOnGCGWeAUjyx/wDhR/uUQ3MTAJXgBuEjTkylsWo6QKf1bAh9dzBoPRtAVwZa69kAvnvxvv/lt+UNQyyYk3eQGowAAAAASUVORK5CYII=";
+
 .map-pic-list {
 	position: fixed;
 	width: 400px;
 	height: 100vh;
 	right: 0;
 	top: 0;
-	overflow-y: scroll;
+	overflow-y: hidden;
 	background-color: rgba(255,255,255,0.8);
+	-webkit-transition: -webkit-transform 0.4s ease-in-out;
+	transition-timing-function: ease-in-out;
+	transition-duration: 0.4s;
+}
+
+.collapse-btn {
+	width: 12px;
+	height: 25px;
+	position: absolute;
+	background-color: black;
+	content: url($collapse-btn);
+	top: 50%;
+	transform: translateY(-50%);
+	-webkit-transition: -webkit-transform 0.4s ease-in-out;
+	transition-timing-function: ease-in-out;
+	transition-duration: 0.4s;
+
+	&:hover {
+		cursor: pointer;
+		background-color: rgba(0,0,0,0.5);
+	}
+}
+
+.map-pic-list.collapsed {
+	transform: translateX(385px);
+}
+
+.collapse-btn.collapsed {
+	-moz-transform: scaleX(-1);
+  -o-transform: scaleX(-1);
+  -webkit-transform: scaleX(-1);
+	transform: scaleX(-1);
+}
+
+.album-show-main.map{
+	width: 100%;
 }

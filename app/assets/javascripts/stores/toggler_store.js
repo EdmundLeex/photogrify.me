@@ -7,6 +7,7 @@
 	var DROP_TO_ALBUM_EVENT = "DROP_TO_ALBUM_EVENT";
 	var SHOW_CONFIRMATION_EVENT = "SHOW_CONFIRMATION_EVENT";
 	var HIDE_CONFIRMATION_EVENT = "HIDE_CONFIRMATION_EVENT";
+	var TOGGLE_PIC_LIST_EVENT = "TOGGLE_PIC_LIST_EVENT";
 	// var TOGGLE_MODE_EVENT = "TOGGLE_MODE_EVENT";
 	// var _showSearchBox = false;
 	var _editingTitle = false;
@@ -15,6 +16,7 @@
 	var _isOverlayShown = false;
 	var _isDragging = false;
 	var _confModalOpts = {};
+	var _isPicListShown = true;
 	// var _mode = 'view';
 
 	// var toggleMode = function (mode) {
@@ -53,6 +55,10 @@
 		}
 	};
 
+	var togglePicList = function () {
+		_isPicListShown = !_isPicListShown;
+	};
+
 	root.TogglerStore = $.extend({}, EventEmitter.prototype, {
 		// showSearchBox: function () {
 		// 	return _showSearchBox;
@@ -80,6 +86,10 @@
 
 		confModalOpts: function () {
 			return _confModalOpts;
+		},
+
+		isPicListShown: function () {
+			return _isPicListShown;
 		},
 
 		// addToggleSearchListener: function (callback) {
@@ -138,6 +148,14 @@
 			this.removeListener(SHOW_CONFIRMATION_EVENT, callback);
 		},
 
+		addTogglePicListListener: function (callback) {
+			this.on(TOGGLE_PIC_LIST_EVENT, callback);
+		},
+
+		removeTogglePicListListener: function (callback) {
+			this.removeListener(TOGGLE_PIC_LIST_EVENT, callback);
+		},
+
 		// addToggleModeListener: function (callback) {
 		// 	this.on(TOGGLE_MODE_EVENT, callback);
 		// },
@@ -177,6 +195,10 @@
 						payload.path
 					);
 					TogglerStore.emit(SHOW_CONFIRMATION_EVENT);
+					break;
+				case APP_CONSTANTS.TOGGLE_PIC_LIST:
+					togglePicList();
+					TogglerStore.emit(TOGGLE_PIC_LIST_EVENT);
 					break;
 				default:
 					break;

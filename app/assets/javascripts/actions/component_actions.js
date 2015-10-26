@@ -110,7 +110,13 @@ window.ComponentActions = {
 		AppDispatcher.dispatch({
 			actionType: APP_CONSTANTS.HIGHLIGHT_PICTURE,
 			picture: picture
-		})
+		});
+	},
+
+	togglePicList: function () {
+		AppDispatcher.dispatch({
+			actionType: APP_CONSTANTS.TOGGLE_PIC_LIST
+		});
 	}
 
 	// retrieveAlbumState: function (albumId) {

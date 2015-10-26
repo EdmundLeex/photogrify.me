@@ -23,7 +23,6 @@ var Sidebar = React.createClass({
 					<AllAlbumsBtn history={this.history} />
 					<AllPicturesBtn history={this.history} />
 					<div className="sidebar-thumbs map-icon" onClick={this.handleClickMap}>
-						<span className=""></span>
 					</div>
 				</div>
 				<UserMenuBtn />
