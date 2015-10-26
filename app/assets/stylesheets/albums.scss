@@ -231,3 +231,24 @@
 	float: left;
 	width: 100%;
 }
+
+.description {
+	position: absolute;
+	opacity: 0.4;
+	width: calc(100% - 74px);
+	overflow: hidden;
+	height: 120px;
+	font-size: 14px;
+	margin-top: 10px;
+	margin-left: 10px;
+	/* margin-right: 20px; */
+	display: -webkit-box;
+	-webkit-line-clamp: 6;
+	-webkit-box-orient: vertical;
+	transition: all 100ms ease;
+
+  &:hover {
+  	opacity: 1;
+  	transition: all 100ms ease;
+  }
+}
