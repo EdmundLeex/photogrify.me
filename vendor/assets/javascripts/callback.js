@@ -1,165 +1,165 @@
-if ("undefined" == typeof com) { var com = {}; }
-if (!com.jivatechnology) { com.jivatechnology = {}; }
+// if ("undefined" == typeof com) { var com = {}; }
+// if (!com.jivatechnology) { com.jivatechnology = {}; }
 
-// this module function is called with com.jivatechnology as 'this'
-(function(){
+// // this module function is called with com.jivatechnology as 'this'
+// (function(){
 
-  var scope = this;
+//   var scope = this;
 
-  this.Callback = (function(){
+//   this.Callback = (function(){
 
-    // Return the constructor
-    return function(opts){
+//     // Return the constructor
+//     return function(opts){
 
-      var options = opts;
+//       var options = opts;
 
-      // Checks
-      if(typeof options.func != "function"){
-        throw("Callback created without a func");
-      }
+//       // Checks
+//       if(typeof options.func != "function"){
+//         throw("Callback created without a func");
+//       }
 
-      // Private methods
-      var marshal_to_function = function(value){
-        if(typeof value != "function"){
-          return function(){ return value; };
-        } else {
-          return value;
-        }
-      };
+//       // Private methods
+//       var marshal_to_function = function(value){
+//         if(typeof value != "function"){
+//           return function(){ return value; };
+//         } else {
+//           return value;
+//         }
+//       };
 
-      options.must_keep = marshal_to_function(options.must_keep || false);
+//       options.must_keep = marshal_to_function(options.must_keep || false);
 
-      // Privileged methods
-      this.func = function(){
-        return options.func.apply(options,arguments);
-      };
+//       // Privileged methods
+//       this.func = function(){
+//         return options.func.apply(options,arguments);
+//       };
 
-      this.must_keep = function(){
-        return options.must_keep.apply(options,arguments);
-      };
-    };
+//       this.must_keep = function(){
+//         return options.must_keep.apply(options,arguments);
+//       };
+//     };
 
-  })();
+//   })();
 
-  this.CallbackList = (function(){
+//   this.CallbackList = (function(){
 
-    // Private class level objects
-    var merge_options = function(obj1,obj2){
-      obj1 = obj1 || {};
-      obj2 = obj2 || {};
-      var obj3 = {};
-      for (var attr1 in obj1) {
-        if( obj1.hasOwnProperty(attr1) ){ obj3[attr1] = obj1[attr1]; }
-      }
-      for (var attr2 in obj2) {
-        if( obj2.hasOwnProperty(attr2) ){ obj3[attr2] = obj2[attr2]; }
-      }
-      return obj3;
-    };
+//     // Private class level objects
+//     var merge_options = function(obj1,obj2){
+//       obj1 = obj1 || {};
+//       obj2 = obj2 || {};
+//       var obj3 = {};
+//       for (var attr1 in obj1) {
+//         if( obj1.hasOwnProperty(attr1) ){ obj3[attr1] = obj1[attr1]; }
+//       }
+//       for (var attr2 in obj2) {
+//         if( obj2.hasOwnProperty(attr2) ){ obj3[attr2] = obj2[attr2]; }
+//       }
+//       return obj3;
+//     };
 
-    // Return the constructor
-    return function(){
+//     // Return the constructor
+//     return function(){
 
-      // Private functions
-      function make_array(callbacks){
-        if(!(callbacks instanceof Array)){
-          callbacks = [callbacks];
-        }
-        return callbacks;
-      };
+//       // Private functions
+//       function make_array(callbacks){
+//         if(!(callbacks instanceof Array)){
+//           callbacks = [callbacks];
+//         }
+//         return callbacks;
+//       };
 
-      function marshal(c){
-        if(c instanceof scope.Callback){
-          return c;
-        }else{
-          return new scope.Callback({func: c, must_keep: that.must_keep()});
-        }
-      };
+//       function marshal(c){
+//         if(c instanceof scope.Callback){
+//           return c;
+//         }else{
+//           return new scope.Callback({func: c, must_keep: that.must_keep()});
+//         }
+//       };
 
-      function marshal_array(callbacks){
-        var results = [];
-        for(var c in callbacks){
-          if(callbacks.hasOwnProperty(c)){
-            var marshalled = marshal(callbacks[c]);
-            results = results.concat(marshalled);
-          }
-        }
+//       function marshal_array(callbacks){
+//         var results = [];
+//         for(var c in callbacks){
+//           if(callbacks.hasOwnProperty(c)){
+//             var marshalled = marshal(callbacks[c]);
+//             results = results.concat(marshalled);
+//           }
+//         }
 
-        return results;
-      };
+//         return results;
+//       };
 
 
-      // Private variables
-      var defaults = {
-        must_keep: false
-      };
-      var opts;
-      if(arguments.length > 0){
-        var possibility = arguments[arguments.length - 1];
-        if(possibility.constructor === Object){
-          // Bare object, must be our options
-          opts = possibility;
-        }
-      } else {
-        opts = {};
-      }
-      var options = merge_options(defaults,opts);
+//       // Private variables
+//       var defaults = {
+//         must_keep: false
+//       };
+//       var opts;
+//       if(arguments.length > 0){
+//         var possibility = arguments[arguments.length - 1];
+//         if(possibility.constructor === Object){
+//           // Bare object, must be our options
+//           opts = possibility;
+//         }
+//       } else {
+//         opts = {};
+//       }
+//       var options = merge_options(defaults,opts);
 
-      var list;
+//       var list;
 
-      var that = this;
+//       var that = this;
 
-      // Privileged functions
-      this.must_keep = function(){
-        if(arguments.length > 0){
-          return options["must_keep"] = arguments[0];
-        } else {
-          return options["must_keep"];
-        }
-      };
+//       // Privileged functions
+//       this.must_keep = function(){
+//         if(arguments.length > 0){
+//           return options["must_keep"] = arguments[0];
+//         } else {
+//           return options["must_keep"];
+//         }
+//       };
 
-      this.size = function(){
-        return list.length;
-      };
+//       this.size = function(){
+//         return list.length;
+//       };
 
-      this.add = function(callbacks){
-        // Make sure callbacks is always an array
-        callbacks = make_array(callbacks);
+//       this.add = function(callbacks){
+//         // Make sure callbacks is always an array
+//         callbacks = make_array(callbacks);
 
-        // Make sure callbacks are com.jivatechnology.Callback
-        callbacks = marshal_array(callbacks);
+//         // Make sure callbacks are com.jivatechnology.Callback
+//         callbacks = marshal_array(callbacks);
 
-        // Add them
-        list = list.concat.apply(list,callbacks);
-        return callbacks;
-      };
+//         // Add them
+//         list = list.concat.apply(list,callbacks);
+//         return callbacks;
+//       };
 
-      this.clear = function(){
-        list = [];
-      };
+//       this.clear = function(){
+//         list = [];
+//       };
 
-      this.handle = function(issuccess){
-        // Scan list in reverse order so we can delete elements
-        // without causing problems
-        var args = Array.prototype.slice.call(arguments);
-        for(var i = list.length - 1; i >= 0; i--){
-          // Call handle on each callback
-          list[i].func.apply(this,args);
-          // Check if it should be kept
-          var keep = list[i].must_keep(this,args);
-          if(!keep){ list.splice(i,1); }
-        }
-      };
+//       this.handle = function(issuccess){
+//         // Scan list in reverse order so we can delete elements
+//         // without causing problems
+//         var args = Array.prototype.slice.call(arguments);
+//         for(var i = list.length - 1; i >= 0; i--){
+//           // Call handle on each callback
+//           list[i].func.apply(this,args);
+//           // Check if it should be kept
+//           var keep = list[i].must_keep(this,args);
+//           if(!keep){ list.splice(i,1); }
+//         }
+//       };
 
-      // Initialize list
-      this.clear();
+//       // Initialize list
+//       this.clear();
 
-      // Add callbacks if any specified on creation
-      if(arguments.length > 0 && arguments[0].constructor != Object ){
-        this.add(arguments[0]);
-      }
-    };
+//       // Add callbacks if any specified on creation
+//       if(arguments.length > 0 && arguments[0].constructor != Object ){
+//         this.add(arguments[0]);
+//       }
+//     };
 
-  })();
+//   })();
 
-}).call(com.jivatechnology);
+// }).call(com.jivatechnology);
