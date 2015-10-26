@@ -100,7 +100,7 @@ var New = React.createClass({
 	},
 
 	onSaveClick: function () {
-		this.props.history.pushState(null, '/' + this.state.albumId + '/show');
+		this.props.history.pushState(null, '/albums/' + this.state.albumId + '/show');
 		ComponentActions.slideOut(true);
 	},
 

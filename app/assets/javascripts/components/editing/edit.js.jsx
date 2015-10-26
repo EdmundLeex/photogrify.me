@@ -78,7 +78,7 @@ var Edit = React.createClass({
 	},
 
 	onSaveClick: function () {
-		this.props.history.pushState(null, '/' + this.props.params.albumId + '/show');
+		this.props.history.pushState(null, '/albums/' + this.props.params.albumId + '/show');
 		ComponentActions.slideOut(true);
 	},
 

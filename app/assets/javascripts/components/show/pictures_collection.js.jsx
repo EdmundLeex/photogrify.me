@@ -4,11 +4,15 @@ var PicturesCollection = React.createClass({
 	},
 
 	onImgHover: function (picture) {
-		this.props.handleImgHover(picture);
+		if (this.props.handleImgHover) {
+			this.props.handleImgHover(picture);
+		}
 	},
 
 	onImgUnhover: function () {
-		this.props.handleImgUnhover();
+		if (this.props.handleImgUnhover) {
+			this.props.handleImgUnhover();
+		}
 	},
 
 	render: function () {
