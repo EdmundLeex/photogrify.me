@@ -20,7 +20,7 @@
       };
       this.map = new google.maps.Map(map, mapOptions);
       this.registerListeners();
-      this.markers = [];
+      this.markers = this.props.markers;
       this.setState({infoWindow: new google.maps.InfoWindow({})});
     },
 
@@ -115,11 +115,11 @@
       google.maps.event.addListener(marker, 'mouseover', function () {
         that.state.infoWindow.setContent(infoContent);
         that.state.infoWindow.open(that.map, marker);
-      })
+      });
 
       google.maps.event.addListener(marker, 'mouseout', function () {
         that.state.infoWindow.close(that.map, marker);
-      })
+      });
     },
 
     removeMarker: function(marker){

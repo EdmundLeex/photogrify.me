@@ -3,6 +3,14 @@ var PicturesCollection = React.createClass({
 		this.props.handleClick(picture);
 	},
 
+	onImgHover: function (picture) {
+		this.props.handleImgHover(picture);
+	},
+
+	onImgUnhover: function () {
+		this.props.handleImgUnhover();
+	},
+
 	render: function () {
 		var klass;
 		var highlightPicture = this.props.highlightPicture;
@@ -14,6 +22,8 @@ var PicturesCollection = React.createClass({
 					return <PictureItem key={pic.id}
 															picture={pic}
 															handleClick={this.onImgClick}
+															handleHover={this.onImgHover}
+															handleMouseLeave={this.onImgUnhover}
 															isDeletable={this.props.isDeletable}
 															klass={klass} />
 				}, this)}

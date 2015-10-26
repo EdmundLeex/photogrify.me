@@ -36,6 +36,18 @@
 
     _onMarkerHighlight: function () {
     	this.setState({ highlightPicture: PictureStore.highlightPicture() });
+      this._onImgHighlight();
+    },
+
+    _onImgHighlight: function () {
+      var highlightPicture = PictureStore.highlightPicture();
+      this.markers.forEach(function (marker) {
+        if (highlightPicture && marker.pictureId === highlightPicture.id) {
+          marker.setAnimation(google.maps.Animation.BOUNCE);
+        } else {
+          marker.setAnimation(null);
+        }
+      }, this)
     },
 
     _onTogglePicList: function () {
@@ -49,6 +61,14 @@
     onMarkerHover: function (picture) {
     	// show image
     	this.showPreview(picture);
+    },
+
+    onImgHover: function (picture) {
+      ComponentActions.highlightPicture(picture);
+    },
+
+    onImgUnhover: function () {
+      ComponentActions.highlightPicture(null);
     },
 
     onImgClick: function (picture) {
@@ -76,6 +96,7 @@
 
     componentWillMount: function () {
     	ComponentActions.slideOut(false);
+      this.markers = [];
     },
 
 		componentDidMount: function(){
@@ -120,14 +141,18 @@
 																params={this.props.params} />
 					<Map pictures={this.state.pictures}
 							 onMarkerClick={this.onMarkerClick}
-							 onMarkerHover={this.onMarkerHover} />
+							 onMarkerHover={this.onMarkerHover}
+               highlightPicture={this.state.highlightPicture}
+               markers={this.markers} />
 					<div className={"map-pic-list " + picListKlass}>
 						<div className={"collapse-btn " + picListKlass}
 								 onClick={this.onCollapse}></div>
 						<PicturesCollection pictures={this.state.pictures}
 																handleClick={this.onImgClick}
 																isDeletable={false}
-																highlightPicture={this.state.highlightPicture} />
+																highlightPicture={this.state.highlightPicture}
+                                handleImgHover={this.onImgHover}
+                                handleImgUnhover={this.onImgUnhover} />
 					</div>
 				</div>
 			);

@@ -28,6 +28,14 @@ var PictureItem = React.createClass({
 		// var imgId = e.dataTransfer.getData(APP_CONSTANTS.DRAGGING_IMG);
 	},
 
+	handleMouseOver: function (e) {
+		this.props.handleHover(this.props.picture);
+	},
+
+	handleMouseLeave: function (e) {
+		this.props.handleMouseLeave();
+	},
+
 	render: function () {
 		var url = APP_CONFIG.ImageUrlByOptions(
 			this.props.picture.picture_url,
@@ -38,7 +46,9 @@ var PictureItem = React.createClass({
 			<div className={"img-thumb " + this.props.klass}
 					 draggable="true"
 					 onDragStart={this.handleDragStart}
-					 onDragEnd={this.handleDragEnd}>
+					 onDragEnd={this.handleDragEnd}
+					 onMouseOver={this.handleMouseOver}
+					 onMouseLeave={this.handleMouseLeave} >
 				<img src={url} onClick={this.handleClick} />
 				{(this.props.isDeletable) ?
 					<div className="thumb-tools">
