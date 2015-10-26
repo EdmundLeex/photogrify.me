@@ -32,7 +32,7 @@ class Api::AlbumsController < ApplicationController
   		@pictures = @album.pictures
       render :show
   	else
-  		# TODO: page not found
+  		redirect_to not_found_url
   	end
   end
 

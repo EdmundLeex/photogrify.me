@@ -13,5 +13,5 @@ Rails.application.routes.draw do
     patch "update_cover", to: "albums#update_cover"
   end
 
-  get "*path", to: "application#not_found"
+  get "*path", to: "application#not_found", as: :not_found
 end

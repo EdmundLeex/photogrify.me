@@ -8,7 +8,6 @@ class ApplicationController < ActionController::Base
   GENERIC_ERROR = "Oops... something is wrong here. Try again."
 
   def not_found
-    # raise ActionController::RoutingError.new('Not Found')
     respond_to do |format|
       format.html {
         render "static_pages/not_found",
@@ -18,7 +17,6 @@ class ApplicationController < ActionController::Base
       }
       format.json { head :not_found }
     end
-    # render "static_pages/not_found"
   end
 
   def current_user
