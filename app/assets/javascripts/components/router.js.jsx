@@ -29,7 +29,6 @@ $(function () {
 
   		componentDidMount: function () {
   			setInterval(this._checkAlbums, 10000);
-  			APP_CONFIG.ConsolPrint();
   			this.joyrideAddSteps([{
 					title: "hello", //optional
 	        text: "...",

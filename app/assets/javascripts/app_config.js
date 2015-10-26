@@ -20,6 +20,13 @@ window.APP_CONFIG = {
 		return url.join('/');
 	},
 
+    HomePageTour: [{
+      title: "hello", //optional
+      text: "...",
+      selector: "div.logo.sidebar-thumbs",
+      position: "..."
+    }]
+
     ConsolPrint: function () {
       console.log('%c       _/_/_/    _/      _/    _/_/_/   _/_/_/_/_/    _/_/_/      _/_/_/    _/_/_/   _/_/_/_/  _/       _/ ', 'color: #46BCEC');
       console.log('%c     _/     _/  _/      _/  _/      _/     _/      _/      _/  _/      _/    _/     _/          _/    _/   ', 'color: #46BCEC');
