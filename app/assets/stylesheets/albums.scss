@@ -239,16 +239,21 @@
 	overflow: hidden;
 	height: 120px;
 	font-size: 14px;
-	margin-top: 10px;
 	margin-left: 10px;
-	/* margin-right: 20px; */
+	padding: 10px;
+	padding-bottom: 20px;
+	word-wrap: break-word;
 	display: -webkit-box;
 	-webkit-line-clamp: 6;
 	-webkit-box-orient: vertical;
 	transition: all 100ms ease;
+	line-height: normal;
 
   &:hover {
   	opacity: 1;
   	transition: all 100ms ease;
+  	min-height: 120px;
+  	height: 800px;
+  	background-color: rgba(0,0,0,0.9);
   }
 }

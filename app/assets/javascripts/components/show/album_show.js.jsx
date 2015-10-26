@@ -4,6 +4,7 @@ var AlbumShow = React.createClass({
 	getInitialState: function () {
     return {
     	title: null,
+    	description: null,
     	pictures: [],
     	enlargedImg: null,
     	isExpanded: !TogglerStore.isPanelShown(),
@@ -46,7 +47,8 @@ var AlbumShow = React.createClass({
 		try{
 			this.setState({
 				title: 	 	album.title,
-				pictures: PictureStore.all()
+				pictures: PictureStore.all(),
+				description: album.description
 			});
 		}catch(e){
 			console.log(e);
@@ -138,6 +140,7 @@ var AlbumShow = React.createClass({
 					{imgFrame}
 					<TitleBar mode={'show'}
 										title={this.state.title}
+										description={this.state.description}
 										cover_picture_url={cover_picture_url}
 										onEditClick={this.onEditClick}
 										onUploadClick={this.onUploadClick}

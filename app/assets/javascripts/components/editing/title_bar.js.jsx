@@ -100,7 +100,8 @@ var TitleBar = React.createClass({
 							 className={klass}
 							 valueLink={this.props.linkState("title")}
 							 data-toggle="tooltip" title="CLICK TO EDIT TITLE" />
-				<div className="description">San Francisco (/sæn frənˈsɪskoʊ/), officially the City and County of San Francisco, is the cultural, commercial, and financial center of Northern California and the only consolidated city-county in California.[24] San Francisco encompasses a land area of about 46.9 square miles (121 km2)[25] on the northern end of the San Francisco Peninsula, which makes it the smallest county in the state. It has a density of about 18,187 people per square mile (7,022 people per km2), making it the most densely settled large city (population greater than 200,000) in the state of California and the second-most densely populated major city in the United Sttates after New York City.[26] San Francisco is the fourth-most populous city in California, after Los Angeles, San Diego and San Jose, and the 13th-most populous city in the United States—with a Census-estimated 2014 population of 852,469.[21] The city and its surrounding areas ar</div>
+				<div className="description"
+						 dangerouslySetInnerHTML={{__html: this.props.description}}></div>
 			</div>
 		);
 	}
