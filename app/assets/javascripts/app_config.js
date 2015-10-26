@@ -9,6 +9,8 @@ window.APP_CONFIG = {
 
 	INDEX_COVER_SIZE: 'w_350,h_120,c_fill',
 
+    MAP_PREVIEW_SIZE: 'w_120,h_120,c_fill',
+
 	FRAME_SIZE: 'h_600',
 
 	ImageUrlByOptions: function (url, optionsStr) {
