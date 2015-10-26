@@ -25,4 +25,9 @@
 //= require cloudinary
 //= require quill
 //= require react-quill
+//= require ease
+//= require raf
+//= require listener
+//= require scroll
+//= require joyride
 //= require_tree .

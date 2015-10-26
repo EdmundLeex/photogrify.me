@@ -10,9 +10,34 @@ $(function () {
   if (root) {
   	window.NEW_ALBUM_PATH = "NEW_ALBUM_PATH";
   	var App = React.createClass({
+  		mixins: [React.addons.PureRenderMixin, JoyrideMixin],
+
+  		componentWillMount: function () {
+		    this.joyrideSetOptions({
+	        showSkipButton: true,
+	        tooltipOffset: 10,
+
+	        stepCallback: function(step) {
+            console.log(step);
+	        },
+
+	        completeCallback: function(steps) {
+            console.log(steps);
+	        }
+		    });
+  		},
+
   		componentDidMount: function () {
   			setInterval(this._checkAlbums, 10000);
   			APP_CONFIG.ConsolPrint();
+  			this.joyrideAddSteps([{
+					title: "hello", //optional
+	        text: "...",
+	        selector: "div.logo.sidebar-thums",
+	        position: "..."
+  			}]);
+
+  			this.joyrideStart();
   		},
 
   		_checkAlbums: function () {
