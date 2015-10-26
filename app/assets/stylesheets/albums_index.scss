@@ -22,6 +22,7 @@
 }
 
 .albums-index {
+	height: calc(100vh - 40px);
 	overflow-y: scroll;
 }
 
