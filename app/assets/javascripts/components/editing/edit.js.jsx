@@ -40,7 +40,7 @@ var Edit = React.createClass({
 	},
 
 	componentDidMount: function () {
-		this.joyrideAddSteps(APP_CONFIG.NewEditPageTour);
+		this.joyrideReplaceSteps(APP_CONFIG.NewEditPageTour);
 		this.joyrideStart();
 
 		AlbumStore.addAlbumsIndexChangeListener(this._onTitleChanged);

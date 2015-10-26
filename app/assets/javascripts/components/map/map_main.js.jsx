@@ -117,7 +117,7 @@
     },
 
 		componentDidMount: function(){
-      this.joyrideAddSteps(APP_CONFIG.MapTour);
+      this.joyrideReplaceSteps(APP_CONFIG.MapTour);
       this.joyrideStart();
 
 			AlbumStore.addAlbumsIndexChangeListener(this._onChange);
