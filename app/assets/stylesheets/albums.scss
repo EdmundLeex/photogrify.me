@@ -233,7 +233,7 @@
 	padding-bottom: 20px;
 	word-wrap: break-word;
 	display: -webkit-box;
-	-webkit-line-clamp: 6;
+	-webkit-line-clamp: 7;
 	-webkit-box-orient: vertical;
 	transition: all 100ms ease;
 	line-height: normal;
@@ -242,7 +242,8 @@
   	opacity: 1;
   	transition: all 100ms ease;
   	min-height: 120px;
-  	height: 800px;
-  	background-color: rgba(0,0,0,0.9);
+  	height: auto;
+  	background-color: rgba(0,0,0,0.5);
+  	overflow-y: scroll;
   }
 }

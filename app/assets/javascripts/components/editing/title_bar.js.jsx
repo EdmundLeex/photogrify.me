@@ -89,7 +89,7 @@ var TitleBar = React.createClass({
 			klass = "";
 			placeholder = "Title goes here...";
 		}
-debugger
+
 		return (
 			<div className="title">
 				<input type="text"
