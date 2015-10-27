@@ -237,7 +237,7 @@ end
 
 seed_imgs = []
 failed_imgs = {}
-img_urls = SF_TRIP + YOSEMITE + LA_TRIP + LAS_VEGAS + GRAND_CANYON + OTHERS
+img_urls = [SF_TRIP, YOSEMITE, LA_TRIP, LAS_VEGAS, GRAND_CANYON, OTHERS]
 
 if Rails.env == 'production'
 	begin
@@ -247,18 +247,36 @@ if Rails.env == 'production'
 	end
 
 	puts "Uploading to Cloudinary:"
-	img_urls.each do |url|
-		begin
-			seed_imgs << Cloudinary::Uploader.upload(url, cloud_name: ENV['cloud_name'],
-																										public_id: ENV['public_id'],
-																										api_key: ENV['api_key'],
-																										api_secret: ENV['api_secret'])
-		rescue CloudinaryException => e
-			failed_imgs[url] = e
-			next
+
+	img_urls.each_with_index do |url_set, i|
+		url_set.each do |url|
+			seed_imgs[i] ||= []
+			begin
+				seed_imgs[i] << Cloudinary::Uploader.upload(url, cloud_name: ENV['cloud_name'],
+																												 public_id: ENV['public_id'],
+																												 api_key: ENV['api_key'],
+																												 api_secret: ENV['api_secret'])
+			rescue CloudinaryException => e
+				failed_imgs[url] = e
+				next
+			end
+			print "."
 		end
-		print "."
 	end
+
+
+	# img_urls.each do |url|
+	# 	begin
+	# 		seed_imgs << Cloudinary::Uploader.upload(url, cloud_name: ENV['cloud_name'],
+	# 																									public_id: ENV['public_id'],
+	# 																									api_key: ENV['api_key'],
+	# 																									api_secret: ENV['api_secret'])
+	# 	rescue CloudinaryException => e
+	# 		failed_imgs[url] = e
+	# 		next
+	# 	end
+	# 	print "."
+	# end
 	print "\n"
 	puts "Upload finished."
 else
@@ -268,7 +286,7 @@ end
 puts "Persisting Cloudinary urls to database"
 
 Picture.destroy_all
-seed_imgs[0...SF_TRIP.size].each do |img|
+seed_imgs[0].each do |img|
 	Album.all[0].pictures.create(
 		picture_url: img['url'],
 		public_id: img['public_id'],
@@ -277,7 +295,9 @@ seed_imgs[0...SF_TRIP.size].each do |img|
 	)
 	print "."
 end
-seed_imgs[SF_TRIP.size...YOSEMITE.size].each do |img|
+Album.all[0].update(cover_picture_url: seed_imgs[0].sample['url'])
+
+seed_imgs[1].each do |img|
 	Album.all[1].pictures.create(
 		picture_url: img['url'],
 		public_id: img['public_id'],
@@ -286,7 +306,9 @@ seed_imgs[SF_TRIP.size...YOSEMITE.size].each do |img|
 	)
 	print "."
 end
-seed_imgs[YOSEMITE.size...LA_TRIP.size].each do |img|
+Album.all[1].update(cover_picture_url: seed_imgs[1].sample['url'])
+
+seed_imgs[2].each do |img|
 	Album.all[2].pictures.create(
 		picture_url: img['url'],
 		public_id: img['public_id'],
@@ -295,7 +317,9 @@ seed_imgs[YOSEMITE.size...LA_TRIP.size].each do |img|
 	)
 	print "."
 end
-seed_imgs[LA_TRIP.size...LAS_VEGAS.size].each do |img|
+Album.all[2].update(cover_picture_url: seed_imgs[2].sample['url'])
+
+seed_imgs[3].each do |img|
 	Album.all[3].pictures.create(
 		picture_url: img['url'],
 		public_id: img['public_id'],
@@ -304,6 +328,8 @@ seed_imgs[LA_TRIP.size...LAS_VEGAS.size].each do |img|
 	)
 	print "."
 end
+Album.all[3].update(cover_picture_url: seed_imgs[3].sample['url'])
+
 seed_imgs[LAS_VEGAS.size...GRAND_CANYON.size].each do |img|
 	Album.all[4].pictures.create(
 		picture_url: img['url'],
@@ -313,7 +339,9 @@ seed_imgs[LAS_VEGAS.size...GRAND_CANYON.size].each do |img|
 	)
 	print "."
 end
-seed_imgs[GRAND_CANYON.size..-1].each do |img|
+Album.all[4].update(cover_picture_url: seed_imgs[4].sample['url'])
+
+seed_imgs[5].each do |img|
 	Album.all[5].pictures.create(
 		picture_url: img['url'],
 		public_id: img['public_id'],
@@ -322,15 +350,9 @@ seed_imgs[GRAND_CANYON.size..-1].each do |img|
 	)
 	print "."
 end
+Album.all[5].update(cover_picture_url: seed_imgs[5].sample['url'])
+
 print "\n"
-
-Album.all[0].update(cover_picture_url: seed_imgs[rand(0..30)]['url'])
-Album.all[1].update(cover_picture_url: seed_imgs[rand(33..40)]['url'])
-Album.all[2].update(cover_picture_url: seed_imgs[rand(42..49)]['url'])
-Album.all[3].update(cover_picture_url: seed_imgs[rand(53..59)]['url'])
-Album.all[4].update(cover_picture_url: seed_imgs[rand(62..68)]['url'])
-Album.all[5].update(cover_picture_url: seed_imgs[rand(72..88)]['url'])
-
 
 puts "=" * 40
 puts "#{failed_imgs.size} file(s) failed to be uploaded."
