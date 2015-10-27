@@ -264,19 +264,6 @@ if Rails.env == 'production'
 		end
 	end
 
-
-	# img_urls.each do |url|
-	# 	begin
-	# 		seed_imgs << Cloudinary::Uploader.upload(url, cloud_name: ENV['cloud_name'],
-	# 																									public_id: ENV['public_id'],
-	# 																									api_key: ENV['api_key'],
-	# 																									api_secret: ENV['api_secret'])
-	# 	rescue CloudinaryException => e
-	# 		failed_imgs[url] = e
-	# 		next
-	# 	end
-	# 	print "."
-	# end
 	print "\n"
 	puts "Upload finished."
 else
@@ -330,7 +317,7 @@ seed_imgs[3].each do |img|
 end
 Album.all[3].update(cover_picture_url: seed_imgs[3].sample['url'])
 
-seed_imgs[LAS_VEGAS.size...GRAND_CANYON.size].each do |img|
+seed_imgs[4].each do |img|
 	Album.all[4].pictures.create(
 		picture_url: img['url'],
 		public_id: img['public_id'],
