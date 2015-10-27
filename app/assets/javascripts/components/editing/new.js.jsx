@@ -28,11 +28,11 @@ var New = React.createClass({
       showStepsProgress: true,
 
       stepCallback: function(step) {
-        console.log(step);
+        // console.log(step);
       },
 
       completeCallback: function(steps) {
-        console.log(steps);
+        // console.log(steps);
       }
     });
 	},

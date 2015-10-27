@@ -75,6 +75,7 @@
           northEast: northEast,
           southWest: southWest
         };
+        console.log(bounds);
         FilterActions.updateBounds(bounds);
       });
     },
