@@ -41,7 +41,7 @@ SF_TRIP = [
 	"http://archiengi.com/wp-content/uploads/2014/09/Sand-Art-at-San-Francisco-By-A-4.jpg",
 	"http://kevinchin.intothedarkroom.me/wp-3032DLTQLX/wp-content/uploads/v1site_images/2014/06/Diana_Kee_WED_0527.jpg",
 	"https://trashmashup.files.wordpress.com/2013/05/tmu2.jpg",
-	"http://kevinwarnock.com/wp-content/uploads/2012/10/Aaron-Bray-owner-of-PushPullArtDesign-dot-com-October-20-2012-Lower-Haight-Urban-Air-Market-San-Francisco.jpg",
+	# "http://kevinwarnock.com/wp-content/uploads/2012/10/Aaron-Bray-owner-of-PushPullArtDesign-dot-com-October-20-2012-Lower-Haight-Urban-Air-Market-San-Francisco.jpg",
 	"http://www.enjoyourholiday.com/wp-content/uploads/2013/10/San-Francisco-Tramline.jpg",
 	"https://c1.staticflickr.com/3/2856/9681774337_75bc6c7d2e_b.jpg",
 	# "http://screen-wallpapers.com/wallpapers/4138/San-Francisco,%20USA.jpg",
