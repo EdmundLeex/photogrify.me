@@ -74,8 +74,8 @@ window.APP_CONFIG = {
   MapTour: [
     {
       text: "On this page, you can find all your photos on the map. Rest assured, all your photos are guaranteed private" +
-        "(If you disabled sharing the geolocation on your camera, your photo won't show up the map)",
-      selector: "div.map",
+        "\n(If you disabled sharing the geolocation on your camera, your photo won't show up the map)",
+      selector: "div.album-show-main.map",
       position: "center"
     },
     {
