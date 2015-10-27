@@ -238,7 +238,7 @@ end
 seed_imgs = []
 failed_imgs = {}
 img_urls = [SF_TRIP, YOSEMITE, LA_TRIP, LAS_VEGAS, GRAND_CANYON, OTHERS]
-debugger
+
 if Rails.env == 'production'
 	begin
 		Rake::Task['cloudinary:destroy_all'].invoke
