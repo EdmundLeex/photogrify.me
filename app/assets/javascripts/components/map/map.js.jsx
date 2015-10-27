@@ -127,7 +127,7 @@
     },
 
     render: function(){
-      return ( <div className="album-show-main map" ref="map">Map</div>);
+      return ( <div className="album-show-main map" ref="map"></div>);
     }
   });
 })(this);

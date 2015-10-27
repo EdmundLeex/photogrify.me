@@ -2,7 +2,8 @@
 	root.MapMain = React.createClass({
     mixins: [
       React.addons.PureRenderMixin,
-      JoyrideMixin
+      JoyrideMixin,
+      ReactRouter.History
     ],
 
 		getInitialState: function () {
