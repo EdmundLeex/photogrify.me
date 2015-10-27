@@ -161,7 +161,7 @@ OTHERS = [
 	"http://www.breathtaking-places.com/wp-content/uploads/2014/09/Iguaz%C3%BA-National-Park-is-the-most-beautiful-waterfall-where-you-should-go-to-visit-in-Argentina.1.jpg",
 	"http://planetden.com/wp-content/uploads/2014/03/Triglav-National-Park-Waterfall.jpg",
 	"http://albanykid.com/wp-content/uploads/2012/04/Gull-Glacier-at-Tanquary-Fiord-opposite-to-Parks-Canada-campsite-Quttinirpaaq-National-Park.jpg",
-	# breadthtaking photos
+	# breathtaking photos
 	"http://i.kinja-img.com/gawker-media/image/upload/jhveeytnicbaekstrb5s.png",
 	"https://static.pexels.com/photos/6550/nature-sky-sunset-man.jpeg",
 	# "https://static.pexels.com/photos/6495/landscape-mountains-nature-trees.jpeg",
@@ -232,7 +232,7 @@ users.each do |user|
 	Album.create(title: '5 days in LA', description: LA_DESCRIPTION, user: user)
 	Album.create(title: 'Fun in Vegas', description: VEGAS_DESCRIPTION, user: user)
 	Album.create(title: 'Oh, Grand Canyon', description: GRAND_CANYON_DESCRIPTION, user: user)
-	Album.create(title: 'Breadthtaking Photos', description: OTHERS_DESCRIPTION, user: user)
+	Album.create(title: 'Breathtaking Photos', description: OTHERS_DESCRIPTION, user: user)
 end
 
 seed_imgs = []
