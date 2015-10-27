@@ -44,7 +44,7 @@ SF_TRIP = [
 	"http://kevinwarnock.com/wp-content/uploads/2012/10/Aaron-Bray-owner-of-PushPullArtDesign-dot-com-October-20-2012-Lower-Haight-Urban-Air-Market-San-Francisco.jpg",
 	"http://www.enjoyourholiday.com/wp-content/uploads/2013/10/San-Francisco-Tramline.jpg",
 	"https://c1.staticflickr.com/3/2856/9681774337_75bc6c7d2e_b.jpg",
-	"http://screen-wallpapers.com/wallpapers/4138/San-Francisco,%20USA.jpg",
+	# "http://screen-wallpapers.com/wallpapers/4138/San-Francisco,%20USA.jpg",
 	"http://7-themes.com/data_images/out/42/6913573-san-francisco-skyline.jpg",
 	"http://www.mrwallpaper.com/wallpapers/san-francisco-hd.jpg",
 	"http://stockarch.com/files/12/06/san_francisco_city_skyline.jpg",
@@ -65,8 +65,8 @@ YOSEMITE = [
 	"http://impressivemagazine.com/wp-content/uploads/2014/01/national_parks_yosemite.jpg",
 	"http://7-themes.com/data_images/out/41/6908219-yosemite-falls-rainbow.jpg",
 	"http://www.yosemitepark.com/Images/Fall_Medow_M-1.jpg",
-	"https://9to5mac.files.wordpress.com/2014/08/yosemite-3.jpg",
-	"https://upload.wikimedia.org/wikipedia/commons/a/a3/Yosemite_Valley-13.jpg",
+	# "https://9to5mac.files.wordpress.com/2014/08/yosemite-3.jpg",
+	# "https://upload.wikimedia.org/wikipedia/commons/a/a3/Yosemite_Valley-13.jpg",
 	"http://i.huffpost.com/gen/1655993/images/o-YOSEMITE-TIME-LAPSE-facebook.jpg",
 	"https://mbccmb.files.wordpress.com/2014/11/tioga_pass.jpg",
 	"http://i.ytimg.com/vi/Q5wLyFvm4AY/maxresdefault.jpg",
@@ -105,9 +105,9 @@ LAS_VEGAS = [
 
 GRAND_CANYON = [
 	"http://horseshoebend.com/wp-content/uploads/2012/11/winter-horseshoe_pan3.jpg",
-	"http://www.visitsouthernutah.com/media/north-rim-wotons-throne-cape-royal-shutterstock.jpg",
+	# "http://www.visitsouthernutah.com/media/north-rim-wotons-throne-cape-royal-shutterstock.jpg",
 	"http://images.boomsbeat.com/data/images/full/653/26-jpg.jpg",
-	"http://cdn.wall88.com/519d11e7e0e9c14847.jpg",
+	# "http://cdn.wall88.com/519d11e7e0e9c14847.jpg",
 	"http://canadiansf.info/wp-content/uploads/2013/09/arizona-grand-canyon-hd-wallpaper-1080p.jpg",
 	"http://img0.mxstatic.com/wallpapers/c0489c920ab766d129424bc357ce7431_large.jpeg",
 	"http://fullhdpictures.com/wp-content/uploads/2015/04/Amazing-Grand-Canyon-Wallpapers.jpg",
@@ -141,7 +141,7 @@ OTHERS = [
 	"http://cloudmind.info/wp-content/uploads/2014/12/Xbreathtaking-sights9-Scotland-Its-a-rare-sight-but-when-visible-the-sky-in-Caithness-is-From-the-jaw-dropping-particle-collisions-of-the-Northern-Lights-in.jpg",
 	"http://blogs.timesofindia.indiatimes.com/wp-content/uploads/2014/10/6.jpg",
 	"http://blog.ideales.gr/wp-content/uploads/MARINA-BAY-SANDS-HOTEL-SINGAPORE-51.jpg",
-	"http://www.alexandrajunn.com/wp-content/uploads/2015/06/File-Jul-05-9-17-51-PM.png",
+	# "http://www.alexandrajunn.com/wp-content/uploads/2015/06/File-Jul-05-9-17-51-PM.png",
 	"http://general-contractor.co/wp-content/uploads/2015/10/unique-picture-10-most-beautiful-places-in-the-world-that-actually-exist-12-10-most-beautiful-places-in-the-world-that-actually-exist-10-most.jpg",
 	"http://i.ytimg.com/vi/nFdBNJsW46Y/maxresdefault.jpg",
 	"http://veryviral.com/wp-content/uploads/2014/05/tss_1399033128_3.jpg",
@@ -164,7 +164,7 @@ OTHERS = [
 	# breadthtaking photos
 	"http://i.kinja-img.com/gawker-media/image/upload/jhveeytnicbaekstrb5s.png",
 	"https://static.pexels.com/photos/6550/nature-sky-sunset-man.jpeg",
-	"https://static.pexels.com/photos/6495/landscape-mountains-nature-trees.jpeg",
+	# "https://static.pexels.com/photos/6495/landscape-mountains-nature-trees.jpeg",
 	"https://farm6.staticflickr.com/5548/11874722676_6450fcb8ba_b.jpg",
 	"https://c1.staticflickr.com/1/48/133364703_5ad410ea7a_b.jpg",
 	"https://picload.files.wordpress.com/2012/10/seljalandsfoss-falls-in-iceland.jpg"
@@ -267,79 +267,89 @@ if Rails.env == 'production'
 	print "\n"
 	puts "Upload finished."
 else
-	seed_imgs = get_imgs_from_cloudinary
+	imgs = get_imgs_from_cloudinary
+	cut_off = imgs.size / img_urls.size
+
+	0.upto(5) do |i|
+		seed_imgs[i] ||= []
+		imgs[(cut_off - imgs.size / img_urls.size)...cut_off] do |img|
+			seed_imgs[i] << img
+		end
+		cut_off += (imgs.size / img_urls.size)
+	end
 end
 
 puts "Persisting Cloudinary urls to database"
-seed_imgs.reverse!
 
 Picture.destroy_all
-seed_imgs[0].each do |img|
-	Album.all[0].pictures.create(
-		picture_url: img['url'],
-		public_id: img['public_id'],
-		latitude: rand(SF_SOUTH..SF_NORTH),
-		longitude: rand(SF_WEST..SF_EAST)
-	)
-	print "."
-end
-Album.all[0].update(cover_picture_url: seed_imgs[0].sample['url'])
 
-seed_imgs[1].each do |img|
-	Album.all[1].pictures.create(
-		picture_url: img['url'],
-		public_id: img['public_id'],
-		latitude: rand(YOSEMITE_SOUTH..YOSEMITE_NORTH),
-		longitude: rand(YOSEMITE_WEST..YOSEMITE_EAST)
-	)
-	print "."
-end
-Album.all[1].update(cover_picture_url: seed_imgs[1].sample['url'])
+User.all.each do |user|
+	seed_imgs[0].each do |img|
+		user.albums[0].pictures.create(
+			picture_url: img['url'],
+			public_id: img['public_id'],
+			latitude: rand(SF_SOUTH..SF_NORTH),
+			longitude: rand(SF_WEST..SF_EAST)
+		)
+		print "."
+	end
+	user.albums[0].update(cover_picture_url: seed_imgs[0].sample['url'])
 
-seed_imgs[2].each do |img|
-	Album.all[2].pictures.create(
-		picture_url: img['url'],
-		public_id: img['public_id'],
-		latitude: rand(LA_SOUTH..LA_NORTH),
-		longitude: rand(LA_WEST..LA_EAST)
-	)
-	print "."
-end
-Album.all[2].update(cover_picture_url: seed_imgs[2].sample['url'])
+	seed_imgs[1].each do |img|
+		user.albums[1].pictures.create(
+			picture_url: img['url'],
+			public_id: img['public_id'],
+			latitude: rand(YOSEMITE_SOUTH..YOSEMITE_NORTH),
+			longitude: rand(YOSEMITE_WEST..YOSEMITE_EAST)
+		)
+		print "."
+	end
+	user.albums[1].update(cover_picture_url: seed_imgs[1].sample['url'])
 
-seed_imgs[3].each do |img|
-	Album.all[3].pictures.create(
-		picture_url: img['url'],
-		public_id: img['public_id'],
-		latitude: rand(VEGAS_SOUTH..VEGAS_NORTH),
-		longitude: rand(VEGAS_WEST..VEGAS_EAST)
-	)
-	print "."
-end
-Album.all[3].update(cover_picture_url: seed_imgs[3].sample['url'])
+	seed_imgs[2].each do |img|
+		user.albums[2].pictures.create(
+			picture_url: img['url'],
+			public_id: img['public_id'],
+			latitude: rand(LA_SOUTH..LA_NORTH),
+			longitude: rand(LA_WEST..LA_EAST)
+		)
+		print "."
+	end
+	user.albums[2].update(cover_picture_url: seed_imgs[2].sample['url'])
 
-seed_imgs[4].each do |img|
-	Album.all[4].pictures.create(
-		picture_url: img['url'],
-		public_id: img['public_id'],
-		latitude: rand(GRAND_CANYON_SOUTH..GRAND_CANYON_NORTH),
-		longitude: rand(GRAND_CANYON_WEST..GRAND_CANYON_EAST)
-	)
-	print "."
-end
-Album.all[4].update(cover_picture_url: seed_imgs[4].sample['url'])
+	seed_imgs[3].each do |img|
+		user.albums[3].pictures.create(
+			picture_url: img['url'],
+			public_id: img['public_id'],
+			latitude: rand(VEGAS_SOUTH..VEGAS_NORTH),
+			longitude: rand(VEGAS_WEST..VEGAS_EAST)
+		)
+		print "."
+	end
+	user.albums[3].update(cover_picture_url: seed_imgs[3].sample['url'])
 
-seed_imgs[5].each do |img|
-	Album.all[5].pictures.create(
-		picture_url: img['url'],
-		public_id: img['public_id'],
-		latitude: rand(OTHERS_SOUTH..OTHERS_NORTH),
-		longitude: rand(OTHERS_WEST..OTHERS_EAST)
-	)
-	print "."
-end
-Album.all[5].update(cover_picture_url: seed_imgs[5].sample['url'])
+	seed_imgs[4].each do |img|
+		user.albums[4].pictures.create(
+			picture_url: img['url'],
+			public_id: img['public_id'],
+			latitude: rand(GRAND_CANYON_SOUTH..GRAND_CANYON_NORTH),
+			longitude: rand(GRAND_CANYON_WEST..GRAND_CANYON_EAST)
+		)
+		print "."
+	end
+	user.albums[4].update(cover_picture_url: seed_imgs[4].sample['url'])
 
+	seed_imgs[5].each do |img|
+		user.albums[5].pictures.create(
+			picture_url: img['url'],
+			public_id: img['public_id'],
+			latitude: rand(OTHERS_SOUTH..OTHERS_NORTH),
+			longitude: rand(OTHERS_WEST..OTHERS_EAST)
+		)
+		print "."
+	end
+	user.albums[5].update(cover_picture_url: seed_imgs[5].sample['url'])
+end
 print "\n"
 
 puts "=" * 40
