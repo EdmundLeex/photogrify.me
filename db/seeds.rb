@@ -238,7 +238,7 @@ end
 seed_imgs = []
 failed_imgs = {}
 img_urls = [SF_TRIP, YOSEMITE, LA_TRIP, LAS_VEGAS, GRAND_CANYON, OTHERS]
-
+debugger
 if Rails.env == 'production'
 	begin
 		Rake::Task['cloudinary:destroy_all'].invoke
@@ -271,6 +271,7 @@ else
 end
 
 puts "Persisting Cloudinary urls to database"
+seed_imgs.reverse!
 
 Picture.destroy_all
 seed_imgs[0].each do |img|
