@@ -272,7 +272,8 @@ else
 
 	0.upto(5) do |i|
 		seed_imgs[i] ||= []
-		imgs[(cut_off - imgs.size / img_urls.size)...cut_off] do |img|
+
+		imgs[(cut_off - imgs.size / img_urls.size)...cut_off].each do |img|
 			seed_imgs[i] << img
 		end
 		cut_off += (imgs.size / img_urls.size)
