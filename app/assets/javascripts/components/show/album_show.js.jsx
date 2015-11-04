@@ -2,8 +2,8 @@ var AlbumShow = React.createClass({
 	mixins: [
 		ReactRouter.History,
 		React.addons.LinkedStateMixin,
-		React.addons.PureRenderMixin,
-		JoyrideMixin
+		React.addons.PureRenderMixin
+		// JoyrideMixin
 	],
 
 	getInitialState: function () {
@@ -18,24 +18,24 @@ var AlbumShow = React.createClass({
 	},
 
 	componentWillMount: function () {
-    this.joyrideSetOptions({
-      showSkipButton: true,
-      tooltipOffset: 10,
-      showStepsProgress: true,
+    // this.joyrideSetOptions({
+    //   showSkipButton: true,
+    //   tooltipOffset: 10,
+    //   showStepsProgress: true,
 
-      stepCallback: function(step) {
-        // console.log(step);
-      },
+    //   stepCallback: function(step) {
+    //     // console.log(step);
+    //   },
 
-      completeCallback: function(steps) {
-        // console.log(steps);
-      }
-    });
+    //   completeCallback: function(steps) {
+    //     // console.log(steps);
+    //   }
+    // });
 	},
 
 	componentDidMount: function () {
-		this.joyrideAddSteps(APP_CONFIG.HomePageTour);
-		this.joyrideStart();
+		// this.joyrideAddSteps(APP_CONFIG.HomePageTour);
+		// this.joyrideStart();
 
 		ApiUtil.fetchPicturesFromAlbum(this.props.params.albumId);
 		AlbumStore.addAlbumsIndexChangeListener(this._onChange);

@@ -2,7 +2,7 @@
 	root.MapMain = React.createClass({
     mixins: [
       React.addons.PureRenderMixin,
-      JoyrideMixin,
+      // JoyrideMixin,
       ReactRouter.History
     ],
 
@@ -102,24 +102,24 @@
     	ComponentActions.slideOut(false);
       this.markers = [];
 
-      this.joyrideSetOptions({
-      showSkipButton: true,
-      tooltipOffset: 10,
-      showStepsProgress: true,
+      // this.joyrideSetOptions({
+      //   showSkipButton: true,
+      //   tooltipOffset: 10,
+      //   showStepsProgress: true,
 
-      stepCallback: function(step) {
-        // console.log(step);
-      },
+      //   stepCallback: function(step) {
+      //     // console.log(step);
+      //   },
 
-      completeCallback: function(steps) {
-        // console.log(steps);
-      }
-    });
+      //   completeCallback: function(steps) {
+      //     // console.log(steps);
+      //   }
+      // });
     },
 
 		componentDidMount: function(){
-      this.joyrideReplaceSteps(APP_CONFIG.MapTour);
-      this.joyrideStart();
+      // this.joyrideReplaceSteps(APP_CONFIG.MapTour);
+      // this.joyrideStart();
 
 			AlbumStore.addAlbumsIndexChangeListener(this._onChange);
       PictureStore.addAllPicturesChangedListener(this._picturesChanged);
