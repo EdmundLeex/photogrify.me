@@ -49,6 +49,9 @@
 
 	.selected {
 		color: #909092;
-		/*padding-left: 10px;*/
+    border-bottom: 2px solid #909092;
+    /*border-left: 2px solid #909092;*/
+    padding-bottom: 2px;
+    /*padding-left: 2px;*/
 	}
 }
