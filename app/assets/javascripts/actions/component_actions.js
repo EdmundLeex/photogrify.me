@@ -96,5 +96,12 @@ window.ComponentActions = {
 		AppDispatcher.dispatch({
 			actionType: APP_CONSTANTS.TOGGLE_PIC_LIST
 		});
+	},
+
+	switchTab: function (tab) {
+		AppDispatcher.dispatch({
+			actionType: APP_CONSTANTS.SWITCH_TAB,
+			tab: tab
+		});
 	}
 };

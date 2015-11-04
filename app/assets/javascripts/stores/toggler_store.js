@@ -8,6 +8,7 @@
 	var SHOW_CONFIRMATION_EVENT = "SHOW_CONFIRMATION_EVENT";
 	var HIDE_CONFIRMATION_EVENT = "HIDE_CONFIRMATION_EVENT";
 	var TOGGLE_PIC_LIST_EVENT = "TOGGLE_PIC_LIST_EVENT";
+	var SWITCH_TAB_EVENT = "SWITCH_TAB_EVENT";
 
 	var _editingTitle = false;
 	var _creating = 'new';
@@ -16,6 +17,7 @@
 	var _isDragging = false;
 	var _confModalOpts = {};
 	var _isPicListShown = true;
+	var _tabSelected = "album";
 
 	var toggleDragging = function (isDragging) {
 		_isDragging = isDragging;
@@ -53,6 +55,10 @@
 		_isPicListShown = !_isPicListShown;
 	};
 
+	var switchTab = function (tab) {
+		_tabSelected = tab;
+	};
+
 	root.TogglerStore = $.extend({}, EventEmitter.prototype, {
 		isPanelShown: function () {
 			return _isPanelShown;
@@ -80,6 +86,10 @@
 
 		isPicListShown: function () {
 			return _isPicListShown;
+		},
+
+		tabSelected: function () {
+			return _tabSelected;
 		},
 
 		addToggleEditingListener: function (callback) {
@@ -138,6 +148,14 @@
 			this.removeListener(TOGGLE_PIC_LIST_EVENT, callback);
 		},
 
+		addSwitchListener: function (callback) {
+			this.on(SWITCH_TAB_EVENT, callback);
+		},
+
+		removeSwitchListener: function (callback) {
+			this.removeListener(SWITCH_TAB_EVENT, callback);
+		},
+
 		dispatchId: AppDispatcher.register(function (payload) {
 			switch (payload.actionType) {
 				case APP_CONSTANTS.TOGGLE_EDITING:
@@ -169,6 +187,10 @@
 				case APP_CONSTANTS.TOGGLE_PIC_LIST:
 					togglePicList();
 					TogglerStore.emit(TOGGLE_PIC_LIST_EVENT);
+					break;
+				case APP_CONSTANTS.SWITCH_TAB:
+					switchTab(payload.tab);
+					TogglerStore.emit(SWITCH_TAB_EVENT);
 					break;
 				default:
 					break;

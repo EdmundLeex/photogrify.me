@@ -14,6 +14,7 @@ var PicturesWall = React.createClass({
 		PictureStore.addAllPicturesChangedListener(this.onChange);
 		PictureStore.addTogglePictureListener(this._onEnlarge);
 		TogglerStore.addToggleIndexPanelListener(this._onSlide);
+		ComponentActions.switchTab('pictures');
 	},
 
 	componentWillUnmount: function () {

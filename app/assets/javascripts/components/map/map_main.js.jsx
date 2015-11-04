@@ -128,6 +128,7 @@
       TogglerStore.addToggleIndexPanelListener(this._onSlide);
       TogglerStore.addTogglePicListListener(this._onTogglePicList);
       PictureStore.addHighlightPictureListener(this._onMarkerHighlight);
+      ComponentActions.switchTab('map');
       ApiUtil.fetchAllAlbums(true);
       ApiUtil.fetchAllPictures();
     },

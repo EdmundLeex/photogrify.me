@@ -17,6 +17,7 @@ var AlbumsMain = React.createClass({
 		TogglerStore.addToggleIndexPanelListener(this._onSlide);
 		TogglerStore.addToggleAlbumDropListener(this._onDragging);
 		TogglerStore.addShowConfModalListener(this._onShowConfModal);
+		ComponentActions.switchTab('album');
 		ApiUtil.fetchAllAlbums(true);
 	},
 
