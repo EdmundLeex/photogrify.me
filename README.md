@@ -1,100 +1,81 @@
-# PICTR
-Inspired by EverNote, PICTR is a personal pictures album collection app, where users can collect and organize pictures.
-http://pictr-io.herokuapp.com/
+# Photogrify.me
+www.photogrify.me
 
-## MVP
-PICTR is built using RoR and React.js.
-It allows users to:
+Photogrify.me is a webapp for managing private photos. Built with React.js
+& Ruby on Rails, it aims to provide user a seamless experience of photo
+organization and worry free storeage on the cloud.
 
-- [ ] Create account
-- [ ] Log in / log out
-- [ ] Create albums
-- [ ] Upload, view, and delete pictures
-- [ ] Write, read, and edit description about Albums
-- [ ] Apply complex styling to description
-- [ ] Pictures viewed in slide show mode
+## Features
+At a stage of MVP, Photogrify.me provides a few features to offer user an
+intuitive and smooth experience.
 
-## Design Docs
-* [View Wireframes][view]
-* [DB schema][schema]
+### Automatic Data Persistance
+When creating a new album or editing an existing album, data will be persisted
+when the algorithm determines user might finish a section. This includes:
+- Edited or added a title
+- Uploaded pictures
+- Stop editing description for 10 seconds
 
-[view]: ./docs/views.md
-[schema]: ./docs/db_schema.md
+### Drag and Drop for Photo Organization
+User can use drag and drop to move photo from one album to another. Changing
+the album cover by drag and drop is also available.
+This drag and drop feature persists the change to database real time.
 
-## Implementation
+### Your Photos on Google Map
+All users photos will be persisted with the location information from exif
+data. So user can view their photos as marks on the world map.
 
-### MVP
+### Search by Album
+A convenient search bar is available throughout all different views on the
+collapsible album index column. User can search for albums by the title with
+this responsive search.
 
-#### Phase 1: MVP Backend Models, User Auth, JSON API (1 days)
-In phase 1, backend models, user auth and JSON API needs to be done.
-There will also be a unstyled landing page with React rendered user 
-auth form. Successful sign up or sign in will redirect user to a new
-blank page, which will be the main app page.
+## Tech Under the Hood
+Photogrify.me is a full stack webapp currently at MVP stage and being develop
+as an on-going project.
 
-* [Details][phase_1]
-[phase_1]: ./docs/impl_details/phase_1.md
+### Stack
+- Ruby on Rails
+- React.js
+- Postgresql
+- Unicorn
 
-#### Phase 2: MVP Frontend Flux, Albums CRUD (2 days)
-In phase 2, an unstyled albums index page must be finished with basic 
-layout structure. User should be able to navigate through a list of
-albums, add title, description, and perform basic CRUD actions.
-Autosave feature (ajax post request every 30 secs).
-After signup, new user will be provided a default album.
+### APIs
+- Google Maps API
+- Cloudinary API
 
-* [Details][phase_2]
-[phase_2]: ./docs/impl_details/phase_2.md
+## Technical Features
+### Responsiveness
+Responses were a pretty neat feature to implement. When a user creates an album,
+deletes an album, unexpected server errors, etc. They are now alerted
+through the FeedbackStore. Here are the current success/error handling created:
 
-#### Phase 3: Add Search Feature, slideshow, quilljs and Stage 1 CSS (1.5 day)
-Phase 3 focuses on adding search feature, slideshow, complex text edit
-and touch up basic stying for MVP.
-* After picture is enlarged, user can go to next or prev picture
+- Creating an album
+- Updating an album
+- Deleting an album
+- Uploading photos
+- Deleting a photo
+- Auto saving
 
-* [Details][phase_3]
-[phase_3]: ./docs/impl_details/phase_3.md
+### Photo Upload
+Photo upload is implemented by integration of Cloudinary API. Utilizing the size
+manipulation API, loading a full page of thumnails is maded much faster.
 
-### Phase 4: CSS Touch Up and Add Author Profile Page
-Stage 2 CSS touch up and bootstrapping. Finish deliverable interface.
-Then add a simple profile page that includes link to my github, linkedin
+### Data Integrity
+By using flux architecture, all the information being displayed on the page are
+a real refelction of data from database.
 
-### Phase 5: Drag and Drop
-* In this phrase, implement drag and drop. Users are allowed to drag and
-drop image files when create/edit album.
-* After that, implement drap and drop pictures from album to album
-  * https://github.com/appacademy/capstone-project-curriculum#jquery-ui
-* File upload:
-  * https://github.com/paramaggarwal/react-dropzone (React-dropzone)
-  * http://blueimp.github.io/jQuery-File-Upload/
-  * http://www.plupload.com
-  * http://www.thecssninja.com/javascript/drag-and-drop-upload
-  * http://www.dropzonejs.com
+Photos are always tight to an album. This is enforced by a design pattern. Database
+and Cloudinary storeage are synchronized. Photo deletion will remove data both from
+database and cloudinary, which prevents accumulation of unwanted data.
 
-### Bonus:
+### Modularized Components
+Most of the React components are abstrated and grouped by their logical similarity.
+This makes adding features much easier, and at the same time, make sure the code
+base is maintainable as it grows.
 
-#### Phase 1: Google Map Show Pictures' Locations
-In this phrase, I will integrate google map, and show pictures location.
-And create a new view to show google map and all the pictures.
-
-* Add geolocation column in db to pictures tables
-* Use exifr. If meta-data not available, get current geolocation from
-browser, otherwise, picture won't show up on map.
-* Full page map, left side show picture thumbnails in a column.
-* Click picture will show large picture
-
-### Phase 2: Full Screen Slideshow
-* Add fullscreen slideshow function
-
-### Phase 3: Share
-Add share feature where users can share pictures/albums with other users.
-* Sharing entire album will share all pictures in the album
-
-### Phase 4: Draw on Pictures
-Add simple tools for user to draw and put text on pictures
-
-### Phase 5: Tagging
-User can tag pictures with tag name and color
-* Tagging entire album will share all pictures in the album
-* Google map view will have ability to filter pictures by tags
-
-### Phase 6: Sharing Permissions
-User can limit permissions when share (read, update)
-User can tag pictures.
+## Todos
+- Photos sharing with permission level (view, edit)
+- Color of the week (data visualization by extrating colors data from photo)
+- Search algorithm optimization
+- Photo editing feqture
