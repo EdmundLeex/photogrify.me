@@ -34,7 +34,7 @@ $(function () {
 		React.render((
 			<Router>
 				<Route path="/" component={App}>
-					<IndexRoute component={AlbumsMain} />
+					<IndexRoute component={MapMain} />
 					<Route path="albums" component={AlbumsMain}>
 						<Route path="/albums/:albumId/show" component={AlbumShow} />
 						<Route path="/albums/:albumId/edit" component={Edit} />
