@@ -6,8 +6,9 @@ Photogrify.me is a webapp for managing private photos. Built with React.js
 organization and worry free storeage on the cloud.
 
 ## Features
-At a stage of MVP, Photogrify.me provides a few features to offer user an
-intuitive and smooth experience.
+A single page app that provides a few features to offer user an intuitive
+and smooth experience. Photogrify.me is at its MVP stage, and being continuously
+developed.
 
 ### Automatic Data Persistance
 When creating a new album or editing an existing album, data will be persisted
