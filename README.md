@@ -46,6 +46,38 @@ as an on-going project.
 - Cloudinary API
 
 ## Technical Features
+### Database Performance
+At MVP stage, photogrify.me's database design follows best practices in order to
+make sure scalability moving forward.
+
+#### Batch Update Wrapped in Transaction
+When user upload photos in batch, inserting multiple records into the database
+is easily an N + 1 query. Therefore, batch update is wrapped in a single transaction.
+```
+def save_pictures_to_album(album, picture_urls)
+    ActiveRecord::Base.transaction do
+      picture_urls.each do |url|
+        album.pictures.create(picture_url: url['secure_url'], public_id: url['public_id'])
+      end
+
+      unless album.cover_picture_url
+        album.update(cover_picture_url: picture_urls.first['secure_url'])
+      end
+    end
+  end
+```
+
+#### Map View Query Based on Bounds
+Thanks to ActiveRecord's lazy evaluation and Relation class, fetching photos by bounds
+is made easy with a series of chained where clauses makes a one-round-trip query.
+```
+@pictures = current_user.pictures
+												.where("latitude  < ?", bounds[:northEast][:lat])
+												.where("latitude  > ?", bounds[:southWest][:lat])
+												.where("longitude > ?", bounds[:southWest][:lng])
+												.where("longitude < ?", bounds[:northEast][:lng])
+```
+
 ### Responsiveness
 Responses were a pretty neat feature to implement. When a user creates an album,
 deletes an album, unexpected server errors, etc. They are now alerted
