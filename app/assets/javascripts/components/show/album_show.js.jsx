@@ -109,7 +109,7 @@ var AlbumShow = React.createClass({
 			ApiUtil.deleteAlbum.bind(null, this.props.params.albumId),
 			"album",
 			this.state.title,
-			'/'
+			'/albums/' + AlbumStore.all()[0].id + "/show"
 		);
 	},
 
