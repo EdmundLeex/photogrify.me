@@ -47,8 +47,8 @@ as an on-going project.
 
 ## Technical Features
 ### Database Performance
-At MVP stage, photogrify.me's database design follows best practices in order to
-make sure scalability moving forward.
+At MVP stage, photogrify.me does not have a complex schema yet. But its database is
+designed with best practices in mind in order to make sure scalability moving forward.
 
 #### Batch Update Wrapped in Transaction
 When user upload photos in batch, inserting multiple records into the database
