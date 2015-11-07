@@ -160,6 +160,7 @@ window.ApiUtil = {
 				ComponentActions.newMsg(respData.msg);
 				callback();
 				ComponentActions.deletingAlbum(false);
+				ComponentActions.slideOut(true);
 			},
 			error: function (respData) {
 				// no op
