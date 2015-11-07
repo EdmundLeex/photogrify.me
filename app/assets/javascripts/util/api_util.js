@@ -73,6 +73,7 @@ window.ApiUtil = {
 				ComponentActions.newMsg(respData.msg);
 				ApiActions.receivePicturesFromOneAlbum(respData);
 				ApiActions.receiveAllAlbums(respData.albums);
+				ComponentActions.slideOut(true);
 			},
 			error: function (respData) {
 				// no op
