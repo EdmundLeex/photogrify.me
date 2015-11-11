@@ -5,7 +5,8 @@ var PicturesWall = React.createClass({
     return {
     	pictures: [],
     	isPanelShown: TogglerStore.isPanelShown(),
-    	enlargedImg: null
+    	enlargedImg: null,
+    	albums: AlbumStore.all()
     };
 	},
 
