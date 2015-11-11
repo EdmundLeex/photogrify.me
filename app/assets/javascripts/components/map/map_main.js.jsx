@@ -120,7 +120,7 @@
 		componentDidMount: function(){
       // this.joyrideReplaceSteps(APP_CONFIG.MapTour);
       // this.joyrideStart();
-
+      AlbumStore.addSearchAlbumListener(this._onSearch);
 			AlbumStore.addAlbumsIndexChangeListener(this._onChange);
       PictureStore.addAllPicturesChangedListener(this._picturesChanged);
       PictureStore.addTogglePictureListener(this._onEnlarge);
@@ -135,12 +135,17 @@
 
     componentWillUnmount: function(){
     	AlbumStore.removeAlbumsIndexChangeListener(this._onChange);
+      AlbumStore.removeSearchAlbumListener(this._onSearch);
       PictureStore.removeAllPicturesChangedListener(this._picturesChanged);
       PictureStore.removeTogglePictureListener(this._onEnlarge);
       TogglerStore.removeToggleIndexPanelListener(this._onSlide);
       TogglerStore.removeTogglePicListListener(this._onTogglePicList);
       PictureStore.removeHighlightPictureListener(this._onMarkerHighlight);
       // FilterParamsStore.removeChangeListener(this._filtersChanged);
+    },
+
+    _onSearch: function () {
+      this.setState({ albums: AlbumStore.matchedAlbums() });
     },
 
 		render: function () {

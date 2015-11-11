@@ -11,6 +11,7 @@ var PicturesWall = React.createClass({
 
 	componentDidMount: function () {
 		ApiUtil.fetchAllPictures();
+		AlbumStore.addSearchAlbumListener(this._onSearch);
 		PictureStore.addAllPicturesChangedListener(this.onChange);
 		PictureStore.addTogglePictureListener(this._onEnlarge);
 		TogglerStore.addToggleIndexPanelListener(this._onSlide);
@@ -18,6 +19,7 @@ var PicturesWall = React.createClass({
 	},
 
 	componentWillUnmount: function () {
+		AlbumStore.removeSearchAlbumListener(this._onSearch);
 		PictureStore.removeAllPicturesChangedListener(this.onChange);
 		PictureStore.removeTogglePictureListener(this._onEnlarge);
 		TogglerStore.removeToggleIndexPanelListener(this._onSlide);
@@ -33,6 +35,10 @@ var PicturesWall = React.createClass({
 
 	_onEnlarge: function () {
 		this.setState({ enlargedImg: PictureStore.enlargedImg() });
+	},
+
+	_onSearch: function () {
+	  this.setState({ albums: AlbumStore.matchedAlbums() });
 	},
 
 	getRandomSize: function (min, max) {
