@@ -37,12 +37,6 @@ losing data.
 [edit_ss]: ./docs/screenshots/ss4.png
 [slide_ss]: ./docs/screenshots/ss5.png
 
-When creating a new album or editing an existing album, data will be persisted
-when the algorithm determines user might finish a section. This includes:
-- Edited or added a title
-- Uploaded pictures
-- Stop editing description for 10 seconds
-
 ## Tech Under the Hood
 Photogrify.me is a full stack webapp currently at MVP stage and being develop
 as an on-going project.
