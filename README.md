@@ -16,10 +16,11 @@ developed.
 ### And you can view your picture wall
 ![wall_ss]
 
-### Managing photos made easy. You can move it across albums, or make it a new cover by simple drag and drop
+### Managing photos made easy.
+You can move it across albums, or make it a new cover by simple drag and drop
 ![manage_ss]
 
-### Smart auto save will save your change when needed. You never need to worry about
+### Smart auto save will save your change when needed.
 Changes are auto persisted when these conditions are met:
 - User finished editing title
 - User uploaded photo(s)
