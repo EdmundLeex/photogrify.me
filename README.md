@@ -10,26 +10,34 @@ A single page app that provides a few features to offer user an intuitive
 and smooth experience. Photogrify.me is at its MVP stage, and being continuously
 developed.
 
-### Automatic Data Persistance
+All the photos, the path of your life, vividly shown on the map.
+![map_ss]
+
+And you can view your picture wall
+![wall_ss]
+
+Managing photos made easy. You can move it across albums, or make it a new cover
+by drag and drop
+![manage_ss]
+
+Smart auto save will save your change when needed. You never need to worry about
+losing data.
+![edit_ss]
+
+View the beautiful photos in slide show mode.
+![slide_ss]
+
+[map_ss]: ./docs/screenshots/ss1.png
+[wall_ss]: ./docs/screenshots/ss2.png
+[manage_ss]: ./docs/screenshots/ss3.png
+[edit_ss]: ./docs/screenshots/ss4.png
+[slide_ss]: ./docs/screenshots/ss4.png
+
 When creating a new album or editing an existing album, data will be persisted
 when the algorithm determines user might finish a section. This includes:
 - Edited or added a title
 - Uploaded pictures
 - Stop editing description for 10 seconds
-
-### Drag and Drop for Photo Organization
-User can use drag and drop to move photo from one album to another. Changing
-the album cover by drag and drop is also available.
-This drag and drop feature persists the change to database real time.
-
-### Your Photos on Google Map
-All users photos will be persisted with the location information from exif
-data. So user can view their photos as marks on the world map.
-
-### Search by Album
-A convenient search bar is available throughout all different views on the
-collapsible album index column. User can search for albums by the title with
-this responsive search.
 
 ## Tech Under the Hood
 Photogrify.me is a full stack webapp currently at MVP stage and being develop
