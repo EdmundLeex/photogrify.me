@@ -103,5 +103,12 @@ window.ComponentActions = {
 			actionType: APP_CONSTANTS.SWITCH_TAB,
 			tab: tab
 		});
+	},
+
+	promptTip: function (tip) {
+		AppDispatcher.dispatch({
+			actionType: APP_CONSTANTS.PROMPT_TIP,
+			tip: tip
+		});
 	}
 };

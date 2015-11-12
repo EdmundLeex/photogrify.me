@@ -13,7 +13,8 @@ var AlbumShow = React.createClass({
     	pictures: [],
     	enlargedImg: null,
     	isExpanded: !TogglerStore.isPanelShown(),
-    	isDragging: false
+    	isDragging: false,
+    	tip: TogglerStore.currentTip()
     };
 	},
 
@@ -44,7 +45,9 @@ var AlbumShow = React.createClass({
 		PictureStore.addTogglePictureListener(this._onEnlarge);
 		TogglerStore.addToggleIndexPanelListener(this._onSlide);
 		TogglerStore.addToggleAlbumDropListener(this._onDragging);
+		TogglerStore.addPromptTipListener(this._onPromptTip);
 		// ApiUtil.fetchAllAlbums();
+		setTimeout(ComponentActions.promptTip.bind(null, 'dragAndDrop'), 1000);
 	},
 
 	componentWillUnmount: function () {
@@ -54,10 +57,16 @@ var AlbumShow = React.createClass({
 		PictureStore.removeTogglePictureListener(this._onEnlarge);
 		TogglerStore.removeToggleIndexPanelListener(this._onSlide);
 		TogglerStore.removeToggleAlbumDropListener(this._onDragging);
+		TogglerStore.removePromptTipListener(this._onPromptTip);
 	},
 
 	componentWillReceiveProps: function (nextProps) {
 		ApiUtil.fetchPicturesFromAlbum(nextProps.params.albumId);
+	},
+
+	_onPromptTip: function () {
+		debugger
+		this.setState({ tip: TogglerStore.currentTip() });
 	},
 
 	_onTitleChanged: function () {
@@ -166,6 +175,7 @@ var AlbumShow = React.createClass({
 					<PicturesCollection pictures={this.state.pictures}
 															handleClick={this.onImgClick}
 															isDeletable={true} />
+					<Tip tip={this.state.tip} />
 				</div>
 			</div>
 		);

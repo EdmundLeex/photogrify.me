@@ -9,6 +9,7 @@
 	var HIDE_CONFIRMATION_EVENT = "HIDE_CONFIRMATION_EVENT";
 	var TOGGLE_PIC_LIST_EVENT = "TOGGLE_PIC_LIST_EVENT";
 	var SWITCH_TAB_EVENT = "SWITCH_TAB_EVENT";
+	var PROMPT_TIP_EVENT = "PROMPT_TIP_EVENT";
 
 	var _editingTitle = false;
 	var _creating = 'new';
@@ -18,6 +19,19 @@
 	var _confModalOpts = {};
 	var _isPicListShown = true;
 	var _tabSelected = "album";
+	var _currentTip = null;
+	var _tips = {
+		dragAndDrop: false
+	};
+
+	var promptTip = function (tip) {
+		if (_tips[tip] === false) {
+			_currentTip = tip;
+			_tips[tip] = true;
+		} else {
+			_currentTip = null;
+		}
+	};
 
 	var toggleDragging = function (isDragging) {
 		_isDragging = isDragging;
@@ -60,6 +74,10 @@
 	};
 
 	root.TogglerStore = $.extend({}, EventEmitter.prototype, {
+		currentTip: function () {
+			return _currentTip;
+		},
+
 		isPanelShown: function () {
 			return _isPanelShown;
 		},
@@ -156,6 +174,14 @@
 			this.removeListener(SWITCH_TAB_EVENT, callback);
 		},
 
+		addPromptTipListener: function (callback) {
+			this.on(PROMPT_TIP_EVENT, callback);
+		},
+
+		removePromptTipListener: function (callback) {
+			this.removeListener(PROMPT_TIP_EVENT, callback);
+		},
+
 		dispatchId: AppDispatcher.register(function (payload) {
 			switch (payload.actionType) {
 				case APP_CONSTANTS.TOGGLE_EDITING:
@@ -191,6 +217,11 @@
 				case APP_CONSTANTS.SWITCH_TAB:
 					switchTab(payload.tab);
 					TogglerStore.emit(SWITCH_TAB_EVENT);
+					break;
+				case APP_CONSTANTS.PROMPT_TIP:
+				debugger
+					promptTip(payload.tip);
+					TogglerStore.emit(PROMPT_TIP_EVENT);
 					break;
 				default:
 					break;
