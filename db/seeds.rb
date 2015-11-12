@@ -294,7 +294,7 @@ User.all.each do |user|
 		)
 		print "."
 	end
-	user.albums[5].update(cover_picture_url: seed_imgs[0].sample['url'])
+	user.albums[5].update(cover_picture_url: seed_imgs[5].sample['url'])
 
 	seed_imgs[0].each do |img|
 		user.albums[0].pictures.create(
@@ -305,7 +305,7 @@ User.all.each do |user|
 		)
 		print "."
 	end
-	user.albums[0].update(cover_picture_url: seed_imgs[1].sample['url'])
+	user.albums[0].update(cover_picture_url: seed_imgs[0].sample['url'])
 
 	seed_imgs[1].each do |img|
 		user.albums[1].pictures.create(
@@ -316,7 +316,7 @@ User.all.each do |user|
 		)
 		print "."
 	end
-	user.albums[1].update(cover_picture_url: seed_imgs[2].sample['url'])
+	user.albums[1].update(cover_picture_url: seed_imgs[1].sample['url'])
 
 	seed_imgs[2].each do |img|
 		user.albums[2].pictures.create(
@@ -327,7 +327,7 @@ User.all.each do |user|
 		)
 		print "."
 	end
-	user.albums[2].update(cover_picture_url: seed_imgs[3].sample['url'])
+	user.albums[2].update(cover_picture_url: seed_imgs[2].sample['url'])
 
 	seed_imgs[3].each do |img|
 		user.albums[3].pictures.create(
@@ -338,7 +338,7 @@ User.all.each do |user|
 		)
 		print "."
 	end
-	user.albums[3].update(cover_picture_url: seed_imgs[4].sample['url'])
+	user.albums[3].update(cover_picture_url: seed_imgs[3].sample['url'])
 
 	seed_imgs[4].each do |img|
 		user.albums[4].pictures.create(
@@ -349,7 +349,7 @@ User.all.each do |user|
 		)
 		print "."
 	end
-	user.albums[4].update(cover_picture_url: seed_imgs[5].sample['url'])
+	user.albums[4].update(cover_picture_url: seed_imgs[4].sample['url'])
 end
 print "\n"
 
