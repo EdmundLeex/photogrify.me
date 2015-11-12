@@ -285,23 +285,12 @@ puts "Persisting Cloudinary urls to database"
 Picture.destroy_all
 
 User.all.each do |user|
-	seed_imgs[5].each do |img|
-		user.albums[5].pictures.create(
-			picture_url: img['url'],
-			public_id: img['public_id'],
-			latitude: rand(SF_SOUTH..SF_NORTH),
-			longitude: rand(SF_WEST..SF_EAST)
-		)
-		print "."
-	end
-	user.albums[5].update(cover_picture_url: seed_imgs[5].sample['url'])
-
 	seed_imgs[0].each do |img|
 		user.albums[0].pictures.create(
 			picture_url: img['url'],
 			public_id: img['public_id'],
-			latitude: rand(YOSEMITE_SOUTH..YOSEMITE_NORTH),
-			longitude: rand(YOSEMITE_WEST..YOSEMITE_EAST)
+			latitude: rand(SF_SOUTH..SF_NORTH),
+			longitude: rand(SF_WEST..SF_EAST)
 		)
 		print "."
 	end
@@ -311,8 +300,8 @@ User.all.each do |user|
 		user.albums[1].pictures.create(
 			picture_url: img['url'],
 			public_id: img['public_id'],
-			latitude: rand(LA_SOUTH..LA_NORTH),
-			longitude: rand(LA_WEST..LA_EAST)
+			latitude: rand(YOSEMITE_SOUTH..YOSEMITE_NORTH),
+			longitude: rand(YOSEMITE_WEST..YOSEMITE_EAST)
 		)
 		print "."
 	end
@@ -322,8 +311,8 @@ User.all.each do |user|
 		user.albums[2].pictures.create(
 			picture_url: img['url'],
 			public_id: img['public_id'],
-			latitude: rand(VEGAS_SOUTH..VEGAS_NORTH),
-			longitude: rand(VEGAS_WEST..VEGAS_EAST)
+			latitude: rand(LA_SOUTH..LA_NORTH),
+			longitude: rand(LA_WEST..LA_EAST)
 		)
 		print "."
 	end
@@ -333,8 +322,8 @@ User.all.each do |user|
 		user.albums[3].pictures.create(
 			picture_url: img['url'],
 			public_id: img['public_id'],
-			latitude: rand(GRAND_CANYON_SOUTH..GRAND_CANYON_NORTH),
-			longitude: rand(GRAND_CANYON_WEST..GRAND_CANYON_EAST)
+			latitude: rand(VEGAS_SOUTH..VEGAS_NORTH),
+			longitude: rand(VEGAS_WEST..VEGAS_EAST)
 		)
 		print "."
 	end
@@ -344,12 +333,23 @@ User.all.each do |user|
 		user.albums[4].pictures.create(
 			picture_url: img['url'],
 			public_id: img['public_id'],
+			latitude: rand(GRAND_CANYON_SOUTH..GRAND_CANYON_NORTH),
+			longitude: rand(GRAND_CANYON_WEST..GRAND_CANYON_EAST)
+		)
+		print "."
+	end
+	user.albums[4].update(cover_picture_url: seed_imgs[4].sample['url'])
+
+	seed_imgs[5].each do |img|
+		user.albums[5].pictures.create(
+			picture_url: img['url'],
+			public_id: img['public_id'],
 			latitude: rand(OTHERS_SOUTH..OTHERS_NORTH),
 			longitude: rand(OTHERS_WEST..OTHERS_EAST)
 		)
 		print "."
 	end
-	user.albums[4].update(cover_picture_url: seed_imgs[4].sample['url'])
+	user.albums[5].update(cover_picture_url: seed_imgs[5].sample['url'])
 end
 print "\n"
 
