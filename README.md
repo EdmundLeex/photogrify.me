@@ -10,28 +10,33 @@ A single page app that provides a few features to offer user an intuitive
 and smooth experience. Photogrify.me is at its MVP stage, and being continuously
 developed.
 
-All the photos, the path of your life, vividly shown on the map.
+### All the photos, the path of your life, vividly shown on the map.
 ![map_ss]
 
-And you can view your picture wall
+### And you can view your picture wall
 ![wall_ss]
 
-Managing photos made easy. You can move it across albums, or make it a new cover
+### Managing photos made easy. You can move it across albums, or make it a new cover
 by drag and drop
 ![manage_ss]
 
-Smart auto save will save your change when needed. You never need to worry about
+### Smart auto save will save your change when needed. You never need to worry about
+Changes are auto persisted when these conditions are met:
+- User finished editing title
+- User uploaded photo(s)
+- User started editing descript and stopped for 30 seconds
+
 losing data.
 ![edit_ss]
 
-View the beautiful photos in slide show mode.
+### View the beautiful photos in slide show mode.
 ![slide_ss]
 
 [map_ss]: ./docs/screenshots/ss1.png
 [wall_ss]: ./docs/screenshots/ss2.png
 [manage_ss]: ./docs/screenshots/ss3.png
 [edit_ss]: ./docs/screenshots/ss4.png
-[slide_ss]: ./docs/screenshots/ss4.png
+[slide_ss]: ./docs/screenshots/ss5.png
 
 When creating a new album or editing an existing album, data will be persisted
 when the algorithm determines user might finish a section. This includes:
