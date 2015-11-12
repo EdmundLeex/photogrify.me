@@ -7,14 +7,14 @@
     };
   }
 
-  var CENTER = {lat: 37.7758, lng: -122.435};
+  var CENTER = {lat: 37.788712, lng: -122.200788};
 
   root.Map = React.createClass({
     componentDidMount: function(){
       var map = React.findDOMNode(this.refs.map);
       var mapOptions = {
         center: this.centerCoords(),
-        zoom: 11,
+        zoom: 8,
         styles: APP_CONFIG.MAP_STYLE
       };
       this.map = new google.maps.Map(map, mapOptions);
