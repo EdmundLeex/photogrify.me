@@ -14,7 +14,7 @@
       var map = React.findDOMNode(this.refs.map);
       var mapOptions = {
         center: this.centerCoords(),
-        zoom: 8,
+        zoom: 9,
         styles: APP_CONFIG.MAP_STYLE
       };
       this.map = new google.maps.Map(map, mapOptions);
