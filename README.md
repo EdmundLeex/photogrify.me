@@ -1,9 +1,9 @@
 # Photogrify.me
 www.photogrify.me
 
-Photogrify.me is a webapp for managing private photos. Built with React.js
+Photogrify.me is a web app for managing private photos. Built with React.js
 & Ruby on Rails, it aims to provide user a seamless experience of photo
-organization and worry free storeage on the cloud.
+organization and worry free storage on the cloud.
 
 ## Features
 A single page app that provides a few features to offer user an intuitive
@@ -24,7 +24,7 @@ You can move it across albums, or make it a new cover by simple drag and drop
 Changes are auto persisted when these conditions are met:
 - User finished editing title
 - User uploaded photo(s)
-- User started editing descript and stopped for 10 seconds
+- User started editing description and stopped for 10 seconds
 
 ![edit_ss]
 
@@ -91,23 +91,23 @@ through the FeedbackStore. Here are the current success/error handling created:
 
 ### Photo Upload
 Photo upload is implemented by integration of Cloudinary API. Utilizing the size
-manipulation API, loading a full page of thumnails is maded much faster.
+manipulation API, loading a full page of thumbnails is made much faster.
 
 ### Data Integrity
 By using flux architecture, all the information being displayed on the page are
-a real refelction of data from database.
+a real reflection of data from database.
 
 Photos are always tight to an album. This is enforced by a design pattern. Database
-and Cloudinary storeage are synchronized. Photo deletion will remove data both from
-database and cloudinary, which prevents accumulation of unwanted data.
+and Cloudinary storage are synchronized. Photo deletion will remove data both from
+database and Cloudinary, which prevents accumulation of unwanted data.
 
 ### Modularized Components
-Most of the React components are abstrated and grouped by their logical similarity.
+Most of the React components are abstracted and grouped by their logical similarity.
 This makes adding features much easier, and at the same time, make sure the code
 base is maintainable as it grows.
 
 ## Todos
 - Photos sharing with permission level (view, edit)
-- Color of the week (data visualization by extrating colors data from photo)
+- Color of the week (data visualization by extracting colors data from photo)
 - Search algorithm optimization
-- Photo editing feqture
+- Photo editing feature
