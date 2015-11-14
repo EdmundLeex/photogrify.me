@@ -10,7 +10,7 @@ A single page app that provides a few features to offer user an intuitive
 and smooth experience. Photogrify.me is at its MVP stage, and being continuously
 developed.
 
-### All the photos, the path of your life, vividly shown on the map.
+### All the photos, the path of your journey, vividly shown on the map.
 ![map_ss]
 
 ### And you can view your picture wall
