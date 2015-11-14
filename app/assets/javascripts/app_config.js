@@ -86,14 +86,14 @@ window.APP_CONFIG = {
   ],
 
   ConsolPrint: function () {
-    console.log('%c       _/_/_/    _/      _/    _/_/_/   _/_/_/_/_/    _/_/_/      _/_/_/    _/_/_/   _/_/_/_/  _/       _/ ', 'color: #46BCEC');
-    console.log('%c     _/     _/  _/      _/  _/      _/     _/      _/      _/  _/      _/    _/     _/          _/    _/   ', 'color: #46BCEC');
-    console.log('%c    _/     _/  _/_/_/_/_/  _/      _/     _/      _/      _/  _/            _/     _/_/_/_/      _/ _/     ', 'color: #46BCEC');
-    console.log('%c   _/_/_/_/   _/      _/  _/      _/     _/      _/      _/  _/    _/_/    _/     _/             _/        ', 'color: #46BCEC');
-    console.log('%c  _/         _/      _/  _/      _/     _/      _/      _/  _/      _/    _/     _/             _/         ', 'color: #46BCEC');
-    console.log('%c _/         _/      _/    _/_/_/       _/        _/_/_/     _/_/_/_/   _/_/_/   _/             _/          ', 'color: #46BCEC');
-    console.log("Interested in hiring? See my Linked in profile or contact me by edmund.xz.lee@gmail.com");
-    console.log("Just wanted to peek under the hood? Head to my github and check out my projects");
+    console.log('%c       _/_/_/    _/      _/    _/_/_/   _/_/_/_/_/    _/_/_/      _/_/_/      _/_/_/    _/_/_/   _/_/_/_/  _/       _/ ', 'color: #46BCEC');
+    console.log('%c     _/     _/  _/      _/  _/      _/     _/      _/      _/  _/      _/   _/     _/    _/     _/          _/    _/   ', 'color: #46BCEC');
+    console.log('%c    _/     _/  _/_/_/_/_/  _/      _/     _/      _/      _/  _/           _/     _/    _/     _/_/_/_/      _/ _/     ', 'color: #46BCEC');
+    console.log('%c   _/_/_/_/   _/      _/  _/      _/     _/      _/      _/  _/    _/_/   _/_/_/_/     _/     _/             _/        ', 'color: #46BCEC');
+    console.log('%c  _/         _/      _/  _/      _/     _/      _/      _/  _/      _/   _/  _/       _/     _/             _/         ', 'color: #46BCEC');
+    console.log('%c _/         _/      _/    _/_/_/       _/        _/_/_/     _/_/_/_/    _/    _/   _/_/_/   _/             _/          ', 'color: #46BCEC');
+    console.log("Peeking under the hood? Ask me if you have any question. Contact me by edmund.xz.lee@gmail.com");
+    console.log("Want to see more of my projects? Head to my github and check them out.");
     console.log("https://github.com/EdmundLeex");
   },
 
