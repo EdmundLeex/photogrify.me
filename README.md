@@ -24,9 +24,8 @@ You can move it across albums, or make it a new cover by simple drag and drop
 Changes are auto persisted when these conditions are met:
 - User finished editing title
 - User uploaded photo(s)
-- User started editing descript and stopped for 30 seconds
+- User started editing descript and stopped for 10 seconds
 
-losing data.
 ![edit_ss]
 
 ### View the beautiful photos in slide show mode.
