@@ -13,7 +13,7 @@ developed.
 ### All the photos, the path of your journey, vividly shown on the map.
 ![map_ss]
 
-### And you can view your picture wall
+### And you can view all your photos on your picture wall.
 ![wall_ss]
 
 ### Managing photos made easy.
@@ -38,9 +38,6 @@ Changes are auto persisted when these conditions are met:
 [slide_ss]: ./docs/screenshots/ss5.png
 
 ## Tech Under the Hood
-Photogrify.me is a full stack webapp currently at MVP stage and being develop
-as an on-going project.
-
 ### Stack
 - Ruby on Rails
 - React.js
@@ -52,13 +49,9 @@ as an on-going project.
 - Cloudinary API
 
 ## Technical Features
-### Database Performance
-At MVP stage, photogrify.me does not have a complex schema yet. But its database is
-designed with best practices in mind in order to make sure scalability moving forward.
-
 #### Batch Update Wrapped in Transaction
-When user upload photos in batch, inserting multiple records into the database
-is easily an N + 1 query. Therefore, batch update is wrapped in a single transaction.
+When user upload photos in batch, update is wrapped in a single transaction to prevent
+N + 1 query.
 ```
 def save_pictures_to_album(album, picture_urls)
   ActiveRecord::Base.transaction do
