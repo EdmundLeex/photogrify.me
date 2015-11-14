@@ -1,52 +1,60 @@
 <body>
-	<div class="root-main clearfix">
-		<div class="nav navbar-custom">
-			<div class="nav-div">
-				<span class="root-logo"><%= image_tag("logo-hzt-white.png") %></span>
-			</div>
-		</div>
-
-		<div class="root-container">
-			<div class="introduction">
-				The home for your photo collections.
-			</div>
-			<div class="achievement">
-				<a href="" id="guest-btn">Explore as guest</a>
-				<div class="auth-btn-grp">
-					or 
-					<a href="" id="signin-btn">Sign in</a> |
-					<a href="" id="signup-btn">Sign up</a>
+	<div class="root">
+		<div class="root-main clearfix">
+			<div class="nav navbar-custom">
+				<div class="nav-div">
+					<span class="root-logo"><%= image_tag("logo-hzt-white.png") %></span>
 				</div>
 			</div>
-			<div class="sub-intro"></div>
-		</div>
-	</div>
 
-	<div class="<%="overlay clearfix #{behind}" %>">
-		<% flash.each do |message_type, message| %>
-			<ul class="alert">
-				<% message.each do |msg| %>
-					<%= content_tag(:li, msg, class: "alert-#{message_type}") %>
-				<% end %>
-			</ul>
-		<% end %>
-		<div class="auth-form-container">
-			<a href="" id="close-btn">CLOSE</a>
-			<div class="auth-form">
-				<div class="auth-form-logo"><%= image_tag('logo-icon-white.png') %></div>
-				<form id="auth-form" class="auth-form-field clearfix" action="" method="post">
-					<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-					<input id="username" type="text" placeholder="Username" name="user[username]" value="<%= username %>">
-					<input id="password" type="password" placeholder="Password" name="user[password]">
-					<% if behind == "" %>
-						<input type="submit" class="submit-btn" value="<%= btn_text %>">
-					<% else %>
-						<input type="submit" class="submit-btn">
-					<% end %>
-				</form>
+			<div class="root-container">
+				<div class="introduction">
+					The home for your photo collections.
+				</div>
+				<div class="achievement">
+					<a href="" id="guest-btn">Explore as guest</a>
+					<div class="auth-btn-grp">
+						or 
+						<a href="" id="signin-btn">Sign in</a> |
+						<a href="" id="signup-btn">Sign up</a>
+					</div>
+				</div>
+				<div class="sub-intro"></div>
 			</div>
 		</div>
-	</div>
 
-	<div class="footer"></div>
+		<div class="<%="overlay clearfix #{behind}" %>">
+			<% flash.each do |message_type, message| %>
+				<ul class="alert">
+					<% message.each do |msg| %>
+						<%= content_tag(:li, msg, class: "alert-#{message_type}") %>
+					<% end %>
+				</ul>
+			<% end %>
+			<div class="auth-form-container">
+				<a href="" id="close-btn">CLOSE</a>
+				<div class="auth-form">
+					<div class="auth-form-logo"><%= image_tag('logo-icon-white.png') %></div>
+					<form id="auth-form" class="auth-form-field clearfix" action="" method="post">
+						<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+						<input id="username" type="text" placeholder="Username" name="user[username]" value="<%= username %>">
+						<input id="password" type="password" placeholder="Password" name="user[password]">
+						<% if behind == "" %>
+							<input type="submit" class="submit-btn" value="<%= btn_text %>">
+						<% else %>
+							<input type="submit" class="submit-btn">
+						<% end %>
+					</form>
+				</div>
+			</div>
+		</div>
+
+		<div class="footer">
+			<ul>
+				<li><a href="https://github.com/EdmundLeex/photogrify.me">Github</a> · </li>
+				<li><a href="http://www.edmundleex.us">Profile</a> · </li>
+				<li><a href="https://www.linkedin.com/in/edmundleex">Linkedin</a></li>
+			</ul>
+		</div>
+	</div>
 </body>
