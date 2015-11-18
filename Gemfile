@@ -37,12 +37,8 @@ gem 'figaro'
 
 gem 'newrelic_rpm'
 
-gem 'unicorn'
-
-# gem 'font-awesome-sass'
-
 # Use Unicorn as the app server
-# gem 'unicorn'
+gem 'unicorn'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
